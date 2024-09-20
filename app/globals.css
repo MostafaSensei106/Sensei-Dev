@@ -14,7 +14,7 @@
     --bg-color: #000;
     --second-bg-color: #131313;
     --text-color: #fff;
-    --main-color: #00ffee;
+    --main-color: #fdf1e1;
 }
 
 html {
@@ -25,7 +25,7 @@ html {
 
 
 body {
-    background-color: var(--second-bg-color);
+    background-color: var(--bg-color);
     font-family: 'Open Sans', sans-serif;
     color: var(--text-color);
 }
@@ -45,7 +45,22 @@ html::-webkit-scrollbar-thumb {
 
 section {
     min-height: 100vh;
-    padding: 5rem 9% 5rem;
+    padding: 5rem 9%;
 }
+
+@media (max-width: 768px) {
+    section {
+        min-height: 100vh;
+        padding: 3rem 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        min-height: 100vh;
+        padding: 0.5%;
+    }
+}
+
 
 /*# sourceMappingURL=style.css.map */

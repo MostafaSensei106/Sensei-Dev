@@ -13,7 +13,7 @@
 .home_img .image {
     position: relative;
     width: 32vw;
-    border-radius: 50%;
+    border-radius: 110px;
     box-shadow: 0 0 25px var(--main-color);
     cursor: pointer;
     transition: .3s ease;
@@ -37,17 +37,13 @@
 .homeContent h3 {
     font-size: 4rem;
     margin-bottom: 1rem;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .homeContent p {
     font-size: 1.8rem;
     font-weight: 500;
-}
-
-.icon {
-    font-size: 1.2rem; /* أو الحجم الذي تريده */
-    margin-left: 200rem; /* المسافة بين النص والأيقونة */
+    text-align: justify;
 }
 
 .socialIcon a {
@@ -75,7 +71,7 @@
 .homeButton .btn {
     display: inline-block;
     padding: 1rem 2.8rem;
-    border-radius: 4rem;
+    border-radius: 1rem;
     font-size: 1.6rem;
     letter-spacing: 0.1rem;
     font-weight: 600;
@@ -84,7 +80,6 @@
     margin-left: 1rem;
     box-shadow: 0 0 5px var(--main-color);
 }
-
 
 .btn1 {
     background: var(--bg-color);
@@ -148,39 +143,17 @@
 
 /* Keyframe for changing the words in the text */
 @keyframes words {
-    0%, 20% {
-        content: "Software Developer";
-    }
-    21%, 40% {
-        content: "Flutter Developer";
-    }
-    41%, 61% {
-        content: "Back-End Developer";
-    }
-    62%, 80% {
-        content: "Artist";
-    }
-    81%, 100% {
-        content: "Sensei";
-    }
+    0%, 20% { content: "Software Developer."; }
+    21%, 40% { content: "Flutter Developer."; }
+    41%, 61% { content: "Back-End Developer."; }
+    62%, 80% { content: "Artist."; }
+    81%, 100% { content: "AI Developer."; }
 }
 
 /* Keyframe for the typing effect */
 @keyframes typing {
-    10%, 15%,
-    30%, 35%,
-    50%, 55%,
-    70%, 75%,
-    90%, 95% {
-        width: 0;
-    }
-    5%, 20%,
-    25%, 40%,
-    45%, 60%,
-    65%, 80%,
-    85% {
-        width: calc(100% + 8px);
-    }
+    10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% { width: 0; }
+    5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85% { width: calc(100% + 8px); }
 }
 
 /* Home Responsive */
@@ -188,6 +161,7 @@
     .home {
         flex-direction: column;
         margin: 0 2rem;
+        /*gap: 1rem;*/
     }
 
     .homeContent h3 {
