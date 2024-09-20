@@ -6,6 +6,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <SenseiHeader></SenseiHeader>
+        <SenseiHeader></SenseiHeader>
     </main>
   );
 }
