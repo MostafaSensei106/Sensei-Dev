@@ -20,6 +20,7 @@
     transition: .3s ease;
 }
 
+
 .home_img img:hover {
     transform: scale(1.1);
     filter: drop-shadow(0 0 25px var(--main-color));
