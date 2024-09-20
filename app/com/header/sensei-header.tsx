@@ -1,14 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './sensei-header.css';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import styles from './sensei-header.module.css';
 
 function SenseiHeader() {
+
+
     return (
-        <header className="header">
-            <a href="#" className="logo">Mostafa Sensei</a>
-            <FontAwesomeIcon className="MenuIcon" icon={faBars} size="lg" />
-            <nav className="navbar">
-                <a href="#home" className="active">Home</a>
+        <header className={styles.header}>
+            <a href="#" className={styles.logo}>Mostafa Sensei</a>
+            <FontAwesomeIcon
+                className={styles.MenuIcon}
+                icon={faBars}
+                size="1x"
+            />
+            <nav className={styles.navbar}>
+                <a href="#home" className={styles.active}>Home</a>
                 <a href="#service">Service</a>
                 <a href="#education">Education</a>
                 <a href="#projects">Projects</a>

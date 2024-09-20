@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons';
 import { faUserSecret, faFilePdf } from '@fortawesome/free-solid-svg-icons';
-
+im
 function SenseiHome() {
     return (
         <section className="home" id="Home">
