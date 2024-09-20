@@ -1,19 +1,20 @@
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons';
 import { faUserSecret, faFilePdf } from '@fortawesome/free-solid-svg-icons';
-import styles from "./sensei-home.module.css";
-import Image from 'next/image'; // استيراد مكون Image
+import styles from './sensei-home.module.css';
 
 function SenseiHome() {
     return (
         <section className={styles.home} id="Home">
             <div className={styles.home_img}>
                 <Image
-                    src="/Assets/Images/Sensei.jpg" // تأكد من المسار الصحيح للصورة
+                    src="/Assets/Images/Sensei.jpg"
                     alt="Home_Image"
-                    width={500} // عرض الصورة
-                    height={500} // ارتفاع الصورة
-                    className={styles.image} // إضافة كلاس إذا كنت تحتاج لتخصيص الأنماط
+                    layout="responsive"
+                    className={styles.image}
+                    width={3600} // Adjust as needed
+                    height={3600} // Adjust as needed
                 />
             </div>
             <div className={styles.homeContent}>
@@ -32,8 +33,14 @@ function SenseiHome() {
                     <a href="#"><FontAwesomeIcon icon={faTelegram} /></a>
                 </div>
                 <div className={styles.homeButton}>
-                    <a href="#" className={`${styles.btn} ${styles.btn1}`}>Hire Me <FontAwesomeIcon icon={faUserSecret} /></a>
-                    <a href="#" className={`${styles.btn} ${styles.btn2}`}>Download CV <FontAwesomeIcon icon={faFilePdf} /></a>
+                    <a href="#" className={`${styles.btn} ${styles.btn1}`}>
+                        Hire Me <FontAwesomeIcon icon={faUserSecret}
+                                                 style={{fontSize: '1.2rem', marginLeft: '0.5rem'}}/>
+                    </a>
+                    <a href="#" className={`${styles.btn} ${styles.btn2}`}>
+                        Download CV <FontAwesomeIcon icon={faFilePdf}
+                                                     style={{fontSize: '1.2rem', marginLeft: '0.5rem'}}/>
+                    </a>
                 </div>
             </div>
         </section>
