@@ -12,8 +12,8 @@ function SenseiHome() {
                     alt="Home_Image"
                     layout="responsive"
                     className={styles.image}
-                    width={3600} // Adjust as needed
-                    height={3600} // Adjust as needed
+                    width={3600}
+                    height={3600}
                 />
             </div>
             <div className={styles.homeContent}>

@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <SenseiHeader></SenseiHeader>
-        <SenseiHome></SenseiHome>
+        {/*<SenseiHome></SenseiHome>*/}
     </main>
   );
 }
