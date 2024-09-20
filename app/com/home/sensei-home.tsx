@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons';
-import { faUserSecret, faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { LinkedIn, GitHub, Telegram } from '@mui/icons-material'; // استيراد أيقونات MUI
+import { Person, Description } from '@mui/icons-material'; // استيراد أيقونات إضافية
 import styles from './sensei-home.module.css';
 
 function SenseiHome() {
@@ -28,18 +27,16 @@ function SenseiHome() {
                     experiences. In my role as an independent Flutter developer.
                 </p>
                 <div className={styles.socialIcon}>
-                    <a href="#"><FontAwesomeIcon icon={faLinkedin} /></a>
-                    <a href="#"><FontAwesomeIcon icon={faGithub} /></a>
-                    <a href="#"><FontAwesomeIcon icon={faTelegram} /></a>
+                    <a href="#"><LinkedIn /></a>
+                    <a href="#"><GitHub /></a>
+                    <a href="#"><Telegram /></a>
                 </div>
                 <div className={styles.homeButton}>
                     <a href="#" className={`${styles.btn} ${styles.btn1}`}>
-                        Hire Me <FontAwesomeIcon icon={faUserSecret}
-                                                 style={{fontSize: '1.2rem', marginLeft: '0.5rem'}}/>
+                        Hire Me <Person style={{fontSize: '1.2rem', marginLeft: '0.5rem'}} />
                     </a>
                     <a href="#" className={`${styles.btn} ${styles.btn2}`}>
-                        Download CV <FontAwesomeIcon icon={faFilePdf}
-                                                     style={{fontSize: '1.2rem', marginLeft: '0.5rem'}}/>
+                        Download CV <Description style={{fontSize: '1.2rem', marginLeft: '0.5rem'}} />
                     </a>
                 </div>
             </div>

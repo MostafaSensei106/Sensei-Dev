@@ -1,17 +1,13 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Menu } from '@mui/icons-material'; // استيراد أيقونة القائمة من MUI
 import styles from './sensei-header.module.css';
 
 function SenseiHeader() {
-
-
     return (
         <header className={styles.header}>
             <a href="#" className={styles.logo}>Mostafa Sensei</a>
-            <FontAwesomeIcon
+            <Menu
                 className={styles.MenuIcon}
-                icon={faBars}
-                size="1x"
+                fontSize="inherit" // استخدم fontSize لإبقاء الحجم متسقًا
             />
             <nav className={styles.navbar}>
                 <a href="#home" className={styles.active}>Home</a>
