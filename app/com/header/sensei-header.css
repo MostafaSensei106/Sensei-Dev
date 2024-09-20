@@ -1,0 +1,100 @@
+
+/* Header Style */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 3rem 9%;
+    background: rgb(0, 0, 0, 0.7);
+    filter: drop-shadow(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+/* Logo Header Style */
+
+.logo {
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.logo span {
+    color: var(--text-color);
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 25px var(--main-color);
+}
+
+/* Nav Bar Style*/
+
+.navbar a {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.navbar a.active,
+nav a:hover {
+    color: var(--main-color);
+    text-shadow: 0 0 25px var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+}
+
+/* Menu Style */
+
+#MenuIcon {
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none;
+}
+
+/* Responsive Menu Section Width 994px */
+@media (max-width: 994px) {
+    #MenuIcon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 40%;
+        border-left: 3px solid var(--main-color);
+        border-bottom: 3px solid var(--main-color);
+        padding: 1rem 3%;
+        background: var(--second-bg-color);
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+        border-bottom-left-radius: 2rem;
+        display: none;
+    }
+
+    .navbar.active {
+        display: block;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+    }
+
+    .navbar:hover,
+    .navbar.active {
+        padding: 1rem;
+        border-radius: 0.2rem;
+        border-bottom: 0.5rem solid var(--main-color);
+    }
+}
+
