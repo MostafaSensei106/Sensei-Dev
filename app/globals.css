@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
 
 * {
     margin: 0;
@@ -11,10 +12,10 @@
 }
 
 :root {
-    --bg-color: #000;
-    --second-bg-color: #131313;
-    --text-color: #fff;
-    --main-color: #fdf1e1;
+    --bg-color: #000000;
+    --second-bg-color: #000000;
+    --text-color: #ffffff;
+    --main-color: #fcf0e1;
 }
 
 html {
@@ -23,11 +24,11 @@ html {
 }
 
 
-
 body {
-    background-color: var(--bg-color);
+    background-color: var(--second-bg-color);
     font-family: 'Open Sans', sans-serif;
     color: var(--text-color);
+    overflow-x: hidden;
 }
 
 html::-webkit-scrollbar {
@@ -43,22 +44,26 @@ html::-webkit-scrollbar-thumb {
 }
 
 
+/*---------This is General Section Style---------*/
+/*---------This is General Section Style---------*/
+/*---------This is General Section Style---------*/
+
 section {
     min-height: 100vh;
-    padding: 5rem 9%;
+    padding: 6rem 6% 5rem;
 }
 
 @media (max-width: 768px) {
     section {
         min-height: 100vh;
-        padding: 3rem 5%;
+        padding: 0 1.5rem 5%;
     }
 }
 
 @media (max-width: 480px) {
     section {
         min-height: 100vh;
-        padding: 0.5%;
+        padding: 0 1.5rem 5%;
     }
 }
 
