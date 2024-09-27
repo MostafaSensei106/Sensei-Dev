@@ -8,20 +8,11 @@ import { faUserSecret, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import styles from './sensei-home.module.css';
 
 const SenseiHome = () => {
-    // const [typingIndex, setTypingIndex] = useState(0);
-    // const texts = ['Software Engineer', 'Flutter Developer', 'Back-End Developer', 'AI Developer', 'Artist'];
     const controls = useAnimation();
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
-
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setTypingIndex((prevIndex) => (prevIndex + 1) % texts.length);
-    //     }, 6000); // Synchronized with CSS animation duration
-    //     return () => clearInterval(interval);
-    // }, []);
 
     useEffect(() => {
         if (inView) {
