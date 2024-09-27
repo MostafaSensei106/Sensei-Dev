@@ -1,6 +1,5 @@
 //SenseiHome.tsx
 "use client";
-
 import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -8,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons';
 import { faUserSecret, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import styles from './sensei-home.module.css';
+
 
 const SenseiHome = () => {
     const [typingIndex, setTypingIndex] = useState(0);
@@ -21,7 +21,7 @@ const SenseiHome = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setTypingIndex((prevIndex) => (prevIndex + 1) % texts.length);
-        }, 6000); // Change text every 6 seconds to match the CSS animation duration
+        }, 6000);
         return () => clearInterval(interval);
     }, []);
 
