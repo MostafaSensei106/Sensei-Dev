@@ -1,1 +1,184 @@
 
+/*-------------------- Footer Section Style------------------------- */
+/* -------------------Footer Section Style------------------------- */
+/* ------------------Footer Section Style ------------------------*/
+
+
+.Contact-Me-section  {
+    min-height: 0;
+    padding: 0;
+}
+
+.Contact-Me-section .header-section {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.Contact-Me-section .header-section .title {
+    position: relative;
+    margin-bottom: 40px;
+    padding-bottom: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--main-color);
+}
+
+.Contact-Me-section .header-section .title::before,
+.Contact-Me-section .header-section .title::after {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.Contact-Me-section .header-section .title::before {
+    width: 140%;
+    height: 1px;
+    background: var(--main-color);
+}
+
+.Contact-Me-section .header-section .title::after {
+    width: 45%;
+    height: 3px;
+    background: var(--main-color);
+}
+
+.Contact-Me-section {
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    text-align: center;
+    color: var(--main-color);
+    overflow: hidden;
+}
+
+.waves {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 200%;
+    height: 100px;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 100px;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg');
+    background-repeat: repeat-x;
+    opacity: 0.6;
+    animation: wave-animation 8s linear infinite;
+}
+
+#wave1 {
+    animation-delay: 0s;
+}
+
+#wave2 {
+    animation-delay: -2s;
+    opacity: 0.4;
+}
+
+#wave3 {
+    animation-delay: -4s;
+    opacity: 0.2;
+}
+
+@keyframes wave-animation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    padding-bottom: 50px;
+}
+
+
+
+.meon {
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+
+.link-me {
+    color: var(--main-color);
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.link-me:hover {
+    text-decoration: underline;
+}
+
+.social {
+    margin-top: 10px;
+}
+.social a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border: 0.3rem solid var(--main-color);
+    font-size: 2rem;
+    border-radius: 1rem;
+    color: var(--main-color);
+    margin: 2rem 1.5rem;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.social a:hover {
+    transform: scale(1.3) translateY(-5px);    background: var(--main-color);
+    color: white;
+}
+.social a[aria-label="Go to Facebook"]:hover {
+    background: linear-gradient(135deg, #3b5998, #6d84b4, #8b9dc3, #dfe3ee);
+    border-color: black;
+}
+
+.social a[aria-label="Go to Instagram"]:hover {
+    background: linear-gradient(135deg, #f09433, #f77737, #e1306c, #c13584, #833ab4, #5851db);
+    border-color: black;
+}
+
+.social a[aria-label="Go to Linkedin"]:hover {
+    background: linear-gradient(135deg, #0077b5, #008cc9, #00a0dc, #00b2ff);
+    border-color: black;
+}
+
+.social a[aria-label="Go to Telegram"]:hover {
+    background: linear-gradient(135deg, #0088cc, #009edc, #32a5e6, #6cc3f2);
+    border-color: black;
+}
+
+.copyright {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--main-color);
+    opacity: 0.8;
+}
+
+.copyright span {
+    color: var(--main-color);
+    opacity: 1;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,0 +1,186 @@
+
+/*----------------------This is Education Section Style---------------------*/
+/*---------------------This is Education Section Style---------------------*/
+/*--------------------This is Education Section Style---------------------*/
+
+.section-education {
+    min-height: 100vh;
+    padding: 60px 0 0 0;
+}
+
+.section-education .header-section {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.section-education .header-section .title {
+    position: relative;
+    margin-bottom: 40px;
+    padding-bottom: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--main-color);
+}
+
+.section-education .header-section .title::before,
+.section-education .header-section .title::after {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-education .header-section .title::before {
+    width: 140%;
+    height: 1px;
+    background: var(--main-color);
+}
+
+.section-education .header-section .title::after {
+    width: 45%;
+    height: 3px;
+    background: var(--main-color);
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 5rem 5%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1.5rem 5%;
+    }
+}
+
+.time-line {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.time-line:after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    background-color: var(--main-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 15px;
+}
+
+.timeline-container {
+    padding: 20px 40px;
+    position: relative;
+    width: 50%;
+}
+
+.timeline-container.right {
+    left: 50%;
+}
+
+.timeline-container.left {
+    left: 0;
+}
+
+.content {
+    background-color: var(--main-color);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 10px var(--main-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.content:hover {
+    transform: translateY(-10px);
+    background-color: var(--second-bg-color);
+    box-shadow: 0 0 25px var(--main-color);
+    color: var(--main-color);
+}
+
+.content:hover .tag h2,
+.content:hover .desc p {
+    color: var(--main-color);
+}
+
+.timeline-container.content {
+    background-color: var(--second-bg-color);
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+.timeline-container::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 0;
+    background: var(--second-bg-color);
+    border: 3px solid var(--main-color);
+    box-shadow: 0 0 10px var(--main-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-container .right::after {
+    left: 10px;
+}
+
+.timeline-container:hover::after {
+    background-color: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    transform: scale(1.2);
+}
+
+.tag h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--bg-color);
+}
+
+.desc p {
+    margin: 10px 0 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--bg-color);
+}
+
+/* Responsive Design */
+/* Responsive Design */
+/* Responsive Design */
+
+
+@media (max-width: 768px) {
+    .timeline-container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-container.left, .timeline-container.right {
+        left: 0;
+    }
+
+    .time-line:after {
+        left: 20px;
+    }
+
+    .timeline-container::after {
+        left: 29px;
+    }
+
+}

@@ -12,11 +12,10 @@ function SenseiArt() {
     const images = [
         { src: "Images/image_display/Free Palestine.png", thumb: "Images/image_display/image_web/Free Palestine.webp" },
         { src: "Images/image_display/MHlogo.png", thumb: "Images/image_display/image_web/MHlogo.webp" },
-        // Add more image
     ];
 
     return (
-        <section className={styles["art-gallery-section"]} id="Art Gallery">
+        <section className={styles["art-gallery-section"]} id="Gallery">
             <div className={styles.container}>
                 <div className={styles["header-section"]}>
                     <h2 className={styles.title}><span>Art Gallery</span></h2>

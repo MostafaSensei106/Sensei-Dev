@@ -5,13 +5,14 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 5%;
+    padding: 2rem 1%;
     background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    border-bottom: 0.5px solid  var(--main-color);
+    border-bottom: 1px solid  var(--main-color);
 }
 
 .logo {
@@ -57,10 +58,10 @@
 .MenuIcon span {
     display: block;
     position: absolute;
-    height: 3px;
+    height: 4px;
     width: 100%;
     background: var(--main-color);
-    border-radius: 9px;
+    border-radius: 1rem;
     opacity: 1;
     left: 0;
     transform: rotate(0deg);
@@ -105,11 +106,11 @@
         right: 0;
         width: 40%;
         border-left: 3px solid var(--main-color);
-        border-bottom: 3px solid var(--main-color);
         padding: 1rem 3%;
-        background: var(--second-bg-color);
-        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
-        border-bottom-left-radius: 2rem;
+        background: rgba(0, 0, 0, 0.7);
+        border-top: 1px solid var(--main-color);
+        backdrop-filter: blur(20px);
+        border-bottom-left-radius: 1rem;
         display: none;
     }
 
@@ -125,8 +126,6 @@
 
     .navbar:hover,
     .navbar.active {
-        padding: 1rem;
-        border-radius: 0.2rem;
-        border-bottom: 0.5rem solid var(--main-color);
+        border-bottom: 0.3rem solid var(--main-color);
     }
 }

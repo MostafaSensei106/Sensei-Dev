@@ -3,7 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import styles from './sensei-header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faLaptopCode, faGraduationCap, faFolderOpen, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import {
+    faHome,
+    faLaptopCode,
+    faGraduationCap,
+    faFolderOpen,
+    faEnvelope,
+    faPalette
+} from '@fortawesome/free-solid-svg-icons';
 
 const SenseiHeader: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +21,7 @@ const SenseiHeader: React.FC = () => {
     };
 
     const handleScroll = () => {
-        const sections = ['Home', 'Service', 'Education', 'Projects', 'Contact'];
+        const sections = ['Home', 'Service', 'Education', 'Projects',"Gallery", 'Contact'];
         const current = sections.find(section => {
             const element = document.getElementById(section);
             if (element) {
@@ -47,6 +54,7 @@ const SenseiHeader: React.FC = () => {
         Service: faLaptopCode,
         Education: faGraduationCap,
         Projects: faFolderOpen,
+        Gallery:faPalette,
         Contact: faEnvelope
     };
 

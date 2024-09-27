@@ -1,9 +1,8 @@
 import styles from "./sensei-contact.module.css";
-import SenseiHeader from "@/app/com/header/sensei-header";
 
 function SenseiContact() {
     return (
-        <section className={styles["Contact-Me-section"]} id="Contact Me">
+        <section className={styles["Contact-Me-section"]} id="Contact">
             <div className={styles["header-section"]}>
                 <h2 className={styles.title}>
                     <span>Contact Me</span>
@@ -26,7 +25,7 @@ function SenseiContact() {
                                     Mostafa Sensei106.Mail
                                 </a>
                                 <div className={styles.social}>
-                                    <p>Me on Social Network</p>
+                                    <p className={styles.meon}>Me on Social Network</p>
                                     <a
                                         aria-label="Go to Facebook"
                                         href="https://www.facebook.com/MostafaSensei106"
