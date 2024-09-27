@@ -7,11 +7,11 @@
     width: 100%;
     padding: 2rem 5%;
     background: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    border-bottom: 0.5px solid  var(--main-color);
 }
 
 .logo {

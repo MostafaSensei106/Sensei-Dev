@@ -26,7 +26,7 @@
 .homeImg img {
     width: 100%;
     height: auto;
-    border-radius: 50%;
+    border-radius: 16px;
     box-shadow: 0 0 25px var(--main-color);
     transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -36,9 +36,6 @@
     filter: drop-shadow(0 0 25px var(--main-color));
 }
 
-.homeContent {
-    flex: 1;
-}
 
 .homeContent h1 {
     font-size: 6rem;
