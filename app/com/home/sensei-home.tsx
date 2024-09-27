@@ -1,4 +1,3 @@
-//SenseiHome.tsx
 "use client";
 import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
@@ -8,22 +7,21 @@ import { faLinkedin, faGithub, faTelegram } from '@fortawesome/free-brands-svg-i
 import { faUserSecret, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import styles from './sensei-home.module.css';
 
-
 const SenseiHome = () => {
-    const [typingIndex, setTypingIndex] = useState(0);
-    const texts = ['Software Engineer', 'Flutter Developer', 'Back-End Developer', 'AI Developer', 'Artist'];
+    // const [typingIndex, setTypingIndex] = useState(0);
+    // const texts = ['Software Engineer', 'Flutter Developer', 'Back-End Developer', 'AI Developer', 'Artist'];
     const controls = useAnimation();
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTypingIndex((prevIndex) => (prevIndex + 1) % texts.length);
-        }, 6000);
-        return () => clearInterval(interval);
-    }, []);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setTypingIndex((prevIndex) => (prevIndex + 1) % texts.length);
+    //     }, 6000); // Synchronized with CSS animation duration
+    //     return () => clearInterval(interval);
+    // }, []);
 
     useEffect(() => {
         if (inView) {
@@ -75,7 +73,7 @@ const SenseiHome = () => {
                         Hi, It's <span className={styles.highlight}>Mostafa Sensei</span>
                     </h1>
                     <h3 className={styles.typingText}>
-                        I'm a <span className={styles.typingHighlight} data-text={texts[typingIndex]}>{texts[typingIndex]}</span>
+                        I'm a <span className={styles.typingHighlight}> </span>
                     </h3>
                     <p>
                         I'm a college student specializing in Python and Flutter, focusing on stable and secure app development. I have experience in Python-based computer vision projects and improving mobile experiences through Flutter development.
