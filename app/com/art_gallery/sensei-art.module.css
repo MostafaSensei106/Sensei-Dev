@@ -7,6 +7,10 @@
     padding: 60px 0;
 }
 
+.art-gallery-content  {
+    padding: 0 2% 0;
+}
+
 .art-gallery-section .header-section {
     margin-top: 35px;
     text-align: center;
@@ -49,7 +53,7 @@
 
 
 .art-gallery-section .art-gallery-content .Gallery img {
-    border-radius: 6px;
+    border-radius: 1rem;
     width: 100%;
     transition: 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }

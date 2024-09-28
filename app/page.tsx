@@ -9,14 +9,14 @@ import SenseiContact from "@/app/com/contact_me/sensei-contact";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-        <SenseiHeader></SenseiHeader>
-        <SenseiHome></SenseiHome>
-        <SenseiServicesProjects></SenseiServicesProjects>
-        <SenseiEducation></SenseiEducation>
-        <SenseiProjects></SenseiProjects>
-        <SenseiArt></SenseiArt>
-        <SenseiContact></SenseiContact>
-    </main>
+      <main className={styles.main}>
+          <SenseiHeader></SenseiHeader>
+          <SenseiHome></SenseiHome>
+          <SenseiServicesProjects></SenseiServicesProjects>
+          <SenseiEducation></SenseiEducation>
+          <SenseiProjects></SenseiProjects>
+          <SenseiArt></SenseiArt>
+          <SenseiContact></SenseiContact>
+      </main>
   );
 }
