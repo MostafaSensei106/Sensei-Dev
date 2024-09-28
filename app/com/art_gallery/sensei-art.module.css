@@ -4,11 +4,11 @@
 
 .art-gallery-section {
     min-height: 100vh;
-    padding: 60px 0;
+    padding: 0;
 }
 
 .art-gallery-content  {
-    padding: 0 2% 0;
+    padding: 0 5rem 5%;
 }
 
 .art-gallery-section .header-section {

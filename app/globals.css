@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&amp;family=Overlock&amp;family=Yuji+Syuku&amp;display=swap');
 
 * {
     margin: 0;
@@ -8,7 +8,7 @@
     border: none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Overlock', serif;
 }
 
 :root {
@@ -23,10 +23,9 @@ html {
     overflow-x: hidden;
 }
 
-
 body {
     background-color: var(--second-bg-color);
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Overlock', serif;
     color: var(--text-color);
     overflow-x: hidden;
 }
@@ -66,6 +65,3 @@ section {
         padding: 0 1.5rem 5%;
     }
 }
-
-
-/*# sourceMappingURL=style.css.map */

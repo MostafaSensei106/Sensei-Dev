@@ -13,6 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const SenseiHeader: React.FC = () => {
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('Home');
 
@@ -58,9 +59,13 @@ const SenseiHeader: React.FC = () => {
         Contact: faEnvelope
     };
 
+
+
+
+
     return (
         <header className={styles.header}>
-            <a href="#" className={styles.logo}>『Mostafa ◆「モスタファ」</a>
+            <a href="#" className={styles.logo}>「モスタファ」</a>
             <div
                 className={`${styles.MenuIcon} ${isMenuOpen ? styles.active : ''}`}
                 onClick={toggleMenu}
