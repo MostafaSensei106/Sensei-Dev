@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./sensei-services-projects.module.css";
 
+// @ts-ignore
 const ServiceItem = ({ icon, title, description, index }) => {
     const [ref, inView] = useInView({
         triggerOnce: true,
