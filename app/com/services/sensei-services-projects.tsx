@@ -49,7 +49,7 @@ const ServiceItem = ({ icon, title, description, index }) => {
 
 function SenseiServicesProjects() {
     const services = [
-        { icon: "fa-brands fa-500px", title: "Web Development", description: "We provide high-quality web development services to bring your digital vision to life." },
+        { icon: "fa-solid fa-code", title: "Web Development", description: "We provide high-quality web development services to bring your digital vision to life." },
         { icon: "fa-solid fa-palette", title: "Graphic Design", description: "We create attractive designs that reflect your brand identity." },
         { icon: "fa-solid fa-magnifying-glass-chart", title: "SEO Services", description: "We improve your website's visibility in search engines to increase reach." },
         { icon: "fa-solid fa-pen-fancy", title: "Content Writing", description: "We produce high-quality content that attracts audience and improves your site's ranking." },
