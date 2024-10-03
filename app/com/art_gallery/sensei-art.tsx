@@ -2,7 +2,50 @@
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import styles from "./sensei-art.module.css";
+
+// @ts-ignore
+const ImageItem = ({ image, index, setCurrentImage, setOpen }) => {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+
+    const variants = {
+        hidden: { opacity: 0, scale: 0.8 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: [0.22, 1, 0.36, 1],
+            },
+        },
+    };
+
+    return (
+        <motion.div
+            ref={ref}
+            className={styles.art_pic}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={variants}
+        >
+            <img
+                alt="Art"
+                loading="lazy"
+                src={image.thumb}
+                onClick={() => {
+                    setCurrentImage(image.src);
+                    setOpen(true);
+                }}
+            />
+        </motion.div>
+    );
+};
 
 function SenseiArt() {
     const [open, setOpen] = useState(false);
@@ -29,29 +72,35 @@ function SenseiArt() {
         { src: "/Assets/art-gallery/Images/image_display/Pizza_G.jpg", thumb: "/Assets/art-gallery/Images/image_display/Pizza_G.jpg" },
         { src: "/Assets/art-gallery/Images/image_display/logo_hg.jpg", thumb: "/Assets/art-gallery/Images/image_display/logo_hg.jpg" },
         { src: "/Assets/art-gallery/Images/image_display/sakura.jpg", thumb: "/Assets/art-gallery/Images/image_display/sakura.jpg" },
-
     ];
+
+    const [headerRef, headerInView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
 
     return (
         <section className={styles["art-gallery-section"]} id="Gallery">
             <div className={styles.container}>
-                <div className={styles["header-section"]}>
+                <motion.div
+                    ref={headerRef}
+                    className={styles["header-section"]}
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={headerInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                >
                     <h2 className={styles.title}><span>Art Gallery</span></h2>
-                </div>
+                </motion.div>
                 <div className={styles["art-gallery-content"]}>
                     <div className={styles.Gallery}>
                         {images.map((image, index) => (
-                            <div className={styles.art_pic} key={index}>
-                                <img
-                                    alt="Art"
-                                    loading="lazy"
-                                    src={image.thumb}
-                                    onClick={() => {
-                                        setCurrentImage(image.src);
-                                        setOpen(true);
-                                    }}
-                                />
-                            </div>
+                            <ImageItem
+                                key={index}
+                                image={image}
+                                index={index}
+                                setCurrentImage={setCurrentImage}
+                                setOpen={setOpen}
+                            />
                         ))}
                     </div>
                 </div>
