@@ -69,7 +69,9 @@ const SenseiHeader: React.FC = () => {
 
     return (
         <header className={styles.header}>
-            <a href="#" className={styles.logo}>「モスタファ」</a>
+            <a href="#" className={styles.logo}>
+                <span lang="en">Mostafa •</span>
+                <span lang="ja"> モスタファ</span></a>
             <div
                 className={`${styles.MenuIcon} ${isMenuOpen ? styles.active : ''}`}
                 onClick={toggleMenu}

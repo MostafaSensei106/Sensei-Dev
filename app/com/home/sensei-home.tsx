@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -61,7 +61,7 @@ const SenseiHome = () => {
                 </motion.div>
                 <motion.div className={styles.homeContent} variants={itemVariants}>
                     <h1>
-                        Hi, It's <span className={styles.highlight}>Mostafa Sensei</span>
+                        <span lang="ja">おっす,</span>it's <span className={styles.highlight}>Mostafa Mahmoud</span>
                     </h1>
                     <h3 className={styles.typingText}>
                         I'm a <span className={styles.typingHighlight}> </span>

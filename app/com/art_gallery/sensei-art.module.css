@@ -11,6 +11,18 @@
     padding: 0 5rem 5%;
 }
 
+@media (max-width: 1199px) {
+    .art-gallery-content  {
+        padding: 0 3rem 5%;
+    }
+}
+
+@media (max-width: 991px) {
+    .art-gallery-content  {
+        padding: 0 3rem 5%;
+    }
+}
+
 .art-gallery-section .header-section {
     margin-top: 35px;
     text-align: center;

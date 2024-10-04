@@ -73,6 +73,15 @@ section {
     padding: 6rem 6% 5rem;
 }
 
+
+
+@media (max-width: 991px) {
+    section {
+        min-height: 100vh;
+        padding: 0 1.5rem 5%;
+    }
+}
+
 @media (max-width: 768px) {
     section {
         min-height: 100vh;

@@ -9,6 +9,8 @@
     padding: 60px 0;
 }
 
+
+
 .header-section {
     margin-top: 35px;
     text-align: center;
@@ -48,6 +50,19 @@
     margin: 0 auto;
     padding: 0 5rem 5%;
 }
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 3rem 5%;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding: 0 1.5rem 5%;
+    }
+}
+
 
 @media (max-width: 768px) {
     .container {
