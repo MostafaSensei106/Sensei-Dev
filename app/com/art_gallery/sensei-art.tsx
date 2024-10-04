@@ -9,7 +9,7 @@ import styles from "./sensei-art.module.css";
 // @ts-ignore
 const ImageItem = ({ image, index, setCurrentImage, setOpen }) => {
     const [ref, inView] = useInView({
-        triggerOnce: true,
+        triggerOnce: false,
         threshold: 0.1,
     });
 

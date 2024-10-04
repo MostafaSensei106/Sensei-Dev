@@ -10,7 +10,7 @@ const apiUrl = `https://api.github.com/users/${githubUsername}/repos`;
 // @ts-ignore
 const ProjectItem = ({ repo, index }) => {
     const [ref, inView] = useInView({
-        triggerOnce: true,
+        triggerOnce: false,
         threshold: 0.1,
     });
 
