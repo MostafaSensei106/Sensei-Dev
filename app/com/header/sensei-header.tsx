@@ -1,4 +1,3 @@
-// SenseiHeader.tsx
 "use client";
 import React, { useState, useEffect } from 'react';
 import styles from './sensei-header.module.css';
@@ -8,12 +7,10 @@ import {
     faLaptopCode,
     faGraduationCap,
     faFolderOpen,
-    faEnvelope,
     faPalette
 } from '@fortawesome/free-solid-svg-icons';
 
 const SenseiHeader: React.FC = () => {
-
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('Home');
 
@@ -22,7 +19,7 @@ const SenseiHeader: React.FC = () => {
     };
 
     const handleScroll = () => {
-        const sections = ['Home', 'Service', 'Education', 'Projects',"Gallery", 'Contact'];
+        const sections = ['Home', 'Service', 'Education', 'Projects', 'Gallery'];
         const current = sections.find(section => {
             const element = document.getElementById(section);
             if (element) {
@@ -31,10 +28,22 @@ const SenseiHeader: React.FC = () => {
             }
             return false;
         });
-        if (current) setActiveSection(current);
+        if (current) {
+            setActiveSection(current);
+            localStorage.setItem('activeSection', current);
+        }
     };
 
     useEffect(() => {
+        const savedSection = localStorage.getItem('activeSection');
+        if (savedSection) {
+            setActiveSection(savedSection);
+            const element = document.getElementById(savedSection);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -55,13 +64,8 @@ const SenseiHeader: React.FC = () => {
         Service: faLaptopCode,
         Education: faGraduationCap,
         Projects: faFolderOpen,
-        Gallery:faPalette,
-        Contact: faEnvelope
+        Gallery: faPalette,
     };
-
-
-
-
 
     return (
         <header className={styles.header}>
@@ -86,6 +90,7 @@ const SenseiHeader: React.FC = () => {
                         className={activeSection === section ? styles.active : ''}
                         onClick={() => {
                             setActiveSection(section);
+                            localStorage.setItem('activeSection', section);
                             if (window.innerWidth <= 994) setIsMenuOpen(false);
                         }}
                     >

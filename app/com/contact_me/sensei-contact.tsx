@@ -1,9 +1,9 @@
-import styles from "./sensei-contact.module.css";
-
-function SenseiContact() {
+import React from 'react';
+import styles from './sensei-contact.module.css';
+const SenseiContact = () => {
     return (
-        <section className={styles["Contact-Me-section"]} id="Contact">
-            <div className={styles["header-section"]}>
+        <section className={styles['Contact-Me-section']} id="Contact">
+            <div className={styles['header-section']}>
                 <h2 className={styles.title}>
                     <span>Contact Me</span>
                 </h2>
@@ -14,10 +14,10 @@ function SenseiContact() {
                         <div className={styles.wave} id={styles.wave3}></div>
                     </div>
                     <div className={styles.container}>
-                        <div className={styles["contact-me"]}>
-                            <div className={styles["info-me"]}>
+                        <div className={styles['contact-me']}>
+                            <div className={styles['info-me']}>
                                 <a
-                                    className={styles["link-me"]}
+                                    className={styles['link-me']}
                                     href="mailto:mostafa438886@fci.bu.edu.eg?subject=こんにちは、 MR: Mostafa Sensei"
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -43,7 +43,7 @@ function SenseiContact() {
                                         <i className="fa-brands fa-instagram"></i>
                                     </a>
                                     <a
-                                        aria-label="Go to LinkedIn"
+                                        aria-label="Go to Linkedin"
                                         href="https://www.linkedin.com/in/mostafa-mahmoud-963a78235/?originalSubdomain=eg"
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -62,17 +62,17 @@ function SenseiContact() {
                             </div>
                         </div>
                         <div className={styles.copyright}>
-                            &COPY; 2024
+                            &copy; {new Date().getFullYear()}{' '}
                             <span>
                 <a
-                    className={styles["Sensei_Name"]}
+                    className={styles.Sensei_Name}
                     href="https://github.com/MostafaSensei106"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                   Mostafa Mahmoud
                 </a>
-              </span>
+              </span>{' '}
                             ALL Copyright Reserved.
                         </div>
                     </div>
@@ -80,6 +80,6 @@ function SenseiContact() {
             </div>
         </section>
     );
-}
+};
 
 export default SenseiContact;
