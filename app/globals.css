@@ -18,6 +18,27 @@
     --main-color: #fcf0e1;
 }
 
+
+html[lang="en"] body {
+    font-family: 'Overlock', sans-serif;
+
+}
+
+html[lang="ja"] body {
+    font-family: 'Yuji Syuku', serif;
+}
+
+[lang="en"] {
+    font-family: 'Overlock', sans-serif;
+
+}
+
+[lang="ja"] {
+    font-family: 'Yuji Syuku', serif;
+
+}
+
+
 html {
     font-size: 62.5%;
     overflow-x: hidden;

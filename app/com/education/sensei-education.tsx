@@ -83,7 +83,10 @@ function SenseiEducation() {
                     animate={headerInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                    <h2 className={styles.title}><span>Education</span></h2>
+                    <h2 className={styles.title}>
+                        <span lang= "ja">教育 •</span>
+                        <span lang="en"> Education</span>
+                    </h2>
                 </motion.div>
                 <div className={styles['time-line']}>
                     {educationItems.map((item, index) => (

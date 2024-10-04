@@ -89,7 +89,10 @@ function SenseiArt() {
                     animate={headerInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                    <h2 className={styles.title}><span>Art Gallery</span></h2>
+                    <h2 className={styles.title}>
+                        <span lang="ja">画廊 •</span>
+                        <span lang="en"> Art Gallery</span>
+                    </h2>
                 </motion.div>
                 <div className={styles["art-gallery-content"]}>
                     <div className={styles.Gallery}>

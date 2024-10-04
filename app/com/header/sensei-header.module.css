@@ -17,6 +17,7 @@
 
 .logo {
     font-size: 2.5rem;
+    font-family: 'Yuji Syuku', serif;
     color: var(--text-color);
     font-weight: 800;
     cursor: pointer;

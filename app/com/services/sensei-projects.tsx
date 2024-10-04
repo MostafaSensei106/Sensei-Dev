@@ -122,11 +122,19 @@ function SenseiProjects() {
                 >
                     <h2 className={styles.title}>
                         <motion.span
+                            lang = "ja"
                             initial={{ scale: 0 }}
                             animate={headerInView ? { scale: 1 } : {}}
                             transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200, damping: 10 }}
                         >
-                            Projects
+                            プロジェクト •
+                        </motion.span>
+                        <motion.span
+                            lang = "en"
+                            initial={{ scale: 0 }}
+                            animate={headerInView ? { scale: 1 } : {}}
+                            transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200, damping: 10 }}
+                        > Projects
                         </motion.span>
                     </h2>
                 </motion.div>

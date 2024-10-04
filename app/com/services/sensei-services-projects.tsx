@@ -74,8 +74,10 @@ function SenseiServicesProjects() {
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                     <h2 className={styles.title}>
-                        <span>
-                            Services
+                        <span lang="ja">
+                            事業 •
+                        </span>
+                        <span lang="en"> Services
                         </span>
                     </h2>
                 </motion.div>

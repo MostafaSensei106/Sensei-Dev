@@ -5,7 +5,8 @@ const SenseiContact = () => {
         <section className={styles['Contact-Me-section']} id="Contact">
             <div className={styles['header-section']}>
                 <h2 className={styles.title}>
-                    <span>Contact Me</span>
+                    <span lang="ja">連絡先 •</span>
+                    <span lang="en"> Contact Me</span>
                 </h2>
                 <footer className={styles.footer}>
                     <div className={styles.waves}>
