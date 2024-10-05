@@ -6,7 +6,7 @@ import SenseiProjects from "@/app/com/services/sensei-projects";
 import SenseiArt from "./com/art_gallery/sensei-art";
 import SenseiContact from "@/app/com/contact_me/sensei-contact";
 import Sensei_loader from "@/app/com/loader/sensei_loader";
-export default function Home() {
+ function Home() {
     return (
       <main>
           <Sensei_loader></Sensei_loader>
@@ -20,3 +20,5 @@ export default function Home() {
       </main>
   );
 }
+
+export  default Home;

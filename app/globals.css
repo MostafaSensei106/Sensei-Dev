@@ -74,8 +74,6 @@ section {
     padding: 6rem 6% 5rem;
 }
 
-
-
 @media (max-width: 991px) {
     section {
         min-height: 100vh;

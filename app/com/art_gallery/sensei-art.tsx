@@ -8,7 +8,7 @@ import styles from "./sensei-art.module.css";
 
 const ImageItem = ({image, index, setCurrentImage, setOpen}) => {
     const [ref, inView] = useInView({
-        triggerOnce: false,
+        triggerOnce: true,
         threshold: 0.1,
     });
 
@@ -18,7 +18,7 @@ const ImageItem = ({image, index, setCurrentImage, setOpen}) => {
             opacity: 1,
             scale: 1,
             transition: {
-                duration: 0.3,
+                duration: 0.2,
                 delay: index * 0.1,
                 ease: [0.22, 1, 0.36, 1],
             },

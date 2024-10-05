@@ -11,17 +11,8 @@
     padding: 0 5rem 5%;
 }
 
-@media (max-width: 1199px) {
-    .art-gallery-content  {
-        padding: 0 3rem 5%;
-    }
-}
 
-@media (max-width: 991px) {
-    .art-gallery-content  {
-        padding: 0 3rem 5%;
-    }
-}
+
 
 .art-gallery-section .header-section {
     margin-top: 35px;
@@ -90,11 +81,17 @@
     .Gallery {
         column-count: 3;
     }
+    .art-gallery-content{
+        padding: 0 1.5rem 5%;
+    }
 }
 
 @media (max-width: 991px) {
     .Gallery {
         column-count: 2;
+    }
+    .art-gallery-content{
+        padding: 0 1.5rem 5%;
     }
 }
 
@@ -102,6 +99,7 @@
     .Gallery {
         column-count: 1;
     }
+    .art-gallery-content{
+        padding: 0 1.5rem 5%;
+    }
 }
-
-
