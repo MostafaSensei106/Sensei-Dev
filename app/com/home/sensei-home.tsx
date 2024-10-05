@@ -54,7 +54,7 @@ const SenseiHome = () => {
             >
                 <motion.div className={styles.homeImg} variants={itemVariants}>
                     <img
-                        src="/Assets/art-gallery/Images/logo/My_Logo.webp"
+                        src="Assets/art-gallery/Images/logo/My_Logo.webp"
                         alt="Mostafa Sensei"
                         className={styles.image}
                     />
