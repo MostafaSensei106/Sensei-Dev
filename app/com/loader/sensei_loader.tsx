@@ -10,7 +10,11 @@ function SenseiLoader() {
             setIsLoading(false);
         };
 
-        window.addEventListener('load', handlePageLoader);
+        if (document.readyState === 'complete') {
+            handlePageLoader();
+        } else {
+            window.addEventListener('load', handlePageLoader);
+        }
 
         return () => {
             window.removeEventListener('load', handlePageLoader);
