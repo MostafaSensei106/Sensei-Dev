@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./sensei-education.module.css";
 
-// @ts-ignore
 const TimelineItem = ({ isRight, tag, desc, index }) => {
     const [ref, inView] = useInView({
         triggerOnce: false,

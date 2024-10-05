@@ -6,7 +6,6 @@ import {motion} from "framer-motion";
 import {useInView} from "react-intersection-observer";
 import styles from "./sensei-art.module.css";
 
-// @ts-ignore
 const ImageItem = ({image, index, setCurrentImage, setOpen}) => {
     const [ref, inView] = useInView({
         triggerOnce: false,

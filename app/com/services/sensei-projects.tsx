@@ -7,7 +7,6 @@ import styles from './sensei-services-projects.module.css';
 const githubUsername = 'MostafaSensei106';
 const apiUrl = `https://api.github.com/users/${githubUsername}/repos`;
 
-// @ts-ignore
 const ProjectItem = ({ repo, index }) => {
     const [ref, inView] = useInView({
         triggerOnce: false,
@@ -27,7 +26,6 @@ const ProjectItem = ({ repo, index }) => {
         },
     };
 
-    // @ts-ignore
     function getIconForLanguage(language) {
         switch (language) {
             case 'JavaScript':
@@ -109,7 +107,6 @@ function SenseiProjects() {
         fetchGitHubRepos();
     }, []);
 
-    // @ts-ignore
     return (
         <section className={styles['section-projects']} id="Projects">
             <div className={styles.container}>

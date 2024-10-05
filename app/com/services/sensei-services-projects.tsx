@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./sensei-services-projects.module.css";
 
-// @ts-ignore
 const ServiceItem = ({ icon, title, description, index }) => {
     const [ref, inView] = useInView({
         triggerOnce: false,
@@ -52,6 +51,7 @@ function SenseiServicesProjects() {
     const services = [
         { icon: "fa-solid fa-code", title: "Web Development", description: "provide high-quality web development services to bring your digital vision to life." },
         { icon: "fa-solid fa-mobile-screen", title: "App Development", description: "We design and develop innovative applications for iOS and Android devices." },
+
         { icon: "fa-solid fa-palette", title: "Graphic Design", description: "create attractive designs that reflect your brand identity." },
     ];
 
