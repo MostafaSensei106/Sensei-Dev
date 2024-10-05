@@ -7,7 +7,7 @@
     height: 100%;
     z-index: 9999;
     backdrop-filter: blur(25px);
-    background:url("../../../public/Assets/icons/loading.gif") no-repeat center rgb(5 5 5 0.5);
+    background:url("../../../public/Assets/icons/loading.gif") no-repeat center center;
     display: flex;
     align-items: center;
 }

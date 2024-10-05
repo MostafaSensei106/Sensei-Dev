@@ -1,4 +1,3 @@
-import styles from "./page.module.css";
 import SenseiHeader from "@/app/com/header/sensei-header";
 import SenseiHome from "@/app/com/home/sensei-home";
 import SenseiServicesProjects from "./com/services/sensei-services-projects";
@@ -9,7 +8,7 @@ import SenseiContact from "@/app/com/contact_me/sensei-contact";
 import Sensei_loader from "@/app/com/loader/sensei_loader";
 export default function Home() {
     return (
-      <main className={styles.main}>
+      <main>
           <Sensei_loader></Sensei_loader>
           <SenseiHeader></SenseiHeader>
           <SenseiHome></SenseiHome>
