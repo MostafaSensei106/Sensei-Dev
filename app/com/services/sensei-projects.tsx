@@ -92,6 +92,7 @@ function SenseiProjects() {
     const [headerRef, headerInView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
+
     });
 
     useEffect(() => {
