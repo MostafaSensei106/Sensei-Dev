@@ -6,10 +6,11 @@ import SenseiEducation from "@/app/com/education/sensei-education";
 import SenseiProjects from "@/app/com/services/sensei-projects";
 import SenseiArt from "./com/art_gallery/sensei-art";
 import SenseiContact from "@/app/com/contact_me/sensei-contact";
-
+import Sensei_loader from "@/app/com/loader/sensei_loader";
 export default function Home() {
-  return (
+    return (
       <main className={styles.main}>
+          <Sensei_loader></Sensei_loader>
           <SenseiHeader></SenseiHeader>
           <SenseiHome></SenseiHome>
           <SenseiServicesProjects></SenseiServicesProjects>
