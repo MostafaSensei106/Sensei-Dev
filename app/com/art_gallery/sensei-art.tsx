@@ -19,7 +19,7 @@ const ImageItem = ({image, index, setCurrentImage, setOpen}) => {
             opacity: 1,
             scale: 1,
             transition: {
-                duration: 0.6,
+                duration: 0.3,
                 delay: index * 0.1,
                 ease: [0.22, 1, 0.36, 1],
             },
@@ -86,7 +86,7 @@ function SenseiArt() {
         },
         {
             src: "/Assets/art-gallery/Images/image_display/mh44.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/mh44.webp"
+            thumb: "/Assets/art-gallery/Images/image_display/mh44.jpg"
         },
         {
             src: "/Assets/art-gallery/Images/image_display/Moon_sord.jpg",
@@ -122,7 +122,7 @@ function SenseiArt() {
         },
         {
             src: "/Assets/art-gallery/Images/image_display/Pizza_G.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/Pizza_G.webp"
+            thumb: "/Assets/art-gallery/Images/image_display/Pizza_G.jpg"
         },
         {
             src: "/Assets/art-gallery/Images/image_display/logo_hg.jpg",
