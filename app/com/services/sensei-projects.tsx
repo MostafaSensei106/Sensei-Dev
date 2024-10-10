@@ -1,19 +1,63 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from './sensei-services-projects.module.css';
 
-const githubUsername = 'MostafaSensei106';
-const apiUrl = `https://api.github.com/users/${githubUsername}/repos`;
+interface GitHubRepository {
+    id: number;
+    name: string;
+    description: string;
+    language: string;
+    html_url: string;
+    stargazers_count: number;
+    open_issues_count: number;
+    updated_at: string;
+    created_at: string;
+    owner: {
+        login: string;
+    };
+    topics: string[];
+    default_branch: string;
+    watchers_count: number;
+    license: {
+        name: string;
+    } | null;
+}
 
-/**
- * A function to render a single project from the GitHub API.
- * @param {Object} repo - The GitHub repository object.
- * @param {number} index - The index of the repository in the array.
- * @returns {JSX.Element} - The React element representing the project.
- */
-const ProjectItem = React.memo(({ repo, index }: { repo: any; index: number }): JSX.Element => {
+const GITHUB_USERNAME = 'MostafaSensei106';
+const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
+
+const getIconForLanguage = (language: string): string => {
+    const iconMap: { [key: string]: string } = {
+        TypeScript: 'fa-brands fa-react',
+        JavaScript: 'fa-brands fa-js',
+        Python: 'fa-brands fa-python',
+        HTML: 'fa-brands fa-html5',
+        CSS: 'fa-brands fa-css3',
+        Java: 'fa-brands fa-java',
+        'C++': 'fa-solid fa-code',
+        Dart: 'fa-brands fa-flutter',
+        Ruby: 'fa-brands fa-gem',
+        PHP: 'fa-brands fa-php',
+        Go: 'fa-brands fa-golang',
+        Kotlin: 'fa-brands fa-android',
+        Rust: 'fa-brands fa-rust',
+        'C#': 'fa-brands fa-dot-circle'
+    };
+
+    return iconMap[language] || 'fa-solid fa-code';
+};
+
+const formatDate = (dateString: string): string => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+};
+
+const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.memo(({ repo, index }) => {
     const [ref, inView] = useInView({
         triggerOnce: false,
         threshold: 0.1,
@@ -32,49 +76,6 @@ const ProjectItem = React.memo(({ repo, index }: { repo: any; index: number }): 
         },
     };
 
-    /**
-     * A function to return the icon class for a given language.
-     * @param {Object} language - The language object.
-     * @returns {string} - The icon class.
-     */
-    const getIconForLanguage = React.useCallback(
-        ({ language }: { language: any }) => {
-            switch (language) {
-                case 'TypeScript':
-                    return 'fa-brands fa-react';
-                case 'JavaScript':
-                    return 'fa-brands fa-js';
-                case 'Python':
-                    return 'fa-brands fa-python';
-                case 'HTML':
-                    return 'fa-brands fa-html5';
-                case 'CSS':
-                    return 'fa-brands fa-css3';
-                case 'Java':
-                    return 'fa-brands fa-java';
-                case 'C++':
-                    return 'fa-solid fa-code';
-                case 'Dart':
-                    return 'fa-brands fa-flutter';
-                case 'Ruby':
-                    return 'fa-brands fa-gem';
-                case 'PHP':
-                    return 'fa-brands fa-php';
-                case 'Go':
-                    return 'fa-brands fa-golang';
-                case 'Kotlin':
-                    return 'fa-brands fa-android';
-                case 'Rust':
-                    return 'fa-brands fa-rust';
-                case 'C#':
-                    return 'fa-brands fa-dot-circle';
-                default:
-                    return 'fa-solid fa-code';
-            }
-        },
-        []
-    );
-
     return (
         <motion.div
             ref={ref}
@@ -86,40 +87,64 @@ const ProjectItem = React.memo(({ repo, index }: { repo: any; index: number }): 
         >
             <div className={styles['part-1']}>
                 <motion.i
-                    className={` ${getIconForLanguage({language: repo.language})}`}
+                    className={getIconForLanguage(repo.language)}
                     animate={{ rotate: 0 }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                ></motion.i>
-                <h3 className={styles.title}>{repo.name}</h3>
+                />
+                <h3>{repo.name}</h3>
             </div>
             <div className={styles['part-2']}>
                 <p className={styles.description}>{repo.description || 'No description available.'}</p>
+                <p className={styles.description}>
+                    <strong>Stars:</strong> {repo.stargazers_count} ⭐ |
+                    <strong>Issues:</strong> {repo.open_issues_count} 🔴 |
+                    <strong>Watchers:</strong> {repo.watchers_count} 👀<br />
+                    <strong>Created:</strong> {formatDate(repo.created_at)}<br />
+                    <strong>Updated:</strong> {formatDate(repo.updated_at)}
+                </p>
+                {repo.topics.length > 0 && (
+                    <p className={styles.description}>
+                        <strong>Topics:</strong> {repo.topics.join(', ')}
+                    </p>
+                )}
+                {repo.license && (
+                    <p className={styles.description}>
+                        <strong>License:</strong> {repo.license.name}
+                    </p>
+                )}
+                <p className={styles.description}>
+                    <strong>Owner:</strong> {repo.owner.login}
+                </p>
+                <a href={repo.html_url} target="_blank" rel="noopener noreferrer">View on GitHub</a>
             </div>
         </motion.div>
     );
 }, (prevProps, nextProps) => prevProps.repo.id === nextProps.repo.id);
 
-function SenseiProjects() {
-    const [repos, setRepos] = useState([]);
+const SenseiProjects: React.FC = () => {
+    const [repos, setRepos] = useState<GitHubRepository[]>([]);
     const [headerRef, headerInView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
-
     });
 
-    useEffect(() => {
-        async function fetchGitHubRepos() {
-            try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-                setRepos(data);
-            } catch (error) {
-                console.error('Error fetching repositories:', error);
+    const fetchGitHubRepos = useCallback(async () => {
+        try {
+            const response = await fetch(API_URL);
+            if (!response.ok) {
+                throw new Error('Failed to fetch repositories');
             }
+            const data = await response.json();
+            setRepos(data);
+        } catch (error) {
+            console.error('Error fetching repositories:', error);
         }
-        fetchGitHubRepos();
     }, []);
+
+    useEffect(() => {
+        fetchGitHubRepos();
+    }, [fetchGitHubRepos]);
 
     return (
         <section className={styles['section-projects']} id="Projects">
@@ -133,15 +158,15 @@ function SenseiProjects() {
                 >
                     <h2 className={styles.title}>
                         <motion.span
-                            lang = "ja"
+                            lang="ja"
                             initial={{ scale: 0 }}
                             animate={headerInView ? { scale: 1 } : {}}
                             transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200, damping: 10 }}
                         >
-                            プロジェクト •
+                            プロジェクト •
                         </motion.span>
                         <motion.span
-                            lang = "en"
+                            lang="en"
                             initial={{ scale: 0 }}
                             animate={headerInView ? { scale: 1 } : {}}
                             transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200, damping: 10 }}
@@ -151,13 +176,12 @@ function SenseiProjects() {
                 </motion.div>
                 <div className={styles['grid-container']}>
                     {repos.map((repo, index) => (
-                        // @ts-ignore
                         <ProjectItem key={repo.id} repo={repo} index={index} />
                     ))}
                 </div>
             </div>
         </section>
     );
-}
+};
 
 export default SenseiProjects;
