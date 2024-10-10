@@ -4,7 +4,24 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./sensei-services-projects.module.css";
 
-const ServiceItem = ({ icon, title, description, index }) => {
+/**
+ * A function component that renders a single service item.
+ *
+ * @param {{ icon: string; title: string; description: string; index: number; }} props
+ * The props object should have the following properties:
+ * - `icon`: The class name of the font awesome icon to use.
+ * - `title`: The title of the service.
+ * - `description`: A brief description of the service.
+ * - `index`: The index of the service in the list.
+ *
+ * @returns {JSX.Element} A JSX element representing a single service item.
+ */
+const ServiceItem: React.FC<{
+    icon: string;
+    title: string;
+    description: string;
+    index: number;
+}> = ({ icon, title, description, index }: { icon: string; title: string; description: string; index: number; }): JSX.Element => {
     const [ref, inView] = useInView({
         triggerOnce: false,
         threshold: 0.1,
@@ -49,10 +66,14 @@ const ServiceItem = ({ icon, title, description, index }) => {
 
 function SenseiServicesProjects() {
     const services = [
-        { icon: "fa-solid fa-code", title: "Web Development", description: "provide high-quality web development services to bring your digital vision to life." },
-        { icon: "fa-solid fa-mobile-screen", title: "App Development", description: "We design and develop innovative applications for iOS and Android devices." },
-
-        { icon: "fa-solid fa-palette", title: "Graphic Design", description: "create attractive designs that reflect your brand identity." },
+        {icon: "fa-brands fa-flutter", title: "Mobile App Development", description: "develop mobile apps that are user-friendly and easy to use."},
+        {icon: "fa-brands fa-android", title: "Android App Development", description: "develop android apps that are secure and scalable."},
+        {icon:"fa-solid fa-server" , title: "Backend Development", description: "develop backend systems that are secure and scalable."},
+        {icon:"fa-solid fa-microchip" , title: "AI Development", description: "develop intelligent systems that can solve problems and improve lives."},
+        {icon:"fa-solid fa-gamepad" , title: "Game Development", description: "create games that are fun and engaging for players."},
+        { icon: "fa-solid fa-paintbrush", title:"Digital Artist", description: "create digital art that are visually appealing and unique." },
+        { icon: "fa-solid fa-palette", title: "Graphic Designer", description: "create graphics that are visually appealing and unique." },
+        {icon: "fa-solid fa-images", title: "Photography", description: "create photos that are visually appealing and unique." },
     ];
 
     const [headerRef, headerInView] = useInView({

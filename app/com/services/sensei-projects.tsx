@@ -7,7 +7,13 @@ import styles from './sensei-services-projects.module.css';
 const githubUsername = 'MostafaSensei106';
 const apiUrl = `https://api.github.com/users/${githubUsername}/repos`;
 
-const ProjectItem = ({ repo, index }) => {
+/**
+ * A function to render a single project from the GitHub API.
+ * @param {Object} repo - The GitHub repository object.
+ * @param {number} index - The index of the repository in the array.
+ * @returns {JSX.Element} - The React element representing the project.
+ */
+const ProjectItem = React.memo(({ repo, index }: { repo: any; index: number }): JSX.Element => {
     const [ref, inView] = useInView({
         triggerOnce: false,
         threshold: 0.1,
@@ -26,41 +32,48 @@ const ProjectItem = ({ repo, index }) => {
         },
     };
 
-    function getIconForLanguage(language) {
-        switch (language) {
-            case 'JavaScript':
-                return 'fa-brands fa-js';
-            case 'Python':
-                return 'fa-python';
-            case 'HTML':
-                return 'fa-html5';
-            case 'CSS':
-                return 'fa-css3-alt';
-            case 'Java':
-                return 'fa-java';
-            case 'C++':
-                return 'fa-code';
-            case 'Dart':
-                return 'fa-brands fa-dart-lang';
-            case 'Ruby':
-                return 'fa-brands fa-gem';
-            case 'PHP':
-                return 'fa-php';
-            case 'Go':
-                return 'fa-brands fa-golang';
-            case 'Kotlin':
-                return 'fa-brands fa-kotlin';
-            case 'TypeScript':
-                return 'fa-brands fa-js-square';
-            case 'Rust':
-                return 'fa-brands fa-rust';
-            case 'C#':
-                return 'fa-brands fa-dot-circle';
-            default:
-                return 'fa-brands fa-gem';
-        }
-
-    }
+    /**
+     * A function to return the icon class for a given language.
+     * @param {Object} language - The language object.
+     * @returns {string} - The icon class.
+     */
+    const getIconForLanguage = React.useCallback(
+        ({ language }: { language: any }) => {
+            switch (language) {
+                case 'TypeScript':
+                    return 'fa-brands fa-react';
+                case 'JavaScript':
+                    return 'fa-brands fa-js';
+                case 'Python':
+                    return 'fa-brands fa-python';
+                case 'HTML':
+                    return 'fa-brands fa-html5';
+                case 'CSS':
+                    return 'fa-brands fa-css3';
+                case 'Java':
+                    return 'fa-brands fa-java';
+                case 'C++':
+                    return 'fa-solid fa-code';
+                case 'Dart':
+                    return 'fa-brands fa-flutter';
+                case 'Ruby':
+                    return 'fa-brands fa-gem';
+                case 'PHP':
+                    return 'fa-brands fa-php';
+                case 'Go':
+                    return 'fa-brands fa-golang';
+                case 'Kotlin':
+                    return 'fa-brands fa-android';
+                case 'Rust':
+                    return 'fa-brands fa-rust';
+                case 'C#':
+                    return 'fa-brands fa-dot-circle';
+                default:
+                    return 'fa-solid fa-code';
+            }
+        },
+        []
+    );
 
     return (
         <motion.div
@@ -73,7 +86,7 @@ const ProjectItem = ({ repo, index }) => {
         >
             <div className={styles['part-1']}>
                 <motion.i
-                    className={`fa-brands ${getIconForLanguage(repo.language)}`}
+                    className={` ${getIconForLanguage({language: repo.language})}`}
                     animate={{ rotate: 0 }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
@@ -85,7 +98,7 @@ const ProjectItem = ({ repo, index }) => {
             </div>
         </motion.div>
     );
-};
+}, (prevProps, nextProps) => prevProps.repo.id === nextProps.repo.id);
 
 function SenseiProjects() {
     const [repos, setRepos] = useState([]);

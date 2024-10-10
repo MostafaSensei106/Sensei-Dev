@@ -1,26 +1,44 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './sensei-header.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faHome,
-    faLaptopCode,
-    faGraduationCap,
-    faFolderOpen,
+    faUserSecret,
+    faBook,
+    faFolder,
     faPalette
 } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-const SenseiHeader: React.FC = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('Home');
+/**
+ * The main header component with a responsive menu
+ * @returns The JSX Element for the header
+ */
+const SenseiHeader = (): JSX.Element => {
+    /**
+     * The state of the menu, whether it is open or closed
+     */
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-    const toggleMenu = () => {
+    /**
+     * The state of the active section, which is the section that is currently in view
+     */
+    const [activeSection, setActiveSection] = useState<string>('Home');
+
+    /**
+     * Toggle the menu
+     */
+    const toggleMenu = (): void => {
         setIsMenuOpen((prevState) => !prevState);
     };
 
-    const handleScroll = () => {
-        const sections = ['Home', 'Service', 'Education', 'Projects', 'Gallery'];
-        const current = sections.find(section => {
+    /**
+     * Handle the scroll event
+     */
+    const handleScroll = (): void => {
+        const sections: Array<string> = ['Home', 'Service', 'Knowledge', 'Projects', 'Gallery'];
+        const current: string | undefined = sections.find((section) => {
             const element = document.getElementById(section);
             if (element) {
                 const rect = element.getBoundingClientRect();
@@ -40,7 +58,7 @@ const SenseiHeader: React.FC = () => {
             setActiveSection(savedSection);
             const element = document.getElementById(savedSection);
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                element.scrollIntoView({behavior: 'smooth'});
             }
         }
 
@@ -49,7 +67,7 @@ const SenseiHeader: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        const handleResize = () => {
+        const handleResize = (): void => {
             if (window.innerWidth > 994 && isMenuOpen) {
                 setIsMenuOpen(false);
             }
@@ -59,11 +77,11 @@ const SenseiHeader: React.FC = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, [isMenuOpen]);
 
-    const sectionIcons = {
+    const sectionIcons: Record<string, IconProp> = {
         Home: faHome,
-        Service: faLaptopCode,
-        Education: faGraduationCap,
-        Projects: faFolderOpen,
+        Service: faUserSecret,
+        Knowledge: faBook,
+        Projects: faFolder,
         Gallery: faPalette,
     };
 
@@ -71,7 +89,8 @@ const SenseiHeader: React.FC = () => {
         <header className={styles.header}>
             <a href="#" className={styles.logo}>
                 <span lang="en">Mostafa •</span>
-                <span lang="ja"> モスタファ</span></a>
+                <span lang="ja"> モスタファ</span>
+            </a>
             <div
                 className={`${styles.MenuIcon} ${isMenuOpen ? styles.active : ''}`}
                 onClick={toggleMenu}
@@ -96,7 +115,7 @@ const SenseiHeader: React.FC = () => {
                             if (window.innerWidth <= 994) setIsMenuOpen(false);
                         }}
                     >
-                        <FontAwesomeIcon icon={icon} className={styles.icon} />
+                        <FontAwesomeIcon icon={icon} className={styles.icon}/>
                         <span>{section}</span>
                     </a>
                 ))}

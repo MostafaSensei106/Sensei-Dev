@@ -8,18 +8,26 @@ import {faUserSecret, faFilePdf} from '@fortawesome/free-solid-svg-icons';
 import styles from './sensei-home.module.css';
 
 
-const SenseiHome = () => {
-
-    const  AnimeMediaLinks = [
+const SenseiHome = (): JSX.Element => {
+    /**
+     * Array of links to the YouTube videos that will be displayed when the user clicks on the profile picture
+     */
+    const AnimeMediaLinks: string[] = [
         'https://youtu.be/P5k2Db1SRrY?si=fKYwb2o2QNZTSy2W',
         'https://www.youtube.com/watch?v=eqjFmsZGBSc',
         'https://www.youtube.com/watch?v=IpsC_leRaxc',
     ];
 
+    /**
+     * The last index of the video that was shown
+     */
     let lastIndex = -1;
 
-    const handleImageClick = () => {
-        let randomVideoIndex;
+    /**
+     * Handles the click event on the profile picture, opens a random video from the AnimeMediaLinks array
+     */
+    const handleImageClick = (): void => {
+        let randomVideoIndex: number;
         do {
             randomVideoIndex = Math.floor(Math.random() * AnimeMediaLinks.length);
         } while (randomVideoIndex === lastIndex);
@@ -28,6 +36,9 @@ const SenseiHome = () => {
         window.open(videoUrl, '_blank');
     };
 
+    /**
+     * Animation controls for the home section
+     */
     const controls = useAnimation();
     const [ref, inView] = useInView({
         triggerOnce: false,
@@ -39,6 +50,9 @@ const SenseiHome = () => {
         }
     }, [controls, inView]);
 
+    /**
+     * Animation variants for the home section
+     */
     const containerVariants = {
         hidden: {opacity: 0, y: 50},
         visible: {
@@ -106,7 +120,7 @@ const SenseiHome = () => {
                         <a href="#Contact" className={`${styles.btn} ${styles.btn1}`}>
                             Hire Me <FontAwesomeIcon icon={faUserSecret}/>
                         </a>
-                        <a href="/Assets/cv/Mostafa_Mahmoud_CV.pdf" download className={`${styles.btn} ${styles.btn2}`}>
+                        <a href="Assets/cv/Mostafa_Mahmoud_CV.pdf" download className={`${styles.btn} ${styles.btn2}`}>
                             Download CV <FontAwesomeIcon icon={faFilePdf}/>
                         </a>
                     </motion.div>

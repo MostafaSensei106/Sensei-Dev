@@ -1,26 +1,61 @@
 "use client";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import React, { useState } from "react";
+import React, {useState, useEffect, Dispatch, SetStateAction} from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./sensei-art.module.css";
 import Image from "next/image";
 
-const ImageItem = ({ image, index, setOpen }) => {
+
+type ImageItemProps = {
+    image: {
+        src: string;
+        thumb: string;
+    };
+    index: number;
+    key: number;
+    setOpen: Dispatch<SetStateAction<number>>;
+};
+/**
+ * A single image item in the art gallery.
+ *
+ * @param {object} image The image object with src and thumb properties.
+ * @param {number} index The index of the image in the gallery.
+ * @param {function} setOpen A function that sets the currently open image index.
+ * @returns A React component representing a single image item in the art gallery.
+ */
+const ImageItem: React.FC<ImageItemProps> = ({
+    image,
+    index,
+    setOpen,
+}: ImageItemProps) => {
+    /**
+     * A hook to detect when the component is in view.
+     *
+     * @see https://react-intersection-observer.vercel.app/
+     */
     const [ref, inView] = useInView({
-        triggerOnce: true,
+        triggerOnce: false,
         threshold: 0.1,
     });
 
+    /**
+     * A hook to animate the component when it comes into view.
+     *
+     * @see https://www.framer.com/docs/
+     */
     const variants = {
-        hidden: { opacity: 0, scale: 0.8 },
+        hidden: {
+            opacity: 0,
+            scale: 0.8,
+        },
         visible: {
             opacity: 1,
             scale: 1,
             transition: {
                 duration: 0.2,
-                delay: index * 0.1,
+                delay: index * 0.05,
                 ease: [0.22, 1, 0.36, 1],
             },
         },
@@ -42,15 +77,33 @@ const ImageItem = ({ image, index, setOpen }) => {
                 onClick={() => setOpen(index)}
                 layout="responsive"
                 objectFit="cover"
+                placeholder="blur"
+                blurDataURL={image.thumb}
             />
         </motion.div>
     );
 };
 
+
+/**
+ * A function component that renders an art gallery section.
+ *
+ * @returns A React component representing the art gallery section.
+ */
 function SenseiArt() {
+    /**
+     * The index of the currently open image.
+     */
     const [index, setIndex] = useState(-1);
 
+    /**
+     * Whether the lightbox is open.
+     */
+    const open = index >= 0;
 
+    /**
+     * The images to display in the gallery.
+     */
     const images = [
         {
             src: "/Assets/art-gallery/Images/image_display/Free Palestine.png",
@@ -134,12 +187,43 @@ function SenseiArt() {
         },
     ];
 
-    const slides = images.map(image => ({ src: image.src }));
+    /**
+     * The slides to display in the lightbox.
+     */
+    const slides = React.useMemo(() => images.map(image => ({ src: image.src })), [images]);
 
+    /**
+     * The animation controller for the header.
+     */
     const [headerRef, headerInView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
+
+    /**
+     * Handle key presses.
+     *
+     * @param {KeyboardEvent} event The key press event.
+     */
+    const handleKeyDown = React.useCallback((event: KeyboardEvent) => {
+        switch (event.key) {
+            case 'ArrowRight':
+                setIndex((i) => (i + 1) % slides.length);
+                break;
+            case 'ArrowLeft':
+                setIndex((i) => (i - 1 + slides.length) % slides.length);
+                break;
+        }
+    }, [slides.length]);
+
+    useEffect(() => {
+        if (open) {
+            window.addEventListener('keydown', handleKeyDown);
+        }
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [index, open, slides.length]);
 
     return (
         <section className={styles["art-gallery-section"]} id="Gallery">
@@ -148,7 +232,7 @@ function SenseiArt() {
                     ref={headerRef}
                     className={styles["header-section"]}
                     initial={{ opacity: 0, y: -50 }}
-                    animate={headerInView ? { opacity: 1, y: 0 } : {}}
+                    animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                     <h2 className={styles.title}>
@@ -171,7 +255,7 @@ function SenseiArt() {
             </div>
             <Lightbox
                 slides={slides}
-                open={index >= 0}
+                open={open}
                 index={index}
                 close={() => setIndex(-1)}
             />
