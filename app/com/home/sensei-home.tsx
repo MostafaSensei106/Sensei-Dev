@@ -7,13 +7,32 @@ import {faLinkedin, faGithub, faTelegram} from '@fortawesome/free-brands-svg-ico
 import {faUserSecret, faFilePdf} from '@fortawesome/free-solid-svg-icons';
 import styles from './sensei-home.module.css';
 
+
 const SenseiHome = () => {
+
+    const  AnimeMediaLinks = [
+        'https://youtu.be/P5k2Db1SRrY?si=fKYwb2o2QNZTSy2W',
+        'https://www.youtube.com/watch?v=eqjFmsZGBSc',
+        'https://www.youtube.com/watch?v=IpsC_leRaxc',
+    ];
+
+    let lastIndex = -1;
+
+    const handleImageClick = () => {
+        let randomVideoIndex;
+        do {
+            randomVideoIndex = Math.floor(Math.random() * AnimeMediaLinks.length);
+        } while (randomVideoIndex === lastIndex);
+        lastIndex = randomVideoIndex;
+        const videoUrl = AnimeMediaLinks[randomVideoIndex];
+        window.open(videoUrl, '_blank');
+    };
+
     const controls = useAnimation();
     const [ref, inView] = useInView({
         triggerOnce: false,
         threshold: 0.1,
     });
-
     useEffect(() => {
         if (inView) {
             controls.start('visible');
@@ -50,13 +69,13 @@ const SenseiHome = () => {
                 initial="hidden"
                 animate={controls}
                 variants={containerVariants}
-                ref={ref}
-            >
+                ref={ref}>
                 <motion.div className={styles.homeImg} variants={itemVariants}>
                     <img
                         src="Assets/art-gallery/Images/logo/My_Logo.webp"
                         alt="Mostafa Sensei"
                         className={styles.image}
+                        onClick={handleImageClick}
                     />
                 </motion.div>
                 <motion.div className={styles.homeContent} variants={itemVariants}>
@@ -84,10 +103,10 @@ const SenseiHome = () => {
                         </a>
                     </motion.div>
                     <motion.div className={styles.homeButton} variants={itemVariants}>
-                        <a href="#" className={`${styles.btn} ${styles.btn1}`}>
+                        <a href="#Contact" className={`${styles.btn} ${styles.btn1}`}>
                             Hire Me <FontAwesomeIcon icon={faUserSecret}/>
                         </a>
-                        <a href="#" className={`${styles.btn} ${styles.btn2}`}>
+                        <a href="/Assets/cv/Mostafa_Mahmoud_CV.pdf" download className={`${styles.btn} ${styles.btn2}`}>
                             Download CV <FontAwesomeIcon icon={faFilePdf}/>
                         </a>
                     </motion.div>
