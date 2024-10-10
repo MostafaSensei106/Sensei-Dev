@@ -1,12 +1,11 @@
 "use client";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import React, {useState, useEffect, Dispatch, SetStateAction} from "react";
+import React, { useState, useEffect, Dispatch, SetStateAction, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./sensei-art.module.css";
 import Image from "next/image";
-
 
 type ImageItemProps = {
     image: {
@@ -14,37 +13,15 @@ type ImageItemProps = {
         thumb: string;
     };
     index: number;
-    key: number;
     setOpen: Dispatch<SetStateAction<number>>;
 };
-/**
- * A single image item in the art gallery.
- *
- * @param {object} image The image object with src and thumb properties.
- * @param {number} index The index of the image in the gallery.
- * @param {function} setOpen A function that sets the currently open image index.
- * @returns A React component representing a single image item in the art gallery.
- */
-const ImageItem: React.FC<ImageItemProps> = ({
-    image,
-    index,
-    setOpen,
-}: ImageItemProps) => {
-    /**
-     * A hook to detect when the component is in view.
-     *
-     * @see https://react-intersection-observer.vercel.app/
-     */
+
+const ImageItem: React.FC<ImageItemProps> = ({ image, index, setOpen }) => {
     const [ref, inView] = useInView({
         triggerOnce: false,
         threshold: 0.1,
     });
 
-    /**
-     * A hook to animate the component when it comes into view.
-     *
-     * @see https://www.framer.com/docs/
-     */
     const variants = {
         hidden: {
             opacity: 0,
@@ -84,27 +61,11 @@ const ImageItem: React.FC<ImageItemProps> = ({
     );
 };
 
-
-/**
- * A function component that renders an art gallery section.
- *
- * @returns A React component representing the art gallery section.
- */
 function SenseiArt() {
-    /**
-     * The index of the currently open image.
-     */
     const [index, setIndex] = useState(-1);
-
-    /**
-     * Whether the lightbox is open.
-     */
     const open = index >= 0;
 
-    /**
-     * The images to display in the gallery.
-     */
-    const images = [
+    const images = useMemo(() => [
         {
             src: "/Assets/art-gallery/Images/image_display/Free Palestine.png",
             thumb: "/Assets/art-gallery/Images/image_web/Free Palestine.webp"
@@ -185,27 +146,16 @@ function SenseiArt() {
             src: "/Assets/art-gallery/Images/image_display/sakura.jpg",
             thumb: "/Assets/art-gallery/Images/image_web/sakura.webp"
         },
-    ];
+    ], []);
 
-    /**
-     * The slides to display in the lightbox.
-     */
-    const slides = React.useMemo(() => images.map(image => ({ src: image.src })), [images]);
+    const slides = useMemo(() => images.map(image => ({ src: image.src })), [images]);
 
-    /**
-     * The animation controller for the header.
-     */
     const [headerRef, headerInView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
 
-    /**
-     * Handle key presses.
-     *
-     * @param {KeyboardEvent} event The key press event.
-     */
-    const handleKeyDown = React.useCallback((event: KeyboardEvent) => {
+    const handleKeyDown = useCallback((event: KeyboardEvent) => {
         switch (event.key) {
             case 'ArrowRight':
                 setIndex((i) => (i + 1) % slides.length);
@@ -223,7 +173,7 @@ function SenseiArt() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [index, open, slides.length]);
+    }, [open, handleKeyDown]); // Include handleKeyDown in dependencies
 
     return (
         <section className={styles["art-gallery-section"]} id="Gallery">
