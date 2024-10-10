@@ -2,6 +2,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faExclamationCircle, faEye } from '@fortawesome/free-solid-svg-icons';
 import styles from './sensei-services-projects.module.css';
 
 interface GitHubRepository {
@@ -16,6 +18,7 @@ interface GitHubRepository {
     created_at: string;
     owner: {
         login: string;
+        avatar_url: string;
     };
     topics: string[];
     default_branch: string;
@@ -97,17 +100,19 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
             <div className={styles['part-2']}>
                 <p className={styles.description}>{repo.description || 'No description available.'}</p>
                 <p className={styles.description}>
-                    <strong>Stars:</strong> {repo.stargazers_count} ⭐ |
-                    <strong>Issues:</strong> {repo.open_issues_count} 🔴 |
-                    <strong>Watchers:</strong> {repo.watchers_count} 👀<br />
-                    <strong>Created:</strong> {formatDate(repo.created_at)}<br />
+                    <strong>Stars:</strong> {repo.stargazers_count} <FontAwesomeIcon icon={faStar} /> |
+                    <strong>Issues:</strong> {repo.open_issues_count} <FontAwesomeIcon icon={faExclamationCircle} /> |
+                    <strong>Watchers:</strong> {repo.watchers_count} <FontAwesomeIcon icon={faEye} />
+                    <br/>
+                    <strong>Created:</strong> {formatDate(repo.created_at)}<br/>
                     <strong>Updated:</strong> {formatDate(repo.updated_at)}
+                    <br/>
+                    {repo.topics.length > 0 && (
+                        <p className={styles.description}>
+                            <strong>Topics:</strong> {repo.topics.join(', ')}
+                        </p>
+                    )}
                 </p>
-                {repo.topics.length > 0 && (
-                    <p className={styles.description}>
-                        <strong>Topics:</strong> {repo.topics.join(', ')}
-                    </p>
-                )}
                 {repo.license && (
                     <p className={styles.description}>
                         <strong>License:</strong> {repo.license.name}
