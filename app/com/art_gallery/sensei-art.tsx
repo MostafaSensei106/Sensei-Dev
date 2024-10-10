@@ -67,85 +67,166 @@ function SenseiArt() {
 
     const images = useMemo(() => [
         {
-            src: "/Assets/art-gallery/Images/image_display/Free Palestine.png",
-            thumb: "/Assets/art-gallery/Images/image_web/Free Palestine.webp"
+            src: "Assets/art-gallery/Images/image_display/Free Palestine.png",
+            thumb: "Assets/art-gallery/Images/image_web/Free Palestine.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/MHlogo.png",
-            thumb: "/Assets/art-gallery/Images/image_web/MHlogo.webp"
+            src: "Assets/art-gallery/Images/image_display/MHlogo.png",
+            thumb: "Assets/art-gallery/Images/image_web/MHlogo.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/Sarada_art.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/Sarada_art.webp"
+            src: "Assets/art-gallery/Images/image_display/Sarada_art.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/Sarada_art.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/Hema-chan.png",
-            thumb: "/Assets/art-gallery/Images/image_web/Hema-chan.webp"
+            src: "Assets/art-gallery/Images/image_display/Hema-chan.png",
+            thumb: "Assets/art-gallery/Images/image_web/Hema-chan.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/Kawaki_2Bv.png",
-            thumb: "/Assets/art-gallery/Images/image_web/Kawaki_2Bv.webp"
+            src: "Assets/art-gallery/Images/image_display/Kawaki_2Bv.png",
+            thumb: "Assets/art-gallery/Images/image_web/Kawaki_2Bv.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/MH45.png",
-            thumb: "/Assets/art-gallery/Images/image_web/MH45.webp"
+            src: "Assets/art-gallery/Images/image_display/MH45.png",
+            thumb: "Assets/art-gallery/Images/image_web/MH45.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/MH444.png",
-            thumb: "/Assets/art-gallery/Images/image_web/MH444.webp"
+            src: "Assets/art-gallery/Images/image_display/MH444.png",
+            thumb: "Assets/art-gallery/Images/image_web/MH444.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/red_g.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/red_g.webp"
+            src: "Assets/art-gallery/Images/image_display/red_g.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/red_g.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/mh44.jpg",
-            thumb: "/Assets/art-gallery/Images/image_display/mh44.jpg"
+            src: "Assets/art-gallery/Images/image_display/mh44.jpg",
+            thumb: "Assets/art-gallery/Images/image_display/mh44.jpg"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/Moon_sord.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/Moon_sord.webp"
+            src: "Assets/art-gallery/Images/image_display/Moon_sord.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/Moon_sord.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/Mostafa.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/Mostafa.webp"
+            src: "Assets/art-gallery/Images/image_display/Mostafa.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/Mostafa.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/gojo_sensei.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/gojo_sensei.webp"
+            src: "Assets/art-gallery/Images/image_display/gojo_sensei.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/gojo_sensei.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/kawaki.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/kawaki.webp"
+            src: "Assets/art-gallery/Images/image_display/kawaki.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/kawaki.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/Moon_wt.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/Moon_wt.webp"
+            src: "Assets/art-gallery/Images/image_display/Moon_wt.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/Moon_wt.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/maki.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/maki.webp"
+            src: "Assets/art-gallery/Images/image_display/maki.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/maki.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/rev_brt.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/rev_brt.webp"
+            src: "Assets/art-gallery/Images/image_display/rev_brt.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/rev_brt.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/Demon_Slayer.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/Demon_Slayer.webp"
+            src: "Assets/art-gallery/Images/image_display/Demon_Slayer.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/Demon_Slayer.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/Pizza_G.jpg",
-            thumb: "/Assets/art-gallery/Images/image_display/Pizza_G.jpg"
+            src: "Assets/art-gallery/Images/image_display/Pizza_G.jpg",
+            thumb: "Assets/art-gallery/Images/image_display/Pizza_G.jpg"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/logo_hg.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/logo_hg.webp"
+            src: "Assets/art-gallery/Images/image_display/logo_hg.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/logo_hg.webp"
         },
         {
-            src: "/Assets/art-gallery/Images/image_display/sakura.jpg",
-            thumb: "/Assets/art-gallery/Images/image_web/sakura.webp"
+            src: "Assets/art-gallery/Images/image_display/sakura.jpg",
+            thumb: "Assets/art-gallery/Images/image_web/sakura.webp"
         },
+
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/Free Palestine.png",
+        //     thumb: "/Assets/art-gallery/Images/image_web/Free Palestine.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/MHlogo.png",
+        //     thumb: "/Assets/art-gallery/Images/image_web/MHlogo.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/Sarada_art.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/Sarada_art.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/Hema-chan.png",
+        //     thumb: "/Assets/art-gallery/Images/image_web/Hema-chan.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/Kawaki_2Bv.png",
+        //     thumb: "/Assets/art-gallery/Images/image_web/Kawaki_2Bv.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/MH45.png",
+        //     thumb: "/Assets/art-gallery/Images/image_web/MH45.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/MH444.png",
+        //     thumb: "/Assets/art-gallery/Images/image_web/MH444.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/red_g.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/red_g.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/mh44.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_display/mh44.jpg"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/Moon_sord.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/Moon_sord.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/Mostafa.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/Mostafa.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/gojo_sensei.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/gojo_sensei.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/kawaki.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/kawaki.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/Moon_wt.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/Moon_wt.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/maki.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/maki.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/rev_brt.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/rev_brt.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/Demon_Slayer.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/Demon_Slayer.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/Pizza_G.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_display/Pizza_G.jpg"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/logo_hg.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/logo_hg.webp"
+        // },
+        // {
+        //     src: "/Assets/art-gallery/Images/image_display/sakura.jpg",
+        //     thumb: "/Assets/art-gallery/Images/image_web/sakura.webp"
+        // },
 
     ], []);
 
