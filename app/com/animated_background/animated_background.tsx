@@ -33,12 +33,12 @@ const AnimatedBackground: React.FC = () => {
         let bubbles: Bubble[] = [];
         let meteors: Meteor[] = [];
         let lastTime = 0;
-        const targetFPS = 30;
+        const targetFPS = 60;
         const frameInterval = 1000 / targetFPS;
 
         const createBubbles = (width: number, height: number, count: number): Bubble[] => {
             const maxRadius = Math.min(150, Math.max(width, height) * 0.1);
-            const minRadius = Math.min(50, maxRadius * 0.3);
+            const minRadius = Math.min(100, Math.max(width,height) * 0.1);
             return Array.from({ length: count }, () => ({
                 x: Math.random() * width,
                 y: Math.random() * height,
