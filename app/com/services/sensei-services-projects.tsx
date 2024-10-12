@@ -23,7 +23,7 @@ const ServiceItem: React.FC<{
     index: number;
 }> = ({ icon, title, description, index }: { icon: string; title: string; description: string; index: number; }): JSX.Element => {
     const [ref, inView] = useInView({
-        triggerOnce: false,
+        triggerOnce: true,
         threshold: 0.1,
     });
 

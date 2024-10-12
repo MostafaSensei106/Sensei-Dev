@@ -62,7 +62,7 @@ const formatDate = (dateString: string): string => {
 
 const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.memo(({ repo, index }) => {
     const [ref, inView] = useInView({
-        triggerOnce: false,
+        triggerOnce: true,
         threshold: 0.1,
     });
 

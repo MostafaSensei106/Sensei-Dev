@@ -18,7 +18,7 @@ const TimelineItem = ({isRight, tag, desc, index}) => {
         /**
          * Only trigger the animation once.
          */
-        triggerOnce: false,
+        triggerOnce: true,
         /**
          * The animation should start when the item is 10% in view.
          */
