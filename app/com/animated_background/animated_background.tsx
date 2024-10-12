@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useMemo, useCallback } from 'react';
+import React, { useEffect, useRef, useMemo, useState, useCallback } from 'react';
 import styles from './animated_background.module.css';
 
 interface Bubble {
@@ -23,7 +23,13 @@ const AnimatedBackground: React.FC = () => {
     const contextRef = useRef<CanvasRenderingContext2D | null>(null);
     const animationFrameIdRef = useRef<number | null>(null);
 
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const userAgent = navigator.userAgent;
+        setIsMobile(/Mobi|Android/i.test(userAgent));
+    }, []);
+
     const gridSize = isMobile ? 30 : 50;
     const numberOfBubbles = isMobile ? 8 : 13;
     const numberOfMeteors = isMobile ? 2 : 3;
@@ -52,9 +58,9 @@ const AnimatedBackground: React.FC = () => {
         const width = typeof window !== 'undefined' ? window.innerWidth : 1920;
         const height = typeof window !== 'undefined' ? window.innerHeight : 1080;
         return [createBubbles(width, height), createMeteors(width, height)];
-    }, []);
+    }, [numberOfBubbles, numberOfMeteors, maxRadius, minRadius, gridSize, isMobile]);
 
-    const drawBubble = useCallback((ctx: CanvasRenderingContext2D, bubble: Bubble) => {
+    const drawBubble = (ctx: CanvasRenderingContext2D, bubble: Bubble) => {
         const gradient = ctx.createRadialGradient(bubble.x, bubble.y, 0, bubble.x, bubble.y, bubble.radius);
         gradient.addColorStop(0, 'rgba(252, 240, 225, 0.3)');
         gradient.addColorStop(1, 'rgba(252, 240, 225, 0)');
@@ -62,9 +68,9 @@ const AnimatedBackground: React.FC = () => {
         ctx.beginPath();
         ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
         ctx.fill();
-    }, []);
+    };
 
-    const drawMeteor = useCallback((ctx: CanvasRenderingContext2D, meteor: Meteor) => {
+    const drawMeteor = (ctx: CanvasRenderingContext2D, meteor: Meteor) => {
         const tailLength = meteor.speed * 5;
         const endX = meteor.direction === 'horizontal' ? meteor.x - tailLength : meteor.x;
         const endY = meteor.direction === 'vertical' ? meteor.y - tailLength : meteor.y;
@@ -74,9 +80,9 @@ const AnimatedBackground: React.FC = () => {
         ctx.strokeStyle = 'rgba(252, 240, 225, 0.7)';
         ctx.lineWidth = meteor.size;
         ctx.stroke();
-    }, []);
+    };
 
-    const drawMesh = useCallback((ctx: CanvasRenderingContext2D, width: number, height: number) => {
+    const drawMesh = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
         ctx.strokeStyle = 'rgba(252, 240, 225, 0.03)';
         ctx.lineWidth = 1;
         for (let x = 0; x < width; x += gridSize) {
@@ -91,9 +97,9 @@ const AnimatedBackground: React.FC = () => {
             ctx.lineTo(width, y);
             ctx.stroke();
         }
-    }, []);
+    };
 
-    const animate = useCallback(() => {
+    const animate = () => {
         const canvas = canvasRef.current;
         const ctx = contextRef.current;
         if (!canvas || !ctx) return;
@@ -132,7 +138,7 @@ const AnimatedBackground: React.FC = () => {
         });
 
         animationFrameIdRef.current = requestAnimationFrame(animate);
-    }, [bubbles, meteors, drawBubble, drawMeteor, drawMesh]);
+    };
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -159,7 +165,7 @@ const AnimatedBackground: React.FC = () => {
             }
             window.removeEventListener('resize', handleResize);
         };
-    }, [animate]);
+    }, []);
 
     const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
         if (isMobile) return;
@@ -180,7 +186,7 @@ const AnimatedBackground: React.FC = () => {
                 bubble.y += dy * 0.02;
             }
         });
-    }, [bubbles]);
+    }, [isMobile, bubbles]);
 
     return (
         <canvas
