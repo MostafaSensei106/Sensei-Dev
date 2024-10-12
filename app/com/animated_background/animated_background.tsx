@@ -20,29 +20,8 @@ interface Meteor {
 
 const AnimatedBackground: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
-    const createBubbles = (width: number, height: number, count: number): Bubble[] => {
-        const maxRadius = Math.min(150, Math.max(width, height) * 0.1);
-        const minRadius = Math.min(50, maxRadius * 0.3);
-        return Array.from({ length: count }, () => ({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            radius: Math.random() * (maxRadius - minRadius) + minRadius,
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5,
-        }));
-    };
-
-    const createMeteors = (width: number, height: number, count: number): Meteor[] => {
-        const gridSize = 50;
-        return Array.from({ length: count }, () => ({
-            x: Math.floor(Math.random() * (width / gridSize)) * gridSize,
-            y: Math.floor(Math.random() * (height / gridSize)) * gridSize,
-            size: Math.random() * 2 + 1,
-            speed: Math.random() * 2 + 1,
-            direction: Math.random() < 0.5 ? 'horizontal' : 'vertical',
-        }));
-    };
+    const animationRef = useRef<number | null>(null);
+    const isVisibleRef = useRef(true);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -51,21 +30,34 @@ const AnimatedBackground: React.FC = () => {
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        let animationFrameId: number | null = null;
         let bubbles: Bubble[] = [];
         let meteors: Meteor[] = [];
         let lastTime = 0;
         const targetFPS = 30;
         const frameInterval = 1000 / targetFPS;
 
-        const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            bubbles = createBubbles(canvas.width, canvas.height, 15);
-            meteors = createMeteors(canvas.width, canvas.height, 3);
+        const createBubbles = (width: number, height: number, count: number): Bubble[] => {
+            const maxRadius = Math.min(150, Math.max(width, height) * 0.1);
+            const minRadius = Math.min(50, maxRadius * 0.3);
+            return Array.from({ length: count }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * (maxRadius - minRadius) + minRadius,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+            }));
         };
 
-        resizeCanvas();
+        const createMeteors = (width: number, height: number, count: number): Meteor[] => {
+            const gridSize = 50;
+            return Array.from({ length: count }, () => ({
+                x: Math.floor(Math.random() * (width / gridSize)) * gridSize,
+                y: Math.floor(Math.random() * (height / gridSize)) * gridSize,
+                size: Math.random() * 2 + 1,
+                speed: Math.random() * 2 + 1,
+                direction: Math.random() < 0.5 ? 'horizontal' : 'vertical',
+            }));
+        };
 
         const drawBubble = (bubble: Bubble) => {
             ctx.beginPath();
@@ -137,10 +129,16 @@ const AnimatedBackground: React.FC = () => {
         };
 
         const animate = (currentTime: number) => {
-            animationFrameId = requestAnimationFrame(animate);
+            if (!isVisibleRef.current) {
+                animationRef.current = requestAnimationFrame(animate);
+                return;
+            }
 
             const deltaTime = currentTime - lastTime;
-            if (deltaTime < frameInterval) return;
+            if (deltaTime < frameInterval) {
+                animationRef.current = requestAnimationFrame(animate);
+                return;
+            }
 
             lastTime = currentTime - (deltaTime % frameInterval);
 
@@ -150,7 +148,7 @@ const AnimatedBackground: React.FC = () => {
 
             drawMesh();
 
-            ctx.filter = 'blur(30px)';
+            ctx.filter = 'blur(25px)';
             bubbles.forEach((bubble) => {
                 updateBubble(bubble);
                 drawBubble(bubble);
@@ -161,44 +159,45 @@ const AnimatedBackground: React.FC = () => {
                 updateMeteor(meteor);
                 drawMeteor(meteor);
             });
+
+            animationRef.current = requestAnimationFrame(animate);
         };
 
+        const resizeCanvas = () => {
+            const scaleFactor = window.innerWidth < 768 ? 0.5 : 1;
+            canvas.width = window.innerWidth * scaleFactor;
+            canvas.height = window.innerHeight * scaleFactor;
+            ctx.scale(scaleFactor, scaleFactor);
+            bubbles = createBubbles(canvas.width, canvas.height, window.innerWidth < 768 ? 5 : 15);
+            meteors = createMeteors(canvas.width, canvas.height, window.innerWidth < 768 ? 1 : 3);
+        };
+
+        resizeCanvas();
         animate(0);
 
-        const handleMouseMove = (e: MouseEvent) => {
-            const rect = canvas.getBoundingClientRect();
-            const mouseX = e.clientX - rect.left;
-            const mouseY = e.clientY - rect.top;
-
-            bubbles.forEach((bubble) => {
-                const dx = mouseX - bubble.x;
-                const dy = mouseY - bubble.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < 200) {
-                    bubble.x += dx * 0.02;
-                    bubble.y += dy * 0.02;
-                }
-            });
-        };
-
-        canvas.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('resize', resizeCanvas);
 
+        const intersectionObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    isVisibleRef.current = entry.isIntersecting;
+                });
+            },
+            { threshold: 0 }
+        );
+
+        intersectionObserver.observe(canvas);
+
         return () => {
-            if (animationFrameId) {
-                cancelAnimationFrame(animationFrameId);
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
             }
-            canvas.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('resize', resizeCanvas);
+            intersectionObserver.disconnect();
         };
     }, []);
 
-    return (
-        <canvas
-            className={styles.canvas}
-            ref={canvasRef}
-        />
-    );
+    return <canvas className={styles.canvas} ref={canvasRef} />;
 };
 
 export default AnimatedBackground;

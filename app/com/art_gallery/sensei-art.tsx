@@ -146,7 +146,10 @@ function SenseiArt() {
             src: "Assets/art-gallery/Images/image_display/sakura.jpg",
             thumb: "Assets/art-gallery/Images/image_web/sakura.webp"
         },
-        //
+
+
+
+
         // {
         //     src: "/Assets/art-gallery/Images/image_display/Free Palestine.png",
         //     thumb: "/Assets/art-gallery/Images/image_web/Free Palestine.webp"
