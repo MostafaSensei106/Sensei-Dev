@@ -113,15 +113,14 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
                         </p>
                     )}
                 </p>
+                <p className={styles.description}>
+                    <strong>Owner:</strong> {repo.owner.login}
+                </p>
                 {repo.license && (
                     <p className={styles.description}>
                         <strong>License:</strong> {repo.license.name}
                     </p>
                 )}
-                <p className={styles.description}>
-                    <strong>Owner:</strong> {repo.owner.login}
-                </p>
-                <a href={repo.html_url} target="_blank" rel="noopener noreferrer">View on GitHub</a>
             </div>
         </motion.div>
     );

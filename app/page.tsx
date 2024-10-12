@@ -6,12 +6,14 @@ import SenseiProjects from "@/app/com/services/sensei-projects";
 import SenseiArt from "./com/art_gallery/sensei-art";
 import SenseiContact from "@/app/com/contact_me/sensei-contact";
 import Sensei_loader from "@/app/com/loader/sensei_loader";
+import AnimatedBackground from "@/app/com/animated_background/animated_background";
 
 function Home() {
     return (
         <>
             <Sensei_loader />
             <SenseiHeader />
+            <AnimatedBackground/>
             <SenseiHome />
             <SenseiServicesProjects />
             <SenseiEducation />

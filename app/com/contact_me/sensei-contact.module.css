@@ -107,28 +107,30 @@
 }
 
 .social a:hover {
-    transform: scale(1.2) translateY(-4px);
-    color: white;
+    color: black;
+    transform: scale(1.3) translateY(-5px);
+    background: var(--main-color);
+    box-shadow: 0 0 15px var(--main-color);
 }
-.social a[aria-label="Go to Facebook"]:hover {
-    background: linear-gradient(135deg, #3b5998, #6d84b4, #8b9dc3, #dfe3ee);
-    border-color: black;
-}
+/*.social a[aria-label="Go to Facebook"]:hover {*/
+/*    background: linear-gradient(135deg, #3b5998, #6d84b4, #8b9dc3, #dfe3ee);*/
+/*    border-color: black;*/
+/*}*/
 
-.social a[aria-label="Go to Instagram"]:hover {
-    background: linear-gradient(135deg, #f09433, #f77737, #e1306c, #c13584, #833ab4, #5851db);
-    border-color: black;
-}
+/*.social a[aria-label="Go to Instagram"]:hover {*/
+/*    background: linear-gradient(135deg, #f09433, #f77737, #e1306c, #c13584, #833ab4, #5851db);*/
+/*    border-color: black;*/
+/*}*/
 
-.social a[aria-label="Go to Linkedin"]:hover {
-    background: linear-gradient(135deg, #0077b5, #008cc9, #00a0dc, #00b2ff);
-    border-color: black;
-}
+/*.social a[aria-label="Go to Linkedin"]:hover {*/
+/*    background: linear-gradient(135deg, #0077b5, #008cc9, #00a0dc, #00b2ff);*/
+/*    border-color: black;*/
+/*}*/
 
-.social a[aria-label="Go to Telegram"]:hover {
-    background: linear-gradient(135deg, #0088cc, #009edc, #32a5e6, #6cc3f2);
-    border-color: black;
-}
+/*.social a[aria-label="Go to Telegram"]:hover {*/
+/*    background: linear-gradient(135deg, #0088cc, #009edc, #32a5e6, #6cc3f2);*/
+/*    border-color: black;*/
+/*}*/
 
 .copyright {
     margin-top: 10px;

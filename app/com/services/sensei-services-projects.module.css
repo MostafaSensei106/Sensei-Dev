@@ -1,4 +1,3 @@
-
 /* ------------------This is Service & Projects Section Style---------- */
 /* ------------------This is Service & Projects Section Style---------- */
 /* ------------------This is Service & Projects Section Style---------- */
@@ -8,7 +7,6 @@
     min-height: 100vh;
     padding: 60px 0;
 }
-
 
 
 .header-section {
@@ -93,15 +91,23 @@
     border: 2px solid var(--main-color);
 }
 
-.single-service:hover, .single-project:hover {
-    background: var(--second-bg-color);
+.single-service:hover,
+.single-project:hover {
+    background: transparent;
     box-shadow: 0 0 25px var(--main-color);
 }
+
+.single-service:hover .part-1,
+.single-project:hover .part-1 {
+    border-bottom: 2px solid var(--main-color);
+}
+
 
 .part-1 {
     padding: 10px 0;
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
+
 
 .part-1 i {
     font-size: 40px;
@@ -157,5 +163,5 @@
 
 
 .description {
-    color : var(--second-bg-color);
+    color: var(--second-bg-color);
 }

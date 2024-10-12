@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: var(--bg-color);
     padding: 2rem;
 }
 
@@ -178,7 +177,7 @@
 }
 
 .btn1 {
-    background: var(--bg-color);
+    background: transparent;
     color: var(--main-color);
     border: 2px solid var(--main-color);
 }
@@ -196,7 +195,7 @@
 }
 
 .btn2:hover {
-    background: var(--bg-color);
+    background: transparent;
     color: var(--main-color);
     border: 2px solid var(--main-color);
     box-shadow: 0 0 15px var(--main-color);
