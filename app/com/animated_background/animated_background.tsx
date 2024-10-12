@@ -92,7 +92,7 @@ const AnimatedBackground: React.FC = () => {
         }
     };
 
-    const animate = (time: number) => {
+    const animate = () => {
         const canvas = canvasRef.current;
         const ctx = contextRef.current;
         if (!canvas || !ctx) return;
