@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useMemo, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styles from './animated_background.module.css';
 
 interface Bubble {
@@ -23,6 +23,8 @@ const AnimatedBackground: React.FC = () => {
     const contextRef = useRef<CanvasRenderingContext2D | null>(null);
     const animationFrameIdRef = useRef<number | null>(null);
     const [isMobile, setIsMobile] = useState(false);
+    const [bubbles, setBubbles] = useState<Bubble[]>([]);
+    const [meteors, setMeteors] = useState<Meteor[]>([]);
     const gridSize = isMobile ? 30 : 50;
     const numberOfBubbles = isMobile ? 1 : 15;
     const numberOfMeteors = isMobile ? 2 : 4;
@@ -47,15 +49,16 @@ const AnimatedBackground: React.FC = () => {
             x: Math.floor(Math.random() * (width / gridSize)) * gridSize,
             y: Math.floor(Math.random() * (height / gridSize)) * gridSize,
             size: Math.random() * (isMobile ? 1 : 2) + (isMobile ? 0.5 : 1),
-            speed: Math.random() * (isMobile ? 1 : 2) + (isMobile ? 0.5 : 1),
+            speed: Math.random() * (isMobile ? 2 : 2) + (isMobile ? 1: 1),
             direction: Math.random() < 0.5 ? 'horizontal' : 'vertical'
         }));
 
-    const [bubbles, meteors] = useMemo(() => {
+    useEffect(() => {
         const width = window.innerWidth;
         const height = window.innerHeight;
-        return [createBubbles(width, height), createMeteors(width, height)];
-    }, [numberOfBubbles, numberOfMeteors, maxRadius, minRadius, gridSize, isMobile]);
+        setBubbles(createBubbles(width, height));
+        setMeteors(createMeteors(width, height));
+    }, [isMobile]);
 
     const drawBubble = (ctx: CanvasRenderingContext2D, bubble: Bubble) => {
         const gradient = ctx.createRadialGradient(bubble.x, bubble.y, 0, bubble.x, bubble.y, bubble.radius);
@@ -87,7 +90,6 @@ const AnimatedBackground: React.FC = () => {
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Only draw bubbles if not on mobile
         if (!isMobile) {
             bubbles.forEach(bubble => {
                 bubble.x += bubble.vx;
@@ -116,7 +118,7 @@ const AnimatedBackground: React.FC = () => {
         });
 
         animationFrameIdRef.current = requestAnimationFrame(animate);
-    }, [bubbles, meteors, isMobile]);
+    }, [bubbles, meteors, isMobile, gridSize]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -146,17 +148,17 @@ const AnimatedBackground: React.FC = () => {
             const dx = mouseX - bubble.x;
             const dy = mouseY - bubble.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < 100) {
-                bubble.x += dx * 0.01;
-                bubble.y += dy * 0.01;
+            if (distance < bubble.radius) {
+                bubble.vx *= -1;
+                bubble.vy *= -1;
             }
         });
-    }, [isMobile, bubbles]);
+    }, [bubbles, isMobile]);
 
     return (
         <canvas
-            className={styles.canvas}
             ref={canvasRef}
+            className={styles.canvas}
             onMouseMove={handleMouseMove}
         />
     );
