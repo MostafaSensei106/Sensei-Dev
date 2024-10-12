@@ -25,9 +25,9 @@ const AnimatedBackground: React.FC = () => {
     const [isMobile, setIsMobile] = useState(false);
     const gridSize = isMobile ? 30 : 50;
     const numberOfBubbles = isMobile ? 3 : 15;
-    const numberOfMeteors = isMobile ? 1 : 3;
-    const maxRadius = isMobile ? 40 : 150;
-    const minRadius = isMobile ? 20 : 100;
+    const numberOfMeteors = isMobile ? 1 : 4;
+    const maxRadius = isMobile ? 30 : 150;
+    const minRadius = isMobile ? 15 : 100;
 
     useEffect(() => {
         setIsMobile(/Mobi|Android/i.test(navigator.userAgent));
@@ -78,7 +78,7 @@ const AnimatedBackground: React.FC = () => {
         ctx.stroke();
     };
 
-    const animate = () => {
+    const animate = useCallback(() => {
         const canvas = canvasRef.current;
         const ctx = contextRef.current;
         if (!canvas || !ctx) return;
@@ -113,7 +113,7 @@ const AnimatedBackground: React.FC = () => {
         });
 
         animationFrameIdRef.current = requestAnimationFrame(animate);
-    };
+    }, [bubbles, meteors]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -129,7 +129,7 @@ const AnimatedBackground: React.FC = () => {
                 cancelAnimationFrame(animationFrameIdRef.current);
             }
         };
-    }, []);
+    }, [animate]);
 
     const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
         if (isMobile) return;
