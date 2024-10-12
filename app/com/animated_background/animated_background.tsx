@@ -20,8 +20,29 @@ interface Meteor {
 
 const AnimatedBackground: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const animationRef = useRef<number | null>(null);
-    const isVisibleRef = useRef(true);
+
+    const createBubbles = (width: number, height: number, count: number): Bubble[] => {
+        const maxRadius = Math.min(150, Math.max(width, height) * 0.1);
+        const minRadius = Math.min(50, maxRadius * 0.3);
+        return Array.from({ length: count }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * (maxRadius - minRadius) + minRadius,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+        }));
+    };
+
+    const createMeteors = (width: number, height: number, count: number): Meteor[] => {
+        const gridSize = 50;
+        return Array.from({ length: count }, () => ({
+            x: Math.floor(Math.random() * (width / gridSize)) * gridSize,
+            y: Math.floor(Math.random() * (height / gridSize)) * gridSize,
+            size: Math.random() * 2 + 1,
+            speed: Math.random() * 2 + 1,
+            direction: Math.random() < 0.5 ? 'horizontal' : 'vertical',
+        }));
+    };
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -30,34 +51,25 @@ const AnimatedBackground: React.FC = () => {
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
+        let animationFrameId: number | null = null;
         let bubbles: Bubble[] = [];
         let meteors: Meteor[] = [];
         let lastTime = 0;
-        const targetFPS = 60;
+
+        const isMobile = window.innerWidth < 768;
+        const targetFPS = isMobile ? 20 : 30;
         const frameInterval = 1000 / targetFPS;
 
-        const createBubbles = (width: number, height: number, count: number): Bubble[] => {
-            const maxRadius = Math.min(150, Math.max(width, height) * 0.1);
-            const minRadius = Math.min(100, Math.max(width,height) * 0.1);
-            return Array.from({ length: count }, () => ({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                radius: Math.random() * (maxRadius - minRadius) + minRadius,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-            }));
+        const resizeCanvas = () => {
+            const scaleFactor = isMobile ? 0.5 : 1;
+            canvas.width = window.innerWidth * scaleFactor;
+            canvas.height = window.innerHeight * scaleFactor;
+            ctx.scale(scaleFactor, scaleFactor);
+            bubbles = createBubbles(canvas.width, canvas.height, isMobile ? 5 : 15);
+            meteors = createMeteors(canvas.width, canvas.height, isMobile ? 1 : 3);
         };
 
-        const createMeteors = (width: number, height: number, count: number): Meteor[] => {
-            const gridSize = 50;
-            return Array.from({ length: count }, () => ({
-                x: Math.floor(Math.random() * (width / gridSize)) * gridSize,
-                y: Math.floor(Math.random() * (height / gridSize)) * gridSize,
-                size: Math.random() * 2 + 1,
-                speed: Math.random() * 2 + 1,
-                direction: Math.random() < 0.5 ? 'horizontal' : 'vertical',
-            }));
-        };
+        resizeCanvas();
 
         const drawBubble = (bubble: Bubble) => {
             ctx.beginPath();
@@ -129,16 +141,11 @@ const AnimatedBackground: React.FC = () => {
         };
 
         const animate = (currentTime: number) => {
-            if (!isVisibleRef.current) {
-                animationRef.current = requestAnimationFrame(animate);
-                return;
-            }
+            if (document.visibilityState !== 'visible') return;
+            animationFrameId = requestAnimationFrame(animate);
 
             const deltaTime = currentTime - lastTime;
-            if (deltaTime < frameInterval) {
-                animationRef.current = requestAnimationFrame(animate);
-                return;
-            }
+            if (deltaTime < frameInterval) return;
 
             lastTime = currentTime - (deltaTime % frameInterval);
 
@@ -159,45 +166,29 @@ const AnimatedBackground: React.FC = () => {
                 updateMeteor(meteor);
                 drawMeteor(meteor);
             });
-
-            animationRef.current = requestAnimationFrame(animate);
         };
 
-        const resizeCanvas = () => {
-            const scaleFactor = window.innerWidth < 768 ? 0.5 : 1;
-            canvas.width = window.innerWidth * scaleFactor;
-            canvas.height = window.innerHeight * scaleFactor;
-            ctx.scale(scaleFactor, scaleFactor);
-            bubbles = createBubbles(canvas.width, canvas.height, window.innerWidth < 768 ? 5 : 15);
-            meteors = createMeteors(canvas.width, canvas.height, window.innerWidth < 768 ? 1 : 3);
-        };
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible' && !animationFrameId) {
+                animate(0);
+            } else if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+        });
 
-        resizeCanvas();
         animate(0);
-
         window.addEventListener('resize', resizeCanvas);
 
-        const intersectionObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    isVisibleRef.current = entry.isIntersecting;
-                });
-            },
-            { threshold: 0 }
-        );
-
-        intersectionObserver.observe(canvas);
-
         return () => {
-            if (animationRef.current) {
-                cancelAnimationFrame(animationRef.current);
-            }
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
             window.removeEventListener('resize', resizeCanvas);
-            intersectionObserver.disconnect();
         };
     }, []);
 
-    return <canvas className={styles.canvas} ref={canvasRef} />;
+    return (
+        <canvas className={styles.canvas} ref={canvasRef} />
+    );
 };
 
 export default AnimatedBackground;
