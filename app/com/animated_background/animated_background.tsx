@@ -8,7 +8,6 @@ interface Bubble {
     radius: number;
     vx: number;
     vy: number;
-    canvas: HTMLCanvasElement | null;
 }
 
 interface Meteor {
@@ -22,6 +21,29 @@ interface Meteor {
 const AnimatedBackground: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
+    const createBubbles = (width: number, height: number, count: number): Bubble[] => {
+        const maxRadius = Math.min(150, Math.max(width, height) * 0.1);
+        const minRadius = Math.min(50, maxRadius * 0.3);
+        return Array.from({ length: count }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * (maxRadius - minRadius) + minRadius,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+        }));
+    };
+
+    const createMeteors = (width: number, height: number, count: number): Meteor[] => {
+        const gridSize = 50;
+        return Array.from({ length: count }, () => ({
+            x: Math.floor(Math.random() * (width / gridSize)) * gridSize,
+            y: Math.floor(Math.random() * (height / gridSize)) * gridSize,
+            size: Math.random() * 2 + 1,
+            speed: Math.random() * 2 + 1,
+            direction: Math.random() < 0.5 ? 'horizontal' : 'vertical',
+        }));
+    };
+
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -30,128 +52,74 @@ const AnimatedBackground: React.FC = () => {
         if (!ctx) return;
 
         let animationFrameId: number | null = null;
+        let bubbles: Bubble[] = [];
+        let meteors: Meteor[] = [];
+        let lastTime = 0;
+        const targetFPS = 30;
+        const frameInterval = 1000 / targetFPS;
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        const resizeCanvas = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            bubbles = createBubbles(canvas.width, canvas.height, 15);
+            meteors = createMeteors(canvas.width, canvas.height, 3);
+        };
 
-        const bubbles: BubbleImpl[] = [];
-        const numberOfBubbles = 15;
-        const maxRadius = 150;
-        const minRadius = 50;
+        resizeCanvas();
 
-        const meteors: MeteorImpl[] = [];
-        const numberOfMeteors = 3;
-        const gridSize = 50;
+        const drawBubble = (bubble: Bubble) => {
+            ctx.beginPath();
+            const gradient = ctx.createRadialGradient(bubble.x, bubble.y, 0, bubble.x, bubble.y, bubble.radius);
+            gradient.addColorStop(0, 'rgba(252, 240, 225, 0.3)');
+            gradient.addColorStop(1, 'rgba(252, 240, 225, 0)');
+            ctx.fillStyle = gradient;
+            ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+            ctx.fill();
+        };
 
-        class BubbleImpl implements Bubble {
-            x: number;
-            y: number;
-            radius: number;
-            vx: number;
-            vy: number;
-            canvas: HTMLCanvasElement | null;
-
-            constructor(x: number, y: number, canvas: HTMLCanvasElement | null) {
-                this.x = x;
-                this.y = y;
-                this.radius = Math.random() * (maxRadius - minRadius) + minRadius;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.canvas = canvas;
+        const updateBubble = (bubble: Bubble) => {
+            bubble.x += bubble.vx;
+            bubble.y += bubble.vy;
+            if (bubble.x + bubble.radius > canvas.width || bubble.x - bubble.radius < 0) {
+                bubble.vx *= -1;
             }
-
-            draw(ctx: CanvasRenderingContext2D | null): void {
-                if (!ctx) return;
-                ctx.beginPath();
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
-                gradient.addColorStop(0, 'rgba(252, 240, 225, 0.3)');
-                gradient.addColorStop(1, 'rgba(252, 240, 225, 0)');
-                ctx.fillStyle = gradient;
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fill();
+            if (bubble.y + bubble.radius > canvas.height || bubble.y - bubble.radius < 0) {
+                bubble.vy *= -1;
             }
+        };
 
-            update(): void {
-                if (this.canvas) {
-                    this.x += this.vx;
-                    this.y += this.vy;
-                    if (this.x + this.radius > this.canvas.width || this.x - this.radius < 0) {
-                        this.vx *= -1;
-                    }
-                    if (this.y + this.radius > this.canvas.height || this.y - this.radius < 0) {
-                        this.vy *= -1;
-                    }
+        const drawMeteor = (meteor: Meteor) => {
+            ctx.beginPath();
+            ctx.moveTo(meteor.x, meteor.y);
+            const tailLength = meteor.speed * 5;
+            const endX = meteor.direction === 'horizontal' ? meteor.x - tailLength : meteor.x;
+            const endY = meteor.direction === 'vertical' ? meteor.y - tailLength : meteor.y;
+            ctx.lineTo(endX, endY);
+            ctx.strokeStyle = 'rgba(252, 240, 225, 0.7)';
+            ctx.lineWidth = meteor.size;
+            ctx.stroke();
+        };
+
+        const updateMeteor = (meteor: Meteor) => {
+            if (meteor.direction === 'horizontal') {
+                meteor.x += meteor.speed;
+                if (meteor.x > canvas.width) {
+                    meteor.x = 0;
+                    meteor.y = Math.floor(Math.random() * (canvas.height / 50)) * 50;
+                }
+            } else {
+                meteor.y += meteor.speed;
+                if (meteor.y > canvas.height) {
+                    meteor.y = 0;
+                    meteor.x = Math.floor(Math.random() * (canvas.width / 50)) * 50;
                 }
             }
-        }
+        };
 
-        class MeteorImpl implements Meteor {
-            x: number;
-            y: number;
-            size: number;
-            speed: number;
-            direction: 'horizontal' | 'vertical';
-
-            constructor() {
-                this.x = 0;
-                this.y = 0;
-                this.size = 0;
-                this.speed = Math.random() * 2 + 1;
-                this.direction = 'horizontal';
-                this.reset();
-            }
-
-            reset(): void {
-                if (canvas) {
-                    this.x = Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
-                    this.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
-                }
-                this.size = Math.random() * 2 + 1;
-                this.speed = Math.random() * 2 + 1;
-                this.direction = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-            }
-
-            draw(ctx: CanvasRenderingContext2D | null): void {
-                if (!ctx) return;
-                ctx.beginPath();
-                ctx.moveTo(this.x, this.y);
-                const tailLength = this.speed * 5;
-                const endX = this.direction === 'horizontal' ? this.x - tailLength : this.x;
-                const endY = this.direction === 'vertical' ? this.y - tailLength : this.y;
-                ctx.lineTo(endX, endY);
-                ctx.strokeStyle = 'rgba(252, 240, 225, 0.7)';
-                ctx.lineWidth = this.size;
-                ctx.stroke();
-            }
-
-            update(): void {
-                if (!canvas) return;
-                if (this.direction === 'horizontal') {
-                    this.x += this.speed;
-                    if (this.x > canvas.width) {
-                        this.reset();
-                    }
-                } else {
-                    this.y += this.speed;
-                    if (this.y > canvas.height) {
-                        this.reset();
-                    }
-                }
-            }
-        }
-
-        for (let i = 0; i < numberOfBubbles; i++) {
-            bubbles.push(new BubbleImpl(Math.random() * canvas.width, Math.random() * canvas.height, canvas));
-        }
-
-        for (let i = 0; i < numberOfMeteors; i++) {
-            meteors.push(new MeteorImpl());
-        }
-
-        const drawMesh = (): void => {
-            if (!ctx) return;
+        const drawMesh = () => {
             ctx.strokeStyle = 'rgba(252, 240, 225, 0.03)';
             ctx.lineWidth = 1;
+            const gridSize = 50;
 
             for (let x = 0; x < canvas.width; x += gridSize) {
                 ctx.beginPath();
@@ -168,32 +136,36 @@ const AnimatedBackground: React.FC = () => {
             }
         };
 
-        const animate = (): void => {
-            if (!ctx || !canvas) return;
+        const animate = (currentTime: number) => {
+            animationFrameId = requestAnimationFrame(animate);
+
+            const deltaTime = currentTime - lastTime;
+            if (deltaTime < frameInterval) return;
+
+            lastTime = currentTime - (deltaTime % frameInterval);
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
+
             drawMesh();
 
             ctx.filter = 'blur(30px)';
             bubbles.forEach((bubble) => {
-                bubble.update();
-                bubble.draw(ctx);
+                updateBubble(bubble);
+                drawBubble(bubble);
             });
             ctx.filter = 'none';
 
             meteors.forEach((meteor) => {
-                meteor.update();
-                meteor.draw(ctx);
+                updateMeteor(meteor);
+                drawMeteor(meteor);
             });
-
-            animationFrameId = requestAnimationFrame(animate);
         };
 
-        animate();
+        animate(0);
 
-        const handleMouseMove = (e: MouseEvent): void => {
-            if (!canvas) return;
+        const handleMouseMove = (e: MouseEvent) => {
             const rect = canvas.getBoundingClientRect();
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
@@ -210,22 +182,14 @@ const AnimatedBackground: React.FC = () => {
         };
 
         canvas.addEventListener('mousemove', handleMouseMove);
-
-        const handleResize = (): void => {
-            if (canvas) {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', resizeCanvas);
 
         return () => {
             if (animationFrameId) {
                 cancelAnimationFrame(animationFrameId);
             }
             canvas.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', resizeCanvas);
         };
     }, []);
 

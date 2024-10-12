@@ -3,11 +3,9 @@ import "./globals.css";
 import React from "react";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
-import dynamic from 'next/dynamic';
 
 config.autoAddCss = false;
 
-const ServiceWorkerRegistration = dynamic(() => import('./ServiceWorkerRegistration'), { ssr: false });
 
 export const metadata: Metadata = {
     description: "Hi My Name is Mostafa",
@@ -52,7 +50,6 @@ export default function RootLayout({
             {/*// The ServiceWorkerRegistration component is used to*/}
             {/*// register the service worker which is used to implement*/}
             {/*// offline support for the application.*/}
-            <ServiceWorkerRegistration />
         </body>
         </html>
     );
