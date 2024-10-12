@@ -24,8 +24,8 @@ const AnimatedBackground: React.FC = () => {
     const animationFrameIdRef = useRef<number | null>(null);
     const [isMobile, setIsMobile] = useState(false);
     const gridSize = isMobile ? 30 : 50;
-    const numberOfBubbles = isMobile ? 3 : 15;
-    const numberOfMeteors = isMobile ? 1 : 4;
+    const numberOfBubbles = isMobile ? 1 : 15;
+    const numberOfMeteors = isMobile ? 2 : 4;
     const maxRadius = isMobile ? 30 : 150;
     const minRadius = isMobile ? 15 : 100;
 
@@ -87,13 +87,16 @@ const AnimatedBackground: React.FC = () => {
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        bubbles.forEach(bubble => {
-            bubble.x += bubble.vx;
-            bubble.y += bubble.vy;
-            if (bubble.x + bubble.radius > canvas.width || bubble.x - bubble.radius < 0) bubble.vx *= -1;
-            if (bubble.y + bubble.radius > canvas.height || bubble.y - bubble.radius < 0) bubble.vy *= -1;
-            drawBubble(ctx, bubble);
-        });
+        // Only draw bubbles if not on mobile
+        if (!isMobile) {
+            bubbles.forEach(bubble => {
+                bubble.x += bubble.vx;
+                bubble.y += bubble.vy;
+                if (bubble.x + bubble.radius > canvas.width || bubble.x - bubble.radius < 0) bubble.vx *= -1;
+                if (bubble.y + bubble.radius > canvas.height || bubble.y - bubble.radius < 0) bubble.vy *= -1;
+                drawBubble(ctx, bubble);
+            });
+        }
 
         meteors.forEach(meteor => {
             if (meteor.direction === 'horizontal') {
@@ -113,7 +116,7 @@ const AnimatedBackground: React.FC = () => {
         });
 
         animationFrameIdRef.current = requestAnimationFrame(animate);
-    }, [bubbles, meteors]);
+    }, [bubbles, meteors, isMobile]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
