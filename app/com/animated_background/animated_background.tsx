@@ -26,10 +26,10 @@ const AnimatedBackground: React.FC = () => {
     const [bubbles, setBubbles] = useState<Bubble[]>([]);
     const [meteors, setMeteors] = useState<Meteor[]>([]);
     const gridSize = isMobile ? 30 : 50;
-    const numberOfBubbles = isMobile ? 2 : 15;
-    const numberOfMeteors = isMobile ? 1 : 4;
-    const maxRadius = isMobile ? 30 : 150;
-    const minRadius = isMobile ? 15 : 100;
+    const numberOfBubbles = isMobile ? 1 : 13;
+    const numberOfMeteors = isMobile ? 2 : 4;
+    const maxRadius = isMobile ? 30 : 120;
+    const minRadius = isMobile ? 15 : 60;
 
     useEffect(() => {
         setIsMobile(/Mobi|Android/i.test(navigator.userAgent));
@@ -60,14 +60,35 @@ const AnimatedBackground: React.FC = () => {
         setMeteors(createMeteors(width, height));
     }, [isMobile]);
 
+    const drawGrid = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 0.5;
+
+        for (let x = 0; x <= width; x += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
+
+        for (let y = 0; y <= height; y += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
+    };
+
     const drawBubble = (ctx: CanvasRenderingContext2D, bubble: Bubble) => {
+        ctx.filter = 'blur(30px)';
         const gradient = ctx.createRadialGradient(bubble.x, bubble.y, 0, bubble.x, bubble.y, bubble.radius);
-        gradient.addColorStop(0, 'rgba(252, 240, 225, 0.3)');
+        gradient.addColorStop(0, 'rgba(252, 240, 225, 0.8)');
         gradient.addColorStop(1, 'rgba(252, 240, 225, 0)');
         ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
         ctx.fill();
+        ctx.filter = 'none';
     };
 
     const drawMeteor = (ctx: CanvasRenderingContext2D, meteor: Meteor) => {
@@ -81,25 +102,6 @@ const AnimatedBackground: React.FC = () => {
         ctx.stroke();
     };
 
-    const drawGrid = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-        ctx.lineWidth = 1;
-
-        for (let x = 0; x < width; x += gridSize) {
-            ctx.beginPath();
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, height);
-            ctx.stroke();
-        }
-
-        for (let y = 0; y < height; y += gridSize) {
-            ctx.beginPath();
-            ctx.moveTo(0, y);
-            ctx.lineTo(width, y);
-            ctx.stroke();
-        }
-    };
-
     const animate = useCallback(() => {
         const canvas = canvasRef.current;
         const ctx = contextRef.current;
@@ -109,6 +111,7 @@ const AnimatedBackground: React.FC = () => {
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+        // رسم الشبكة
         drawGrid(ctx, canvas.width, canvas.height);
 
         if (!isMobile) {
@@ -139,17 +142,16 @@ const AnimatedBackground: React.FC = () => {
         });
 
         animationFrameIdRef.current = requestAnimationFrame(animate);
-    }, [bubbles, meteors, isMobile, gridSize]);
+    }, [bubbles, meteors, isMobile]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-        contextRef.current = ctx;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        animationFrameIdRef.current = requestAnimationFrame(animate);
+        if (canvas) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            contextRef.current = canvas.getContext('2d');
+            animate();
+        }
         return () => {
             if (animationFrameIdRef.current) {
                 cancelAnimationFrame(animationFrameIdRef.current);
@@ -157,31 +159,8 @@ const AnimatedBackground: React.FC = () => {
         };
     }, [animate]);
 
-    const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
-        if (isMobile) return;
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const rect = canvas.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-
-        bubbles.forEach(bubble => {
-            const dx = mouseX - bubble.x;
-            const dy = mouseY - bubble.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < bubble.radius) {
-                bubble.vx *= -1;
-                bubble.vy *= -1;
-            }
-        });
-    }, [bubbles, isMobile]);
-
     return (
-        <canvas
-            ref={canvasRef}
-            className={styles.canvas}
-            onMouseMove={handleMouseMove}
-        />
+        <canvas ref={canvasRef} className={styles.canvas} />
     );
 };
 
