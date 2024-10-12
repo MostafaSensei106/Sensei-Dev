@@ -31,8 +31,8 @@ const ImageItem: React.FC<ImageItemProps> = ({ image, index, setOpen }) => {
             opacity: 1,
             scale: 1,
             transition: {
-                duration: 0.2,
-                delay: index * 0.05,
+                duration: 0.6,
+                delay: index * 0.1,
                 ease: [0.22, 1, 0.36, 1],
             },
         },
