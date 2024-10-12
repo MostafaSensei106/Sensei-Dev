@@ -26,8 +26,8 @@ const AnimatedBackground: React.FC = () => {
     const [bubbles, setBubbles] = useState<Bubble[]>([]);
     const [meteors, setMeteors] = useState<Meteor[]>([]);
     const gridSize = isMobile ? 30 : 50;
-    const numberOfBubbles = isMobile ? 1 : 15;
-    const numberOfMeteors = isMobile ? 2 : 4;
+    const numberOfBubbles = isMobile ? 2 : 15;
+    const numberOfMeteors = isMobile ? 1 : 4;
     const maxRadius = isMobile ? 30 : 150;
     const minRadius = isMobile ? 15 : 100;
 
@@ -49,7 +49,7 @@ const AnimatedBackground: React.FC = () => {
             x: Math.floor(Math.random() * (width / gridSize)) * gridSize,
             y: Math.floor(Math.random() * (height / gridSize)) * gridSize,
             size: Math.random() * (isMobile ? 1 : 2) + (isMobile ? 0.5 : 1),
-            speed: Math.random() * (isMobile ? 2 : 2) + (isMobile ? 1: 1),
+            speed: Math.random() * (isMobile ? 1 : 2) + (isMobile ? 0.5 : 1),
             direction: Math.random() < 0.5 ? 'horizontal' : 'vertical'
         }));
 
@@ -81,6 +81,25 @@ const AnimatedBackground: React.FC = () => {
         ctx.stroke();
     };
 
+    const drawGrid = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx.lineWidth = 1;
+
+        for (let x = 0; x < width; x += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
+
+        for (let y = 0; y < height; y += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
+    };
+
     const animate = useCallback(() => {
         const canvas = canvasRef.current;
         const ctx = contextRef.current;
@@ -89,6 +108,8 @@ const AnimatedBackground: React.FC = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        drawGrid(ctx, canvas.width, canvas.height);
 
         if (!isMobile) {
             bubbles.forEach(bubble => {
