@@ -239,7 +239,7 @@ function SenseiArt() {
         },
 
         {
-            src: "Assets/art-gallery/Images/image_display/Japanese_Girl.png",
+            src: "Assets/art-gallery/Images/image_display/Japanese_Girl.jpg",
             thumb: "Assets/art-gallery/Images/web/Japanese_Girl.webp"
         },
 
@@ -279,7 +279,7 @@ function SenseiArt() {
         },
 
         {
-            src: "Assets/art-gallery/Images/image_display/Red_Night.png",
+            src: "Assets/art-gallery/Images/image_display/Red_Night.jpg",
             thumb: "Assets/art-gallery/Images/web/Red_Night.webp"
         },
 
@@ -319,7 +319,7 @@ function SenseiArt() {
         },
 
         {
-            src: "Assets/art-gallery/Images/image_display/CHM_Makima.png",
+            src: "Assets/art-gallery/Images/image_display/CHM_Makima.jpg",
             thumb: "Assets/art-gallery/Images/web/CHM_Makima.webp"
         },
 
@@ -329,7 +329,7 @@ function SenseiArt() {
         },
 
         {
-            src: "Assets/art-gallery/Images/image_display/DS_1.png",
+            src: "Assets/art-gallery/Images/image_display/DS_1.jpg",
             thumb: "Assets/art-gallery/Images/web/DS_1.webp"
         },
 
