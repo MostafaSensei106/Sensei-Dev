@@ -49,7 +49,7 @@ def get_compression_quality():
 # Define the base paths
 base_dir = os.path.dirname(os.path.abspath(__file__))
 input_dir = os.path.join(base_dir, '../../public/Assets/art-gallery/Images/image_display')
-output_dir = os.path.join(base_dir, '../../public/Assets/art-gallery/Images/image_web')
+output_dir = os.path.join(base_dir, '../../public/Assets/art-gallery/Images/web')
 
 # Welcome message
 print_welcome()
@@ -95,7 +95,7 @@ else:
                 print_message(f"✅ Optimized '{filename}' and saved as '{webp_filename}'", Fore.CYAN)
 
                 # Add formatted paths for the image entry
-                image_entries.append(f"        {{\n            src: \"/Assets/art-gallery/Images/image_display/{filename}\",\n            thumb: \"/Assets/art-gallery/Images/image_web/{webp_filename}\"\n        }},")
+                image_entries.append(f"        {{\n            src: \"/Assets/art-gallery/Images/image_display/{filename}\",\n            thumb: \"/Assets/art-gallery/Images/web/{webp_filename}\"\n        }},")
 
         except Exception as e:
             print_message(f"❌ Error processing '{filename}': {e}", Fore.RED)
