@@ -74,7 +74,7 @@ This portfolio is built with cutting-edge technologies:
 
 - **Next.js 14**: For server-side rendering and optimal performance
 - **TypeScript**: Ensuring type safety and improved developer experience
-- **Python**: Powering backend scripts for image optimization and data processing
+- **Python**: Powering scripts for image optimization and data processing
 - **CSS**: Styling with modern CSS techniques for a polished look
 
 ## Contributing
