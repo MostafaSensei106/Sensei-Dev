@@ -216,8 +216,7 @@ function SenseiArt() {
 
         {
             src: "Assets/art-gallery/Images/image_display/Sensei_106_Spy.jpg",
-            thumb: "Assets/art-gallery/Images/web/Sensei_106_Spy.webp"
-        },
+            thumb: "Assets/art-gallery/Images/web/Sensei_106_Spy.webp"        },
 
         {
             src: "Assets/art-gallery/Images/image_display/Ice_Coffee_Team_Logo.png",
@@ -231,122 +230,122 @@ function SenseiArt() {
 
         {
             src: "Assets/art-gallery/Images/image_display/Mostafa_Logo.png",
-            thumb: "Assets/art-gallery/Images/image/web/Mostafa_Logo.webp"
+            thumb: "Assets/art-gallery/Images/web/Mostafa_Logo.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/Japan_Coffee_Logo.png",
-            thumb: "Assets/art-gallery/Images/image/web/Japan_Coffee_Logo.webp"
+            thumb: "Assets/art-gallery/Images/web/Japan_Coffee_Logo.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/Japanese_Girl.png",
-            thumb: "Assets/art-gallery/Images/image/web/Japanese_Girl.webp"
+            thumb: "Assets/art-gallery/Images/web/Japanese_Girl.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/DS_14.png",
-            thumb: "Assets/art-gallery/Images/image/web/DS_14.webp"
+            thumb: "Assets/art-gallery/Images/web/DS_14.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/BVSarada.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/B2BV_Sarada.webp"
+            thumb: "Assets/art-gallery/Images/web/B2BV_Sarada.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/B2BVBA.png",
-            thumb: "Assets/art-gallery/Images/image/web/B2BVBA.webp"
+            thumb: "Assets/art-gallery/Images/web/B2BVBA.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/B2BVKW.png",
-            thumb: "Assets/art-gallery/Images/image/web/B2BVKW.webp"
+            thumb: "Assets/art-gallery/Images/web/B2BVKW.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/B2BVH.png",
-            thumb: "Assets/art-gallery/Images/image/web/B2BVH.webp"
+            thumb: "Assets/art-gallery/Images/web/B2BVH.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/DS_106.png",
-            thumb: "Assets/art-gallery/Images/image/web/DS_106.webp"
+            thumb: "Assets/art-gallery/Images/web/DS_106.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/Night_Light.png",
-            thumb: "Assets/art-gallery/Images/image/web/Night_Light.webp"
+            thumb: "Assets/art-gallery/Images/web/Night_Light.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/Red_Night.png",
-            thumb: "Assets/art-gallery/Images/image/web/Red_Night.webp"
+            thumb: "Assets/art-gallery/Images/web/Red_Night.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/Sensei_Art44.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/Sensei_Art44.webp"
+            thumb: "Assets/art-gallery/Images/web/Sensei_Art44.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/DS_2_BackGround.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/DS_2_BackGround.webp"
+            thumb: "Assets/art-gallery/Images/web/DS_2_BackGround.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/Naruto_Style.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/Naruto_Style.webp"
+            thumb: "Assets/art-gallery/Images/web/Naruto_Style.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/JJK_Fight_1.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/JJK_Fight_1.webp"
+            thumb: "Assets/art-gallery/Images/web/JJK_Fight_1.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/JJK_Sensei.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/JJK_Sensei.webp"
+            thumb: "Assets/art-gallery/Images/web/JJK_Sensei.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/BNGKW.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/BNGKW.webp"
+            thumb: "Assets/art-gallery/Images/web/BNGKW.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/Night14.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/Night14.webp"
+            thumb: "Assets/art-gallery/Images/web/Night14.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/CHM_Makima.png",
-            thumb: "Assets/art-gallery/Images/image/web/CHM_Makima.webp"
+            thumb: "Assets/art-gallery/Images/web/CHM_Makima.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/BNG1.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/BNG1.webp"
+            thumb: "Assets/art-gallery/Images/web/BNG1.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/DS_1.png",
-            thumb: "Assets/art-gallery/Images/image/web/DS_1.webp"
+            thumb: "Assets/art-gallery/Images/web/DS_1.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/Pizza_Girl.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/Pizza_Girl.webp"
+            thumb: "Assets/art-gallery/Images/web/Pizza_Girl.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/HG_Logo.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/HG_Logo.webp"
+            thumb: "Assets/art-gallery/Images/web/HG_Logo.webp"
         },
 
         {
             src: "Assets/art-gallery/Images/image_display/Sakura.jpg",
-            thumb: "Assets/art-gallery/Images/image/web/Sakura.webp"
+            thumb: "Assets/art-gallery/Images/web/Sakura.webp"
         },
 
 
