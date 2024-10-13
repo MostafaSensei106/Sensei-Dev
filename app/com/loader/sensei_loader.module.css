@@ -1,4 +1,9 @@
 
+
+/*
+@Author Mostafa Sensei106
+@Description A loader component that displays a loading spinner until the page is fully loaded.
+ */
 .loader{
     position: fixed;
     top: 0;

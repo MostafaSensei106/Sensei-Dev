@@ -1,8 +1,16 @@
+// Import necessary dependencies and styles
 "use client";
 import React from 'react';
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import {motion} from "framer-motion";
+import {useInView} from "react-intersection-observer";
 import styles from "./sensei-services-projects.module.css";
+
+//**
+// @Author Mostafa Sensei106
+// @Description React component that displays a list of service items using Framer Motion animations.
+// Each service item includes an icon, title, and description, all of which are animated based on the user's scroll position.
+//**
+
 
 /**
  * A function component that renders a single service item.
@@ -12,7 +20,7 @@ import styles from "./sensei-services-projects.module.css";
  * - `icon`: The class name of the font awesome icon to use.
  * - `title`: The title of the service.
  * - `description`: A brief description of the service.
- * - `index`: The index of the service in the list.
+ * - `index`: The index of the service in the list for animation delay purposes.
  *
  * @returns {JSX.Element} A JSX element representing a single service item.
  */
@@ -21,20 +29,22 @@ const ServiceItem: React.FC<{
     title: string;
     description: string;
     index: number;
-}> = ({ icon, title, description, index }: { icon: string; title: string; description: string; index: number; }): JSX.Element => {
+}> = ({icon, title, description, index}): JSX.Element => {
+    // useInView hook to track if the element is visible in the viewport
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
 
+    // Define animation variants for Framer Motion
     const variants = {
-        hidden: { opacity: 0, y: 50 },
+        hidden: {opacity: 0, y: 50},
         visible: {
             opacity: 1,
             y: 0,
             transition: {
                 duration: 0.5,
-                delay: index * 0.1,
+                delay: index * 0.1, // Delay based on the service index for staggered animation
                 ease: [0.22, 1, 0.36, 1],
             },
         },
@@ -51,9 +61,9 @@ const ServiceItem: React.FC<{
             <div className={styles['part-1']}>
                 <motion.i
                     className={icon}
-                    animate={{ rotate: 0 }}
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
+                    animate={{rotate: 0}}
+                    whileHover={{rotate: 360}} // Icon rotates on hover
+                    transition={{duration: 0.6}}
                 ></motion.i>
                 <h3 className={styles.title}>{title}</h3>
             </div>
@@ -64,18 +74,63 @@ const ServiceItem: React.FC<{
     );
 };
 
-function SenseiServicesProjects() {
+/**
+ * A React component that displays a list of service items in a grid format.
+ * Each service item is rendered using the ServiceItem component and is animated when it appears in the viewport.
+ *
+ * @returns {JSX.Element} A JSX element representing the services section.
+ */
+function SenseiServicesProjects(): JSX.Element {
     const services = [
-        {icon: "fa-brands fa-flutter", title: "Mobile App Development", description: "develop mobile apps that are user-friendly and easy to use."},
-        {icon: "fa-brands fa-android", title: "Android App Development", description: "develop android apps that are secure and scalable."},
-        {icon:"fa-solid fa-server" , title: "Backend Development", description: "develop backend systems that are secure and scalable."},
-        {icon:"fa-solid fa-microchip" , title: "AI Development", description: "develop intelligent systems that can solve problems and improve lives."},
-        {icon:"fa-solid fa-gamepad" , title: "Game Development", description: "create games that are fun and engaging for players."},
-        { icon: "fa-solid fa-paintbrush", title:"Digital Artist", description: "create digital art that are visually appealing and unique." },
-        { icon: "fa-solid fa-palette", title: "Graphic Designer", description: "create graphics that are visually appealing and unique." },
-        {icon: "fa-solid fa-images", title: "Photography", description: "create photos that are visually appealing and unique." },
-    ];
+        {
+            icon: "fa-brands fa-flutter",
+            title: "Mobile App Development",
+            description: "Develop user-friendly and efficient mobile apps. Utilize Flutter for cross-platform development, implement responsive UI designs, and integrate RESTful APIs."
+        },
 
+        {
+            icon: "fa-brands fa-android",
+            title: "Android App Development",
+            description: "Create secure and scalable Android apps. Use Kotlin for modern development, implement Material Design principles, and ensure compatibility across various Android versions."
+        },
+
+        {
+            icon: "fa-solid fa-server",
+            title: "Backend Development",
+            description: "Build robust and scalable backend systems using Python. FastAPI , Django for rapid development, implement RESTful APIs with FastAPI , and utilize MongoDB,MySQL, and PostgreSQL for efficient data management."
+        },
+
+        {
+            icon: "fa-solid fa-microchip",
+            title: "AI Development",
+            description: "Develop intelligent systems with Python. Use TensorFlow and PyTorch for deep learning models, implement natural language processing with NLTK, and create computer vision solutions with OpenCV."
+        },
+
+        {
+            icon: "fa-solid fa-gamepad",
+            title: "Game Development",
+            description: "Design immersive games with Unreal Engine. Utilize Blueprints visual scripting for rapid prototyping, implement realistic physics with PhysX, and create stunning visuals with the Unreal Engine renderer."
+        },
+
+        {
+            icon: "fa-solid fa-paintbrush",
+            title: "Digital Artist",
+            description: "Create visually appealing digital artwork using Krita. Employ custom brushes for unique textures, utilize layer management for complex compositions, and implement digital painting techniques."
+        },
+
+        {
+            icon: "fa-solid fa-palette",
+            title: "Graphic Designer",
+            description: "Craft professional graphics with Adobe Creative Suite. Design vector graphics in Illustrator, edit and manipulate images in Photoshop, and create layouts for print and digital media in InDesign."
+        },
+
+        {
+            icon: "fa-solid fa-images",
+            title: "Photography",
+            description: "Capture visually striking and unique photographs. Specialize in portrait, landscape, and event photography. Edit images using Adobe Lightroom and Photoshop for professional results."
+        }];
+
+    // useInView hook to track if the header is visible in the viewport
     const [headerRef, headerInView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
@@ -87,9 +142,9 @@ function SenseiServicesProjects() {
                 <motion.div
                     ref={headerRef}
                     className={styles['header-section']}
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={headerInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    initial={{opacity: 0, y: -50}}
+                    animate={headerInView ? {opacity: 1, y: 0} : {}}
+                    transition={{duration: 0.6, ease: "easeOut"}}
                 >
                     <h2 className={styles.title}>
                         <span lang="ja">
@@ -101,7 +156,7 @@ function SenseiServicesProjects() {
                 </motion.div>
                 <div className={styles['grid-container']}>
                     {services.map((service, index) => (
-                        <ServiceItem key={index} {...service} index={index} />
+                        <ServiceItem key={index} {...service} index={index}/>
                     ))}
                 </div>
             </div>

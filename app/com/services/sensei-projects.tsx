@@ -1,3 +1,4 @@
+// Import necessary dependencies and styles
 "use client";
 import React, { useEffect, useState, useCallback } from 'react';
 import { motion } from "framer-motion";
@@ -6,6 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faExclamationCircle, faEye } from '@fortawesome/free-solid-svg-icons';
 import styles from './sensei-services-projects.module.css';
 
+//**
+// @Author Mostafa Sensei106
+// @Description React component that fetches and displays GitHub repositories with animation and styling using Framer Motion and FontAwesome.
+/**
+
+/**
+ * Interface representing the GitHub repository data structure.
+ */
 interface GitHubRepository {
     id: number;
     name: string;
@@ -31,6 +40,11 @@ interface GitHubRepository {
 const GITHUB_USERNAME = 'MostafaSensei106';
 const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
 
+/**
+ * Returns the corresponding FontAwesome class for a given programming language.
+ * @param language - The programming language of the repository.
+ * @returns The FontAwesome icon class for the language.
+ */
 const getIconForLanguage = (language: string): string => {
     const iconMap: { [key: string]: string } = {
         TypeScript: 'fa-brands fa-react',
@@ -52,6 +66,11 @@ const getIconForLanguage = (language: string): string => {
     return iconMap[language] || 'fa-solid fa-code';
 };
 
+/**
+ * Formats a date string into a more readable format.
+ * @param dateString - The date string to format.
+ * @returns The formatted date string.
+ */
 const formatDate = (dateString: string): string => {
     return new Date(dateString).toLocaleDateString('en-US', {
         year: 'numeric',
@@ -60,12 +79,18 @@ const formatDate = (dateString: string): string => {
     });
 };
 
+/**
+ * Component representing a single GitHub repository item in the projects list.
+ * @param repo - The GitHub repository data.
+ * @param index - The index of the repository in the list.
+ */
 const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.memo(({ repo, index }) => {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
 
+    // Define animation variants for the project item
     const variants = {
         hidden: { opacity: 0, y: 50 },
         visible: {
@@ -115,17 +140,21 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
                 </p>
                 <p className={styles.description}>
                     <strong>Owner:</strong> {repo.owner.login}
+                    {repo.license && (
+                        <p className={styles.description}>
+                            <strong>License:</strong> {repo.license.name}
+                        </p>
+                    )}
                 </p>
-                {repo.license && (
-                    <p className={styles.description}>
-                        <strong>License:</strong> {repo.license.name}
-                    </p>
-                )}
             </div>
         </motion.div>
     );
 }, (prevProps, nextProps) => prevProps.repo.id === nextProps.repo.id);
 
+/**
+ * Main component that fetches and displays GitHub repositories.
+ * It handles the fetching of repositories and renders them as project items.
+ */
 const SenseiProjects: React.FC = () => {
     const [repos, setRepos] = useState<GitHubRepository[]>([]);
     const [headerRef, headerInView] = useInView({
@@ -133,6 +162,9 @@ const SenseiProjects: React.FC = () => {
         threshold: 0.1,
     });
 
+    /**
+     * Fetches repositories from GitHub and updates the state.
+     */
     const fetchGitHubRepos = useCallback(async () => {
         try {
             const response = await fetch(API_URL);
@@ -146,6 +178,7 @@ const SenseiProjects: React.FC = () => {
         }
     }, []);
 
+    // Fetch repositories on component mount
     useEffect(() => {
         fetchGitHubRepos();
     }, [fetchGitHubRepos]);
@@ -167,7 +200,7 @@ const SenseiProjects: React.FC = () => {
                             animate={headerInView ? { scale: 1 } : {}}
                             transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 200, damping: 10 }}
                         >
-                            プロジェクト •
+                            計画  •
                         </motion.span>
                         <motion.span
                             lang="en"

@@ -1,3 +1,9 @@
+/*
+ * AnimatedBackground.module.css
+ * @Author: Mostafa Sensei106
+ * @Description: A component that displays an animated background with bubbles and meteors.
+ */
+
 .canvas {
     position: fixed;
     top: 0;

@@ -1,5 +1,12 @@
 import React from 'react';
 import styles from './sensei-contact.module.css';
+
+//**
+// @Author Mostafa Sensei106
+// @Description A responsive contact me component with a menu that highlights the active section of the page.
+//**
+
+
 /**
  * @function SenseiContact
  * @description A functional component that renders the contact me section

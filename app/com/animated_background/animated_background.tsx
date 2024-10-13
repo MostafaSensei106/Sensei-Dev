@@ -1,9 +1,15 @@
 "use client";
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { debounce } from 'lodash';
+import React, { useEffect, useRef, useState, useCallback } from 'react';// Import necessary dependencies
+import { debounce } from 'lodash';//
 import styles from './animated_background.module.css';
 
+
+// Define the Bubble and Meteor interfaces
 interface Bubble {
+    //x and y are the coordinates of the center of the bubble
+    //radius is the radius of the bubble
+    //vx and vy are the velocities of the bubble
+    //x and y are the coordinates of the center of the bubble
     x: number;
     y: number;
     radius: number;
@@ -11,7 +17,13 @@ interface Bubble {
     vy: number;
 }
 
+// Define the Meteor interface
 interface Meteor {
+    //x and y are the coordinates of the center of the meteor
+    //size is the size of the meteor
+    //speed is the speed of the meteor
+    //direction is the direction of the meteor
+    //trail is the trail of the meteor
     x: number;
     y: number;
     size: number;
@@ -20,15 +32,23 @@ interface Meteor {
     trail: { x: number; y: number; alpha: number }[];
 }
 
+// Define the AnimatedBackground component
+// The component is a canvas with a background image
+// The background image is animated
+// The component is a child of the root component
 const AnimatedBackground: React.FC = () => {
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const contextRef = useRef<CanvasRenderingContext2D | null>(null);
-    const animationFrameIdRef = useRef<number | null>(null);
-    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-    const [bubbles, setBubbles] = useState<Bubble[]>([]);
-    const [meteors, setMeteors] = useState<Meteor[]>([]);
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);// Define the canvasRef
+    const contextRef = useRef<CanvasRenderingContext2D | null>(null);// Define the contextRef
+    const animationFrameIdRef = useRef<number | null>(null);// Define the animationFrameIdRef
+    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });// Define the dimensions
+    const [bubbles, setBubbles] = useState<Bubble[]>([]);// Define the bubbles
+    const [meteors, setMeteors] = useState<Meteor[]>([]);// Define the meteors
     const [isMobile, setIsMobile] = useState(false);
 
+    // Define the createBubbles and createMeteors functions
+    // The functions are used to create the bubbles and meteors
+    // The functions are called in the useEffect hook
+    // The functions are called in the createBubbles and createMeteors functions
     const gridSize = 50;
     const numberOfBubbles = Math.floor(dimensions.width * dimensions.height / 80000);
     const numberOfMeteors = Math.floor(dimensions.width / 250);
@@ -84,8 +104,8 @@ const AnimatedBackground: React.FC = () => {
     }, [dimensions, createBubbles, createMeteors]);
 
     const drawGrid = useCallback((ctx: CanvasRenderingContext2D) => {
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-        ctx.lineWidth = 0.5;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.lineWidth = 0.4;
 
         for (let x = 0; x <= dimensions.width; x += gridSize) {
             ctx.beginPath();

@@ -1,4 +1,12 @@
-/* sensei-home.module.css */
+/*
+    @Author: Mostafa Sensei106
+    @Description: A React component that serves as the home section of the portfolio, featuring an image, social links, and animations.
+ */
+
+
+
+
+
 .home {
     display: flex;
     justify-content: center;

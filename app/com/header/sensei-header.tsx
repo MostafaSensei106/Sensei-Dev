@@ -1,7 +1,7 @@
 "use client";
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './sensei-header.module.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faHome,
     faUserSecret,
@@ -11,30 +11,36 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
+
+//**
+// @Author Mostafa Sensei106
+// @Description A responsive header component with a menu that highlights the active section of the page.
+//**
+
 /**
- * The main header component with a responsive menu
- * @returns The JSX Element for the header
+ * The main header component with a responsive menu.
+ * @returns The JSX Element for the header.
  */
 const SenseiHeader = (): JSX.Element => {
     /**
-     * The state of the menu, whether it is open or closed
+     * The state of the menu, whether it is open or closed.
      */
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
     /**
-     * The state of the active section, which is the section that is currently in view
+     * The state of the active section, which is the section that is currently in view.
      */
     const [activeSection, setActiveSection] = useState<string>('Home');
 
     /**
-     * Toggle the menu
+     * Toggle the menu.
      */
     const toggleMenu = (): void => {
         setIsMenuOpen((prevState) => !prevState);
     };
 
     /**
-     * Handle the scroll event
+     * Handle the scroll event to determine the active section based on scroll position.
      */
     const handleScroll = (): void => {
         const sections: Array<string> = ['Home', 'Service', 'Knowledge', 'Projects', 'Gallery'];
@@ -58,7 +64,7 @@ const SenseiHeader = (): JSX.Element => {
             setActiveSection(savedSection);
             const element = document.getElementById(savedSection);
             if (element) {
-                element.scrollIntoView({behavior: 'smooth'});
+                element.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
@@ -68,6 +74,7 @@ const SenseiHeader = (): JSX.Element => {
 
     useEffect(() => {
         const handleResize = (): void => {
+            // Close the menu if the window is resized beyond the defined width
             if (window.innerWidth > 994 && isMenuOpen) {
                 setIsMenuOpen(false);
             }
@@ -77,6 +84,7 @@ const SenseiHeader = (): JSX.Element => {
         return () => window.removeEventListener('resize', handleResize);
     }, [isMenuOpen]);
 
+    // Mapping section names to their respective FontAwesome icons
     const sectionIcons: Record<string, IconProp> = {
         Home: faHome,
         Service: faUserSecret,
@@ -112,10 +120,11 @@ const SenseiHeader = (): JSX.Element => {
                         onClick={() => {
                             setActiveSection(section);
                             localStorage.setItem('activeSection', section);
+                            // Close menu if in mobile view
                             if (window.innerWidth <= 994) setIsMenuOpen(false);
                         }}
                     >
-                        <FontAwesomeIcon icon={icon} className={styles.icon}/>
+                        <FontAwesomeIcon icon={icon} className={styles.icon} />
                         <span>{section}</span>
                     </a>
                 ))}

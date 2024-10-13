@@ -3,6 +3,12 @@
 /* ------------------This is Service & Projects Section Style---------- */
 
 
+
+/*
+@Author Mostafa Sensei106
+@Description A responsive service and projects section with a menu that highlights the active section of the page.
+ */
+
 .section-services, .section-projects {
     min-height: 100vh;
     padding: 60px 0;

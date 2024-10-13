@@ -2,6 +2,16 @@
 /*-----------------This is Art Gallery Section Style-----------------*/
 /*-----------------This is Art Gallery Section Style-----------------*/
 
+
+
+
+/*
+* Art Gallery Section
+* @Author: Mostafa Sensei106
+* @Description: A responsive art gallery component with a menu that highlights the active section of the page.
+ */
+
+
 .art-gallery-section {
     min-height: 100vh;
     padding: 60px 0;

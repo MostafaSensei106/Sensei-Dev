@@ -4,6 +4,12 @@ import {motion} from "framer-motion";
 import {useInView} from "react-intersection-observer";
 import styles from "./sensei-education.module.css";
 
+
+//**
+// @Author Mostafa Sensei106
+// @Description A responsive education component with a menu that highlights the active section of the page.
+//**
+
 /**
  * A single timeline item in the education section.
  *

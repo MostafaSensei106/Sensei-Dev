@@ -3,6 +3,12 @@
 /*---------------------This is Education Section Style---------------------*/
 /*--------------------This is Education Section Style---------------------*/
 
+
+
+/*
+*@Author: Mostafa Sensei106
+*@Description: A responsive education component with a menu that highlights the active section of the page.
+ */
 .section-education {
     min-height: 100vh;
     padding: 60px 0 0 0;

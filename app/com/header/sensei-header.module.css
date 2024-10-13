@@ -1,5 +1,10 @@
 
-/*// sensei-header.module.css*/
+/*
+ * sensei-header.module.css
+ *@Author Mostafa Sensei106
+ *@Description A responsive header component with a menu that highlights the active section of the page.
+ */
+
 .header {
     position: fixed;
     top: 0;
