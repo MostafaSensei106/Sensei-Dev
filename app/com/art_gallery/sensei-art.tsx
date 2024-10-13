@@ -204,10 +204,6 @@ function SenseiArt() {
         //     thumb: "/Assets/art-gallery/Images/web/HG_Logo.webp"
         // },
         //
-        // {
-        //     src: "/Assets/art-gallery/Images/image_display/Sakura.jpg",
-        //     thumb: "/Assets/art-gallery/Images/web/Sakura.webp"
-        // },
 
         {
             src: "Assets/art-gallery/Images/image_display/Free_Palestine_Sensei_Art.png",
@@ -341,11 +337,6 @@ function SenseiArt() {
         {
             src: "Assets/art-gallery/Images/image_display/HG_Logo.jpg",
             thumb: "Assets/art-gallery/Images/web/HG_Logo.webp"
-        },
-
-        {
-            src: "Assets/art-gallery/Images/image_display/Sakura.jpg",
-            thumb: "Assets/art-gallery/Images/web/Sakura.webp"
         },
 
 
