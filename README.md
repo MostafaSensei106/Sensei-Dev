@@ -1,7 +1,7 @@
 <h1 align="center">Sense-Dev Portfolio</h1>
 
 <p align="center">
-  <img src="https://socialify.git.ci/MostafaSensei106/Sensei-Dev/image?font=Inter&forks=1&language=1&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Light" alt="Sense-Dev Portfolio Banner" width="640">
+  <img src="https://socialify.git.ci/MostafaSensei106/Sensei-Dev/image?font=Inter&language=1&name=1&owner=1&pattern=Floating%20Cogs&theme=Light">
 </p>
 
 <p align="center">
