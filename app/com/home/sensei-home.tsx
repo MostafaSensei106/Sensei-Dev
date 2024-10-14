@@ -128,7 +128,7 @@ const SenseiHome = (): JSX.Element => {
                         <a href="#Contact" className={`${styles.btn} ${styles.btn1}`}>
                             Hire Me <FontAwesomeIcon icon={faUserSecret} />
                         </a>
-                        <a href="Assets/cv/Mostafa_Mahmoud_CV.pdf" download className={`${styles.btn} ${styles.btn2}`}>
+                        <a href="Assets/cv/Mostafa-Mahmoud-CV.pdf" download className={`${styles.btn} ${styles.btn2}`}>
                             Download CV <FontAwesomeIcon icon={faFilePdf} />
                         </a>
                     </motion.div>
