@@ -15,15 +15,24 @@ import AnimatedBackground from "@/app/com/animated_background/animated_backgroun
 function Main() {
     return (
         <>
-            <Senseiloader />// This component displays a loading spinner until the page is fully loaded
-            <SenseiHeader />// The main header component
-            <AnimatedBackground/>// The animated background
-            <SenseiHome />// The home component
-            <SenseiServicesProjects />// The  services component
-            <SenseiEducation />// The education component
-            <SenseiProjects />// The projects component
-            <SenseiArt />// The art gallery component
-            <SenseiContact />// The contact me component
+            {/*//This component displays a loading spinner until the page is fully loaded*/}
+            <Senseiloader />
+            {/*The header component*/}
+            <SenseiHeader />
+            {/*The animated background*/}
+            <AnimatedBackground/>
+            {/*The home component*/}
+            <SenseiHome />
+            {/*The  services component*/}
+            <SenseiServicesProjects />
+            {/*The education component*/}
+            <SenseiEducation />
+            {/*The projects component*/}
+            <SenseiProjects />
+            {/*The art gallery component*/}
+            <SenseiArt />
+            {/*The contact me component*/}
+            <SenseiContact />
         </>
     );
 }
