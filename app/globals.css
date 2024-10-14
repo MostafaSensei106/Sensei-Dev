@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&amp;family=Overlock&amp;family=Yuji+Syuku&amp;display=swap');
 
+/**
+ * @author Mostafa Sensei106
+ * @description Global CSS
+ **/
+
+
 * {
     margin: 0;
     padding: 0;
@@ -19,6 +25,8 @@
 }
 
 
+
+
 html[lang="en"] body {
     font-family: 'Overlock', sans-serif;
 
@@ -35,7 +43,6 @@ html[lang="ja"] body {
 
 [lang="ja"] {
     font-family: 'Yuji Syuku', serif;
-
 }
 
 
