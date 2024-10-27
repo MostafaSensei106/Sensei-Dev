@@ -43,7 +43,12 @@ const SenseiHeader = (): JSX.Element => {
      * Handle the scroll event to determine the active section based on scroll position.
      */
     const handleScroll = (): void => {
-        const sections: Array<string> = ['Home', 'Service', 'Knowledge', 'Projects', 'Gallery'];
+        const sections: Array<string> = [
+            'Home',
+            'Service',
+            'Knowledge',
+            'Projects',
+            'Gallery'];
         const current: string | undefined = sections.find((section) => {
             const element = document.getElementById(section);
             if (element) {
@@ -89,7 +94,7 @@ const SenseiHeader = (): JSX.Element => {
         Home: faHome,
         Service: faUserSecret,
         Knowledge: faBook,
-        Projects: faFolder,
+        // Projects: faFolder,
         Gallery: faPalette,
     };
 
@@ -120,7 +125,6 @@ const SenseiHeader = (): JSX.Element => {
                         onClick={() => {
                             setActiveSection(section);
                             localStorage.setItem('activeSection', section);
-                            // Close menu if in mobile view
                             if (window.innerWidth <= 994) setIsMenuOpen(false);
                         }}
                     >

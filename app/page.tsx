@@ -17,21 +17,13 @@ function Main() {
         <>
             {/*//This component displays a loading spinner until the page is fully loaded*/}
             <Senseiloader />
-            {/*The header component*/}
             <SenseiHeader />
-            {/*The animated background*/}
             <AnimatedBackground/>
-            {/*The home component*/}
             <SenseiHome />
-            {/*The  services component*/}
             <SenseiServicesProjects />
-            {/*The education component*/}
             <SenseiEducation />
-            {/*The projects component*/}
-            <SenseiProjects />
-            {/*The art gallery component*/}
+            {/*<SenseiProjects />*/}
             <SenseiArt />
-            {/*The contact me component*/}
             <SenseiContact />
         </>
     );
