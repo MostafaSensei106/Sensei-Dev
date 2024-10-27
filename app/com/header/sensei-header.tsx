@@ -6,7 +6,7 @@ import {
     faHome,
     faUserSecret,
     faBook,
-    faFolder,
+    // faFolder,
     faPalette
 } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
