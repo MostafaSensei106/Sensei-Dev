@@ -56,10 +56,6 @@ function SenseiArt() {
 
     const images = useMemo(() => [
 
-
-
-
-
         {
             src: "Assets/art-gallery/Images/image_display/Free_Palestine_Sensei_Art.png",
             thumb: "Assets/art-gallery/Images/web/Free_Palestine_Sensei_Art.webp"

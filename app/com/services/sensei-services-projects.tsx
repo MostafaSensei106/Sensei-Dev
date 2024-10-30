@@ -82,35 +82,35 @@ const ServiceItem: React.FC<{
  */
 function SenseiServicesProjects(): JSX.Element {
     const services = [
-        // {
-        //     icon: "fa-brands fa-flutter",
-        //     title: "Mobile App Development",
-        //     description: "Develop user-friendly and efficient mobile apps. Utilize Flutter for cross-platform development, implement responsive UI designs, and integrate RESTful APIs."
-        // },
-        //
-        // {
-        //     icon: "fa-brands fa-android",
-        //     title: "Android App Development",
-        //     description: "Create secure and scalable Android apps. Use Kotlin for modern development, implement Material Design principles, and ensure compatibility across various Android versions."
-        // },
-        //
-        // {
-        //     icon: "fa-solid fa-server",
-        //     title: "Backend Development",
-        //     description: "Build robust and scalable backend systems using Python. FastAPI , Django for rapid development, implement RESTful APIs with FastAPI , and utilize MongoDB,MySQL, and PostgreSQL for efficient data management."
-        // },
-        //
-        // {
-        //     icon: "fa-solid fa-microchip",
-        //     title: "AI Development",
-        //     description: "Develop intelligent systems with Python. Use TensorFlow and PyTorch for deep learning models, implement natural language processing with NLTK, and create computer vision solutions with OpenCV."
-        // },
-        //
-        // {
-        //     icon: "fa-solid fa-gamepad",
-        //     title: "Game Development",
-        //     description: "Design immersive games with Unreal Engine. Utilize Blueprints visual scripting for rapid prototyping, implement realistic physics with PhysX, and create stunning visuals with the Unreal Engine renderer."
-        // },
+        {
+            icon: "fa-brands fa-flutter",
+            title: "Mobile App Development",
+            description: "Develop user-friendly and efficient mobile apps. Utilize Flutter for cross-platform development, implement responsive UI designs, and integrate RESTful APIs."
+        },
+
+        {
+            icon: "fa-brands fa-android",
+            title: "Android App Development",
+            description: "Create secure and scalable Android apps. Use Kotlin for modern development, implement Material Design principles, and ensure compatibility across various Android versions."
+        },
+
+        {
+            icon: "fa-solid fa-server",
+            title: "Backend Development",
+            description: "Build robust and scalable backend systems using Python. FastAPI , Django for rapid development, implement RESTful APIs with FastAPI , and utilize MongoDB,MySQL, and PostgreSQL for efficient data management."
+        },
+
+        {
+            icon: "fa-solid fa-microchip",
+            title: "AI Development",
+            description: "Develop intelligent systems with Python. Use TensorFlow and PyTorch for deep learning models, implement natural language processing with NLTK, and create computer vision solutions with OpenCV."
+        },
+
+        {
+            icon: "fa-solid fa-gamepad",
+            title: "Game Development",
+            description: "Design immersive games with Unreal Engine. Utilize Blueprints visual scripting for rapid prototyping, implement realistic physics with PhysX, and create stunning visuals with the Unreal Engine renderer."
+        },
 
         {
             icon: "fa-solid fa-paintbrush",
@@ -124,11 +124,11 @@ function SenseiServicesProjects(): JSX.Element {
             description: "Craft professional graphics with Adobe Creative Suite. Design vector graphics in Illustrator, edit and manipulate images in Photoshop, and create layouts for print and digital media in InDesign."
         },
 
-        // {
-        //     icon: "fa-solid fa-images",
-        //     title: "Photography",
-        //     description: "Capture visually striking and unique photographs. Specialize in portrait, landscape, and event photography. Edit images using Adobe Lightroom and Photoshop for professional results."
-        // }
+        {
+            icon: "fa-solid fa-images",
+            title: "Photography",
+            description: "Capture visually striking and unique photographs. Specialize in portrait, landscape, and event photography. Edit images using Adobe Lightroom and Photoshop for professional results."
+        }
         ];
 
     // useInView hook to track if the header is visible in the viewport
