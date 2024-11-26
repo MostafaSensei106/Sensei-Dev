@@ -62,8 +62,8 @@ function SenseiArt() {
         },
 
         {
-            src: "/Assets/art-gallery/Images/image_display/BFCAI.png",
-            thumb: "/Assets/art-gallery/Images/web/BFCAI.webp"
+            src: "Assets/art-gallery/Images/image_display/BFCAI.png",
+            thumb: "Assets/art-gallery/Images/web/BFCAI.webp"
         },
 
         {
