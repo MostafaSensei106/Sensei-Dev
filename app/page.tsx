@@ -7,6 +7,7 @@ import SenseiArt from "./com/art_gallery/sensei-art";
 import SenseiContact from "@/app/com/contact_me/sensei-contact";
 import Senseiloader from "@/app/com/loader/sensei_loader";
 import AnimatedBackground from "@/app/com/animated_background/animated_background";
+import SenseiProjects from "./com/services/sensei-projects";
 
 // Main component
 // @returns {JSX.Element}
@@ -22,7 +23,7 @@ function Main() {
             <SenseiHome />
             <SenseiServicesProjects />
             <SenseiEducation />
-            {/*<SenseiProjects />*/}
+            <SenseiProjects />
             <SenseiArt />
             <SenseiContact />
         </>

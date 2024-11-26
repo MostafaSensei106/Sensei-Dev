@@ -6,16 +6,30 @@ import {
     faHome,
     faUserSecret,
     faBook,
+    faFolder,
     faPalette
 } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
+
+//**
+// @Author Mostafa Sensei106
+// @Description A responsive header component with a menu that highlights the active section of the page.
+//**
+
 /**
- * The main header component with a responsive menu and enhanced animations.
+ * The main header component with a responsive menu.
  * @returns The JSX Element for the header.
  */
 const SenseiHeader = (): JSX.Element => {
+    /**
+     * The state of the menu, whether it is open or closed.
+     */
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+    /**
+     * The state of the active section, which is the section that is currently in view.
+     */
     const [activeSection, setActiveSection] = useState<string>('Home');
 
     const toggleMenu = (): void => {
@@ -27,8 +41,8 @@ const SenseiHeader = (): JSX.Element => {
             'Home',
             'Service',
             'Knowledge',
-            'Gallery'
-        ];
+            'Projects',
+            'Gallery'];
         const current: string | undefined = sections.find((section) => {
             const element = document.getElementById(section);
             if (element) {
@@ -68,10 +82,12 @@ const SenseiHeader = (): JSX.Element => {
         return () => window.removeEventListener('resize', handleResize);
     }, [isMenuOpen]);
 
+    // Mapping section names to their respective FontAwesome icons
     const sectionIcons: Record<string, IconProp> = {
         Home: faHome,
         Service: faUserSecret,
         Knowledge: faBook,
+        Projects: faFolder,
         Gallery: faPalette,
     };
 
@@ -93,10 +109,7 @@ const SenseiHeader = (): JSX.Element => {
                 <span></span>
                 <span></span>
             </div>
-            <nav
-                className={`${styles.navbar} ${isMenuOpen ? styles.active : ''}`}
-                aria-hidden={!isMenuOpen}
-            >
+            <nav className={`${styles.navbar} ${isMenuOpen ? styles.active : ''}`}>
                 {Object.entries(sectionIcons).map(([section, icon]) => (
                     <a
                         key={section}
