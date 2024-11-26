@@ -202,6 +202,9 @@
     .navbar.active a:nth-child(4) {
         animation: slideInLeft 0.5s ease 0.4s forwards;
     }
+    .navbar.active a:nth-child(5) {
+        animation: slideInLeft 0.5s ease 0.5s forwards;
+    }
 }
 
 @keyframes slideIn {
