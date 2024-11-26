@@ -1,23 +1,26 @@
-
 /*
  * sensei-header.module.css
  *@Author Mostafa Sensei106
- *@Description A responsive header component with a menu that highlights the active section of the page.
+ *@Description A modern silver-themed floating navbar with enhanced animations
  */
 
 .header {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 4rem);
+    max-width: 100%;
     padding: 2rem 1.5%;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(20px);
+    border-radius: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    border-bottom: 1px solid  var(--main-color);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    border: 1px solid rgb(252, 240, 225);
 }
 
 .logo {
@@ -26,31 +29,67 @@
     color: var(--text-color);
     font-weight: 800;
     cursor: pointer;
-    transition: transform 0.5s ease;
-}
-
-.logo span {
-    color: var(--text-color);
+    transition: all 0.3s ease;
+    will-change: transform, text-shadow;
 }
 
 .logo:hover {
-    /*transform: scale(1.1);*/
-    text-shadow: 0 0 25px var(--main-color);
+    text-shadow: 0 0 30px var(--main-color), 0 0 10px var(--main-color);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .navbar a {
     font-size: 1.8rem;
     color: var(--text-color);
-    margin-left: 2.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.7rem;
     font-weight: 500;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
+    transition: all 0.4s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    will-change: background, color, box-shadow;
 }
 
-.navbar a.active,
-.navbar a:hover {
-    color: var(--main-color);
-    text-shadow: 0 0 25px var(--main-color);
-    border-bottom: 3px solid var(--main-color);
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, var(--main-color), transparent);
+    transition: left 0.4s ease-in-out;
+}
+
+.navbar a:hover::before {
+    left: 100%;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px var(--main-color), 0 0 10px var(--main-color);
+}
+
+.navbar a .icon {
+    color: var(--text-color);
+    will-change: transform, color;
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.navbar a:hover .icon,
+.navbar a.active .icon {
+    transform: rotate(360deg);
+    color: var(--bg-color);
 }
 
 .MenuIcon {
@@ -101,7 +140,13 @@
     transform: rotate(-135deg);
 }
 
+
 @media (max-width: 994px) {
+    .header {
+        width: calc(100% - 2rem);
+        padding: 2rem 2%;
+    }
+
     .MenuIcon {
         display: block;
     }
@@ -110,28 +155,73 @@
         position: absolute;
         top: 100%;
         right: 0;
-        width: 40%;
-        border-left: 3px solid var(--main-color);
-        padding: 1rem 3%;
+        width: 100%;
+        border: 2px solid var(--main-color);
         background: rgba(0, 0, 0, 0.7);
-        border-top: 1px solid var(--main-color);
         backdrop-filter: blur(20px);
-        border-bottom-left-radius: 1rem;
+        border-radius: 1rem;
         display: none;
+        opacity: 0;
+        transform: translateY(-25px);
+        margin-top: 0.5rem;
+        transition: opacity 0.3s ease, transform 0.4s ease-in-out;
     }
 
     .navbar.active {
         display: block;
+        opacity: 1;
+        transform: translateY(0);
+        animation: slideIn 0.4s ease forwards;
     }
 
     .navbar a {
-        display: block;
-        font-size: 2rem;
-        margin: 3rem 0;
+        display: flex;
+        align-items: center;
+        font-size: 2.1rem;
+        margin: 2.5rem;
+        opacity: 0;
+        padding: 1rem;
+        transform: translateX(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    .navbar:hover,
-    .navbar.active {
-        border-bottom: 0.3rem solid var(--main-color);
+    .navbar.active a {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .navbar.active a:nth-child(1) {
+        animation: slideInLeft 0.5s ease 0.1s forwards;
+    }
+    .navbar.active a:nth-child(2) {
+        animation: slideInLeft 0.5s ease 0.2s forwards;
+    }
+    .navbar.active a:nth-child(3) {
+        animation: slideInLeft 0.5s ease 0.3s forwards;
+    }
+    .navbar.active a:nth-child(4) {
+        animation: slideInLeft 0.5s ease 0.4s forwards;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }

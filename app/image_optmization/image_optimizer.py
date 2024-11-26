@@ -119,15 +119,6 @@ def main():
     print_message(f"Images have been optimized and saved to: {output_dir}", Fore.GREEN)
     print_message("The image paths file has been created successfully!", Fore.GREEN)
     print_message("Please copy 'sensei-art.txt' into 'app/com/art_gallery/sensei-art.tsx'", Fore.CYAN)
-
-    destination_path = os.path.join(base_dir, '../../app/com/art_gallery/sensei-art.tsx')
-    try:
-        shutil.copy2(output_text_path, destination_path)
-        print_message("The file has been automatically copied to 'sensei-art.tsx'!", Fore.GREEN, bold=True)
-    except Exception as e:
-        print_message(f"Unable to copy file automatically: {e}", Fore.YELLOW)
-        print_message("Please copy the file manually as instructed above.", Fore.YELLOW)
-
     print_message("Process completed successfully!", Fore.GREEN, bold=True)
 
 if __name__ == "__main__":

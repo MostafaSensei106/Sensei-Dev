@@ -1,20 +1,20 @@
 "use client";
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, {useState, useEffect, useMemo, useCallback} from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import {motion} from "framer-motion";
+import {useInView} from "react-intersection-observer";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import styles from "./sensei-art.module.css";
 
-const ImageItem = ({ image, index, setOpen }) => {
+const ImageItem = ({image, index, setOpen}) => {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
 
     const variants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: {opacity: 0, y: 20},
         visible: (i: number) => ({
             opacity: 1,
             y: 0,
@@ -62,8 +62,14 @@ function SenseiArt() {
         },
 
         {
+            src: "/Assets/art-gallery/Images/image_display/BFCAI.png",
+            thumb: "/Assets/art-gallery/Images/web/BFCAI.webp"
+        },
+
+        {
             src: "Assets/art-gallery/Images/image_display/Sensei_106_Spy.jpg",
-            thumb: "Assets/art-gallery/Images/web/Sensei_106_Spy.webp"        },
+            thumb: "Assets/art-gallery/Images/web/Sensei_106_Spy.webp"
+        },
 
         {
             src: "Assets/art-gallery/Images/image_display/Ice_Coffee_Team_Logo.png",
@@ -214,7 +220,7 @@ function SenseiArt() {
     }, [open, handleKeyDown]);
 
     const headerVariants = {
-        hidden: { opacity: 0, y: -50 },
+        hidden: {opacity: 0, y: -50},
         visible: {
             opacity: 1,
             y: 0,
@@ -226,7 +232,7 @@ function SenseiArt() {
     };
 
     const galleryVariants = {
-        hidden: { opacity: 0 },
+        hidden: {opacity: 0},
         visible: {
             opacity: 1,
             transition: {
