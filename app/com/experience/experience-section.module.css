@@ -182,14 +182,14 @@
 }
 
 .experience-time {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--bg-color);
     margin-bottom: 5px;
 }
 
 .date-range {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--bg-color);
     opacity: 0.7;
 }
@@ -226,7 +226,7 @@
 
     .experience-time,
     .date-range {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
 }

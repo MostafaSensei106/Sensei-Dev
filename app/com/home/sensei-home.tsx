@@ -26,26 +26,34 @@ const SenseiHome = (): JSX.Element => {
         'https://www.youtube.com/watch?v=8Ebqe2Dbzls',
         'https://www.youtube.com/watch?v=h4HkXR3NSI4',
         'https://www.youtube.com/watch?v=rh-xfHTJp6M',
-
     ];
 
     /**
-     * The last index of the video that was shown.
+     * Array to track which videos have already been shown.
      */
-    let lastIndex = -1;
+    let playedVideos: string[] = [];
 
     /**
-     * Handles the click event on the profile picture, opening a random video from the AnimeMediaLinks array.
+     * Handles the click event on, opening a random video from the AnimeMediaLinks array.
      */
     const handleImageClick = (): void => {
-        let randomVideoIndex: number;
+        // If all videos have been played, reset the playedVideos array.
+        if (playedVideos.length === AnimeMediaLinks.length) {
+            playedVideos = [];
+        }
+
+        // Pick a random video that hasn't been played yet
+        let randomVideoUrl: string;
         do {
-            randomVideoIndex = Math.floor(Math.random() * AnimeMediaLinks.length);
-        } while (randomVideoIndex === lastIndex);
-        lastIndex = randomVideoIndex;
-        const videoUrl = AnimeMediaLinks[randomVideoIndex];
-        window.open(videoUrl, '_blank');
+            const randomIndex = Math.floor(Math.random() * AnimeMediaLinks.length);
+            randomVideoUrl = AnimeMediaLinks[randomIndex];
+        } while (playedVideos.includes(randomVideoUrl));
+        // Add the selected video to the playedVideos array
+        playedVideos.push(randomVideoUrl);
+        // Open the selected video in a new tab
+        window.open(randomVideoUrl, '_blank');
     };
+
 
     /**
      * Animation controls for the home section.
