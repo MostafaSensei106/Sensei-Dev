@@ -119,7 +119,7 @@ function ExperienceSection() {
 
 
     return (
-        <section className={styles['section-education']} id="Knowledge">
+        <section className={styles['section-education']} id="Experience">
             <div className={styles.container}>
                 <motion.div
                     ref={headerRef}

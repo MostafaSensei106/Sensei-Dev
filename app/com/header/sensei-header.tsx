@@ -40,7 +40,7 @@ const SenseiHeader = (): JSX.Element => {
         const sections: Array<string> = [
             'Home',
             'Service',
-            'Knowledge',
+            'Experience',
             'Projects',
             'Gallery'];
         const current: string | undefined = sections.find((section) => {
@@ -86,7 +86,7 @@ const SenseiHeader = (): JSX.Element => {
     const sectionIcons: Record<string, IconProp> = {
         Home: faHome,
         Service: faUserSecret,
-        Knowledge: faBook,
+        Experience: faBook,
         Projects: faFolder,
         Gallery: faPalette,
     };
