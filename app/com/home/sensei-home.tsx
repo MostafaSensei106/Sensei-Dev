@@ -22,7 +22,11 @@ const SenseiHome = (): JSX.Element => {
         'https://www.youtube.com/watch?v=Yd8kUoB72xU',
         'https://www.youtube.com/watch?v=iqsnJJK8GA4',
         'https://www.youtube.com/watch?v=7pmd0kt3FOs',
-        'https://www.youtube.com/watch?v=GgwUenaQqlM'
+        'https://www.youtube.com/watch?v=GgwUenaQqlM',
+        'https://www.youtube.com/watch?v=8Ebqe2Dbzls',
+        'https://www.youtube.com/watch?v=h4HkXR3NSI4',
+        'https://www.youtube.com/watch?v=rh-xfHTJp6M',
+
     ];
 
     /**

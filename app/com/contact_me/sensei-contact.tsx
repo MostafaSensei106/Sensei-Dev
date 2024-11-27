@@ -27,24 +27,22 @@ const SenseiContact = (): JSX.Element => {
                     <div className={styles.container}>
                         <div className={styles['contact-me']}>
                             <div className={styles['info-me']}>
-                                {/* A link to my email */}
                                 <a
                                     className={styles['link-me']}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    href="mailto:mostafa438886@fci.bu.edu.eg?subject=こんにちは、 MR: Mostafa Sensei"
                                 >
                                     Mostafa Sensei106.Mail
                                 </a>
-                                {/* A list of social network links */}
                                 <div className={styles.social}>
                                     <p className={styles.meon}>Me on Social Network</p>
                                     <a
                                         aria-label="Go to Facebook"
-                                        href="mailto:mostafa438886@fci.bu.edu.eg?subject=こんにちは、 MR: Mostafa Sensei"
+                                        href="https://www.facebook.com/MostafaSensei106"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        {/* Facebook icon */}
                                         <i className="fa-brands fa-square-facebook"></i>
                                     </a>
                                     <a

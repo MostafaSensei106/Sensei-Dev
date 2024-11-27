@@ -88,7 +88,7 @@
 
 .navbar a:hover .icon,
 .navbar a.active .icon {
-    transform: rotate(360deg);
+    transform: rotate(20deg);
     color: var(--bg-color);
 }
 

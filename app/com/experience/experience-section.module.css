@@ -7,7 +7,7 @@
 
 /*
 *@Author: Mostafa Sensei106
-*@Description: A responsive education component with a menu that highlights the active section of the page.
+*@Description: A responsive experience component with a menu that highlights the active section of the page.
  */
 .section-education {
     min-height: 100vh;
@@ -115,7 +115,7 @@
     color: var(--main-color);
 }
 
-.content:hover .tag h2,
+.content:hover .tag h2, .content:hover .tag h3,
 .content:hover .desc p {
     color: var(--main-color);
 }
@@ -156,12 +156,47 @@
     font-weight: 800;
     color: var(--bg-color);
 }
+.tag h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--bg-color);
+}
+.tag:hover h3{
+    cursor: pointer;
+    text-underline: 2px solid var(--main-color);
+}
 
 .desc p {
     margin: 10px 0 0;
     font-size: 16px;
     line-height: 1.6;
     color: var(--bg-color);
+}
+
+.date-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+.experience-time {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--bg-color);
+    margin-bottom: 5px;
+}
+
+.date-range {
+    font-size: 1rem;
+    color: var(--bg-color);
+    opacity: 0.7;
+}
+
+.content:hover .experience-time,
+.content:hover .date-range {
+    color: var(--main-color);
 }
 
 /* Responsive Design */
@@ -186,6 +221,12 @@
 
     .timeline-container::after {
         left: 29px;
+    }
+
+
+    .experience-time,
+    .date-range {
+        font-size: 0.7rem;
     }
 
 }
