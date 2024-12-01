@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import styles from "./sensei_loader.module.css";
 import Image, { ImageProps } from "next/image";
@@ -31,7 +30,7 @@ function SenseiLoader(): JSX.Element | null {
   if (!isLoading) return null;
 
   const loaderImageProps: ImageProps = {
-    src: "/Assets/loading/loading.gif",
+    src: "Assets/loading/loading.gif",
     alt: "Loading",
     width: 200,
     height: 200,
