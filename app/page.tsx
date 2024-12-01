@@ -19,9 +19,8 @@ function Main() {
     return (
         <>
             <LoadingScreen />
-            <AppBar />
             <AnimatedBackground />
-            <AnimatedBackground/>
+            <AppBar />
             <HomeSection />
             <ServicesSection />
             <ExperienceSection />
