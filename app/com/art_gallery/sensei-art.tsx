@@ -38,8 +38,8 @@ const ImageItem = ({image, index, setOpen}) => {
             <Image
                 src={image.thumb}
                 alt={`Art piece ${index + 1}`}
-                width={300}
-                height={300}
+                width={1200}
+                height={1200}
                 onClick={() => setOpen(index)}
                 layout="responsive"
                 objectFit="cover"
