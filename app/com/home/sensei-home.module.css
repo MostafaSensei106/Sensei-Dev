@@ -54,6 +54,7 @@
     font-weight: 600;
     min-width: 300px;
 }
+
 .typingHighlight {
     position: relative;
     color: var(--main-color);
@@ -108,14 +109,14 @@
     50%, 55%,
     70%, 75%,
     90%, 95% {
-        width: 0;
+        clip-path: inset(0 0 0 100%);
     }
     5%, 20%,
     25%, 40%,
     45%, 60%,
     65%, 80%,
     85% {
-        width: calc(100% + 8px);
+        clip-path: inset(0 0 0 0);
     }
 }
 

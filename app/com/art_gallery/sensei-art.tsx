@@ -243,7 +243,7 @@ function SenseiArt() {
     };
 
     return (
-        <section className={styles["art-gallery-section"]} id="Gallery">
+        <section className={styles["art-gallery-section"]} id="ArtGallery">
             <div className={styles.container}>
                 <motion.div
                     ref={headerRef}

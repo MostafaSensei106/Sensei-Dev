@@ -1,10 +1,10 @@
 "use client";
-import { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons';
-import { faUserSecret, faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import {useEffect} from 'react';
+import {motion, useAnimation} from 'framer-motion';
+import {useInView} from 'react-intersection-observer';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faLinkedin, faGithub, faTelegram} from '@fortawesome/free-brands-svg-icons';
+import {faUserSecret, faFilePdf} from '@fortawesome/free-solid-svg-icons';
 import styles from './sensei-home.module.css';
 
 //**
@@ -66,7 +66,7 @@ const SenseiHome = (): JSX.Element => {
 
     useEffect(() => {
         if (inView) {
-            controls.start('visible');
+            controls.start('visible').then(r => console.log(r));
         }
     }, [controls, inView]);
 
@@ -74,7 +74,7 @@ const SenseiHome = (): JSX.Element => {
      * Animation variants for the home section.
      */
     const containerVariants = {
-        hidden: { opacity: 0, y: 50 },
+        hidden: {opacity: 0, y: 50},
         visible: {
             opacity: 1,
             y: 0,
@@ -86,7 +86,7 @@ const SenseiHome = (): JSX.Element => {
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: {opacity: 0, y: 20},
         visible: {
             opacity: 1,
             y: 0,
@@ -107,8 +107,10 @@ const SenseiHome = (): JSX.Element => {
                 <motion.div className={styles.homeImg} variants={itemVariants}>
                     <img
                         src="Assets/art-gallery/Images/logo/My_Logo.webp"
-                        alt="Mostafa Sensei"
+                        alt="Mostafa Sensei Image"
                         className={styles.image}
+                        width={350}
+                        height={350}
                         onClick={handleImageClick}
                     />
                 </motion.div>
@@ -126,22 +128,27 @@ const SenseiHome = (): JSX.Element => {
                     </p>
                     <motion.div className={styles.socialIcon} variants={itemVariants}>
                         <a href="https://www.linkedin.com/in/mostafa-mahmoud-963a78235/" target="_blank"
-                           rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faLinkedin} />
+                           rel="noopener noreferrer"
+                           title="Linkedin"
+                        >
+                            <FontAwesomeIcon icon={faLinkedin}/>
                         </a>
-                        <a href="https://github.com/MostafaSensei106" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faGithub} />
+                        <a href="https://github.com/MostafaSensei106" target="_blank" rel="noopener noreferrer"
+                           title="Github"
+                        >
+                            <FontAwesomeIcon icon={faGithub}/>
                         </a>
-                        <a href="https://t.me/Mostafa_Sensie106" target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon icon={faTelegram} />
+                        <a href="https://t.me/Mostafa_Sensie106" target="_blank" rel="noopener noreferrer"
+                           title="Telegram">
+                            <FontAwesomeIcon icon={faTelegram}/>
                         </a>
                     </motion.div>
                     <motion.div className={styles.homeButton} variants={itemVariants}>
                         <a href="#Contact" className={`${styles.btn} ${styles.btn1}`}>
-                            Hire Me <FontAwesomeIcon icon={faUserSecret} />
+                            Hire Me <FontAwesomeIcon icon={faUserSecret}/>
                         </a>
                         <a href="Assets/cv/Mostafa-Mahmoud-CV.pdf" download className={`${styles.btn} ${styles.btn2}`}>
-                            Download CV <FontAwesomeIcon icon={faFilePdf} />
+                            Download CV <FontAwesomeIcon icon={faFilePdf}/>
                         </a>
                     </motion.div>
                 </motion.div>

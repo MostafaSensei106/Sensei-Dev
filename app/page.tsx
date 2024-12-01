@@ -1,33 +1,29 @@
-import SenseiHeader from "@/app/com/header/sensei-header";
-import SenseiHome from "@/app/com/home/sensei-home";
-import SenseiServicesProjects from "./com/services/sensei-services-projects";
-import ExperienceSection from "@/app/com/experience/experience-section";
-// import SenseiProjects from "@/app/com/services/sensei-projects";
-import SenseiArt from "./com/art_gallery/sensei-art";
-import SenseiContact from "@/app/com/contact_me/sensei-contact";
-import Senseiloader from "@/app/com/loader/sensei_loader";
-import AnimatedBackground from "@/app/com/animated_background/animated_background";
-import SenseiProjects from "./com/services/sensei-projects";
+import dynamic from 'next/dynamic';
 
-// Main component
-// @returns {JSX.Element}
-// @author Mostafa Sensei106
-// @description A functional component that renders the page of the website.
+const LoadingScreen = dynamic(() => import("@/app/com/loader/sensei_loader"));
+const AnimatedBackground = dynamic(() => import("@/app/com/animated_background/animated_background"));
+const HomeSection = dynamic(() => import("@/app/com/home/sensei-home"));
+const ServicesSection = dynamic(() => import("./com/services/sensei-services-projects"));
+const ExperienceSection = dynamic(() => import("@/app/com/experience/experience-section"));
+const ArtGallerySection = dynamic(() => import("./com/art_gallery/sensei-art"));
+const ContactMeSection = dynamic(() => import("@/app/com/contact_me/sensei-contact"));
+const AppBar = dynamic(() => import("@/app/com/header/sensei-header"));
+const ProjectsSection = dynamic(() => import("./com/services/sensei-projects"));
+
 function Main() {
     return (
         <>
-            {/*//This component displays a loading spinner until the page is fully loaded*/}
-            <Senseiloader />
-            <SenseiHeader />
-            <AnimatedBackground/>
-            <SenseiHome />
-            <SenseiServicesProjects />
+            <LoadingScreen />
+            <AppBar />
+            <AnimatedBackground />
+            <HomeSection />
+            <ServicesSection />
             <ExperienceSection />
-            <SenseiProjects />
-            <SenseiArt />
-            <SenseiContact />
+            <ProjectsSection />
+            <ArtGallerySection />
+            <ContactMeSection />
         </>
     );
 }
 
-export  default Main;
+export default Main;

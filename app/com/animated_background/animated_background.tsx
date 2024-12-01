@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState, useCallback } from 'react';// Import necessary dependencies
-import { debounce } from 'lodash';//
+import { debounce } from 'lodash';
 import styles from './animated_background.module.css';
 
 

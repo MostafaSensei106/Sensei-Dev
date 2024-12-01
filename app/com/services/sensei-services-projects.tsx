@@ -138,7 +138,7 @@ function SenseiServicesProjects(): JSX.Element {
     });
 
     return (
-        <section className={styles['section-services']} id="Service">
+        <section className={styles['section-services']} id="Services">
             <div className={styles.container}>
                 <motion.div
                     ref={headerRef}

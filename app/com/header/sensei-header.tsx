@@ -39,10 +39,10 @@ const SenseiHeader = (): JSX.Element => {
     const handleScroll = (): void => {
         const sections: Array<string> = [
             'Home',
-            'Service',
+            'Services',
             'Experience',
             'Projects',
-            'Gallery'];
+            'ArtGallery',];
         const current: string | undefined = sections.find((section) => {
             const element = document.getElementById(section);
             if (element) {
@@ -85,16 +85,15 @@ const SenseiHeader = (): JSX.Element => {
     // Mapping section names to their respective FontAwesome icons
     const sectionIcons: Record<string, IconProp> = {
         Home: faHome,
-        Service: faUserSecret,
+        Services: faUserSecret,
         Experience: faBook,
         Projects: faFolder,
-        Gallery: faPalette,
+        ArtGallery: faPalette,
     };
 
     return (
         <header className={styles.header}>
             <a href="#" className={styles.logo}>
-                <span lang="en">Mostafa •</span>
                 <span lang="ja"> モスタファ</span>
             </a>
             <div
