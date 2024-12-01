@@ -109,7 +109,7 @@ function ExperienceSection() {
     });
 
     const knowledgeEducationItems = [
-        {tag: "Flutter Developer [Volunteer]", subTag: "Lothga", subTagHyperlink: "https://lothgha.com/", desc: "Developed core features, built a system supporting audio and centralized database, with parental control for content and progress.", isRight: true, startDate: "2024-08-01",endDate: "2024-09-1", showDate: true},
+        {tag: "Flutter Developer [Volunteer]", subTag: "Lothgha", subTagHyperlink: "https://lothgha.com/", desc: "Developed core features, built a system supporting audio and centralized database, with parental control for content and progress.", isRight: true, startDate: "2024-08-01",endDate: "2024-09-1", showDate: true},
         {tag: "Computer Science Degree", desc: "Studying Computer's Science, building skills in programming, algorithms, and AI.",
             subTag: "Benha University", subTagHyperlink: "https://www.bu.edu.eg/", isRight: false, startDate: "2022-10-01", showDate: true},
         {tag: "Arabic Language", desc: "Native Arabic speaker with strong language skills.", isRight: true, startDate: "2019-01-01", showDate: false},
