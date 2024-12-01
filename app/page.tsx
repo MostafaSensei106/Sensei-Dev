@@ -1,14 +1,19 @@
-import dynamic from 'next/dynamic';
+import React from "react";
+import AppBar from "@/app/com/header/sensei-header";
+import HomeSection from "@/app/com/home/sensei-home";
+import ServicesSection from "./com/services/sensei-services-projects";
+import ExperienceSection from "@/app/com/experience/experience-section";
+import ArtGallerySection from "./com/art_gallery/sensei-art";
+import ContactMeSection from "@/app/com/contact_me/sensei-contact";
+import LoadingScreen from "@/app/com/loader/sensei_loader";
+import AnimatedBackground from "@/app/com/animated_background/animated_background";
+import ProjectsSection from "./com/services/sensei-projects";
 
-const LoadingScreen = dynamic(() => import("@/app/com/loader/sensei_loader"));
-const AnimatedBackground = dynamic(() => import("@/app/com/animated_background/animated_background"));
-const HomeSection = dynamic(() => import("@/app/com/home/sensei-home"));
-const ServicesSection = dynamic(() => import("./com/services/sensei-services-projects"));
-const ExperienceSection = dynamic(() => import("@/app/com/experience/experience-section"));
-const ArtGallerySection = dynamic(() => import("./com/art_gallery/sensei-art"));
-const ContactMeSection = dynamic(() => import("@/app/com/contact_me/sensei-contact"));
-const AppBar = dynamic(() => import("@/app/com/header/sensei-header"));
-const ProjectsSection = dynamic(() => import("./com/services/sensei-projects"));
+
+// Main component
+// @returns {JSX.Element}
+// @author Mostafa Sensei106
+// @description A functional component that renders the page of the website.
 
 function Main() {
     return (
@@ -16,6 +21,7 @@ function Main() {
             <LoadingScreen />
             <AppBar />
             <AnimatedBackground />
+            <AnimatedBackground/>
             <HomeSection />
             <ServicesSection />
             <ExperienceSection />
@@ -25,5 +31,4 @@ function Main() {
         </>
     );
 }
-
-export default Main;
+export  default Main;

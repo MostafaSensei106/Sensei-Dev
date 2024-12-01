@@ -139,7 +139,8 @@ const SenseiHome = (): JSX.Element => {
                             <FontAwesomeIcon icon={faGithub}/>
                         </a>
                         <a href="https://t.me/Mostafa_Sensie106" target="_blank" rel="noopener noreferrer"
-                           title="Telegram">
+                           title="Telegram"
+                        >
                             <FontAwesomeIcon icon={faTelegram}/>
                         </a>
                     </motion.div>
