@@ -15,9 +15,9 @@ type CustomMetadata = Metadata & {
 
 // Metadata configuration
 export const metadata: CustomMetadata = {
-    description: "Hello! I'm Ahmed Emad, I am a Computer Science Student at BFCAI , Certfied CCNA Engineer , Specializing in Information Security and Digital Forensics.",
-    keywords: "Ahmed Emad,Information Security and Digital Forensics ",
-    author: "Mostafa Sensei106 & Ahmed Emad",
+    description: "Hello! I'm Mostafa Mahmoud, a Software Engineer specializing in Flutter, backend development, and AI.",
+    keywords: "Mostafa Mahmoud, Flutter, Backend Development, AI",
+    author: "Mostafa Sensei106",
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1.0",
 };
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode; })
     return (
         <html lang="en" dir="ltr">
         <head>
-            <title>Ahmed Emad</title>
+            <title>Mostafa Mahmoud</title>
             <meta name="description" content={metadata.description} />
             <meta name="keywords" content={metadata.keywords} />
             <meta name="author" content={metadata.author} />

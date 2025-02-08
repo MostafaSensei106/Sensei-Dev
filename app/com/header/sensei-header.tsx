@@ -4,10 +4,10 @@ import styles from './sensei-header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faHome,
-    // faUserSecret,
+    faUserSecret,
     faBook,
-    // faFolder,
-    // faPalette
+    faFolder,
+    faPalette
 } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
@@ -39,11 +39,10 @@ const SenseiHeader = (): JSX.Element => {
     const handleScroll = (): void => {
         const sections: Array<string> = [
             'Home',
-            // 'Services',
+            'Services',
             'Experience',
-            // 'Projects',
-            // 'ArtGallery',
-        ];
+            'Projects',
+            'ArtGallery',];
         const current: string | undefined = sections.find((section) => {
             const element = document.getElementById(section);
             if (element) {
@@ -86,16 +85,16 @@ const SenseiHeader = (): JSX.Element => {
     // Mapping section names to their respective FontAwesome icons
     const sectionIcons: Record<string, IconProp> = {
         Home: faHome,
-        // Services: faUserSecret,
+        Services: faUserSecret,
         Experience: faBook,
-        // Projects: faFolder,
-        // ArtGallery: faPalette,
+        Projects: faFolder,
+        ArtGallery: faPalette,
     };
 
     return (
         <header className={styles.header}>
             <a href="#" className={styles.logo}>
-                <span lang="ja"> アーメド・アンマ</span>
+                <span lang="ja"> モスタファ</span>
             </a>
             <div
                 className={`${styles.MenuIcon} ${isMenuOpen ? styles.active : ''}`}
