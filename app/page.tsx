@@ -1,13 +1,10 @@
 import React from "react";
 import AppBar from "@/app/com/header/sensei-header";
-import HomeSection from "@/app/com/home/sensei-home";
-import ServicesSection from "./com/services/sensei-services-projects";
+import HomeSection from "@/app/com/home/home";
 import ExperienceSection from "@/app/com/experience/experience-section";
-import ArtGallerySection from "./com/art_gallery/sensei-art";
 import ContactMeSection from "@/app/com/contact_me/sensei-contact";
 import LoadingScreen from "@/app/com/loader/sensei_loader";
 import AnimatedBackground from "@/app/com/animated_background/animated_background";
-import ProjectsSection from "./com/services/sensei-projects";
 
 
 // Main component
@@ -22,10 +19,10 @@ function Main() {
             <AnimatedBackground />
             <AppBar />
             <HomeSection />
-            <ServicesSection />
+            {/*<ServicesSection />*/}
             <ExperienceSection />
-            <ProjectsSection />
-            <ArtGallerySection />
+            {/*<ProjectsSection />*/}
+            {/*<ArtGallerySection />*/}
             <ContactMeSection />
         </>
     );
