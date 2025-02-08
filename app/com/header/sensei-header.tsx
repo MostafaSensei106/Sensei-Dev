@@ -42,7 +42,8 @@ const SenseiHeader = (): JSX.Element => {
             'Services',
             'Experience',
             'Projects',
-            'ArtGallery',];
+            'ArtGallery',
+        ];
         const current: string | undefined = sections.find((section) => {
             const element = document.getElementById(section);
             if (element) {

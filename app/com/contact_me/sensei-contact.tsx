@@ -77,7 +77,7 @@ const SenseiContact = (): JSX.Element => {
                         </div>
                         {/* Copyright footer */}
                         <div className={styles.copyright}>
-                            &copy; {new Date().getFullYear()}{' '}
+                            &copy; 2024 - {new Date().getFullYear()}{' '}
                             <span>
                                 <a
                                     className={styles.Sensei_Name}
@@ -85,7 +85,6 @@ const SenseiContact = (): JSX.Element => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    {/* My name */}
                                     Mostafa Mahmoud
                                 </a>
                             </span>{' '}
