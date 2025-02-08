@@ -31,15 +31,15 @@ const SenseiContact = (): JSX.Element => {
                                     className={styles['link-me']}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    href="mailto:mostafa438886@fci.bu.edu.eg?subject=こんにちは、 MR: Mostafa Sensei"
+                                    href="mailto:ahmedemadeldeen77@gmail.com?subject=Hello Ahmed: "
                                 >
-                                    Mostafa Sensei106.Mail
+                                    AhmedEmadeldeen77@gmail.com
                                 </a>
                                 <div className={styles.social}>
                                     <p className={styles.meon}>Me on Social Network</p>
                                     <a
                                         aria-label="Go to Facebook"
-                                        href="https://www.facebook.com/MostafaSensei106"
+                                        href="https://www.facebook.com/0x3omda?rdid=l8KHUhiFI83rvw3d&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BPFja34vU%2F"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -47,7 +47,7 @@ const SenseiContact = (): JSX.Element => {
                                     </a>
                                     <a
                                         aria-label="Go to Instagram"
-                                        href="https://www.instagram.com/mostafa_sensei106/"
+                                        href="https://www.instagram.com/0x3omda?igsh=MW83cjR3aHJhNDlkZw%3D%3D"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -56,7 +56,7 @@ const SenseiContact = (): JSX.Element => {
                                     </a>
                                     <a
                                         aria-label="Go to Linkedin"
-                                        href="https://www.linkedin.com/in/mostafa-mahmoud-963a78235/?originalSubdomain=eg"
+                                        href="https://www.linkedin.com/in/ahmed-emad-a77420284/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -70,23 +70,23 @@ const SenseiContact = (): JSX.Element => {
                                         rel="noopener noreferrer"
                                     >
                                         {/* Telegram icon */}
-                                        <i className="fa-brands fa-telegram"></i>
+                                        <i className="fa-brands fa-x-twitter"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         {/* Copyright footer */}
                         <div className={styles.copyright}>
-                            &copy; {new Date().getFullYear()}{' '}
+
+                            &copy; 2024 - {new Date().getFullYear()}{' '}
                             <span>
                                 <a
                                     className={styles.Sensei_Name}
-                                    href="https://github.com/MostafaSensei106"
+                                    href="https://github.com/Eng-Ahmed-Emad/AhmedEmad-Dev"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    {/* My name */}
-                                    Mostafa Mahmoud
+                                    Ahmed Emadeldeen
                                 </a>
                             </span>{' '}
                             ALL Copyright Reserved.
