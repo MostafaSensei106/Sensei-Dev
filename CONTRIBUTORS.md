@@ -2,4 +2,4 @@
 
 Thank you to everyone who contributed to this project! ❤️  
 
-- **@MostafaSensei** - Lead Developer 
+- **@MostafaSensei106** - Lead Developer 
