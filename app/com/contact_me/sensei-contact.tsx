@@ -65,7 +65,7 @@ const SenseiContact = (): JSX.Element => {
                                     </a>
                                     <a
                                         aria-label="Go to Telegram"
-                                        href="https://t.me/Mostafa_Sensei106"
+                                        href="https://x.com/Ahmed3Emad77?t=XxokO68ZbNGpLJSmhQ4b3g&s=09"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
