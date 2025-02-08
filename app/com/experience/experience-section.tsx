@@ -109,15 +109,12 @@ function ExperienceSection() {
     });
 
     const knowledgeEducationItems = [
-        {tag: "Cyber Security Instructor", subTag: "Google Student Club", subTagHyperlink: "https://gdg.community.dev/gdg-on-campus-benha-university-benha-egypt/", desc: "Developed core features, built a system supporting audio and centralized database, with parental control for content and progress.", isRight: true, startDate: "2024-07-01",endDate: "2026-01-07", showDate: true},
-        {tag: "CTF Maker" , subTag: "Cyber Cohesions" , subTagHyperlink: "https://www.cybercohesions.com/", desc: "Makes CTF's At CyberCohesions BootCamps And competition.", isRight: false,  startDate: "2024-07-01",endDate: "2026-01-07", showDate: true},
-        {tag: "Ai Model Trainer" , subTag: "Outlier" , subTagHyperlink: "https://outlier.ai/", desc: " I Train AI Model That Are Used At Pentesting.", isRight: true,  startDate: "2023-05-01", showDate: true},
-
-        {tag: "Computer Science Degree", desc: "Studying Computer's Science, building skills in in Information Security and Digital Forensics.",
+        {tag: "Flutter Developer [Volunteer]", subTag: "Lothgha", subTagHyperlink: "https://lothgha.com/", desc: "Developed core features, built a system supporting audio and centralized database, with parental control for content and progress.", isRight: true, startDate: "2024-08-01",endDate: "2024-09-1", showDate: true},
+        {tag: "Computer Science Degree", desc: "Studying Computer's Science, building skills in programming, algorithms, and AI.",
             subTag: "Benha University", subTagHyperlink: "https://www.bu.edu.eg/", isRight: false, startDate: "2022-10-01", showDate: true},
-
         {tag: "Arabic Language", desc: "Native Arabic speaker with strong language skills.", isRight: true, startDate: "2019-01-01", showDate: false},
-        {tag: "English Language C1", desc: "English is my second language, with strong proficiency in speaking and writing.", isRight: false, startDate: "2019-01-01", showDate: false},
+        {tag: "English Language", desc: "English is my second language, with strong proficiency in speaking and writing.", isRight: false, startDate: "2019-01-01", showDate: false},
+        {tag: "Japanese Language", desc: "Japanese is my third language, learning with goal of working in Japan.", isRight: true, startDate: "2019-01-01", showDate: false}
     ];
 
 
