@@ -54,13 +54,13 @@ const getIconForLanguage = (language: string): string => {
         CSS: 'fa-brands fa-css3',
         Java: 'fa-brands fa-java',
         'C++': 'fa-solid fa-code',
-        Dart: 'fa-brands fa-flutter',
+        Dart: 'fa-brands fa-dart-lang',
         Ruby: 'fa-brands fa-gem',
         PHP: 'fa-brands fa-php',
         Go: 'fa-brands fa-golang',
         Kotlin: 'fa-brands fa-android',
         Rust: 'fa-brands fa-rust',
-        'C#': 'fa-brands fa-dot-circle'
+        'C#': 'fa-brands fa-dot-circle',
     };
 
     return iconMap[language] || 'fa-solid fa-code';
