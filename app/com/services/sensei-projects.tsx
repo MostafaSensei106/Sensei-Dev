@@ -124,7 +124,7 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
             </div>
             <div className={styles['part-2']}>
                 <p className={styles.description}>{repo.description || 'No description available.'}</p>
-                <p className={styles.description}>
+                <div className={styles.description}>
                     <strong>Stars:</strong> {repo.stargazers_count} <FontAwesomeIcon icon={faStar} /> |
                     <strong>Issues:</strong> {repo.open_issues_count} <FontAwesomeIcon icon={faExclamationCircle} /> |
                     <strong>Watchers:</strong> {repo.watchers_count} <FontAwesomeIcon icon={faEye} />
@@ -137,15 +137,15 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
                             <strong>Topics:</strong> {repo.topics.join(', ')}
                         </p>
                     )}
-                </p>
-                <p className={styles.description}>
+                </div>
+                <div className={styles.description}>
                     <strong>Owner:</strong> {repo.owner.login}
                     {repo.license && (
                         <p className={styles.description}>
                             <strong>License:</strong> {repo.license.name}
                         </p>
                     )}
-                </p>
+                </div>
             </div>
         </motion.div>
     );

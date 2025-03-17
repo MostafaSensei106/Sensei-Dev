@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, JSX } from "react";
 import styles from "./sensei_loader.module.css";
 import Image, { ImageProps } from "next/image";
 
@@ -43,7 +43,7 @@ function SenseiLoader(): JSX.Element | null {
         className={styles.loader}
         id="page-loader"
       >
-        <Image {...loaderImageProps} />
+        <Image {...loaderImageProps} alt="A loading spinner" />
       </div>
     </>
   );

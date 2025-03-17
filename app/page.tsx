@@ -17,7 +17,7 @@ import ProjectsSection from "./com/services/sensei-projects";
 
 function Main() {
     return (
-        <>
+        <main>
             <LoadingScreen />
             <AnimatedBackground />
             <AppBar />
@@ -27,7 +27,7 @@ function Main() {
             <ProjectsSection />
             <ArtGallerySection />
             <ContactMeSection />
-        </>
+        </main>
     );
 }
 export  default Main;

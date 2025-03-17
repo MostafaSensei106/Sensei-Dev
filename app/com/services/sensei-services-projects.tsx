@@ -1,6 +1,6 @@
 // Import necessary dependencies and styles
 "use client";
-import React from 'react';
+import React, { JSX } from 'react';
 import {motion} from "framer-motion";
 import {useInView} from "react-intersection-observer";
 import styles from "./sensei-services-projects.module.css";
