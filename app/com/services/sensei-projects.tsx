@@ -61,6 +61,13 @@ const getIconForLanguage = (language: string): string => {
         Kotlin: 'fa-brands fa-android',
         Rust: 'fa-brands fa-rust',
         'C#': 'fa-brands fa-dot-circle',
+        Swift: 'fa-brands fa-swift',
+        Groovy: 'fa-brands fa-groovy',
+        PowerShell: 'fa-brands fa-powershell',
+        Shell: 'fa-solid fa-terminal',
+        VisualBasic: 'fa-brands fa-windows',
+        CMake: 'fa-solid fa-cube',
+        C: 'fa-brands fa-c',
     };
 
     return iconMap[language] || 'fa-solid fa-code';
@@ -128,10 +135,10 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
                     <strong>Stars:</strong> {repo.stargazers_count} <FontAwesomeIcon icon={faStar} /> |
                     <strong>Issues:</strong> {repo.open_issues_count} <FontAwesomeIcon icon={faExclamationCircle} /> |
                     <strong>Watchers:</strong> {repo.watchers_count} <FontAwesomeIcon icon={faEye} />
-                    <br/>
-                    <strong>Created:</strong> {formatDate(repo.created_at)}<br/>
+                    <br />
+                    <strong>Created:</strong> {formatDate(repo.created_at)}<br />
                     <strong>Updated:</strong> {formatDate(repo.updated_at)}
-                    <br/>
+                    <br />
                     {repo.topics.length > 0 && (
                         <p className={styles.description}>
                             <strong>Topics:</strong> {repo.topics.join(', ')}
@@ -140,12 +147,15 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
                 </div>
                 <div className={styles.description}>
                     <strong>Owner:</strong> {repo.owner.login}
+                    <br />
+                    <strong>Language:</strong> {repo.language ? repo.language : 'Markdown'} 
                     {repo.license && (
                         <p className={styles.description}>
                             <strong>License:</strong> {repo.license.name}
                         </p>
                     )}
                 </div>
+
             </div>
         </motion.div>
     );
