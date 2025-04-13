@@ -1,6 +1,6 @@
 
 
-/*
+/* /*
 @Author Mostafa Sensei106
 @Description A loader component that displays a loading spinner until the page is fully loaded.
  */
@@ -15,5 +15,4 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
+} 
