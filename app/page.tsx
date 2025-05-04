@@ -6,7 +6,7 @@ import ExperienceSection from "@/app/com/experience/experience-section";
 import ArtGallerySection from "./com/art_gallery/sensei-art";
 import ContactMeSection from "@/app/com/contact_me/sensei-contact";
 import LoadingScreen from "@/app/com/loader/sensei_loader";
-import AnimatedBackground from "@/app/com/animated_background/animated_background";
+import Background from "@/app/com/animated_background/background";
 import ProjectsSection from "./com/services/sensei-projects";
 
 
@@ -19,7 +19,7 @@ function Main() {
     return (
         <main>
             <LoadingScreen />
-            <AnimatedBackground />
+            <Background />
             <AppBar />
             <HomeSection />
             <ServicesSection />

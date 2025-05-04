@@ -2,10 +2,11 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { debounce } from 'lodash';
 import styles from './animated_background.module.css';
+import StarsBackground from './stars_background';
 
 
 
-const AnimatedBackground: React.FC = () => {
+const Background = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const contextRef = useRef<CanvasRenderingContext2D | null>(null);
     const animationFrameIdRef = useRef<number | null>(null);
@@ -76,8 +77,8 @@ const AnimatedBackground: React.FC = () => {
     }, [dimensions, animate]);
 
     return (
-        <canvas ref={canvasRef} className={styles.canvas} />
+        <><StarsBackground /><canvas ref={canvasRef} className={styles.canvas} /></>
     );
 };
 
-export default AnimatedBackground;
+export default Background;
