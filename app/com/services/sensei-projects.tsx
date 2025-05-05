@@ -18,7 +18,7 @@ interface GitHubRepository {
     id: number;
     name: string;
     description: string;
-    languages: { [key: string]: number };
+    language: string;
     html_url: string;
     stargazers_count: number;
     open_issues_count: number;
@@ -121,7 +121,7 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
         >
             <div className={styles['part-1']}>
                 <motion.i
-                    className={getIconForLanguage(Object.keys(repo.languages)[0])}
+                    className={getIconForLanguage(repo.language)}
                     animate={{ rotate: 0 }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
@@ -147,7 +147,7 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
                 <div className={styles.description}>
                     <strong>Owner:</strong> {repo.owner.login}
                     <br />
-                    <strong>Languages:</strong> {Object.keys(repo.languages).join(', ')}
+                    <strong>Language:</strong> {repo.language ? repo.language : 'Markdown'} 
                     {repo.license && (
                         <p className={styles.description}>
                             <strong>License:</strong> {repo.license.name}
@@ -181,14 +181,7 @@ const SenseiProjects: React.FC = () => {
                 throw new Error('Failed to fetch repositories');
             }
             const data = await response.json();
-
-            const reposWithLanguages = await Promise.all(data.map(async (repo: GitHubRepository) => {
-                const languagesResponse = await fetch(repo.languages_url);
-                const languages = await languagesResponse.json();
-                return { ...repo, languages };
-            }));
-
-            setRepos(reposWithLanguages);
+            setRepos(data);
         } catch (error) {
             console.error('Error fetching repositories:', error);
         }
@@ -238,4 +231,3 @@ const SenseiProjects: React.FC = () => {
 };
 
 export default SenseiProjects;
-
