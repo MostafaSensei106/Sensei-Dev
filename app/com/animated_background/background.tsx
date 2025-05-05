@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { debounce } from 'lodash';
 import styles from './animated_background.module.css';
-import StarsBackground from './stars_background';
 
 
 
