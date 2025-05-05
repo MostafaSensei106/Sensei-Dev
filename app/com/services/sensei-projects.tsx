@@ -1,4 +1,3 @@
-// Import necessary dependencies and styles
 "use client";
 import React, { useEffect, useState, useCallback } from 'react';
 import { motion } from "framer-motion";
@@ -19,7 +18,7 @@ interface GitHubRepository {
     id: number;
     name: string;
     description: string;
-    language: string;
+    languages: { [key: string]: number };
     html_url: string;
     stargazers_count: number;
     open_issues_count: number;
@@ -122,7 +121,7 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
         >
             <div className={styles['part-1']}>
                 <motion.i
-                    className={getIconForLanguage(repo.language)}
+                    className={getIconForLanguage(Object.keys(repo.languages)[0])}
                     animate={{ rotate: 0 }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
@@ -148,7 +147,7 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
                 <div className={styles.description}>
                     <strong>Owner:</strong> {repo.owner.login}
                     <br />
-                    <strong>Language:</strong> {repo.language ? repo.language : 'Markdown'} 
+                    <strong>Languages:</strong> {Object.keys(repo.languages).join(', ')}
                     {repo.license && (
                         <p className={styles.description}>
                             <strong>License:</strong> {repo.license.name}
@@ -182,7 +181,14 @@ const SenseiProjects: React.FC = () => {
                 throw new Error('Failed to fetch repositories');
             }
             const data = await response.json();
-            setRepos(data);
+
+            const reposWithLanguages = await Promise.all(data.map(async (repo: GitHubRepository) => {
+                const languagesResponse = await fetch(repo.languages_url);
+                const languages = await languagesResponse.json();
+                return { ...repo, languages };
+            }));
+
+            setRepos(reposWithLanguages);
         } catch (error) {
             console.error('Error fetching repositories:', error);
         }
@@ -232,3 +238,4 @@ const SenseiProjects: React.FC = () => {
 };
 
 export default SenseiProjects;
+
