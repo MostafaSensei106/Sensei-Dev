@@ -76,7 +76,7 @@ const Background = () => {
     }, [dimensions, animate]);
 
     return (
-        <><StarsBackground /><canvas ref={canvasRef} className={styles.canvas} /></>
+        <canvas ref={canvasRef} className={styles.canvas} />
     );
 };
 
