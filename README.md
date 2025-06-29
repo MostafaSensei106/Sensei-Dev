@@ -56,8 +56,8 @@ Welcome to Sensei-Dev, my personal portfolio showcasing a journey through the re
 
 ## Screenshots
 <p align="center">
-  <img src="screenshots/home.png" width="80%" alt="Screenshot 1">
-  <img src="screenshots/art_gallery.png" width="80%" alt="Screenshot 2">
+  <img src="docs/screenshots/home.png" width="80%" alt="Screenshot 1">
+  <img src="docs/screenshots/art_gallery.png" width="80%" alt="Screenshot 2">
 </p>
 
 ## Demo
