@@ -77,23 +77,11 @@ Get Sensei-Dev up and running on your local machine in just a few steps:
    cd Sensei-Dev
    npm install
    ```
-4. Install Python requirements:
-   ```
-   cd app/image_optmization
-   pip install -r requirements.txt
-   ```
-5. Use the Python script for image optimization:
-    - Place your images in the designated folder within the `public/Assets/art-gallery/Images/image_display` directory.
-    - Run the Python script:
-      ```
-      python image_optimizer.py
-      ```
-    - Follow the on-screen instructions to optimize your images.
-6. Start the development server:
+4. Start the development server:
    ```
    npm run dev
    ```
-7. Open your browser and visit `http://localhost:3000` to see the portfolio in action!
+5. Open your browser and visit `http://localhost:3000` to see the portfolio in action!
 
 ## Technologies
 This portfolio is built with cutting-edge technologies:

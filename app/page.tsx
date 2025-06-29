@@ -6,8 +6,8 @@ import ExperienceSection from "@/app/com/experience/experience-section";
 import ArtGallerySection from "./com/art_gallery/sensei-art";
 import ContactMeSection from "@/app/com/contact_me/sensei-contact";
 import LoadingScreen from "@/app/com/loader/sensei_loader";
-import Background from "@/app/com/animated_background/background";
 import ProjectsSection from "./com/services/sensei-projects";
+import AnimatedBackground from "./com/animated_background/background";
 
 
 // Main component
@@ -19,7 +19,7 @@ function Main() {
     return (
         <main>
             <LoadingScreen />
-            <Background />
+            <AnimatedBackground />
             <AppBar />
             <HomeSection />
             <ServicesSection />
@@ -30,4 +30,4 @@ function Main() {
         </main>
     );
 }
-export  default Main;
+export default Main;
