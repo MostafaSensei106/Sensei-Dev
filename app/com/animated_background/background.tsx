@@ -1,249 +1,437 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { Renderer, Camera, Geometry, Program, Mesh } from "ogl";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
+import { debounce } from 'lodash';
+import styles from './animated_background.module.css';
 
-import './animated_background.module.css';
-
-interface ParticlesProps {
-    particleCount?: number;
-    particleSpread?: number;
-    speed?: number;
-    particleColors?: string[];
-    moveParticlesOnHover?: boolean;
-    particleHoverFactor?: number;
-    alphaParticles?: boolean;
-    particleBaseSize?: number;
-    sizeRandomness?: number;
-    cameraDistance?: number;
-    disableRotation?: boolean;
-    className?: string;
+interface Bubble {
+    x: number;
+    y: number;
+    radius: number;
+    vx: number;
+    vy: number;
+    originalRadius: number;
+    isVisible: boolean;
 }
 
-const defaultColors: string[] = ["#ffffff", "#ffffff", "#ffffff"];
+interface Meteor {
+    x: number;
+    y: number;
+    size: number;
+    speed: number;
+    direction: 'horizontal' | 'vertical';
+    trail: { x: number; y: number; alpha: number }[];
+}
 
-const hexToRgb = (hex: string): [number, number, number] => {
-    hex = hex.replace(/^#/, "");
-    if (hex.length === 3) {
-        hex = hex.split("").map((c) => c + c).join("");
-    }
-    const int = parseInt(hex, 16);
-    const r = ((int >> 16) & 255) / 255;
-    const g = ((int >> 8) & 255) / 255;
-    const b = (int & 255) / 255;
-    return [r, g, b];
-};
+interface MousePosition {
+    x: number;
+    y: number;
+    active: boolean;
+}
 
-const vertex = /* glsl */ `
-  attribute vec3 position;
-  attribute vec4 random;
-  attribute vec3 color;
-  
-  uniform mat4 modelMatrix;
-  uniform mat4 viewMatrix;
-  uniform mat4 projectionMatrix;
-  uniform float uTime;
-  uniform float uSpread;
-  uniform float uBaseSize;
-  uniform float uSizeRandomness;
-  
-  varying vec4 vRandom;
-  varying vec3 vColor;
-  
-  void main() {
-    vRandom = random;
-    vColor = color;
+const AnimatedBackground: React.FC = () => {
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
+    const contextRef = useRef<CanvasRenderingContext2D | null>(null);
+    const animationFrameIdRef = useRef<number | null>(null);
+    const lastFrameTimeRef = useRef<number>(0);
     
-    vec3 pos = position * uSpread;
-    pos.z *= 10.0;
+    const bubblesRef = useRef<Bubble[]>([]);
+    const meteorsRef = useRef<Meteor[]>([]);
+    const mouseRef = useRef<MousePosition>({ x: 0, y: 0, active: false });
     
-    vec4 mPos = modelMatrix * vec4(pos, 1.0);
-    float t = uTime;
-    mPos.x += sin(t * random.z + 6.28 * random.w) * mix(0.1, 1.5, random.x);
-    mPos.y += sin(t * random.y + 6.28 * random.x) * mix(0.1, 1.5, random.w);
-    mPos.z += sin(t * random.w + 6.28 * random.y) * mix(0.1, 1.5, random.z);
+    // Performance optimization refs
+    const gridCanvasRef = useRef<HTMLCanvasElement | null>(null);
+    const gridNeedsRedrawRef = useRef<boolean>(true);
     
-    vec4 mvPos = viewMatrix * mPos;
-    gl_PointSize = (uBaseSize * (1.0 + uSizeRandomness * (random.x - 0.5))) / length(mvPos.xyz);
-    gl_Position = projectionMatrix * mvPos;
-  }
-`;
+    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+    const [isMobile, setIsMobile] = useState(false);
+    const [performance, setPerformance] = useState<'high' | 'medium' | 'low'>('high');
 
-const fragment = /* glsl */ `
-  precision highp float;
-  
-  uniform float uTime;
-  uniform float uAlphaParticles;
-  varying vec4 vRandom;
-  varying vec3 vColor;
-  
-  void main() {
-    vec2 uv = gl_PointCoord.xy;
-    float d = length(uv - vec2(0.5));
-    
-    if(uAlphaParticles < 0.5) {
-      if(d > 0.5) {
-        discard;
-      }
-      gl_FragColor = vec4(vColor + 0.2 * sin(uv.yxx + uTime + vRandom.y * 6.28), 1.0);
-    } else {
-      float circle = smoothstep(0.5, 0.4, d) * 0.8;
-      gl_FragColor = vec4(vColor + 0.2 * sin(uv.yxx + uTime + vRandom.y * 6.28), circle);
-    }
-  }
-`;
+    // Constants with performance optimization
+    const config = useMemo(() => ({
+        gridSize: 50,
+        mouseInfluenceRadius: isMobile ? 120 : 200,
+        mouseInfluenceStrength: 0.8,
+        maxRadius: isMobile ? 80 : 120,
+        minRadius: isMobile ? 40 : 60,
+        bubbleExpansionFactor: 1.2,
+        maxBubbles: Math.max(3, Math.floor(dimensions.width * dimensions.height / (isMobile ? 120000 : 80000))),
+        maxMeteors: Math.max(2, Math.floor(dimensions.width / (isMobile ? 400 : 250))),
+        targetFPS: 60,
+        frameInterval: 1000 / 60
+    }), [dimensions, isMobile]);
 
-const Particles: React.FC<ParticlesProps> = ({
-    particleCount = 200,
-    particleSpread = 10,
-    speed = 0.1,
-    particleColors,
-    moveParticlesOnHover = false,
-    particleHoverFactor = 1,
-    alphaParticles = false,
-    particleBaseSize = 100,
-    sizeRandomness = 1,
-    cameraDistance = 20,
-    disableRotation = false,
-    className,
-}) => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const mouseRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
-
-    useEffect(() => {
-        const container = containerRef.current;
-        if (!container) return;
-
-        const renderer = new Renderer({ depth: false, alpha: true });
-        const gl = renderer.gl;
-        container.appendChild(gl.canvas);
-        gl.clearColor(0, 0, 0, 0);
-
-        const camera = new Camera(gl, { fov: 15 });
-        camera.position.set(0, 0, cameraDistance);
-
-        const resize = () => {
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-            renderer.setSize(width, height);
-            camera.perspective({ aspect: gl.canvas.width / gl.canvas.height });
-        };
-        window.addEventListener("resize", resize, false);
-        resize();
-
-        const handleMouseMove = (e: MouseEvent) => {
-            const rect = container.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-            const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-            mouseRef.current = { x, y };
-        };
-
-        if (moveParticlesOnHover) {
-            container.addEventListener("mousemove", handleMouseMove);
-        }
-
-        const count = particleCount;
-        const positions = new Float32Array(count * 3);
-        const randoms = new Float32Array(count * 4);
-        const colors = new Float32Array(count * 3);
-        const palette = particleColors && particleColors.length > 0 ? particleColors : defaultColors;
-
-        for (let i = 0; i < count; i++) {
-            let x: number, y: number, z: number, len: number;
-            do {
-                x = Math.random() * 2 - 1;
-                y = Math.random() * 2 - 1;
-                z = Math.random() * 2 - 1;
-                len = x * x + y * y + z * z;
-            } while (len > 1 || len === 0);
-            const r = Math.cbrt(Math.random());
-            positions.set([x * r, y * r, z * r], i * 3);
-            randoms.set([Math.random(), Math.random(), Math.random(), Math.random()], i * 4);
-            const col = hexToRgb(palette[Math.floor(Math.random() * palette.length)]);
-            colors.set(col, i * 3);
-        }
-
-        const geometry = new Geometry(gl, {
-            position: { size: 3, data: positions },
-            random: { size: 4, data: randoms },
-            color: { size: 3, data: colors },
-        });
-
-        const program = new Program(gl, {
-            vertex,
-            fragment,
-            uniforms: {
-                uTime: { value: 0 },
-                uSpread: { value: particleSpread },
-                uBaseSize: { value: particleBaseSize },
-                uSizeRandomness: { value: sizeRandomness },
-                uAlphaParticles: { value: alphaParticles ? 1 : 0 },
-            },
-            transparent: true,
-            depthTest: false,
-        });
-
-        const particles = new Mesh(gl, { mode: gl.POINTS, geometry, program });
-
-        let animationFrameId: number;
-        let lastTime = performance.now();
-        let elapsed = 0;
-
-        const update = (t: number) => {
-            animationFrameId = requestAnimationFrame(update);
-            const delta = t - lastTime;
-            lastTime = t;
-            elapsed += delta * speed;
-
-            program.uniforms.uTime.value = elapsed * 0.001;
-
-            if (moveParticlesOnHover) {
-                particles.position.x = -mouseRef.current.x * particleHoverFactor;
-                particles.position.y = -mouseRef.current.y * particleHoverFactor;
+    // Performance monitoring with throttling
+    const performanceMonitor = useCallback((currentTime: number) => {
+        const deltaTime = currentTime - lastFrameTimeRef.current;
+        const fps = 1000 / deltaTime;
+        
+        // Only update performance state occasionally to avoid too many re-renders
+        if (Math.random() < 0.01) { // 1% chance per frame
+            if (fps < 25) {
+                setPerformance(prev => prev !== 'low' ? 'low' : prev);
+            } else if (fps < 40) {
+                setPerformance(prev => prev !== 'medium' ? 'medium' : prev);
             } else {
-                particles.position.x = 0;
-                particles.position.y = 0;
+                setPerformance(prev => prev !== 'high' ? 'high' : prev);
             }
+        }
+        
+        lastFrameTimeRef.current = currentTime;
+    }, []);
 
-            if (!disableRotation) {
-                particles.rotation.x = Math.sin(elapsed * 0.0002) * 0.1;
-                particles.rotation.y = Math.cos(elapsed * 0.0005) * 0.15;
-                particles.rotation.z += 0.01 * speed;
+    // Optimized bubble creation
+    const createBubbles = useCallback(() => {
+        const adjustedMaxBubbles = performance === 'low' ? 
+            Math.floor(config.maxBubbles * 0.5) : 
+            performance === 'medium' ? 
+            Math.floor(config.maxBubbles * 0.7) : 
+            config.maxBubbles;
+
+        const bubbles = Array.from({ length: adjustedMaxBubbles }, () => {
+            const radius = Math.random() * (config.maxRadius - config.minRadius) + config.minRadius;
+            return {
+                x: Math.random() * dimensions.width,
+                y: Math.random() * dimensions.height,
+                radius,
+                originalRadius: radius,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                isVisible: true
+            };
+        });
+
+        bubblesRef.current = bubbles;
+        return bubbles;
+    }, [dimensions, config, performance]);
+
+    const createMeteors = useCallback(() => {
+        const adjustedMaxMeteors = performance === 'low' ? 
+            Math.max(1, Math.floor(config.maxMeteors * 0.5)) : 
+            config.maxMeteors;
+
+        const meteors = Array.from({ length: adjustedMaxMeteors }, () => ({
+            x: Math.floor(Math.random() * (dimensions.width / config.gridSize)) * config.gridSize,
+            y: Math.floor(Math.random() * (dimensions.height / config.gridSize)) * config.gridSize,
+            size: Math.random() * 2 + 1,
+            speed: Math.random() * 2 + 1,
+            direction: Math.random() < 0.5 ? 'horizontal' : 'vertical',
+            trail: []
+        })) as Meteor[];
+    
+        meteorsRef.current = meteors;
+        return meteors;
+    }, [dimensions, config, performance]);
+
+    // Pre-render grid to offscreen canvas for better performance
+    const createGridCanvas = useCallback(() => {
+        if (!dimensions.width || !dimensions.height) return;
+
+        const gridCanvas = document.createElement('canvas');
+        gridCanvas.width = dimensions.width;
+        gridCanvas.height = dimensions.height;
+        const gridCtx = gridCanvas.getContext('2d');
+        
+        if (gridCtx) {
+            gridCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            gridCtx.lineWidth = 0.4;
+            gridCtx.beginPath();
+            
+            for (let x = 0; x <= dimensions.width; x += config.gridSize) {
+                gridCtx.moveTo(x, 0);
+                gridCtx.lineTo(x, dimensions.height);
             }
+            for (let y = 0; y <= dimensions.height; y += config.gridSize) {
+                gridCtx.moveTo(0, y);
+                gridCtx.lineTo(dimensions.width, y);
+            }
+            gridCtx.stroke();
+        }
+        
+        gridCanvasRef.current = gridCanvas;
+        gridNeedsRedrawRef.current = false;
+    }, [dimensions, config.gridSize]);
 
-            renderer.render({ scene: particles, camera });
+    // Initialize dimensions
+    useEffect(() => {
+        const updateDimensions = () => {
+            setDimensions({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+            setIsMobile(window.innerWidth <= 768);
+            gridNeedsRedrawRef.current = true;
         };
 
-        animationFrameId = requestAnimationFrame(update);
+        const debouncedUpdateDimensions = debounce(updateDimensions, 250);
+        window.addEventListener('resize', debouncedUpdateDimensions);
+        updateDimensions();
 
         return () => {
-            window.removeEventListener("resize", resize);
-            if (moveParticlesOnHover) {
-                container.removeEventListener("mousemove", handleMouseMove);
+            window.removeEventListener('resize', debouncedUpdateDimensions);
+        };
+    }, []);
+
+    // Initialize elements and grid
+    useEffect(() => {
+        if (dimensions.width && dimensions.height) {
+            createBubbles();
+            createMeteors();
+            createGridCanvas();
+        }
+    }, [dimensions, createBubbles, createMeteors, createGridCanvas]);
+
+    // Mouse interaction with throttling
+    useEffect(() => {
+        let mouseMoveThrottle = false;
+        
+        const handleMouseMove = (e: MouseEvent) => {
+            if (mouseMoveThrottle) return;
+            mouseMoveThrottle = true;
+            
+            requestAnimationFrame(() => {
+                mouseRef.current = {
+                    x: e.clientX,
+                    y: e.clientY,
+                    active: true
+                };
+                mouseMoveThrottle = false;
+            });
+        };
+
+        const handleMouseLeave = () => {
+            mouseRef.current.active = false;
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mouseleave', handleMouseLeave);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseleave', handleMouseLeave);
+        };
+    }, []);
+
+    // Optimized drawing functions with caching
+    const drawGrid = useCallback((ctx: CanvasRenderingContext2D) => {
+        if (gridCanvasRef.current) {
+            ctx.drawImage(gridCanvasRef.current, 0, 0);
+        }
+    }, []);
+
+    const drawBubble = useCallback((ctx: CanvasRenderingContext2D, bubble: Bubble) => {
+        if (!bubble.isVisible) return;
+
+        // Use simpler gradient without blur for performance
+        const gradient = ctx.createRadialGradient(bubble.x, bubble.y, 0, bubble.x, bubble.y, bubble.radius);
+        gradient.addColorStop(0, 'rgba(253, 242, 225, 0.8)');
+        gradient.addColorStop(1, 'rgba(253, 242, 225, 0)');
+        
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+        ctx.fill();
+    }, []);
+
+    const drawMeteor = useCallback((ctx: CanvasRenderingContext2D, meteor: Meteor) => {
+        // Draw trail with optimized rendering
+        if (meteor.trail.length > 1) {
+            ctx.strokeStyle = 'rgba(254, 242, 226, 0.7)';
+            ctx.lineWidth = meteor.size;
+            ctx.beginPath();
+            ctx.moveTo(meteor.trail[0].x, meteor.trail[0].y);
+            
+            for (let i = 1; i < meteor.trail.length; i++) {
+                ctx.globalAlpha = meteor.trail[i].alpha;
+                ctx.lineTo(meteor.trail[i].x, meteor.trail[i].y);
             }
-            cancelAnimationFrame(animationFrameId);
-            if (container.contains(gl.canvas)) {
-                container.removeChild(gl.canvas);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+        }
+
+        // Draw meteor head
+        ctx.fillStyle = 'rgba(252, 240, 225, 0.7)';
+        ctx.beginPath();
+        ctx.arc(meteor.x, meteor.y, meteor.size, 0, Math.PI * 2);
+        ctx.fill();
+    }, []);
+
+    // Optimized update functions with better collision detection
+    const updateBubbles = useCallback((bubbles: Bubble[], canvas: HTMLCanvasElement) => {
+        const mouse = mouseRef.current;
+        const influenceRadiusSquared = config.mouseInfluenceRadius * config.mouseInfluenceRadius;
+        
+        return bubbles.map(bubble => {
+            // Viewport culling for performance
+            const margin = bubble.radius + 50;
+            bubble.isVisible = (
+                bubble.x > -margin && bubble.x < canvas.width + margin &&
+                bubble.y > -margin && bubble.y < canvas.height + margin
+            );
+
+            if (!bubble.isVisible) return bubble;
+
+            let newX = bubble.x + bubble.vx;
+            let newY = bubble.y + bubble.vy;
+            
+            // Boundary collision with energy conservation
+            if (newX + bubble.radius > canvas.width || newX - bubble.radius < 0) {
+                bubble.vx *= -1;
+                newX = Math.max(bubble.radius, Math.min(newX, canvas.width - bubble.radius));
+            }
+            if (newY + bubble.radius > canvas.height || newY - bubble.radius < 0) {
+                bubble.vy *= -1;
+                newY = Math.max(bubble.radius, Math.min(newY, canvas.height - bubble.radius));
+            }
+            
+            let newRadius = bubble.originalRadius;
+            
+            // Mouse interaction with squared distance for performance
+            if (mouse.active) {
+                const dx = mouse.x - newX;
+                const dy = mouse.y - newY;
+                const distanceSquared = dx * dx + dy * dy;
+                
+                if (distanceSquared < influenceRadiusSquared) {
+                    const distance = Math.sqrt(distanceSquared);
+                    const influence = 1 - (distance / config.mouseInfluenceRadius);
+                    newRadius = bubble.originalRadius * (1 + influence * config.bubbleExpansionFactor);
+                    
+                    const forceFactor = config.mouseInfluenceStrength * influence;
+                    bubble.vx -= (dx / distance) * forceFactor;
+                    bubble.vy -= (dy / distance) * forceFactor;
+                    
+                    // Velocity limiting
+                    const speed = Math.sqrt(bubble.vx * bubble.vx + bubble.vy * bubble.vy);
+                    const maxSpeed = 2;
+                    if (speed > maxSpeed) {
+                        bubble.vx = (bubble.vx / speed) * maxSpeed;
+                        bubble.vy = (bubble.vy / speed) * maxSpeed;
+                    }
+                }
+            }
+
+            // Apply friction
+            bubble.vx *= 0.99;
+            bubble.vy *= 0.99;
+
+            return {
+                ...bubble,
+                x: newX,
+                y: newY,
+                radius: newRadius
+            };
+        });
+    }, [config]);
+
+    const updateMeteors = useCallback((meteors: Meteor[], canvas: HTMLCanvasElement) => {
+        const maxTrailLength = performance === 'low' ? 10 : 20;
+        
+        return meteors.map(meteor => {
+            if (meteor.direction === 'horizontal') {
+                meteor.x += meteor.speed;
+                if (meteor.x > canvas.width) {
+                    meteor.x = 0;
+                    meteor.y = Math.floor(Math.random() * (canvas.height / config.gridSize)) * config.gridSize;
+                    meteor.trail = [];
+                }
+            } else {
+                meteor.y += meteor.speed;
+                if (meteor.y > canvas.height) {
+                    meteor.y = 0;
+                    meteor.x = Math.floor(Math.random() * (canvas.width / config.gridSize)) * config.gridSize;
+                    meteor.trail = [];
+                }
+            }
+
+            // Optimized trail management
+            meteor.trail.unshift({ x: meteor.x, y: meteor.y, alpha: 1 });
+            if (meteor.trail.length > maxTrailLength) {
+                meteor.trail.length = maxTrailLength; // More efficient than pop()
+            }
+            
+            // Update trail alpha values
+            const trailLength = meteor.trail.length;
+            for (let i = 0; i < trailLength; i++) {
+                meteor.trail[i].alpha = 1 - (i / trailLength);
+            }
+
+            return meteor;
+        });
+    }, [config.gridSize, performance]);
+
+    // Main animation loop with frame rate control
+    const animate = useCallback((currentTime: number) => {
+        const canvas = canvasRef.current;
+        const ctx = contextRef.current;
+        if (!canvas || !ctx) return;
+
+        // Frame rate limiting for better performance
+        if (currentTime - lastFrameTimeRef.current < config.frameInterval) {
+            animationFrameIdRef.current = requestAnimationFrame(animate);
+            return;
+        }
+
+        // Performance monitoring
+        performanceMonitor(currentTime);
+
+        // Clear canvas efficiently
+        ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw pre-rendered grid
+        drawGrid(ctx);
+
+        // Update and draw bubbles
+        const updatedBubbles = updateBubbles(bubblesRef.current, canvas);
+        for (let i = 0; i < updatedBubbles.length; i++) {
+            drawBubble(ctx, updatedBubbles[i]);
+        }
+        bubblesRef.current = updatedBubbles;
+
+        // Update and draw meteors
+        const updatedMeteors = updateMeteors(meteorsRef.current, canvas);
+        for (let i = 0; i < updatedMeteors.length; i++) {
+            drawMeteor(ctx, updatedMeteors[i]);
+        }
+        meteorsRef.current = updatedMeteors;
+
+        animationFrameIdRef.current = requestAnimationFrame(animate);
+    }, [drawGrid, updateBubbles, updateMeteors, drawBubble, drawMeteor, performanceMonitor, config.frameInterval]);
+
+    // Canvas setup with performance optimizations
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (canvas && dimensions.width && dimensions.height) {
+            canvas.width = dimensions.width;
+            canvas.height = dimensions.height;
+            
+            const ctx = canvas.getContext('2d', { 
+                alpha: false,
+                desynchronized: true,
+                willReadFrequently: false
+            });
+            contextRef.current = ctx;
+            
+            if (ctx) {
+                // Optimize canvas settings
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'low';
+                
+                // Start animation
+                animationFrameIdRef.current = requestAnimationFrame(animate);
+            }
+        }
+        
+        return () => {
+            if (animationFrameIdRef.current) {
+                cancelAnimationFrame(animationFrameIdRef.current);
             }
         };
-    }, [
-        particleCount,
-        particleSpread,
-        speed,
-        moveParticlesOnHover,
-        particleHoverFactor,
-        alphaParticles,
-        particleBaseSize,
-        sizeRandomness,
-        cameraDistance,
-        disableRotation,
-    ]);
+    }, [dimensions, animate]);
 
     return (
-        <div
-            ref={containerRef}
-            className={`particles-container ${className}`}
-        />
+        <canvas ref={canvasRef} className={styles.canvas} />
     );
 };
 
-export default Particles;
+export default AnimatedBackground;

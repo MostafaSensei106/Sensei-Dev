@@ -4,12 +4,13 @@
  * @Description: A component that displays an animated background with bubbles and meteors.
  */
 
-
- .particles-container {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -999;
+.canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    backdrop-filter: blur(50px);
 }
+
