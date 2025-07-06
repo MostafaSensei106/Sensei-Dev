@@ -1,5 +1,5 @@
 <h1 align="center">Sensei-Dev Portfolio</h1>
-<p align="center"><img src="https://socialify.git.ci/MostafaSensei106/Sensei-Dev/image?font=KoHo&amp;language=1&amp;logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F138288138%3Fs%3D400%26u%3D286780ccc8581e8e15c37e6e181b7cc4c6e896d1%26v%3D4&amp;name=1&amp;owner=1&amp;pattern=Floating%20Cogs&amp;theme=Auto" alt="project-image"></p>
+<p align="center"><img src="https://socialify.git.ci/MostafaSensei106/Sensei-Dev/image?font=KoHo&amp;language=Next.js;logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F138288138%3Fs%3D400%26u%3D286780ccc8581e8e15c37e6e181b7cc4c6e896d1%26v%3D4&amp;name=1&amp;owner=1&amp;pattern=Floating%20Cogs&amp;theme=Auto" alt="project-image"></p>
 <p align="center">
   <strong>Explore a world of innovative Software Development and creative problem-solving.</strong>
 </p>
