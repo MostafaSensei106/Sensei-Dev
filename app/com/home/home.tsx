@@ -1,10 +1,10 @@
 "use client";
-import {useEffect} from 'react';
-import {motion, useAnimation} from 'framer-motion';
-import {useInView} from 'react-intersection-observer';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faLinkedin, faTelegram} from '@fortawesome/free-brands-svg-icons';
-import {faUserSecret, faFilePdf} from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faTelegram } from '@fortawesome/free-brands-svg-icons';
+import { faUserSecret, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import styles from './sensei-home.module.css';
 
 //**
@@ -32,7 +32,7 @@ const Home = (): JSX.Element => {
      * Animation variants for the home section.
      */
     const containerVariants = {
-        hidden: {opacity: 0, y: 50},
+        hidden: { opacity: 0, y: 50 },
         visible: {
             opacity: 1,
             y: 0,
@@ -44,7 +44,7 @@ const Home = (): JSX.Element => {
     };
 
     const itemVariants = {
-        hidden: {opacity: 0, y: 20},
+        hidden: { opacity: 0, y: 20 },
         visible: {
             opacity: 1,
             y: 0,
@@ -82,24 +82,24 @@ const Home = (): JSX.Element => {
                         I am a Computer Science Student at BFCAI ,Certfied CCNA ,Specializing in Information Security and Digital Forensics.
                     </p>
                     <motion.div className={styles.socialIcon} variants={itemVariants}>
-                        <a href="https://www.linkedin.com/in/ahmed-emad-a77420284/" target="_blank"
-                           rel="noopener noreferrer"
-                           title="Linkedin"
+                        <a href="https://www.linkedin.com/in/ahmed-emad-eldeen-a77420284/" target="_blank"
+                            rel="noopener noreferrer"
+                            title="Linkedin"
                         >
-                            <FontAwesomeIcon icon={faLinkedin}/>
+                            <FontAwesomeIcon icon={faLinkedin} />
                         </a>
-                        <a href="https://t.me/Ahmed_emad_77" target="_blank" rel="noopener noreferrer"
-                           title="Telegram"
+                        <a href="https://t.me/Ox3omda" target="_blank" rel="noopener noreferrer"
+                            title="Telegram"
                         >
-                            <FontAwesomeIcon icon={faTelegram}/>
+                            <FontAwesomeIcon icon={faTelegram} />
                         </a>
                     </motion.div>
                     <motion.div className={styles.homeButton} variants={itemVariants}>
                         <a href="#Contact" className={`${styles.btn} ${styles.btn1}`}>
-                            Hire Me <FontAwesomeIcon icon={faUserSecret}/>
+                            Hire Me <FontAwesomeIcon icon={faUserSecret} />
                         </a>
                         <a href="Assets/cv/Ahmed_Emad_CV.pdf" download className={`${styles.btn} ${styles.btn2}`}>
-                            Download CV <FontAwesomeIcon icon={faFilePdf}/>
+                            Download CV <FontAwesomeIcon icon={faFilePdf} />
                         </a>
                     </motion.div>
                 </motion.div>
