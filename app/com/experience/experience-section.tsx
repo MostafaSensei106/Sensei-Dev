@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./experience-section.module.css";
+import { sub } from "framer-motion/client";
+import { start } from "repl";
 
 type TimelineItem = {
     tag: string;
@@ -112,6 +114,16 @@ function ExperienceSection() {
 
     const knowledgeEducationItems = [
         {
+            tag: "Soc Analyst (Tier 1) & Cloud Security Analyst - Full Time",
+            subTag: "Terra Tech",
+            subTagHyperlink: "https://igresfyed.github.io/Terra-Tech/",
+            desc: "Monitored 200+ daily security events via SIEM/EDR, conducted 10+ monthly cloud security assessments, contributed to 15+ incident investigations, and optimized 50+ detection rules — improving threat detection accuracy by 30%, reducing cloud misconfigurations by 25%, and cutting MTTD/MTTR by 40% with 35% fewer false positives.",
+            startDate: "2025-08-01",
+            isRight: true,
+        },
+
+
+        {
             tag: "Information Security Analyst (Tier 1/2) – Internship",
             subTag: "Global Knowledge",
             subTagHyperlink: "https://www.globalknowledge.com/en-eg/",
@@ -120,6 +132,7 @@ function ExperienceSection() {
             endDate: "2026-03-31",
             isRight: false,
         },
+
 
         {
             tag: "Cyber Security Instructor",
