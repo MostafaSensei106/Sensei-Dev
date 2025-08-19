@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./experience-section.module.css";
-import { sup, tr } from "framer-motion/client";
 
 
 type TimelineItem = {
@@ -143,7 +142,6 @@ function ExperienceSection() {
             endDate: "2025-09-15",
             isRight: true,
         },
-
         {
             tag: "Information Security Analyst BootCamp",
             subTag: "Cyber Talents",
@@ -152,6 +150,7 @@ function ExperienceSection() {
             startDate: "2024-12-01",
             endDate: "2025-01-13",
             showDate: true,
+            isRight: false,
         },
 
 
@@ -167,6 +166,7 @@ function ExperienceSection() {
             endDate: "2026-01-07",
             showDate: true,
         },
+
         {
             tag: "CTF Maker",
             subTag: "Cyber Cohesions",
@@ -177,6 +177,7 @@ function ExperienceSection() {
             endDate: "2026-01-07",
             showDate: false,
         },
+
         {
             tag: "Ai Model Trainer",
             subTag: "Outlier",
@@ -241,3 +242,5 @@ function ExperienceSection() {
 }
 
 export default ExperienceSection;
+
+
