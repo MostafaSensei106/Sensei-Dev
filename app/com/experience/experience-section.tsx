@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./experience-section.module.css";
-import { tr } from "framer-motion/client";
+import { sup, tr } from "framer-motion/client";
 
 
 type TimelineItem = {
@@ -144,6 +144,16 @@ function ExperienceSection() {
             isRight: true,
         },
 
+        {
+            tag: "Information Security Analyst BootCamp",
+            subTag: "Cyber Talents",
+            subTagHyperlink: "https://cybertalents.com/",
+            desc: "Completed an intensive Information Security Analyst Bootcamp with CyberTalents, gaining hands-on experience in SOC operations, threat detection, and incident response.",
+            startDate: "2024-12-01",
+            endDate: "2025-01-13",
+            showDate: true,
+        },
+
 
 
         {
@@ -152,7 +162,7 @@ function ExperienceSection() {
             subTagHyperlink:
                 "https://gdg.community.dev/gdg-on-campus-benha-university-benha-egypt/",
             desc: "Developed core features, built a system supporting audio and centralized database, with parental control for content and progress.",
-            isRight: false,
+            isRight: true,
             startDate: "2024-07-01",
             endDate: "2026-01-07",
             showDate: true,
@@ -162,7 +172,7 @@ function ExperienceSection() {
             subTag: "Cyber Cohesions",
             subTagHyperlink: "https://www.cybercohesions.com/",
             desc: "Makes CTF's At CyberCohesions BootCamps And competition.",
-            isRight: true,
+            isRight: false,
             startDate: "2024-07-01",
             endDate: "2026-01-07",
             showDate: false,
@@ -172,7 +182,7 @@ function ExperienceSection() {
             subTag: "Outlier",
             subTagHyperlink: "https://outlier.ai/",
             desc: " I Train AI Model That Are Used At Pentesting.",
-            isRight: false,
+            isRight: true,
             startDate: "2023-05-01",
             showDate: true,
         },
@@ -180,11 +190,11 @@ function ExperienceSection() {
         {
             tag: "Computer Science Degree",
             desc: "Studying Computer's Science, building skills in in Information Security and Digital Forensics.",
-            subTag: "Benha University",
+            subTag: "Benha University (BFCAI)",
             subTagHyperlink: "https://www.bu.edu.eg/",
-            isRight: true,
+            isRight: false,
             startDate: "2022-10-01",
-            showDate: false,
+            showDate: true,
         },
 
         // {
