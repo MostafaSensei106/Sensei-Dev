@@ -133,6 +133,27 @@ function ExperienceSection() {
             isRight: false,
         },
 
+        {
+            tag: "Cybersecurity Intern – Summer Program",
+            subTag: "Information Technology Institute (ITI)",
+            subTagHyperlink: "https://iti.gov.eg/",
+            desc: "Completed intensive six-week SOC training covering IR, SIEM/EDR, and pentesting; detected 20+ misconfigurations in Red Team labs, validated defenses in Purple Team, and built a mini SOC ingesting multi-platform logs mapped to MITRE ATT&CK, improving simulated MTTD by 25%.",
+            startDate: "2025-08-01",
+            endDate: "2025-09-15",
+            isRight: true,
+        },
+        {
+            tag: "Information Security Analyst BootCamp",
+            subTag: "Cyber Talents",
+            subTagHyperlink: "https://cybertalents.com/",
+            desc: "Completed an intensive Information Security Analyst Bootcamp with CyberTalents, gaining hands-on experience in SOC operations, threat detection, and incident response.",
+            startDate: "2024-12-01",
+            endDate: "2025-01-13",
+            showDate: true,
+            isRight: false,
+        },
+
+
 
         {
             tag: "Cyber Security Instructor",
@@ -145,6 +166,7 @@ function ExperienceSection() {
             endDate: "2026-01-07",
             showDate: true,
         },
+
         {
             tag: "CTF Maker",
             subTag: "Cyber Cohesions",
@@ -153,8 +175,9 @@ function ExperienceSection() {
             isRight: false,
             startDate: "2024-07-01",
             endDate: "2026-01-07",
-            showDate: true,
+            showDate: false,
         },
+
         {
             tag: "Ai Model Trainer",
             subTag: "Outlier",
@@ -168,7 +191,7 @@ function ExperienceSection() {
         {
             tag: "Computer Science Degree",
             desc: "Studying Computer's Science, building skills in in Information Security and Digital Forensics.",
-            subTag: "Benha University",
+            subTag: "Benha University (BFCAI)",
             subTagHyperlink: "https://www.bu.edu.eg/",
             isRight: false,
             startDate: "2022-10-01",
@@ -219,3 +242,5 @@ function ExperienceSection() {
 }
 
 export default ExperienceSection;
+
+

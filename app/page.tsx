@@ -5,6 +5,7 @@ import ExperienceSection from "@/app/com/experience/experience-section";
 import ContactMeSection from "@/app/com/contact_me/sensei-contact";
 import LoadingScreen from "@/app/com/loader/sensei_loader";
 import AnimatedBackground from "@/app/com/animated_background/animated_background";
+import SenseiProjects from "./com/services/sensei-projects";
 
 
 // Main component
@@ -21,10 +22,10 @@ function Main() {
             <HomeSection />
             {/*<ServicesSection />*/}
             <ExperienceSection />
-            {/*<ProjectsSection />*/}
+            <SenseiProjects />
             {/*<ArtGallerySection />*/}
             <ContactMeSection />
         </>
     );
 }
-export  default Main;
+export default Main;
