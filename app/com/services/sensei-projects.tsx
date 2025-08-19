@@ -37,7 +37,7 @@ interface GitHubRepository {
     } | null;
 }
 
-const GITHUB_USERNAME = 'MostafaSensei106';
+const GITHUB_USERNAME = 'Eng-Ahmed-Emad';
 const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
 
 /**
@@ -128,10 +128,10 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
                     <strong>Stars:</strong> {repo.stargazers_count} <FontAwesomeIcon icon={faStar} /> |
                     <strong>Issues:</strong> {repo.open_issues_count} <FontAwesomeIcon icon={faExclamationCircle} /> |
                     <strong>Watchers:</strong> {repo.watchers_count} <FontAwesomeIcon icon={faEye} />
-                    <br/>
-                    <strong>Created:</strong> {formatDate(repo.created_at)}<br/>
+                    <br />
+                    <strong>Created:</strong> {formatDate(repo.created_at)}<br />
                     <strong>Updated:</strong> {formatDate(repo.updated_at)}
-                    <br/>
+                    <br />
                     {repo.topics.length > 0 && (
                         <p className={styles.description}>
                             <strong>Topics:</strong> {repo.topics.join(', ')}

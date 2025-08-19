@@ -6,7 +6,7 @@ import {
     faHome,
     // faUserSecret,
     faBook,
-    // faFolder,
+    faFolder,
     // faPalette
 } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -41,7 +41,7 @@ const SenseiHeader = (): JSX.Element => {
             'Home',
             // 'Services',
             'Experience',
-            // 'Projects',
+            'Projects',
             // 'ArtGallery',
         ];
         const current: string | undefined = sections.find((section) => {
@@ -88,7 +88,7 @@ const SenseiHeader = (): JSX.Element => {
         Home: faHome,
         // Services: faUserSecret,
         Experience: faBook,
-        // Projects: faFolder,
+        Projects: faFolder,
         // ArtGallery: faPalette,
     };
 

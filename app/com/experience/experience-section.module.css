@@ -1,4 +1,3 @@
-
 /*----------------------This is Education Section Style---------------------*/
 /*---------------------This is Education Section Style---------------------*/
 /*--------------------This is Education Section Style---------------------*/
@@ -115,7 +114,8 @@
     color: var(--main-color);
 }
 
-.content:hover .tag h2, .content:hover .tag h3,
+.content:hover .tag h2,
+.content:hover .tag h3,
 .content:hover .desc p {
     color: var(--main-color);
 }
@@ -156,15 +156,17 @@
     font-weight: 800;
     color: var(--bg-color);
 }
+
 .tag h3 {
     margin: 0;
     font-size: 1.4rem;
     font-weight: 700;
     color: var(--bg-color);
 }
-.tag:hover h3{
+
+.tag:hover h3 {
     cursor: pointer;
-    text-underline: 2px solid var(--main-color);
+    text-rendering: 2px solid var(--main-color);
 }
 
 .desc p {
@@ -211,7 +213,8 @@
         padding-right: 25px;
     }
 
-    .timeline-container.left, .timeline-container.right {
+    .timeline-container.left,
+    .timeline-container.right {
         left: 0;
     }
 

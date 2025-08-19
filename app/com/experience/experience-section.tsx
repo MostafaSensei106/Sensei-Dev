@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./experience-section.module.css";
+import { tr } from "framer-motion/client";
 
 
 type TimelineItem = {
@@ -133,6 +134,16 @@ function ExperienceSection() {
             isRight: false,
         },
 
+        {
+            tag: "Cybersecurity Intern – Summer Program",
+            subTag: "Information Technology Institute (ITI)",
+            subTagHyperlink: "https://iti.gov.eg/",
+            desc: "Completed intensive six-week SOC training covering IR, SIEM/EDR, and pentesting; detected 20+ misconfigurations in Red Team labs, validated defenses in Purple Team, and built a mini SOC ingesting multi-platform logs mapped to MITRE ATT&CK, improving simulated MTTD by 25%.",
+            startDate: "2025-08-01",
+            endDate: "2025-09-15",
+            isRight: true,
+        },
+
 
 
         {
@@ -141,7 +152,7 @@ function ExperienceSection() {
             subTagHyperlink:
                 "https://gdg.community.dev/gdg-on-campus-benha-university-benha-egypt/",
             desc: "Developed core features, built a system supporting audio and centralized database, with parental control for content and progress.",
-            isRight: true,
+            isRight: false,
             startDate: "2024-07-01",
             endDate: "2026-01-07",
             showDate: true,
@@ -151,17 +162,17 @@ function ExperienceSection() {
             subTag: "Cyber Cohesions",
             subTagHyperlink: "https://www.cybercohesions.com/",
             desc: "Makes CTF's At CyberCohesions BootCamps And competition.",
-            isRight: false,
+            isRight: true,
             startDate: "2024-07-01",
             endDate: "2026-01-07",
-            showDate: true,
+            showDate: false,
         },
         {
             tag: "Ai Model Trainer",
             subTag: "Outlier",
             subTagHyperlink: "https://outlier.ai/",
             desc: " I Train AI Model That Are Used At Pentesting.",
-            isRight: true,
+            isRight: false,
             startDate: "2023-05-01",
             showDate: true,
         },
@@ -171,9 +182,9 @@ function ExperienceSection() {
             desc: "Studying Computer's Science, building skills in in Information Security and Digital Forensics.",
             subTag: "Benha University",
             subTagHyperlink: "https://www.bu.edu.eg/",
-            isRight: false,
+            isRight: true,
             startDate: "2022-10-01",
-            showDate: true,
+            showDate: false,
         },
 
         // {
