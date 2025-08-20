@@ -201,7 +201,7 @@ packages:
     source: hosted
     version: "4.1.2"
   iconsax_flutter:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: iconsax_flutter
       sha256: d14b4cec8586025ac15276bdd40f6eea308cb85748135965bb6255f14beb2564

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' show ColorScheme, Theme;
 import '../error/no_routes_error.dart';
-import 'routes.dart';
 
 class AppRouter {
   static final GlobalKey<NavigatorState> navigatorKey =
