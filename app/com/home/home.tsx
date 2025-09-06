@@ -80,8 +80,7 @@ const Home = (): JSX.Element => {
             I'm a <span className={styles.typingHighlight}></span>
           </h3>
           <p>
-            Soc Analyst | CCNA Certfied | CTF player | Top 2% TryHackMe | DEPI |
-            BFCAI Student
+            CyberSecurity Team Leader @Terra Tech | Information security Analyst @DEPI | CyberSecurity Trainee @ITI
           </p>
           <motion.div className={styles.socialIcon} variants={itemVariants}>
             <a
