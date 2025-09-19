@@ -18,7 +18,7 @@ class SenseiApp extends StatelessWidget {
       title: 'Sensei-Dev',
       theme: LightTheme,
       darkTheme: DarkTheme,
-      home: const HomePage(),
+      home: const HyprlandDesktop(),
     ),
   );
 }
