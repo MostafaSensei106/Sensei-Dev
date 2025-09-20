@@ -140,7 +140,12 @@
     transform: rotate(-135deg);
 }
 
+@media (max-width: 640px) {
+    .logo {
+        font-size: 2.1rem;
+    }
 
+}
 @media (max-width: 994px) {
     .header {
         width: calc(100% - 2rem);

@@ -87,19 +87,19 @@
 /* Keyframe for changing the words in the text */
 @keyframes words {
     0%, 20% {
-        content: "Security Instructor.";
+        content: "Security Instructor";
     }
     21%, 40% {
-        content: "Soc Analyst.";
+        content: "Soc Analyst";
     }
     41%, 61% {
-        content: "Beginner Pentester.";
+        content: "GRC Engineer";
     }
     62%, 80% {
-        content: "CTF Maker.";
+        content: "CTF Maker";
     }
     81%, 100% {
-        content: "Soc Analyst.";
+        content: "Soc Analyst";
     }
 }
 
