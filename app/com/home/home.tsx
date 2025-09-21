@@ -65,7 +65,7 @@ const Home = (): JSX.Element => {
       >
         <motion.div className={styles.homeImg} variants={itemVariants}>
           <img
-            src="Assets/art-gallery/Images/logo/Ahmed_Emad.webp"
+            src="Assets/art-gallery/Images/image_display_thumb/14.webp"
             alt="Ahmed Emad Image"
             className={styles.image}
             width={350}
@@ -80,8 +80,7 @@ const Home = (): JSX.Element => {
             I'm a <span className={styles.typingHighlight}></span>
           </h3>
           <p>
-            Soc Analyst | CCNA Certfied | CTF player | Top 2% TryHackMe | DEPI |
-            BFCAI Student
+           SOC Team Leader | Cybersecurity @Terra Tech  | Information Security Analyst @Global Knowledge | CyberSecurity Trainee @ITI
           </p>
           <motion.div className={styles.socialIcon} variants={itemVariants}>
             <a

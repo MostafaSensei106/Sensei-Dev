@@ -7,7 +7,7 @@ import {
     // faUserSecret,
     faBook,
     faFolder,
-    // faPalette
+     faPalette
 } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
@@ -42,7 +42,7 @@ const SenseiHeader = (): JSX.Element => {
             // 'Services',
             'Experience',
             'Projects',
-            // 'ArtGallery',
+            'ArtGallery',
         ];
         const current: string | undefined = sections.find((section) => {
             const element = document.getElementById(section);
@@ -89,13 +89,13 @@ const SenseiHeader = (): JSX.Element => {
         // Services: faUserSecret,
         Experience: faBook,
         Projects: faFolder,
-        // ArtGallery: faPalette,
+        ArtGallery: faPalette,
     };
 
     return (
         <header className={styles.header}>
             <a href="#" className={styles.logo}>
-                <span lang="ja">アーメド・エマド</span>
+                <span lang="ja">アーメド・エマド • 0x3omda</span>
             </a>
             <div
                 className={`${styles.MenuIcon} ${isMenuOpen ? styles.active : ''}`}
