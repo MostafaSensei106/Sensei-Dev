@@ -113,12 +113,12 @@ function ExperienceSection() {
 
     const knowledgeEducationItems = [
         {
-            tag: "Soc Analyst (Tier 1) & Cloud Security Analyst - Full Time",
+            tag: "Soc Analyst (Tier 1) & GRC Engineer  - Full Time",
             subTag: "Terra Tech",
             subTagHyperlink: "https://igresfyed.github.io/Terra-Tech/",
             desc: "Monitored 200+ daily security events via SIEM/EDR, conducted 10+ monthly cloud security assessments, contributed to 15+ incident investigations, and optimized 50+ detection rules — improving threat detection accuracy by 30%, reducing cloud misconfigurations by 25%, and cutting MTTD/MTTR by 40% with 35% fewer false positives.",
-            startDate: "2025-08-01",
-            endDate: "",
+            startDate: "2025-06-01",
+            // endDate: " ",
             isRight: true,
         },
 
@@ -134,12 +134,12 @@ function ExperienceSection() {
         },
 
         {
-            tag: "Cybersecurity Intern – Summer Program",
+            tag: " ITI Cybersecurity Summer Program",
             subTag: "Information Technology Institute (ITI)",
             subTagHyperlink: "https://iti.gov.eg/",
             desc: "Completed intensive six-week SOC training covering IR, SIEM/EDR, and pentesting; detected 20+ misconfigurations in Red Team labs, validated defenses in Purple Team, and built a mini SOC ingesting multi-platform logs mapped to MITRE ATT&CK, improving simulated MTTD by 25%.",
-            startDate: "2025-08-01",
-            endDate: "2025-09-15",
+            startDate: "2025-07-01",
+            //endDate: "2025-09-15",
             isRight: true,
         },
         {
@@ -162,7 +162,7 @@ function ExperienceSection() {
                 "https://gdg.community.dev/gdg-on-campus-benha-university-benha-egypt/",
             desc: "Developed core features, built a system supporting audio and centralized database, with parental control for content and progress.",
             isRight: true,
-            startDate: "2024-07-01",
+            startDate: "2024-07-21",
             endDate: "2026-01-07",
             showDate: true,
         },
@@ -198,20 +198,20 @@ function ExperienceSection() {
             showDate: true,
         },
 
-        // {
-        //     tag: "Arabic Language",
-        //     desc: "Native Arabic speaker with strong language skills.",
-        //     isRight: true,
-        //     startDate: "2019-01-01",
-        //     showDate: false,
-        // },
-        // {
-        //     tag: "English Language C1",
-        //     desc: "English is my second language, with strong proficiency in speaking and writing.",
-        //     isRight: false,
-        //     startDate: "2019-01-01",
-        //     showDate: false,
-        // },
+        {
+            tag: "Arabic Language",
+            desc: "Native Arabic speaker with strong language skills.",
+            isRight: true,
+            startDate: "2019-01-01",
+            showDate: false,
+        },
+        {
+            tag: "English Language C1",
+            desc: "English is my second language, with strong proficiency in speaking and writing.",
+            isRight: false,
+            startDate: "2019-01-01",
+            showDate: false,
+        },
 
 
     ];

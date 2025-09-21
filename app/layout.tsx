@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode; })
     return (
         <html lang="en" dir="ltr">
         <head>
-            <title>Ahmed Emad</title>
+            <title>Ahmed Emad (0x3omda)</title>
             <meta name="description" content={metadata.description} />
             <meta name="keywords" content={metadata.keywords} />
             <meta name="author" content={metadata.author} />
