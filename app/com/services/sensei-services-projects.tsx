@@ -1,8 +1,9 @@
 // Import necessary dependencies and styles
 "use client";
-import React from 'react';
-import {motion} from "framer-motion";
-import {useInView} from "react-intersection-observer";
+import React, { JSX } from 'react';
+import { motion } from "framer-motion";
+import { Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import styles from "./sensei-services-projects.module.css";
 
 //**
@@ -29,7 +30,7 @@ const ServiceItem: React.FC<{
     title: string;
     description: string;
     index: number;
-}> = ({icon, title, description, index}): JSX.Element => {
+}> = ({ icon, title, description, index }): JSX.Element => {
     // useInView hook to track if the element is visible in the viewport
     const [ref, inView] = useInView({
         triggerOnce: true,
@@ -37,8 +38,8 @@ const ServiceItem: React.FC<{
     });
 
     // Define animation variants for Framer Motion
-    const variants = {
-        hidden: {opacity: 0, y: 50},
+    const variants: Variants = {
+        hidden: { opacity: 0, y: 50 },
         visible: {
             opacity: 1,
             y: 0,
@@ -61,9 +62,9 @@ const ServiceItem: React.FC<{
             <div className={styles['part-1']}>
                 <motion.i
                     className={icon}
-                    animate={{rotate: 0}}
-                    whileHover={{rotate: 360}} // Icon rotates on hover
-                    transition={{duration: 0.6}}
+                    animate={{ rotate: 0 }}
+                    whileHover={{ rotate: 360 }} // Icon rotates on hover
+                    transition={{ duration: 0.6 }}
                 ></motion.i>
                 <h3 className={styles.title}>{title}</h3>
             </div>
@@ -129,7 +130,7 @@ function SenseiServicesProjects(): JSX.Element {
             title: "Photography",
             description: "Capture visually striking and unique photographs. Specialize in portrait, landscape, and event photography. Edit images using Adobe Lightroom and Photoshop for professional results."
         }
-        ];
+    ];
 
     // useInView hook to track if the header is visible in the viewport
     const [headerRef, headerInView] = useInView({
@@ -143,9 +144,9 @@ function SenseiServicesProjects(): JSX.Element {
                 <motion.div
                     ref={headerRef}
                     className={styles['header-section']}
-                    initial={{opacity: 0, y: -50}}
-                    animate={headerInView ? {opacity: 1, y: 0} : {}}
-                    transition={{duration: 0.6, ease: "easeOut"}}
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={headerInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                     <h2 className={styles.title}>
                         <span lang="ja">
@@ -157,7 +158,7 @@ function SenseiServicesProjects(): JSX.Element {
                 </motion.div>
                 <div className={styles['grid-container']}>
                     {services.map((service, index) => (
-                        <ServiceItem key={index} {...service} index={index}/>
+                        <ServiceItem key={index} {...service} index={index} />
                     ))}
                 </div>
             </div>

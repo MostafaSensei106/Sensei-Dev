@@ -2,6 +2,7 @@
 "use client";
 import React, { useEffect, useState, useCallback } from 'react';
 import { motion } from "framer-motion";
+import { Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faExclamationCircle, faEye } from '@fortawesome/free-solid-svg-icons';
@@ -91,15 +92,28 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
     });
 
     // Define animation variants for the project item
-    const variants = {
+    // const variants = {
+    //     hidden: { opacity: 0, y: 50 },
+    //     visible: {
+    //         opacity: 1,
+    //         y: 0,
+    //         transition: {
+    //             duration: 0.5,
+    //             delay: index * 0.1,
+    //             ease: [0.22, 1, 0.36, 1],
+    //         },
+    //     },
+    // };
+
+    const variants: Variants = {
         hidden: { opacity: 0, y: 50 },
         visible: {
             opacity: 1,
             y: 0,
             transition: {
                 duration: 0.5,
-                delay: index * 0.1,
-                ease: [0.22, 1, 0.36, 1],
+                delay: 0.2,
+                ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
             },
         },
     };
@@ -138,14 +152,12 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
                         </p>
                     )}
                 </p>
-                <p className={styles.description}>
-                    <strong>Owner:</strong> {repo.owner.login}
+                <div className={styles.description}>
+                    <p><strong>Owner:</strong> {repo.owner.login}</p>
                     {repo.license && (
-                        <p className={styles.description}>
-                            <strong>License:</strong> {repo.license.name}
-                        </p>
+                        <p><strong>License:</strong> {repo.license.name}</p>
                     )}
-                </p>
+                </div>
             </div>
         </motion.div>
     );

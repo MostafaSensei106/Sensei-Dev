@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, JSX } from 'react';
 import styles from './sensei-header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -7,7 +7,7 @@ import {
     // faUserSecret,
     faBook,
     faFolder,
-     faPalette
+    faPalette
 } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
