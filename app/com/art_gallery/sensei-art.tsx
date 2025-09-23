@@ -1,20 +1,21 @@
 "use client";
-import React, {useState, useEffect, useMemo, useCallback} from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
-import {motion} from "framer-motion";
-import {useInView} from "react-intersection-observer";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Variants } from "framer-motion";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import styles from "./sensei-art.module.css";
 
-const ImageItem = ({image, index, setOpen}) => {
+const ImageItem = ({ image, index, setOpen }) => {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
 
-    const variants = {
-        hidden: {opacity: 0, y: 20},
+    const variants: Variants = {
+        hidden: { opacity: 0, y: 20 },
         visible: (i: number) => ({
             opacity: 1,
             y: 0,
@@ -55,13 +56,13 @@ function SenseiArt() {
     const open = index >= 0;
 
     const images = useMemo(() => [
-        ...Array.from({length: 22}, (v, k) => ({
-            src: `Assets/art-gallery/Images/image_display/${k+1}.png`,
-            thumb: `Assets/art-gallery/Images/image_display_thumb/${k+1}.webp`,
+        ...Array.from({ length: 22 }, (v, k) => ({
+            src: `Assets/art-gallery/Images/image_display/${k + 1}.png`,
+            thumb: `Assets/art-gallery/Images/image_display_thumb/${k + 1}.webp`,
         })),
     ], []);
 
-    const slides = useMemo(() => images.map(image => ({src: image.src})), [images]);
+    const slides = useMemo(() => images.map(image => ({ src: image.src })), [images]);
 
     const [headerRef, headerInView] = useInView({
         triggerOnce: true,
@@ -83,8 +84,8 @@ function SenseiArt() {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [open, handleKeyDown]);
 
-    const headerVariants = {
-        hidden: {opacity: 0, y: -50},
+    const headerVariants: Variants = {
+        hidden: { opacity: 0, y: -50 },
         visible: {
             opacity: 1,
             y: 0,
@@ -96,7 +97,7 @@ function SenseiArt() {
     };
 
     const galleryVariants = {
-        hidden: {opacity: 0},
+        hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {

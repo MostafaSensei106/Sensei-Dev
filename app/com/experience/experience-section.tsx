@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./experience-section.module.css";
 
@@ -62,7 +62,7 @@ const TimelineItem = React.memo<TimelineItem & { index: number }>(
             }
         };
 
-        const variants = {
+        const variants: Variants = {
             hidden: { opacity: 0, x: isRight ? 100 : -100 },
             visible: {
                 opacity: 1,

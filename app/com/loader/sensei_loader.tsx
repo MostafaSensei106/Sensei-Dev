@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, JSX } from "react";
 import styles from "./sensei_loader.module.css";
 import Image, { ImageProps } from "next/image";
 
