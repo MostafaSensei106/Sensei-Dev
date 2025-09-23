@@ -179,13 +179,13 @@ function ExperienceSection() {
         },
 
         {
-            tag: "Ai Model Trainer",
-            subTag: "Outlier",
-            subTagHyperlink: "https://outlier.ai/",
-            desc: " I Train AI Model That Are Used At Pentesting.",
+            tag: " Two Summer Trainings With Huawei",
+            subTag: "Huawei",
+            subTagHyperlink: "https://www.huawei.com/en/",
+            desc: " Huawei HCIA-Datacom V1.0 (H12-811) Routing and Switching && HCIA_ Cloud_Computing V5.0 ",
             isRight: true,
             startDate: "2023-05-01",
-            showDate: true,
+            showDate: false,
         },
 
         {

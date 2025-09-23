@@ -50,6 +50,7 @@
 .highlight {
     color: var(--main-color);
 }
+
 .typingText {
     font-size: 34px;
     font-weight: 600;
@@ -62,7 +63,7 @@
 }
 
 .typingHighlight::before {
-    content:" ";
+    content: " ";
     animation: words 20s infinite;
 }
 
@@ -86,36 +87,58 @@
 
 /* Keyframe for changing the words in the text */
 @keyframes words {
-    0%, 20% {
-        content: "Security Instructor";
+
+    0%,
+    20% {
+        content: "CyberSecurity Instructor";
     }
-    21%, 40% {
+
+    21%,
+    40% {
         content: "Soc Analyst";
     }
-    41%, 61% {
+
+    41%,
+    60% {
         content: "GRC Engineer";
     }
-    62%, 80% {
-        content: "CTF Maker";
+
+    61%,
+    80% {
+        content: "Former Pentathlon";
     }
-    81%, 100% {
-        content: "Soc Analyst";
+
+    81%,
+    100% {
+        content: "Runner at Al Ahly FC";
     }
 }
 
+
 /* Keyframe for the typing effect */
 @keyframes typing {
-    10%, 15%,
-    30%, 35%,
-    50%, 55%,
-    70%, 75%,
-    90%, 95% {
+
+    10%,
+    15%,
+    30%,
+    35%,
+    50%,
+    55%,
+    70%,
+    75%,
+    90%,
+    95% {
         width: 0;
     }
-    5%, 20%,
-    25%, 40%,
-    45%, 60%,
-    65%, 80%,
+
+    5%,
+    20%,
+    25%,
+    40%,
+    45%,
+    60%,
+    65%,
+    80%,
     85% {
         width: calc(100% + 7px);
     }
@@ -253,6 +276,7 @@
 }
 
 @media (max-width: 993px) {
+
     .homeContent h1,
     .homeContent h3 {
         font-size: 5rem;
@@ -332,4 +356,3 @@
         align-items: stretch;
     }
 }
-
