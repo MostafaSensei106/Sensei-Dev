@@ -13,7 +13,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 
 //**
-// @Author Mostafa Sensei106
+// @Author Ahmed Emad Eldeen (˶˃ ᵕ ˂˶)
 // @Description A responsive header component with a menu that highlights the active section of the page.
 //**
 
@@ -95,7 +95,7 @@ const SenseiHeader = (): JSX.Element => {
     return (
         <header className={styles.header}>
             <a href="#" className={styles.logo}>
-                <span lang="ja">アーメド・エマド • 0x3omda</span>
+                <span lang="ja">アーメド・エマド • 0x3omda(˶˃ ᵕ ˂˶)</span>
             </a>
             <div
                 className={`${styles.MenuIcon} ${isMenuOpen ? styles.active : ''}`}

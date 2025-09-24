@@ -200,19 +200,41 @@ function ExperienceSection() {
 
         {
             tag: "Arabic Language",
-            desc: "Native Arabic speaker with strong language skills.",
+            desc: " Native Speaker",
             isRight: true,
-            startDate: "2019-01-01",
+            startDate: "2018-01-01",
             showDate: false,
         },
         {
-            tag: "English Language C1",
-            desc: "English is my second language, with strong proficiency in speaking and writing.",
+            tag: "English C1 ",
+            desc: "Not Native but Proffessional ",
             isRight: false,
-            startDate: "2019-01-01",
+            startDate: "2016-01-01",
+            showDate: false,
+        },
+        {
+            tag: "HOBBIES",
+            desc: " The next Are Hobbies And My Atheletic Career (˶˃ ᵕ ˂˶)  ",
+            isRight: true,
+            startDate: "2018-01-01",
             showDate: false,
         },
 
+
+        {
+            tag: "Athelete @Al Ahly FC",
+            desc: " I Am An Athelete At Al Ahly FC (Runner) Specialized in 800 m && 1500 m And 10k m Races ",
+            isRight: false,
+            startDate: "2018-01-01",
+            showDate: true,
+        },
+        {
+            tag: "Former pentathlon",
+            desc: "I Was pentathlon player @Banha FC specalized in Running (800 m) & Swimming (100 m) And Lazer Run (4 x 800 m)  ",
+            isRight: true,
+            startDate: "2016-01-01",
+            showDate: true,
+        },
 
     ];
 
