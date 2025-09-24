@@ -95,7 +95,7 @@ const SenseiHeader = (): JSX.Element => {
     return (
         <header className={styles.header}>
             <a href="#" className={styles.logo}>
-                <span lang="ja">アーメド・エマド • 0x3omda(˶˃ ᵕ ˂˶)</span>
+                <span lang="ja">アーメド・エマド</span>
             </a>
             <div
                 className={`${styles.MenuIcon} ${isMenuOpen ? styles.active : ''}`}
