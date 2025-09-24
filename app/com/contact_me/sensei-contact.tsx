@@ -86,7 +86,7 @@ const SenseiContact = (): JSX.Element => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Ahmed Emadeldeen
+                                    Ahmed Emad eldeen (˶˃ ᵕ ˂˶)
                                 </a>
                             </span>{' '}
                             ALL Copyright Reserved.
