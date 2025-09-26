@@ -74,7 +74,7 @@ const Home = (): JSX.Element => {
         </motion.div>
         <motion.div className={styles.homeContent} variants={itemVariants}>
           <h1>
-            Hi, it's <span className={styles.highlight}>Ahmed Emad (0x3omda)</span>
+            Hi It's  <span className={styles.highlight}>Ahmed Emad  </span>
           </h1>
           <h3 className={styles.typingText}>
             I'm a <span className={styles.typingHighlight}></span>
@@ -84,7 +84,7 @@ const Home = (): JSX.Element => {
           </p>
           <motion.div className={styles.socialIcon} variants={itemVariants}>
             <a
-              href="https://www.linkedin.com/in/ahmed-emad-eldeen-a77420284/"
+              href="https://www.linkedin.com/in/0x3omda/"
               target="_blank"
               rel="noopener noreferrer"
               title="Linkedin"
