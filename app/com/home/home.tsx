@@ -74,7 +74,7 @@ const Home = (): JSX.Element => {
         </motion.div>
         <motion.div className={styles.homeContent} variants={itemVariants}>
           <h1>
-            Hi, it's <span className={styles.highlight}>Ahmed Emad</span>
+            Hi, it's <span className={styles.highlight}>Ahmed Emad (0x3omda)</span>
           </h1>
           <h3 className={styles.typingText}>
             I'm a <span className={styles.typingHighlight}></span>
