@@ -122,6 +122,16 @@ function ExperienceSection() {
             isRight: true,
         },
 
+        {
+            tag: " ITI Cybersecurity Summer Program",
+            subTag: "Information Technology Institute (ITI)",
+            subTagHyperlink: "https://iti.gov.eg/",
+            desc: "Completed intensive six-week SOC training covering IR, SIEM/EDR, and pentesting; detected 20+ misconfigurations in Red Team labs, validated defenses in Purple Team, and built a mini SOC ingesting multi-platform logs mapped to MITRE ATT&CK, improving simulated MTTD by 25%.",
+            startDate: "2025-07-01",
+            //endDate: "2025-09-15",
+            isRight: false,
+        },
+
 
         {
             tag: "Information Security Analyst (Tier 1/2) – Internship",
@@ -130,18 +140,20 @@ function ExperienceSection() {
             desc: "Monitored 500+ weekly alerts via SIEM, cutting response time by 20%. Triaged 100+ incidents, improving accuracy by 25%. Identified 50+ high-risk vulnerabilities monthly across 200+ endpoints. Collaborated with IT to apply security best practices, reducing incidents by 15% in 3 months ",
             startDate: "2025-07-01",
             endDate: "2026-03-31",
-            isRight: false,
+            isRight: true,
         },
 
         {
-            tag: " ITI Cybersecurity Summer Program",
-            subTag: "Information Technology Institute (ITI)",
-            subTagHyperlink: "https://iti.gov.eg/",
-            desc: "Completed intensive six-week SOC training covering IR, SIEM/EDR, and pentesting; detected 20+ misconfigurations in Red Team labs, validated defenses in Purple Team, and built a mini SOC ingesting multi-platform logs mapped to MITRE ATT&CK, improving simulated MTTD by 25%.",
-            startDate: "2025-07-01",
-            //endDate: "2025-09-15",
-            isRight: true,
+            tag: "Cyber Security Instructor",
+            subTag: "Google Student Club",
+            subTagHyperlink:
+                "https://gdg.community.dev/gdg-on-campus-benha-university-benha-egypt/",
+            desc: "CyberSecurity Instructor Deliver comprehensive and hands-on training in cybersecurity concepts, tools, and practices to students and professionals. Responsibilities include designing and delivering engaging course content, guiding learners through practical labs, and mentoring them on real-world scenarios. The role involves breaking down complex security topics into easy-to-understand lessons, preparing learners for certifications, and instilling best practices in security awareness",
+            isRight: false,
+            startDate: "2024-010-21",
+            showDate: true,
         },
+
         {
             tag: "Information Security Analyst BootCamp",
             subTag: "Cyber Talents",
@@ -150,22 +162,10 @@ function ExperienceSection() {
             startDate: "2024-12-01",
             endDate: "2025-01-13",
             showDate: true,
-            isRight: false,
-        },
-
-
-
-        {
-            tag: "Cyber Security Instructor",
-            subTag: "Google Student Club",
-            subTagHyperlink:
-                "https://gdg.community.dev/gdg-on-campus-benha-university-benha-egypt/",
-            desc: "Developed core features, built a system supporting audio and centralized database, with parental control for content and progress.",
             isRight: true,
-            startDate: "2024-07-21",
-            endDate: "2026-01-07",
-            showDate: true,
         },
+
+
 
         {
             tag: "CTF Maker",
@@ -190,7 +190,7 @@ function ExperienceSection() {
 
         {
             tag: "Computer Science Degree",
-            desc: "Studying Computer's Science, building skills in in Information Security and Digital Forensics.",
+            desc: "Studying Computer's Science, building skills in in Information Security and Digital Forensics. GPA :3.73 ˶˃ ᵕ ˂˶  ",
             subTag: "Benha University (BFCAI)",
             subTagHyperlink: "https://www.bu.edu.eg/",
             isRight: false,
