@@ -90,25 +90,25 @@
 
     0%,
     20% {
+        content: " Soc Analyst L1";
+    }
+
+    20.5%,
+    40% {
+        content: "  Junior GRC Engineer";
+    }
+
+    40.5%,
+    60% {
         content: "CyberSecurity Instructor";
     }
 
-    21%,
-    40% {
-        content: "Soc Analyst";
-    }
-
-    41%,
-    60% {
-        content: "GRC Engineer";
-    }
-
-    61%,
+    60.5%,
     80% {
         content: "Former Pentathlon";
     }
 
-    81%,
+    80.5%,
     100% {
         content: "Runner at Al Ahly FC";
     }

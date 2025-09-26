@@ -113,10 +113,10 @@ function ExperienceSection() {
 
     const knowledgeEducationItems = [
         {
-            tag: "Soc Analyst (Tier 1) & GRC Engineer  - Full Time",
+            tag: "Head of Security Operations  - Contract",
             subTag: "Terra Tech",
             subTagHyperlink: "https://igresfyed.github.io/Terra-Tech/",
-            desc: "Monitored 200+ daily security events via SIEM/EDR, conducted 10+ monthly cloud security assessments, contributed to 15+ incident investigations, and optimized 50+ detection rules — improving threat detection accuracy by 30%, reducing cloud misconfigurations by 25%, and cutting MTTD/MTTR by 40% with 35% fewer false positives.",
+            desc: "Leads And Directed SOC, Red, and Cloud Security teams, ensuring unified defense and incident handling processes.",
             startDate: "2025-06-01",
             // endDate: " ",
             isRight: true,
