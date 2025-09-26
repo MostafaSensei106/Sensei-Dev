@@ -77,10 +77,10 @@ const Home = (): JSX.Element => {
             Hi It's  <span className={styles.highlight}>Ahmed Emad  </span>
           </h1>
           <h3 className={styles.typingText}>
-            I'm a <span className={styles.typingHighlight}></span>
+            I'm a    <span className={styles.typingHighlight}></span>
           </h3>
           <p>
-            SOC Team Leader | Cybersecurity @Terra Tech  | Information Security Analyst @Global Knowledge | CyberSecurity Trainee @ITI
+            Head of Security Operations @Terra Tech  | Information Security Analyst @Global Knowledge | CyberSecurity Trainee @ITI
           </p>
           <motion.div className={styles.socialIcon} variants={itemVariants}>
             <a
