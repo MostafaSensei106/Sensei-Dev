@@ -92,6 +92,7 @@
     color: var(--bg-color);
 }
 
+/* Hamburger Menu Icon */
 .MenuIcon {
     width: 30px;
     height: 20px;
@@ -140,12 +141,42 @@
     transform: rotate(-135deg);
 }
 
+/* -------- Responsive for Small Screens -------- */
 @media (max-width: 640px) {
-    .logo {
-        font-size: 2.1rem;
+    .header {
+        padding: 0.6rem 0.8rem;
+        /* smaller padding */
+        width: calc(100% - 0.5rem);
+        border-radius: 0.6rem;
+        /* smaller corner radius */
     }
 
+    .logo {
+        font-size: 1.3rem;
+        /* smaller logo */
+    }
+
+    .navbar a {
+        font-size: 1.2rem;
+        /* smaller text */
+        margin: 0.6rem;
+        /* reduced spacing */
+        padding: 0.5rem 0.8rem;
+        /* reduced padding */
+    }
+
+    .MenuIcon {
+        width: 22px;
+        height: 16px;
+    }
+
+    .MenuIcon span {
+        height: 3px;
+        /* thinner bars */
+    }
 }
+
+/* -------- Responsive for Tablets -------- */
 @media (max-width: 994px) {
     .header {
         width: calc(100% - 2rem);
@@ -198,25 +229,31 @@
     .navbar.active a:nth-child(1) {
         animation: slideInLeft 0.5s ease 0.1s forwards;
     }
+
     .navbar.active a:nth-child(2) {
         animation: slideInLeft 0.5s ease 0.2s forwards;
     }
+
     .navbar.active a:nth-child(3) {
         animation: slideInLeft 0.5s ease 0.3s forwards;
     }
+
     .navbar.active a:nth-child(4) {
         animation: slideInLeft 0.5s ease 0.4s forwards;
     }
+
     .navbar.active a:nth-child(5) {
         animation: slideInLeft 0.5s ease 0.5s forwards;
     }
 }
 
+/* -------- Animations -------- */
 @keyframes slideIn {
     from {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -228,6 +265,7 @@
         opacity: 0;
         transform: translateX(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
