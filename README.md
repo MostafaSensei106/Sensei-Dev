@@ -1,5 +1,5 @@
-<h1 align="center">Sensei-Dev Portfolio</h1>
-<p align="center"><img src="https://socialify.git.ci/MostafaSensei106/Sensei-Dev/image?font=KoHo&amp;language=1&amp;logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F138288138%3Fs%3D400%26u%3D286780ccc8581e8e15c37e6e181b7cc4c6e896d1%26v%3D4&amp;name=1&amp;owner=1&amp;pattern=Floating%20Cogs&amp;theme=Auto" alt="project-image"></p>
+<h1 align="center">Eng-Ahmed-Emad (0x3omda) Portfolio</h1>
+<p align="center"><img src="screenshots/home.png" alt="project-image"></p>
 <p align="center">
   <strong>Explore a world of innovative Software Development and creative problem-solving.</strong>
 </p>
@@ -16,7 +16,7 @@
 ---
 
 ## About
-Welcome to Sensei-Dev, my personal portfolio showcasing a journey through the realms of Software Development and creative problem-solving. This portfolio is a testament to my skills, projects, and contributions to the open-source community. Dive in to experience an interactive and vibrant showcase of my work!
+Welcome to Eng-Ahmed-Emad(0x3omda)-Dev , my personal portfolio showcasing a journey through the realms of Software Development and creative problem-solving. This portfolio is a testament to my skills, projects, and contributions to the open-source community. Dive in to experience an interactive and vibrant showcase of my work!
 
 ## Features
 🌟 Here are some of the standout features of this portfolio:
@@ -61,20 +61,20 @@ Welcome to Sensei-Dev, my personal portfolio showcasing a journey through the re
 </p>
 
 ## Demo
-Experience the Sensei-Dev portfolio live:
-🚀 [Sensei-Dev Live Demo](https://mostafasensei106.github.io/Sensei-Dev)
+Experience the Eng-Ahmed-Emad(0x3omda) Dev  portfolio live:
+🚀 [Eng-Ahmed-Emad(0x3omda) Dev  Live Demo](https://eng-ahmed-emad.github.io/AhmedEmad-Dev/#Home)
 
 ## Installation
-Get Sensei-Dev up and running on your local machine in just a few steps:
+Get Eng-Ahmed-Emad(0x3omda) Dev  up and running on your local machine in just a few steps:
 
 1. Ensure you have [Node.js](https://nodejs.org/en/download/package-manager) installed on your system.
 2. Clone the repository:
    ```
-   git clone https://github.com/MostafaSensei106/Sensei-Dev.git
+   git clone https://github.com/Eng-Ahmed-Emad/AhmedEmad-Dev
    ```
 3. Navigate to the project directory and install dependencies:
    ```
-   cd Sensei-Dev
+   cd AhmedEmad-Dev 
    npm install
    ```
 4. Install Python requirements:
@@ -104,7 +104,7 @@ This portfolio is built with cutting-edge technologies:
 - **CSS**: Styling with modern CSS techniques for a polished look
 
 ## Contributing
-Your contributions are welcome! Here's how you can help improve Sensei-Dev:
+Your contributions are welcome! Here's how you can help improve Eng-Ahmed-Emad(0x3omda) Dev :
 
 1. Fork the repository
 2. Create your feature branch: `git checkout -b feature/AmazingFeature`
@@ -120,5 +120,5 @@ This project is licensed under the GPL-3.0 license - see the [LICENSE](LICENSE) 
 ---
 
 <p align="center">
-  Made with ❤️ by <a href="https://github.com/MostafaSensei106">MostafaSensei106</a>
+  Made with ❤️ by <a href="https://github.com/Eng-Ahmed-Emad">Ahmed Emad </a>
 </p>
