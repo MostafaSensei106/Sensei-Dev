@@ -6,11 +6,10 @@ import { Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./sensei-services-projects.module.css";
 
-//**
-// @Author Mostafa Sensei106
-// @Description React component that displays a list of service items using Framer Motion animations.
-// Each service item includes an icon, title, and description, all of which are animated based on the user's scroll position.
-//**
+/*
+*@Author: Ahmed_Sensei
+*@Description: A responsive experience component with a menu that highlights the active section of the page.
+ */
 
 
 /**

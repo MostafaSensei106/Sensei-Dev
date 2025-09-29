@@ -8,13 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faExclamationCircle, faEye } from '@fortawesome/free-solid-svg-icons';
 import styles from './sensei-services-projects.module.css';
 
-//**
-// @Author Mostafa Sensei106
-// @Description React component that fetches and displays GitHub repositories with animation and styling using Framer Motion and FontAwesome.
-/**
-
-/**
- * Interface representing the GitHub repository data structure.
+/*
+*@Author: Ahmed_Sensei
+*@Description: A responsive experience component with a menu that highlights the active section of the page.
  */
 interface GitHubRepository {
     id: number;

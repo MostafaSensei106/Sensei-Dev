@@ -1,3 +1,7 @@
+/*
+*@Author: Ahmed_Sensei
+*@Description: A responsive experience component with a menu that highlights the active section of the page.
+ */
 "use client";
 import React, { useEffect, useRef, useState, useCallback } from 'react';// Import necessary dependencies
 import { debounce } from 'lodash';
