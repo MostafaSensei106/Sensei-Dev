@@ -13,7 +13,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 
 //**
-// @Author Ahmed Emad Eldeen (˶˃ ᵕ ˂˶)
+// @Author Ahmed_Sensei (˶˃ ᵕ ˂˶)
 // @Description A responsive header component with a menu that highlights the active section of the page.
 //**
 

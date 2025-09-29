@@ -8,7 +8,7 @@ import { faUserSecret, faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import styles from "./sensei-home.module.css";
 
 //**
-// @Author Mostafa Sensei106
+// @Author Ahmed_Sensei
 // @Description A React component that serves as the home section of the portfolio, featuring an image, social links, and animations.
 //**
 

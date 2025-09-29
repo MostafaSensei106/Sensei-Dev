@@ -7,7 +7,7 @@
 
 /*
 * Art Gallery Section
-* @Author: Mostafa Sensei106
+* @Author: Ahmed_Sensei
 * @Description: A responsive art gallery component with a menu that highlights the active section of the page.
  */
 
@@ -17,7 +17,7 @@
     padding: 60px 0;
 }
 
-.art-gallery-content  {
+.art-gallery-content {
     padding: 0 5rem 5%;
 }
 
@@ -91,7 +91,8 @@
     .Gallery {
         column-count: 3;
     }
-    .art-gallery-content{
+
+    .art-gallery-content {
         padding: 0 1.5rem 5%;
     }
 }
@@ -100,7 +101,8 @@
     .Gallery {
         column-count: 2;
     }
-    .art-gallery-content{
+
+    .art-gallery-content {
         padding: 0 1.5rem 5%;
     }
 }
@@ -109,7 +111,8 @@
     .Gallery {
         column-count: 1;
     }
-    .art-gallery-content{
+
+    .art-gallery-content {
         padding: 0 1.5rem 5%;
     }
 }

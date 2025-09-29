@@ -1,10 +1,7 @@
-
-/**
- * @author Mostafa Sensei106
- * @description Global CSS
- **/
-
-
+/*
+*@Author: Ahmed_Sensei
+*@Description: A responsive experience component with a menu that highlights the active section of the page.
+ */
 * {
     margin: 0;
     padding: 0;

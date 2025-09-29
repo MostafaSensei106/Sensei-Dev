@@ -1,3 +1,8 @@
+/*
+*@Author: Ahmed_Sensei
+*@Description: A responsive experience component with a menu that highlights the active section of the page.
+ */
+
 "use client";
 import React, { useState } from "react";
 import { motion, Variants } from "framer-motion";

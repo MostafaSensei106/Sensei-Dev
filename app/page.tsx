@@ -9,10 +9,10 @@ import SenseiProjects from "./com/services/sensei-projects";
 import SenseiArt from "./com/art_gallery/sensei-art";
 
 
-// Main component
-// @returns {JSX.Element}
-// @author Mostafa Sensei106
-// @description A functional component that renders the page of the website.
+/*
+*@Author: Ahmed_Sensei
+*@Description: A responsive experience component with a menu that highlights the active section of the page.
+ */
 
 function Main() {
     return (

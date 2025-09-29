@@ -5,11 +5,12 @@
 
 
 /*
-@Author Mostafa Sensei106
-@Description A responsive service and projects section with a menu that highlights the active section of the page.
+*@Author: Ahmed_Sensei
+*@Description: A responsive experience component with a menu that highlights the active section of the page.
  */
 
-.section-services, .section-projects {
+.section-services,
+.section-projects {
     min-height: 100vh;
     padding: 60px 0;
 }
@@ -80,13 +81,15 @@
     }
 }
 
-.grid-container, .grid-containerp {
+.grid-container,
+.grid-containerp {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.single-service, .single-project {
+.single-service,
+.single-project {
     background: var(--main-color);
     border-radius: 10px;
     overflow: hidden;

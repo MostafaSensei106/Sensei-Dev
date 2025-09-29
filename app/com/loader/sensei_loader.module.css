@@ -1,10 +1,8 @@
-
-
 /*
-@Author Mostafa Sensei106
-@Description A loader component that displays a loading spinner until the page is fully loaded.
+*@Author: Ahmed_Sensei
+*@Description: A responsive experience component with a menu that highlights the active section of the page.
  */
-.loader{
+.loader {
     position: fixed;
     top: 0;
     left: 0;
@@ -16,4 +14,3 @@
     align-items: center;
     justify-content: center;
 }
-

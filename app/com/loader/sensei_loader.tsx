@@ -1,3 +1,9 @@
+
+/*
+*@Author: Ahmed_Sensei
+*@Description: A responsive experience component with a menu that highlights the active section of the page.
+ */
+
 "use client";
 import { useState, useEffect, JSX } from "react";
 import styles from "./sensei_loader.module.css";
