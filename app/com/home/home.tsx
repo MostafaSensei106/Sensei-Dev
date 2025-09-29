@@ -111,6 +111,12 @@ const Home = (): JSX.Element => {
             >
               Download CV <FontAwesomeIcon icon={faFilePdf} />
             </a>
+            <a
+              href="https://docs.google.com/document/d/1j4Ln8O3dHafPMFzt8Fgm1KkKSahrkS8NiXF9bluMDtU/edit?usp=sharing" // 🔹 حط هنا اللينك بتاعك
+              className={`${styles.btn} ${styles.btn1}`}
+            >
+              About Me <FontAwesomeIcon icon={faUserSecret} /> {/* تقدر تغير الأيقونة لو عايز */}
+            </a>
           </motion.div>
         </motion.div>
       </motion.div>
