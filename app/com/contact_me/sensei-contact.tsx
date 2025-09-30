@@ -1,5 +1,10 @@
 import React, { JSX } from 'react';
 import styles from './sensei-contact.module.css';
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faTelegram } from "@fortawesome/free-brands-svg-icons";
+import { faUserSecret, faFilePdf } from "@fortawesome/free-solid-svg-icons";
 
 //**
 // @Author Mostafa Sensei106
@@ -64,7 +69,7 @@ const SenseiContact = (): JSX.Element => {
                                         <i className="fa-brands fa-linkedin"></i>
                                     </a>
                                     <a
-                                        aria-label="Go to Telegram"
+                                        aria-label="Go to x"
                                         href="https://x.com/Ahmed3Emad77?t=XxokO68ZbNGpLJSmhQ4b3g&s=09"
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -72,6 +77,16 @@ const SenseiContact = (): JSX.Element => {
                                         {/* Telegram icon */}
                                         <i className="fa-brands fa-x-twitter"></i>
                                     </a>
+                                    <a
+                                        aria-label="Go to Telegram"
+                                        href="https://t.me/Ox3omda"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        title="Telegram"
+                                    >
+                                        <FontAwesomeIcon icon={faTelegram} />
+                                    </a>
+
                                 </div>
                             </div>
                         </div>
@@ -86,7 +101,7 @@ const SenseiContact = (): JSX.Element => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Ahmed Emad eldeen (˶˃ ᵕ ˂˶)
+                                    Ahmed Sensei601 (˶˃ ᵕ ˂˶)
                                 </a>
                             </span>{' '}
                             ALL Copyright Reserved.

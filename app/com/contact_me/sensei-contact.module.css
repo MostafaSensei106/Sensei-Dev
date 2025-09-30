@@ -1,16 +1,15 @@
-
 /*-------------------- Footer Section Style------------------------- */
 /* -------------------Footer Section Style------------------------- */
 /* ------------------Footer Section Style ------------------------*/
 
 /**
 * Footer Section
-*@Author: Mostafa Sensei
+*@Author: Ahmed Sensi601
 *@Description: This is the style for the contact me section
  */
 
 
-.Contact-Me-section  {
+.Contact-Me-section {
     min-height: 0;
     padding: 0;
 }
@@ -95,6 +94,7 @@
 .social {
     margin-top: 5px;
 }
+
 .social a {
     display: inline-flex;
     justify-content: center;
@@ -116,6 +116,7 @@
     background: var(--main-color);
     box-shadow: 0 0 15px var(--main-color);
 }
+
 /*.social a[aria-label="Go to Facebook"]:hover {*/
 /*    background: linear-gradient(135deg, #3b5998, #6d84b4, #8b9dc3, #dfe3ee);*/
 /*    border-color: black;*/
@@ -142,7 +143,7 @@
     color: var(--text-color);
 }
 
-.Sensei_Name{
+.Sensei_Name {
     color: var(--main-color);
     opacity: 1;
     font-weight: bold;
