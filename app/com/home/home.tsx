@@ -101,6 +101,16 @@ const Home = (): JSX.Element => {
               {/* Instagram icon */}
               <i className="fa-brands fa-instagram"></i>
             </a>
+            <a
+              aria-label="Go to GitHub"
+              href="https://github.com/Eng-Ahmed-Emad"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {/* GitHub icon */}
+              <i className="fa-brands fa-github"></i>
+            </a>
+
           </motion.div>
           <motion.div className={styles.homeButton} variants={itemVariants}>
             <a href="#Contact" className={`${styles.btn} ${styles.btn1}`}>

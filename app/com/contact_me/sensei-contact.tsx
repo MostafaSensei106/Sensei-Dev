@@ -86,6 +86,16 @@ const SenseiContact = (): JSX.Element => {
                                     >
                                         <FontAwesomeIcon icon={faTelegram} />
                                     </a>
+                                    <a
+                                        aria-label="Go to GitHub"
+                                        href="https://github.com/Eng-Ahmed-Emad"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {/* GitHub icon */}
+                                        <i className="fa-brands fa-github"></i>
+                                    </a>
+
 
                                 </div>
                             </div>
@@ -101,7 +111,7 @@ const SenseiContact = (): JSX.Element => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Ahmed Sensei601 (˶˃ ᵕ ˂˶)
+                                    Ahmed Emad (˶˃ ᵕ ˂˶)
                                 </a>
                             </span>{' '}
                             ALL Copyright Reserved.
