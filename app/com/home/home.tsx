@@ -91,13 +91,15 @@ const Home = (): JSX.Element => {
             >
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
+
             <a
-              href="https://t.me/Ox3omda"
+              aria-label="Go to Instagram"
+              href="https://www.instagram.com/0x3omda?igsh=MW83cjR3aHJhNDlkZw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
-              title="Telegram"
             >
-              <FontAwesomeIcon icon={faTelegram} />
+              {/* Instagram icon */}
+              <i className="fa-brands fa-instagram"></i>
             </a>
           </motion.div>
           <motion.div className={styles.homeButton} variants={itemVariants}>
