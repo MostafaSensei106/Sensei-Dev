@@ -94,7 +94,7 @@ const Home = (): JSX.Element => {
 
             <a
               aria-label="Go to Instagram"
-              href="https://www.instagram.com/0x3omda?igsh=MW83cjR3aHJhNDlkZw%3D%3D"
+              href="https://www.instagram.com/ahmed.eemadd/"
               target="_blank"
               rel="noopener noreferrer"
             >

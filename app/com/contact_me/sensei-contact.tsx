@@ -9,7 +9,7 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 
 //**
-// @Author Mostafa Sensei106
+// @Author Ahmed Sensei106
 // @Description A responsive contact me component with a menu that highlights the active section of the page.
 //**
 
