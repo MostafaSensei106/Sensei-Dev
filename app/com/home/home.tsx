@@ -102,14 +102,15 @@ const Home = (): JSX.Element => {
               <i className="fa-brands fa-instagram"></i>
             </a>
             <a
-              aria-label="Go to GitHub"
-              href="https://github.com/Eng-Ahmed-Emad"
+              aria-label="Go to WhatsApp"
+              href="https://wa.me/201013972690"
               target="_blank"
               rel="noopener noreferrer"
             >
-              {/* GitHub icon */}
-              <i className="fa-brands fa-github"></i>
+              {/* WhatsApp icon */}
+              <i className="fa-brands fa-whatsapp"></i>
             </a>
+
 
           </motion.div>
           <motion.div className={styles.homeButton} variants={itemVariants}>

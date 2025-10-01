@@ -5,6 +5,8 @@ import { useInView } from "react-intersection-observer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { faUserSecret, faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+
 
 //**
 // @Author Mostafa Sensei106
@@ -42,6 +44,16 @@ const SenseiContact = (): JSX.Element => {
                                 </a>
                                 <div className={styles.social}>
                                     <p className={styles.meon}>Me on Social Network</p>
+                                    <a
+                                        aria-label="Go to WhatsApp"
+                                        href="https://wa.me/201013972690"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        title="WhatsApp"
+                                    >
+                                        <FontAwesomeIcon icon={faWhatsapp} />
+                                    </a>
+
                                     <a
                                         aria-label="Go to Facebook"
                                         href="https://www.facebook.com/0x3omda?rdid=l8KHUhiFI83rvw3d&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BPFja34vU%2F"
