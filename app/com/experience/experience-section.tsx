@@ -118,14 +118,17 @@ function ExperienceSection() {
 
     const knowledgeEducationItems = [
         {
-            tag: "Head of Security Operations  - Contract",
+            tag: "CyberSecurity Team Leader  - Contract",
             subTag: "Terra Tech",
             subTagHyperlink: "https://igresfyed.github.io/Terra-Tech/",
-            desc: "Leads And Directed SOC, Red, and Cloud Security teams, ensuring unified defense and incident handling processes.",
+            desc: `**Directed** SOC, Red, and Cloud Security teams, ensuring unified defense and incident handling processes  
+**Developed** and implemented the company-wide Security Policy  
+**Ensured** compliance with international security laws and regulations`,
             startDate: "2025-06-01",
             // endDate: " ",
             isRight: true,
         },
+
 
         {
             tag: " ITI Cybersecurity Summer Program",
@@ -142,10 +145,13 @@ function ExperienceSection() {
             tag: "Information Security Analyst (Tier 1/2) – Internship",
             subTag: "Global Knowledge",
             subTagHyperlink: "https://www.globalknowledge.com/en-eg/",
-            desc: "Monitored 500+ weekly alerts via SIEM, cutting response time by 20%. Triaged 100+ incidents, improving accuracy by 25%. Identified 50+ high-risk vulnerabilities monthly across 200+ endpoints. Collaborated with IT to apply security best practices, reducing incidents by 15% in 3 months ",
+            desc: `Monitored and triaged security alerts using **Wazuh SIEM** and **Security Onion**  
+Configured and maintained **pfSense Firewall** for network security  
+Implemented and fine-tuned **Snort IDS/IPS** to detect and prevent threats`,
             startDate: "2025-07-01",
             endDate: "2026-03-31",
             isRight: true,
+
         },
 
         {
