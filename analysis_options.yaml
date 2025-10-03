@@ -1,0 +1,74 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    missing_return: error
+    dead_code: error
+    unused_import: error
+    unused_local_variable: error
+    unused_element: warning
+    todo: ignore
+    invalid_assignment: error
+    override_on_non_overriding_member: error
+    strict_top_level_inference: ignore
+    prefer_final_parameters: ignore
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gr.dart"
+    - "lib/l10n/**"
+    - "lib/generated/**"
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    file_names: true
+    directives_ordering: true
+    sort_pub_dependencies: false
+    prefer_relative_imports: true
+    unnecessary_this: true
+    unnecessary_brace_in_string_interps: true
+    cascade_invocations: true
+    flutter_style_todos: true
+    curly_braces_in_flow_control_structures: true
+    type_annotate_public_apis: true
+    comment_references: false
+    annotate_overrides: true
+    avoid_print: true
+    public_member_api_docs: false
+
+    always_declare_return_types: true
+    always_put_required_named_parameters_first: true
+    avoid_annotating_with_dynamic: true
+    avoid_returning_null_for_future: true
+    avoid_empty_else: true
+    avoid_init_to_null: true
+    avoid_web_libraries_in_flutter: true
+    no_duplicate_case_values: true
+    prefer_typing_uninitialized_variables: true
+    only_throw_errors: true
+    null_check_on_nullable_type_parameter: true
+    avoid_classes_with_only_static_members: true
+    prefer_final_parameters: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    prefer_const_literals_to_create_immutables: true
+    avoid_unnecessary_containers: true
+    use_full_hex_values_for_flutter_colors: true
+    use_key_in_widget_constructors: true
+    avoid_redundant_argument_values: true
+    sort_constructors_first: true
+    sort_unnamed_constructors_first: true
+    always_put_control_body_on_new_line: true
+
+    avoid_positional_boolean_parameters: true
+    prefer_expression_function_bodies: true
+    omit_local_variable_types: true
+
+    depend_on_referenced_packages: true
+    avoid_unused_constructor_parameters: true
+    constant_identifier_names: false
+    non_constant_identifier_names: false
