@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { faUserSecret, faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 import styles from "./sensei-home.module.css";
 
 //**
@@ -80,7 +81,7 @@ const Home = (): JSX.Element => {
             I'm a    <span className={styles.typingHighlight}></span>
           </h3>
           <p>
-            Head of Security Operations @Terra Tech  | Information Security Analyst @Global Knowledge | CyberSecurity Trainee @ITI
+            CyberSecurtiy Team leader @Terra Tech | CyberSecurity Trainee @ITI
           </p>
           <motion.div className={styles.socialIcon} variants={itemVariants}>
             <a
@@ -128,7 +129,7 @@ const Home = (): JSX.Element => {
               href="https://docs.google.com/document/d/1j4Ln8O3dHafPMFzt8Fgm1KkKSahrkS8NiXF9bluMDtU/edit?usp=sharing" // 🔹 حط هنا اللينك بتاعك
               className={`${styles.btn} ${styles.btn1}`}
             >
-              About Me <FontAwesomeIcon icon={faUserSecret} /> {/* تقدر تغير الأيقونة لو عايز */}
+              About Me <FontAwesomeIcon icon={faUserTie} /> {/* تقدر تغير الأيقونة لو عايز */}
             </a>
           </motion.div>
         </motion.div>
