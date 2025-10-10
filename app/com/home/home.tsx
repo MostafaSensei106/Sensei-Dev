@@ -123,7 +123,7 @@ const Home = (): JSX.Element => {
               download
               className={`${styles.btn} ${styles.btn2}`}
             >
-              CV <FontAwesomeIcon icon={faFilePdf} />
+              Download CV <FontAwesomeIcon icon={faFilePdf} />
             </a>
             <a
               href="Assets/cv/السيره الذاتيه.pdf"
@@ -134,10 +134,10 @@ const Home = (): JSX.Element => {
             </a>
 
             <a
-              href="https://docs.google.com/document/d/1j4Ln8O3dHafPMFzt8Fgm1KkKSahrkS8NiXF9bluMDtU/edit?usp=sharing" // 🔹 حط هنا اللينك بتاعك
+              href="https://docs.google.com/document/d/1j4Ln8O3dHafPMFzt8Fgm1KkKSahrkS8NiXF9bluMDtU/edit?usp=sharing"
               className={`${styles.btn} ${styles.btn1}`}
             >
-              About Me <FontAwesomeIcon icon={faUserTie} /> {/* تقدر تغير الأيقونة لو عايز */}
+              About Me <FontAwesomeIcon icon={faUserTie} />
             </a>
           </motion.div>
         </motion.div>
