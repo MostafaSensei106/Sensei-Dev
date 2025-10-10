@@ -123,14 +123,14 @@ const Home = (): JSX.Element => {
               download
               className={`${styles.btn} ${styles.btn2}`}
             >
-              Download CV <FontAwesomeIcon icon={faFilePdf} />
+              CV <FontAwesomeIcon icon={faFilePdf} />
             </a>
             <a
               href="Assets/cv/السيره الذاتيه.pdf"
               download
               className={`${styles.btn} ${styles.btn2}`}
             >
-              تحميل السيره الذاتيه <FontAwesomeIcon icon={faFilePdf} />
+              السيره الذاتيه<FontAwesomeIcon icon={faFilePdf} />
             </a>
 
             <a
