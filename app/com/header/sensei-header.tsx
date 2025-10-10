@@ -89,7 +89,6 @@ const SenseiHeader = (): JSX.Element => {
         // Services: faUserSecret,
         Experience: faBook,
         Projects: faFolder,
-        ArtGallery: faPalette,
     };
 
     return (
