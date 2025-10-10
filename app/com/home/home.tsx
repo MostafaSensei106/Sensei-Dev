@@ -95,7 +95,7 @@ const Home = (): JSX.Element => {
 
             <a
               aria-label="Go to Instagram"
-              href="https://www.instagram.com/ahmed.eemadd/"
+              href="https://www.instagram.com/0x3omda/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -125,6 +125,14 @@ const Home = (): JSX.Element => {
             >
               Download CV <FontAwesomeIcon icon={faFilePdf} />
             </a>
+            <a
+              href="Assets/cv/السيره الذاتيه.pdf"
+              download
+              className={`${styles.btn} ${styles.btn2}`}
+            >
+              تحميل السيره الذاتيه <FontAwesomeIcon icon={faFilePdf} />
+            </a>
+
             <a
               href="https://docs.google.com/document/d/1j4Ln8O3dHafPMFzt8Fgm1KkKSahrkS8NiXF9bluMDtU/edit?usp=sharing" // 🔹 حط هنا اللينك بتاعك
               className={`${styles.btn} ${styles.btn1}`}
