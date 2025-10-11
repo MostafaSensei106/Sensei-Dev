@@ -111,6 +111,16 @@ const Home = (): JSX.Element => {
               {/* WhatsApp icon */}
               <i className="fa-brands fa-whatsapp"></i>
             </a>
+            <a
+              aria-label="Go to YouTube Channel"
+              href="https://www.youtube.com/@AhmedEmad-0x3omda"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {/* YouTube icon */}
+              <i className="fa-brands fa-youtube"></i>
+            </a>
+
 
 
           </motion.div>
