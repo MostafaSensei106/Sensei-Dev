@@ -90,27 +90,27 @@
 
     0%,
     20% {
-        content: " Soc Analyst L1";
+        content: " Soc Analyst T1";
     }
 
     21%,
     40% {
-        content: "  GRC specialist ";
+        content: "Soc Engineer";
     }
 
     41%,
     60% {
-        content: "Incident Response Analyst";
+        content: "GRC specialist";
     }
 
     61%,
     80% {
-        content: "CyberSecurity Engineer";
+        content: "Cybersecurity specialist";
     }
 
     81%,
     100% {
-        content: "CyberSecurity Instructor";
+        content: "Cybersecurity Instructor";
     }
 }
 
