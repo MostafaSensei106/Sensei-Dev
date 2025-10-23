@@ -157,6 +157,7 @@ const Home = (): JSX.Element => {
 
             <a
               href="https://docs.google.com/document/d/1j4Ln8O3dHafPMFzt8Fgm1KkKSahrkS8NiXF9bluMDtU/edit?usp=sharing"
+              target="_blank"
               className={`${styles.btn} ${styles.btn1}`}
             >
               About Me <FontAwesomeIcon icon={faUserTie} />
