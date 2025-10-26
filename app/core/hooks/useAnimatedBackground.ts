@@ -1,7 +1,6 @@
 "use client";
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { debounce } from "lodash";
-import styles from "./animated_background.module.css";
 
 interface Bubble {
   x: number;
@@ -27,8 +26,7 @@ interface MousePosition {
   active: boolean;
 }
 
-const AnimatedBackground: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+export const useAnimatedBackground = (canvasRef: React.RefObject<HTMLCanvasElement | null>) => {
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   const animationFrameIdRef = useRef<number | null>(null);
 
@@ -67,6 +65,7 @@ const AnimatedBackground: React.FC = () => {
     bubblesRef.current = bubbles;
     return bubbles;
   }, [dimensions, isMobile]);
+
   const createMeteors = useCallback(() => {
     const numberOfMeteors = Math.floor(dimensions.width / 250);
     const meteors = Array.from({ length: numberOfMeteors }, () => ({
@@ -81,6 +80,7 @@ const AnimatedBackground: React.FC = () => {
     meteorsRef.current = meteors;
     return meteors;
   }, [dimensions]);
+
   useEffect(() => {
     const updateDimensions = () => {
       setDimensions({
@@ -96,12 +96,14 @@ const AnimatedBackground: React.FC = () => {
       window.removeEventListener("resize", debouncedUpdateDimensions);
     };
   }, []);
+
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
       createBubbles();
       createMeteors();
     }
   }, [dimensions, createBubbles, createMeteors]);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current = {
@@ -120,6 +122,7 @@ const AnimatedBackground: React.FC = () => {
       window.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
+
   const drawGrid = useCallback(
     (ctx: CanvasRenderingContext2D) => {
       ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
@@ -137,6 +140,7 @@ const AnimatedBackground: React.FC = () => {
     },
     [dimensions],
   );
+
   const drawBubble = useCallback(
     (ctx: CanvasRenderingContext2D, bubble: Bubble) => {
       ctx.filter = "blur(30px)";
@@ -158,6 +162,7 @@ const AnimatedBackground: React.FC = () => {
     },
     [],
   );
+
   const drawMeteor = useCallback(
     (ctx: CanvasRenderingContext2D, meteor: Meteor) => {
       meteor.trail.forEach((point, index) => {
@@ -248,6 +253,7 @@ const AnimatedBackground: React.FC = () => {
     },
     [mouseInfluenceRadius, bubbleExpansionFactor, mouseInfluenceStrength],
   );
+
   const updateMeteors = useCallback(
     (meteors: Meteor[], canvas: HTMLCanvasElement) => {
       return meteors.map((meteor) => {
@@ -278,6 +284,7 @@ const AnimatedBackground: React.FC = () => {
     },
     [gridSize],
   );
+
   const animate = useCallback(() => {
     const canvas = canvasRef.current;
     const ctx = contextRef.current;
@@ -322,8 +329,4 @@ const AnimatedBackground: React.FC = () => {
       }
     };
   }, [dimensions, animate]);
-
-  return <canvas ref={canvasRef} className={styles.canvas} />;
 };
-
-export default AnimatedBackground;
