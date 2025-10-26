@@ -2,114 +2,109 @@
 /*-----------------This is Art Gallery Section Style-----------------*/
 /*-----------------This is Art Gallery Section Style-----------------*/
 
-
-
-
 /*
 * Art Gallery Section
 * @Author: Mostafa Sensei106
 * @Description: A responsive art gallery component with a menu that highlights the active section of the page.
  */
 
-
 .art-gallery-section {
-    min-height: 100vh;
-    padding: 60px 0;
+  min-height: 100vh;
+  padding: 60px 0;
 }
 
-.art-gallery-content  {
-    padding: 0 5rem 5%;
+.art-gallery-content {
+  padding: 0 5rem 5%;
 }
-
-
-
 
 .art-gallery-section .header-section {
-    margin-top: 35px;
-    text-align: center;
+  margin-top: 35px;
+  text-align: center;
 }
 
 .art-gallery-section .header-section .title {
-    position: relative;
-    margin-bottom: 40px;
-    padding-bottom: 25px;
-    font-weight: 700;
-    font-size: 3rem;
-    color: var(--main-color);
+  position: relative;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  font-weight: 700;
+  font-size: 3rem;
+  color: var(--main-color);
 }
 
 .art-gallery-section .header-section .title::before,
 .art-gallery-section .header-section .title::after {
-    content: " ";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .art-gallery-section .header-section .title::before {
-    width: 140%;
-    height: 1px;
-    background: var(--main-color);
+  width: 140%;
+  height: 1px;
+  background: var(--main-color);
 }
 
 .art-gallery-section .header-section .title::after {
-    width: 45%;
-    height: 3px;
-    background: var(--main-color);
+  width: 45%;
+  height: 3px;
+  background: var(--main-color);
 }
 
 .art-gallery-section {
-    margin: 0;
+  margin: 0;
 }
 
-
 .art-gallery-section .art-gallery-content .Gallery img {
-    border-radius: 1rem;
-    width: 100%;
-    transition: 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border-radius: 1rem;
+  width: 100%;
+  transition:
+    0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .art-gallery-section .art-gallery-content .Gallery img:hover {
-    border: 2px solid var(--main-color);
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px var(--main-color);
+  border: 2px solid var(--main-color);
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px var(--main-color);
 }
 
 .Gallery {
-    column-count: 4;
-    column-gap: 16px;
+  column-count: 4;
+  column-gap: 16px;
 }
 
 .Gallery .art_pic {
-    display: inline-block;
-    margin-bottom: 16px;
-    width: 100%;
+  display: inline-block;
+  margin-bottom: 16px;
+  width: 100%;
 }
 
 @media (max-width: 1199px) {
-    .Gallery {
-        column-count: 3;
-    }
-    .art-gallery-content{
-        padding: 0 1.5rem 5%;
-    }
+  .Gallery {
+    column-count: 3;
+  }
+  .art-gallery-content {
+    padding: 0 1.5rem 5%;
+  }
 }
 
 @media (max-width: 991px) {
-    .Gallery {
-        column-count: 2;
-    }
-    .art-gallery-content{
-        padding: 0 1.5rem 5%;
-    }
+  .Gallery {
+    column-count: 2;
+  }
+  .art-gallery-content {
+    padding: 0 1.5rem 5%;
+  }
 }
 
 @media (max-width: 767px) {
-    .Gallery {
-        column-count: 1;
-    }
-    .art-gallery-content{
-        padding: 0 1.5rem 5%;
-    }
+  .Gallery {
+    column-count: 1;
+  }
+  .art-gallery-content {
+    padding: 0 1.5rem 5%;
+  }
 }

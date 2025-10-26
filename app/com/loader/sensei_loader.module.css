@@ -1,18 +1,16 @@
-
-
 /* /*
 @Author Mostafa Sensei106
 @Description A loader component that displays a loading spinner until the page is fully loaded.
  */
-.loader{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 9999;
-    backdrop-filter: blur(25px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} 
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  backdrop-filter: blur(25px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

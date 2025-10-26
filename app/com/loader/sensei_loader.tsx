@@ -39,10 +39,7 @@ function SenseiLoader(): JSX.Element | null {
 
   return (
     <>
-      <div
-        className={styles.loader}
-        id="page-loader"
-      >
+      <div className={styles.loader} id="page-loader">
         <Image {...loaderImageProps} alt="A loading spinner" />
       </div>
     </>
