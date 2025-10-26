@@ -1,101 +1,92 @@
-
 /**
  * @author Mostafa Sensei106
  * @description Global CSS
  **/
 
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    scroll-behavior: smooth;
-    font-family: 'Overlock', serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: "Overlock", serif;
 }
 
 :root {
-    --bg-color: #000000;
-    --second-bg-color: #000000;
-    --text-color: #ffffff;
-    --main-color: #fef2e2;
+  --bg-color: #000000;
+  --second-bg-color: #000000;
+  --text-color: #ffffff;
+  --main-color: #fef2e2;
 }
 
-
-
-
 html[lang="en"] body {
-    font-family: 'Overlock', sans-serif;
-
+  font-family: "Overlock", sans-serif;
 }
 
 html[lang="ja"] body {
-    font-family: 'Yuji Syuku', serif;
+  font-family: "Yuji Syuku", serif;
 }
 
 [lang="en"] {
-    font-family: 'Overlock', sans-serif;
-
+  font-family: "Overlock", sans-serif;
 }
 
 [lang="ja"] {
-    font-family: 'Yuji Syuku', serif;
+  font-family: "Yuji Syuku", serif;
 }
 
-
 html {
-    font-size: 62.5%;
-    overflow-x: hidden;
+  font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 body {
-    background-color: var(--second-bg-color);
-    font-family: 'Overlock', serif;
-    color: var(--text-color);
-    overflow-x: hidden;
+  background-color: var(--second-bg-color);
+  font-family: "Overlock", serif;
+  color: var(--text-color);
+  overflow-x: hidden;
 }
 
 html::-webkit-scrollbar {
-    width: 0.8rem;
+  width: 0.8rem;
 }
 
 html::-webkit-scrollbar-track {
-    background: var(--bg-color);
+  background: var(--bg-color);
 }
 
 html::-webkit-scrollbar-thumb {
-    background: var(--main-color);
+  background: var(--main-color);
 }
-
 
 /*---------This is General Section Style---------*/
 /*---------This is General Section Style---------*/
 /*---------This is General Section Style---------*/
 
 section {
-    min-height: 100vh;
-    padding: 6rem 6% 5rem;
+  min-height: 100vh;
+  padding: 6rem 6% 5rem;
 }
 
 @media (max-width: 991px) {
-    section {
-        min-height: 100vh;
-        padding: 0 1.5rem 5%;
-    }
+  section {
+    min-height: 100vh;
+    padding: 0 1.5rem 5%;
+  }
 }
 
 @media (max-width: 768px) {
-    section {
-        min-height: 100vh;
-        padding: 0 1.5rem 5%;
-    }
+  section {
+    min-height: 100vh;
+    padding: 0 1.5rem 5%;
+  }
 }
 
 @media (max-width: 480px) {
-    section {
-        min-height: 100vh;
-        padding: 0 1.5rem 5%;
-    }
+  section {
+    min-height: 100vh;
+    padding: 0 1.5rem 5%;
+  }
 }
