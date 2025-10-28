@@ -63,6 +63,15 @@ const SenseiContact = (): JSX.Element => {
                     <i className="fa-brands fa-linkedin"></i>
                   </a>
                   <a
+                    aria-label="Go to X"
+                    href="https://x.com/MostafaSensei"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {/* Twitter icon */}
+                    <i className="fa-brands fa-x-twitter"></i>
+                  </a>
+                  <a
                     aria-label="Go to Telegram"
                     href="https://t.me/Mostafa_Sensei106"
                     target="_blank"

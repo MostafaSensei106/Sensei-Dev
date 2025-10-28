@@ -216,20 +216,15 @@ const SenseiHome = (): JSX.Element => {
 
             </a>
 
+
             <a
-
-              href="https://t.me/Mostafa_Sensei106"
-
+              aria-label="Go to X"
+              href="https://x.com/MostafaSensei"
               target="_blank"
-
               rel="noopener noreferrer"
-
-              title="Telegram"
-
             >
-
-              <FontAwesomeIcon icon={faTelegram} />
-
+              {/* Twitter icon */}
+              <i className="fa-brands fa-x-twitter"></i>
             </a>
 
           </motion.div>
@@ -260,7 +255,7 @@ const SenseiHome = (): JSX.Element => {
 
       </motion.div>
 
-    </section>
+    </section >
 
   );
 
