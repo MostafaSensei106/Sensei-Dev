@@ -118,14 +118,14 @@ function ExperienceSection() {
 
     const knowledgeEducationItems = [
         {
-            tag: "CyberSecurity Team Leader  - Contract",
+            tag: "CyberSecurity Engineer  - Contract",
             subTag: "Terra Tech",
             subTagHyperlink: "https://igresfyed.github.io/Terra-Tech/",
             desc: `**Directed** SOC, Red, and Cloud Security teams, ensuring unified defense and incident handling processes  
 **Developed** and implemented the company-wide Security Policy  
 **Ensured** compliance with international security laws and regulations`,
-            startDate: "2025-06-01",
-            // endDate: " ",
+            startDate: "2025-05-01",
+            endDate: "2025-11-01",
             isRight: true,
         },
 
@@ -142,14 +142,14 @@ function ExperienceSection() {
 
 
         {
-            tag: "Information Security Analyst (Tier 1/2) – Internship",
+            tag: "Information Security Analyst (Depi)– Internship",
             subTag: "Global Knowledge",
             subTagHyperlink: "https://www.globalknowledge.com/en-eg/",
             desc: `Monitored and triaged security alerts using **Wazuh SIEM** and **Security Onion**  
 Configured and maintained **pfSense Firewall** for network security  
 Implemented and fine-tuned **Snort IDS/IPS** to detect and prevent threats`,
             startDate: "2025-07-01",
-            endDate: "2026-03-31",
+            endDate: "2026-01-31",
             isRight: true,
 
         },
