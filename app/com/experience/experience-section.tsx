@@ -118,14 +118,12 @@ function ExperienceSection() {
 
     const knowledgeEducationItems = [
         {
-            tag: "CyberSecurity Engineer  - Contract",
-            subTag: "Terra Tech",
-            subTagHyperlink: "https://igresfyed.github.io/Terra-Tech/",
-            desc: `**Directed** SOC, Red, and Cloud Security teams, ensuring unified defense and incident handling processes  
-**Developed** and implemented the company-wide Security Policy  
-**Ensured** compliance with international security laws and regulations`,
-            startDate: "2025-05-01",
-            endDate: "2025-11-01",
+            tag: "Incident Response Analyst -- Intern",
+            subTag: "DEPIDigital Egypt Pioneers Initiative - DEPI",
+            subTagHyperlink: "https://depi.gov.eg/content/home",
+            desc: `Responsible for monitoring, detecting, and analyzing security incidents across IT infrastructure. Quickly responds to threats, investigates potential breaches, and implements incident response playbooks to mitigate risks and minimize business impact. Collaborates with security teams to improve detection capabilities, enhance response processes, and maintain overall system security`,
+            startDate: "2025-12-01",
+            // endDate: "2026-06-01",
             isRight: true,
         },
 
@@ -136,7 +134,7 @@ function ExperienceSection() {
             subTagHyperlink: "https://iti.gov.eg/",
             desc: "Completed intensive six-week SOC training covering IR, SIEM/EDR, and pentesting; detected 20+ misconfigurations in Red Team labs, validated defenses in Purple Team, and built a mini SOC ingesting multi-platform logs mapped to MITRE ATT&CK, improving simulated MTTD by 25%.",
             startDate: "2025-07-01",
-            //endDate: "2025-09-15",
+            endDate: "2025-12-15",
             isRight: false,
         },
 
@@ -144,12 +142,12 @@ function ExperienceSection() {
         {
             tag: "Information Security Analyst (Depi)– Internship",
             subTag: "Global Knowledge",
-            subTagHyperlink: "https://www.globalknowledge.com/en-eg/",
+            subTagHyperlink: "https://depi.gov.eg/content/home",
             desc: `Monitored and triaged security alerts using **Wazuh SIEM** and **Security Onion**  
-Configured and maintained **pfSense Firewall** for network security  
-Implemented and fine-tuned **Snort IDS/IPS** to detect and prevent threats`,
+                   Configured and maintained **pfSense Firewall** for network security  
+                   Implemented and fine-tuned **Snort IDS/IPS** to detect and prevent threats`,
             startDate: "2025-07-01",
-            endDate: "2026-01-31",
+            endDate: "2025-12-31",
             isRight: true,
 
         },
