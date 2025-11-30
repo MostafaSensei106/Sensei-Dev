@@ -64,7 +64,7 @@ const SenseiContact = (): JSX.Element => {
                                     </a>
                                     <a
                                         aria-label="Go to Instagram"
-                                        href="https://www.instagram.com/ahmedd.3omda/"
+                                        href="https://www.instagram.com/0x3omda/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >

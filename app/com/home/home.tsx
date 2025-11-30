@@ -101,7 +101,7 @@ const Home = (): JSX.Element => {
             I'm a <span className={styles.typingHighlight}></span>
           </h3>
           <p>
-            Ex-CyberSecurity Engineer @Terra Tech | CyberSecurity Trainee @ITI | SOC Analyst Trainee @Depi
+            CyberSecurity Trainee @ITI | SOC Analyst Trainee @Global Knowledge | Incdient Response Analyst @AMIT
           </p>
 
           <motion.div className={styles.socialIcon} variants={itemVariants}>
@@ -116,7 +116,7 @@ const Home = (): JSX.Element => {
 
             <a
               aria-label="Go to Instagram"
-              href="https://www.instagram.com/ahmedd.3omda/"
+              href="https://www.instagram.com/0x3omda/"
               target="_blank"
               rel="noopener noreferrer"
             >
