@@ -119,8 +119,8 @@ function ExperienceSection() {
     const knowledgeEducationItems = [
         {
             tag: "Incident Response Analyst -- Intern",
-            subTag: "DEPIDigital Egypt Pioneers Initiative - DEPI",
-            subTagHyperlink: "https://depi.gov.eg/content/home",
+            subTag: "AMIT",
+            subTagHyperlink: "https://amit-learning.com/",
             desc: `Responsible for monitoring, detecting, and analyzing security incidents across IT infrastructure. Quickly responds to threats, investigates potential breaches, and implements incident response playbooks to mitigate risks and minimize business impact. Collaborates with security teams to improve detection capabilities, enhance response processes, and maintain overall system security`,
             startDate: "2025-12-01",
             // endDate: "2026-06-01",
@@ -140,7 +140,7 @@ function ExperienceSection() {
 
 
         {
-            tag: "Information Security Analyst (Depi)– Internship",
+            tag: "Information Security Analyst -– Internship",
             subTag: "Global Knowledge",
             subTagHyperlink: "https://depi.gov.eg/content/home",
             desc: `Monitored and triaged security alerts using **Wazuh SIEM** and **Security Onion**  
@@ -156,9 +156,21 @@ function ExperienceSection() {
             tag: "Cyber Security Instructor",
             subTag: "Google Student Club",
             subTagHyperlink:
+                "https://cybertalents.com/",
+            desc: "Penetration Testing Bootcamp For EJPT Certificate",
+            isRight: false,
+            startDate: "2025-010-1",
+            endDate: "2025-11-31",
+            showDate: true,
+        },
+
+        {
+            tag: "Pentertation testing Bootcamp (EJPT)",
+            subTag: "CyberTalents",
+            subTagHyperlink:
                 "https://gdg.community.dev/gdg-on-campus-benha-university-benha-egypt/",
             desc: "CyberSecurity Instructor Deliver comprehensive and hands-on training in cybersecurity concepts, tools, and practices to students and professionals. Responsibilities include designing and delivering engaging course content, guiding learners through practical labs, and mentoring them on real-world scenarios. The role involves breaking down complex security topics into easy-to-understand lessons, preparing learners for certifications, and instilling best practices in security awareness",
-            isRight: false,
+            isRight: true,
             startDate: "2024-010-21",
             showDate: true,
         },
@@ -171,7 +183,7 @@ function ExperienceSection() {
             startDate: "2024-12-01",
             endDate: "2025-01-13",
             showDate: true,
-            isRight: true,
+            isRight: false,
         },
 
 
@@ -181,7 +193,7 @@ function ExperienceSection() {
             subTag: "Cyber Cohesions",
             subTagHyperlink: "https://www.cybercohesions.com/",
             desc: "Makes CTF's At CyberCohesions BootCamps And competition.",
-            isRight: false,
+            isRight: true,
             startDate: "2024-07-01",
             endDate: "2026-01-07",
             showDate: false,
@@ -192,7 +204,7 @@ function ExperienceSection() {
             subTag: "Huawei",
             subTagHyperlink: "https://www.huawei.com/en/",
             desc: " Huawei HCIA-Datacom V1.0 (H12-811) Routing and Switching && HCIA_ Cloud_Computing V5.0 ",
-            isRight: true,
+            isRight: false,
             startDate: "2023-05-01",
             showDate: false,
         },
@@ -202,7 +214,7 @@ function ExperienceSection() {
             desc: "Studying Computer's Science, building skills in in Information Security and Digital Forensics. GPA :3.73 ˶˃ ᵕ ˂˶  ",
             subTag: "Benha University (BFCAI)",
             subTagHyperlink: "https://www.bu.edu.eg/",
-            isRight: false,
+            isRight: true,
             startDate: "2022-10-01",
             showDate: true,
         },
@@ -210,21 +222,21 @@ function ExperienceSection() {
         {
             tag: "Arabic Language",
             desc: " Native Speaker",
-            isRight: true,
+            isRight: false,
             startDate: "2018-01-01",
             showDate: false,
         },
         {
             tag: "English C1 ",
             desc: "Not Native but Proffessional ",
-            isRight: false,
+            isRight: true,
             startDate: "2016-01-01",
             showDate: false,
         },
         {
             tag: "HOBBIES",
             desc: " The next Are Hobbies And My Atheletic Career (˶˃ ᵕ ˂˶)  ",
-            isRight: true,
+            isRight: false,
             startDate: "2018-01-01",
             showDate: false,
         },
@@ -233,14 +245,14 @@ function ExperienceSection() {
         {
             tag: "Athelete @Al Ahly FC",
             desc: " I Am An Athelete At Al Ahly FC (Runner) Specialized in 800 m && 1500 m And 10k m Races ",
-            isRight: false,
+            isRight: true,
             startDate: "2018-01-01",
             showDate: true,
         },
         {
             tag: "Former pentathlon",
             desc: "I Was pentathlon player @Banha FC specalized in Running (800 m) & Swimming (100 m) And Lazer Run (4 x 800 m)  ",
-            isRight: true,
+            isRight: false,
             startDate: "2016-01-01",
             showDate: true,
         },
