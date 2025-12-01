@@ -38,9 +38,18 @@ const SenseiContact = (): JSX.Element => {
                                     className={styles['link-me']}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    href="mailto:ahmedemadeldeen77@gmail.com?subject=Hello Ahmed: "
+                                    href="mailto:ahmedemadeldeen77@gmail.com?subject=Hello Eng Ahmed: "
                                 >
                                     AhmedEmadeldeen77@gmail.com
+                                </a>
+
+                                <a
+                                    className={styles['link-me']}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="mailto:ahmed419803@fci.bu.edu.eg?subject=Hello Eng Ahmed: "
+                                >
+                                    ahmed419803@fci.bu.edu.eg
                                 </a>
                                 <div className={styles.social}>
                                     <p className={styles.meon}>Me on Social Network</p>
