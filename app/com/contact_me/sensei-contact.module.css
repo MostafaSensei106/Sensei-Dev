@@ -80,11 +80,15 @@
 }
 
 .link-me {
+    display: block;
     color: var(--main-color);
     font-size: 2.5rem;
     text-decoration: none;
     transition: all 0.3s ease;
+    margin-bottom: 10px;
+    /* اختياري: يزود مسافة بين الإيميلين */
 }
+
 
 
 .link-me:hover {
