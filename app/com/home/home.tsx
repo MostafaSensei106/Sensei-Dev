@@ -131,15 +131,7 @@ const Home = (): JSX.Element => {
             >
               <i className="fa-brands fa-whatsapp"></i>
             </a>
-
-            <a
-              aria-label="Go to YouTube Channel"
-              href="https://www.youtube.com/@AhmedEmad-0x3omda"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fa-brands fa-youtube"></i>
-            </a>
+            
           </motion.div>
 
           {/* Buttons Section */}
