@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion, Variants, cubicBezier } from "framer-motion";
+import { useInView, } from "react-intersection-observer";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import styles from "./sensei-art.module.css";
@@ -11,8 +11,11 @@ import { images } from "@/app/core/data";
 import MotionInView from "@/app/core/components/MotionInView";
 
 const ImageItem = ({ image, index, setOpen }) => {
-  const variants = {
-    hidden: { opacity: 0, y: 20 },
+  const variants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
@@ -79,14 +82,14 @@ function SenseiArt() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [open, handleKeyDown]);
 
-  const headerVariants = {
+  const headerVariants: Variants = {
     hidden: { opacity: 0, y: -50 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99],
+        ease: cubicBezier(0.6, -0.05, 0.01, 0.99),
       },
     },
   };

@@ -3,7 +3,7 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faExclamationCircle, faEye } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
+import { cubicBezier, motion, Variants } from "framer-motion";
 import styles from "./sensei-services-projects.module.css";
 import { useGitHubRepos } from "@/app/core/hooks/useGitHubRepos";
 import { getIconForLanguage, formatDate } from "@/app/core/utils/projectsUtils";
@@ -48,7 +48,7 @@ import MotionInView from "@/app/core/components/MotionInView";
 const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.memo(
   ({ repo, index }) => {
     // Define animation variants for the project item
-    const variants = {
+    const variants: Variants = {
       hidden: { opacity: 0, y: 50 },
       visible: {
         opacity: 1,
@@ -56,7 +56,7 @@ const ProjectItem: React.FC<{ repo: GitHubRepository; index: number }> = React.m
         transition: {
           duration: 0.5,
           delay: index * 0.1,
-          ease: [0.22, 1, 0.36, 1],
+          ease: cubicBezier(0.22, 1, 0.36, 1),
         },
       },
     };
@@ -135,7 +135,7 @@ const SenseiProjects: React.FC = () => {
     transition: {
       duration: 0.6,
       delay: 0.3,
-      type: "spring",
+      type: "spring" as const,
       stiffness: 200,
       damping: 10,
     },

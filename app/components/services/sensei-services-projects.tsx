@@ -1,7 +1,7 @@
 // Import necessary dependencies and styles
 "use client";
 import React, { JSX } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants, cubicBezier } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./sensei-services-projects.module.css";
 
@@ -36,7 +36,7 @@ const ServiceItem: React.FC<{
   });
 
   // Define animation variants for Framer Motion
-  const variants = {
+  const variants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -44,7 +44,7 @@ const ServiceItem: React.FC<{
       transition: {
         duration: 0.5,
         delay: index * 0.1, // Delay based on the service index for staggered animation
-        ease: [0.22, 1, 0.36, 1],
+        ease: cubicBezier(0.22, 1, 0.36, 1),
       },
     },
   };
