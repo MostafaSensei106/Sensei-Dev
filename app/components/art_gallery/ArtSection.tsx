@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
@@ -14,13 +15,13 @@ export default function ArtSection() {
   const [index, setIndex] = useState(0);
 
   const lightboxSlides = PORTFOLIO_DATA.artGallery.map((img) => ({
-    src: `/${img.src}`,
+    src: img.src.startsWith("/") ? img.src : `/${img.src}`,
     title: img.title,
     description: "Digital Art by Mostafa Mahmoud",
   }));
 
   return (
-    <section id="art" className="relative py-40 px-6 md:px-20 bg-[#050505] overflow-hidden">
+    <section id="art" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
       <div className="absolute right-10 top-0 h-full vertical-text font-black text-[18vw] opacity-[0.01] pointer-events-none select-none uppercase leading-none z-0">
         芸術的魂 — ARTISTIC SOUL
@@ -61,13 +62,14 @@ export default function ArtSection() {
                 setIndex(idx);
                 setOpen(true);
               }}
-              className="relative group cursor-pointer overflow-hidden rounded-[2rem] bg-white/[0.02] border border-white/5 transition-all duration-700 hover:border-primary/40 hover:scale-[1.02]"
+              className="relative group cursor-pointer overflow-hidden rounded-card bg-white/[0.02] border border-white/5 transition-all duration-700 hover:border-primary/40 hover:scale-[1.02]"
             >
-              <img
-                src={`/${img.thumb}`}
+              <Image
+                src={img.thumb.startsWith("/") ? img.thumb : `/${img.thumb}`}
                 alt={img.title}
+                width={500}
+                height={500}
                 className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
-                loading="lazy"
               />
               
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">

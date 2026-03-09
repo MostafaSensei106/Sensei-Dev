@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
@@ -47,9 +48,7 @@ export default function SamuraiHero() {
   ];
 
   return (
-    <section id="home" ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-40 pb-20 bg-[#050505]">
-      <NeuralSakuraBackground />
-
+    <section id="home" ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-40 pb-20 bg-background">
       {/* Background Japanese Watermark */}
       <div className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-8 text-white/[0.03] font-black text-[12vw] select-none pointer-events-none z-0 leading-none">
         <span className="vertical-text">エンジニア</span>
@@ -86,14 +85,14 @@ export default function SamuraiHero() {
               <a
                 href={PORTFOLIO_DATA.profile.hero.cvUrl}
                 download
-                className="interactive flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-full font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500 shadow-2xl shadow-primary/20"
+                className="interactive flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-button font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500 shadow-2xl shadow-primary/20"
               >
                 <Download size={16} />
                 RESUME.pdf
               </a>
               <a
                 href="#projects"
-                className="interactive flex items-center gap-3 px-10 py-5 border border-white/10 bg-white/5 backdrop-blur-md rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all duration-500"
+                className="interactive flex items-center gap-3 px-10 py-5 border border-white/10 bg-white/5 backdrop-blur-md rounded-button font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all duration-500"
               >
                 PROJECTS
               </a>
@@ -126,9 +125,12 @@ export default function SamuraiHero() {
 
             {/* The Photo */}
             <div className="absolute inset-4 rounded-full overflow-hidden border-4 border-white/5 shadow-2xl shadow-primary/10">
-              <img
+              <Image
                 src="/Assets/art-gallery/Images/logo/Mostafa.jpg"
                 alt={PORTFOLIO_DATA.profile.name}
+                width={500}
+                height={500}
+                priority
                 className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />

@@ -43,7 +43,7 @@ export default function NavigationPill() {
   return (
     <>
       <motion.nav
-        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-2xl border border-white/10 rounded-2xl px-6 md:px-8 py-3 md:py-4 flex items-center justify-between transition-all duration-500 ease-out"
+        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-2xl border border-white/10 rounded-card px-6 md:px-8 py-3 md:py-4 flex items-center justify-between transition-all duration-500 ease-out"
         style={{
           width: navWidth,
           backgroundColor: navBackground,
@@ -123,7 +123,7 @@ export default function NavigationPill() {
                 className="mt-12 flex flex-col items-center gap-2"
               >
                 <div className="w-16 h-[1px] bg-primary" />
-                <span className="text-[10px] font-mono text-white/20 tracking-[0.5em] uppercase">Mostafa Mahmoud Portfolio</span>
+                <span className="text-[10px] font-mono text-white/20 tracking-[0.5em] uppercase">Sensei Portfolio Template</span>
               </motion.div>
             </motion.div>
           </motion.div>

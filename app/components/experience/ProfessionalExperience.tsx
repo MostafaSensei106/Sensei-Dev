@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
-import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
+import { Calendar, MapPin, CheckCircle2 } from "lucide-react";
 
 export default function ProfessionalExperience() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ export default function ProfessionalExperience() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-40 px-6 md:px-20 bg-[#080808] overflow-hidden">
+    <section ref={sectionRef} className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Decorative Background Text */}
       <div className="absolute top-20 right-0 pointer-events-none select-none opacity-[0.02] text-[15vw] font-black leading-none z-0 vertical-text uppercase">
         職歴 — EXPERIENCE
@@ -58,7 +58,7 @@ export default function ProfessionalExperience() {
             >
               {/* Left Column: Metadata */}
               <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-3 text-secondary">
+                <div className="flex items-center gap-3 text-accent">
                   <Calendar size={18} />
                   <span className="font-mono text-sm tracking-widest font-bold uppercase">{item.period}</span>
                 </div>
@@ -75,7 +75,7 @@ export default function ProfessionalExperience() {
               </div>
 
               {/* Right Column: Details */}
-              <div className="relative p-8 md:p-12 bg-white/[0.02] border border-white/5 rounded-[2rem] backdrop-blur-3xl group-hover:border-primary/20 group-hover:bg-white/[0.04] transition-all duration-700">
+              <div className="relative p-8 md:p-12 bg-white/[0.02] border border-white/5 rounded-card backdrop-blur-3xl group-hover:border-primary/20 group-hover:bg-white/[0.04] transition-all duration-700">
                 <p className="text-xl md:text-2xl font-light text-white/90 mb-8 leading-relaxed italic border-l-2 border-primary pl-6">
                   {item.description}
                 </p>
@@ -83,8 +83,8 @@ export default function ProfessionalExperience() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {item.details.map((detail, i) => (
                     <div key={i} className="flex items-start gap-4 group/detail">
-                      <div className="mt-1.5 shrink-0 w-4 h-4 rounded-full border border-secondary/40 flex items-center justify-center group-hover/detail:border-secondary transition-colors">
-                        <CheckCircle2 size={10} className="text-secondary opacity-0 group-hover/detail:opacity-100 transition-opacity" />
+                      <div className="mt-1.5 shrink-0 w-4 h-4 rounded-full border border-accent/40 flex items-center justify-center group-hover/detail:border-accent transition-colors">
+                        <CheckCircle2 size={10} className="text-accent opacity-0 group-hover/detail:opacity-100 transition-opacity" />
                       </div>
                       <span className="text-white/50 group-hover/detail:text-white/80 transition-colors text-sm font-light leading-relaxed">
                         {detail}

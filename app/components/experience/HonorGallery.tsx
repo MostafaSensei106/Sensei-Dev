@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
@@ -17,7 +18,7 @@ export default function HonorGallery() {
   }));
 
   return (
-    <section id="certificates" className="relative py-40 px-6 md:px-20 bg-[#080808] overflow-hidden">
+    <section id="certificates" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="mb-32 flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="max-w-3xl">
@@ -44,14 +45,16 @@ export default function HonorGallery() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.8 }}
               onClick={() => { setIndex(idx); setOpen(true); }}
-              className="relative group cursor-pointer bg-white/[0.02] border border-white/5 rounded-[3rem] overflow-hidden backdrop-blur-3xl hover:border-primary/30 hover:bg-white/[0.04] transition-all duration-700"
+              className="relative group cursor-pointer bg-white/[0.02] border border-white/5 rounded-card overflow-hidden backdrop-blur-3xl hover:border-primary/30 hover:bg-white/[0.04] transition-all duration-700"
             >
               <div className="flex flex-col lg:flex-row h-full">
                 {/* Certificate Preview */}
                 <div className="w-full lg:w-2/5 h-64 lg:h-full relative overflow-hidden">
-                  <img 
+                  <Image 
                     src={cert.image} 
-                    alt={cert.title} 
+                    alt={cert.title}
+                    width={400}
+                    height={300}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">

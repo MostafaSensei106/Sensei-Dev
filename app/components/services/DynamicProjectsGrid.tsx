@@ -3,13 +3,13 @@
 import { motion } from "framer-motion";
 import { useGitHubRepos } from "@/app/core/hooks/useGitHubRepos";
 import ExpressiveProjectCard from "./ExpressiveProjectCard";
-import { Cpu, Terminal, ShieldAlert } from "lucide-react";
+import { Cpu, Terminal } from "lucide-react";
 
 export default function DynamicProjectsGrid() {
   const { repos, isLoading } = useGitHubRepos();
 
   return (
-    <section id="projects" className="relative py-40 px-6 md:px-20 bg-[#050505] overflow-hidden">
+    <section id="projects" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Japanese Watermark */}
       <div className="absolute left-10 top-20 pointer-events-none select-none opacity-[0.02] text-[15vw] font-black leading-none -z-0 vertical-text uppercase">
         開発マニフェスト — MANIFESTO
@@ -35,7 +35,7 @@ export default function DynamicProjectsGrid() {
                 <Cpu size={20} className="text-primary" />
               </div>
               <div className="p-3 bg-white/5 border border-white/10 rounded-2xl">
-                <Terminal size={20} className="text-secondary" />
+                <Terminal size={20} className="text-accent" />
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@ export default function DynamicProjectsGrid() {
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="aspect-[4/5] rounded-[3rem] animate-pulse bg-white/5 border border-white/10" />
+              <div key={i} className="aspect-[4/5] rounded-card animate-pulse bg-white/5 border border-white/10" />
             ))}
           </div>
         ) : (

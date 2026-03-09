@@ -62,7 +62,7 @@ export default function SamuraiFooter() {
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="katana-card p-8 md:p-16 bg-surface/40 backdrop-blur-xl border-white/5 relative group"
+            className="katana-card p-8 md:p-16 bg-surface/40 backdrop-blur-xl border-white/5 relative group rounded-card"
           >
             <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-30 transition-opacity">
               <Mail size={100} className="text-primary" />
@@ -94,7 +94,7 @@ export default function SamuraiFooter() {
               />
               <button
                 type="submit"
-                className="interactive mt-4 py-6 bg-primary text-black rounded-katana font-black uppercase tracking-[0.3em] text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-primary/20"
+                className="interactive mt-4 py-6 bg-primary text-black rounded-button font-black uppercase tracking-[0.3em] text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-primary/20"
               >
                 DISPATCH MESSAGE
               </button>
