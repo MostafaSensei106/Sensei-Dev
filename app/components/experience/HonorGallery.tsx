@@ -28,16 +28,16 @@ export default function HonorGallery() {
             </div>
             <h2 className="font-display text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
               Certifications <br /> 
-              <span className="text-white/80 italic">& Achievements.</span>
+              <span className="text-quaternary italic">& Achievements.</span>
             </h2>
             </div>
-            <p className="text-white/80 text-lg md:text-xl font-light max-w-sm text-right leading-relaxed">
+            <p className="text-on-surface-variant text-lg md:text-xl font-light max-w-sm text-right leading-relaxed">
             Technical mastery validated by global industry leaders in Flutter and systems engineering.
             </p>
-        </div>
+            </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {PORTFOLIO_DATA.certificates.map((cert, idx) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {PORTFOLIO_DATA.certificates.map((cert, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -45,7 +45,7 @@ export default function HonorGallery() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.8 }}
               onClick={() => { setIndex(idx); setOpen(true); }}
-              className="relative group cursor-pointer bg-white/[0.02] border border-white/5 rounded-card overflow-hidden backdrop-blur-3xl hover:border-quaternary/30 hover:bg-white/[0.04] transition-all duration-700"
+              className="relative group cursor-pointer bg-surface border border-white/5 rounded-card overflow-hidden backdrop-blur-3xl hover:border-quaternary/30 transition-all duration-700"
             >
               <div className="flex flex-col lg:flex-row h-full">
                 {/* Certificate Preview */}
@@ -73,7 +73,7 @@ export default function HonorGallery() {
                   <h3 className="font-display text-3xl md:text-4xl font-bold mb-6 text-white group-hover:text-quaternary transition-colors leading-tight">
                     {cert.title}
                   </h3>
-                  <div className="flex items-center gap-6 text-white/80 text-sm font-medium">
+                  <div className="flex items-center gap-6 text-on-surface-variant text-sm font-medium">
                     <div className="flex items-center gap-2">
                       <Award size={14} className="text-quaternary" />
                       <span>{cert.issuer}</span>
@@ -87,26 +87,29 @@ export default function HonorGallery() {
               </div>
 
               {/* Japanese Decorative Stamp */}
-              <div className="absolute bottom-6 right-8 text-white/[0.03] font-black text-6xl select-none group-hover:text-primary/10 transition-colors pointer-events-none">
+              <div className="absolute bottom-6 right-8 text-white/[0.05] font-black text-6xl select-none group-hover:text-quaternary/20 transition-colors pointer-events-none" role="presentation">
                 認定
               </div>
             </motion.div>
-          ))}
-        </div>
-      </div>
+            ))}
+            </div>
+            </div>
 
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        index={index}
-        slides={slides}
-        styles={{ container: { backgroundColor: "rgba(0, 0, 0, 0.98)" } }}
-      />
+            <Lightbox
+            open={open}
+            close={() => setOpen(false)}
+            index={index}
+            slides={slides}
+            styles={{ container: { backgroundColor: "rgba(0, 0, 0, 0.98)" } }}
+            />
 
-      {/* Background Decorative Kanji */}
-      <div className="absolute left-10 bottom-20 vertical-text font-black text-[12vw] opacity-[0.1] pointer-events-none select-none uppercase leading-none" aria-hidden="true">
-        成就 - ACHIEVEMENT
-      </div>
-    </section>
+            {/* Background Decorative Kanji */}
+            <div 
+            className="absolute left-10 bottom-20 vertical-text font-black text-[12vw] text-white/[0.02] pointer-events-none select-none uppercase leading-none" 
+            aria-hidden="true"
+            role="img"
+            >
+            成就 - ACHIEVEMENT
+            </div>    </section>
   );
 }

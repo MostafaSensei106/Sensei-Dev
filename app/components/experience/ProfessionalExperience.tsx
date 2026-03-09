@@ -35,7 +35,11 @@ export default function ProfessionalExperience() {
   return (
     <section ref={sectionRef} className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Decorative Background Text */}
-      <div className="absolute top-20 right-0 pointer-events-none select-none opacity-[0.1] text-[15vw] font-black leading-none z-0 vertical-text uppercase" aria-hidden="true">
+      <div 
+        className="absolute top-20 right-0 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black leading-none z-0 vertical-text uppercase" 
+        aria-hidden="true"
+        role="img"
+      >
         職歴 — EXPERIENCE
       </div>
 
@@ -46,7 +50,7 @@ export default function ProfessionalExperience() {
             <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Professional Path</span>
           </div>
           <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-tight">
-            Professional <br /> <span className="text-white/80 italic">Experience.</span>
+            Professional <br /> <span className="text-accent italic">Experience.</span>
           </h2>
         </div>
 
@@ -65,7 +69,7 @@ export default function ProfessionalExperience() {
                 <h3 className="font-display text-3xl md:text-5xl font-black text-white group-hover:text-primary transition-colors duration-500">
                   {item.company}
                 </h3>
-                <div className="flex items-center gap-2 text-white/70 text-sm">
+                <div className="flex items-center gap-2 text-on-surface-variant text-sm">
                   <MapPin size={14} />
                   <span>{item.location}</span>
                 </div>
@@ -75,8 +79,8 @@ export default function ProfessionalExperience() {
               </div>
 
               {/* Right Column: Details */}
-              <div className="relative p-8 md:p-12 bg-white/[0.02] border border-white/5 rounded-card backdrop-blur-3xl group-hover:border-primary/20 group-hover:bg-white/[0.04] transition-all duration-700">
-                <p className="text-xl md:text-2xl font-light text-white/90 mb-8 leading-relaxed italic border-l-2 border-primary pl-6">
+              <div className="relative p-8 md:p-12 bg-surface border border-white/5 rounded-card backdrop-blur-3xl group-hover:border-primary/20 transition-all duration-700">
+                <p className="text-xl md:text-2xl font-light text-white mb-8 leading-relaxed italic border-l-2 border-primary pl-6">
                   {item.description}
                 </p>
                 
@@ -86,7 +90,7 @@ export default function ProfessionalExperience() {
                       <div className="mt-1.5 shrink-0 w-4 h-4 rounded-full border border-accent/40 flex items-center justify-center group-hover/detail:border-accent transition-colors">
                         <CheckCircle2 size={10} className="text-accent opacity-0 group-hover/detail:opacity-100 transition-opacity" />
                       </div>
-                      <span className="text-white/80 group-hover/detail:text-white transition-colors text-sm font-light leading-relaxed">
+                      <span className="text-on-surface-variant group-hover/detail:text-white transition-colors text-sm font-light leading-relaxed">
                         {detail}
                       </span>
                     </div>
