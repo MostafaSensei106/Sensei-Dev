@@ -16,32 +16,39 @@ export default function DynamicProjectsGrid() {
         aria-hidden="true"
         role="img"
       >
-        開発マニフェスト — MANIFESTO
+        開発マニフェスト
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row items-end justify-between mb-32 gap-12">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-tertiary" />
-              <span className="text-tertiary text-xs font-black tracking-[0.4em] uppercase">The Code Manifesto</span>
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 mb-32 items-end">
+          {/* Left Block: Identity */}
+          <div className="flex flex-col gap-8">
+            <div className="flex items-center flex-wrap gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-[2px] bg-accent" />
+                <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">The Code Manifesto</span>
+              </div>
+              <div className="flex gap-3">
+                <div className="p-2 bg-white/5 border border-white/10 rounded-lg">
+                  <Cpu size={16} className="text-primary" />
+                </div>
+                <div className="p-2 bg-white/5 border border-white/10 rounded-lg">
+                  <Terminal size={16} className="text-accent" />
+                </div>
+              </div>
             </div>
-            <h2 className="font-display text-6xl md:text-9xl font-black tracking-tighter uppercase leading-[0.85]">
-              System <br /> <span className="text-tertiary italic">Architecture.</span>
+            
+            <h2 className="font-display text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter uppercase leading-[0.8] mb-0">
+              <span className="text-white">System</span> <br /> 
+              <span className="text-primary italic">Architecture.</span>
             </h2>
           </div>
-          <div className="flex flex-col items-end text-right max-w-sm">
-            <p className="text-on-surface-variant text-lg md:text-xl font-light leading-relaxed mb-6">
+
+          {/* Right Block: Description */}
+          <div className="flex flex-col items-start lg:items-end lg:text-right pb-4">
+            <p className="text-on-surface-variant text-lg md:text-xl font-light leading-relaxed max-w-sm">
               Precision-engineered repositories focused on high-performance concurrency, sorting algorithms, and native system integration.
             </p>
-            <div className="flex gap-4">
-              <div className="p-3 bg-white/5 border border-white/10 rounded-2xl">
-                <Cpu size={20} className="text-tertiary" />
-              </div>
-              <div className="p-3 bg-white/5 border border-white/10 rounded-2xl">
-                <Terminal size={20} className="text-accent" />
-              </div>
-            </div>
           </div>
         </div>
 

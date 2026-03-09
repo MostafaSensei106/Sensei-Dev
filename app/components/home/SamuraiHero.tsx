@@ -43,7 +43,7 @@ export default function SamuraiHero() {
 
   const socials = [
     { name: "GitHub", icon: Github, href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`, color: "hover:text-primary" },
-    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-tertiary" },
+    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-[#0077b5]" },
     { name: "WhatsApp", icon: MessageCircle, href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`, color: "hover:text-green-400" },
   ];
 
@@ -97,7 +97,7 @@ export default function SamuraiHero() {
               </a>
               <a
                 href="#projects"
-                className="interactive flex items-center gap-3 px-10 py-5 border border-tertiary/30 bg-tertiary/5 backdrop-blur-md text-tertiary rounded-button font-bold uppercase tracking-widest text-xs hover:bg-tertiary hover:text-black transition-all duration-500"
+                className="interactive flex items-center gap-3 px-10 py-5 border border-white/20 bg-white/5 backdrop-blur-md text-white rounded-button font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500"
               >
                 PROJECTS
               </a>
@@ -111,10 +111,10 @@ export default function SamuraiHero() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-white/20 transition-all duration-300 ${s.color} hover:scale-125`}
+                  className={`text-white/40 transition-all duration-300 ${s.color} hover:scale-150 active:scale-95`}
                   aria-label={s.name}
                 >
-                  <s.icon size={20} />
+                  <s.icon size={22} />
                 </a>
               ))}
             </div>

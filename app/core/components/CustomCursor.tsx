@@ -46,7 +46,7 @@ export default function CustomCursor() {
     <>
       {/* Samurai Focus Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 border border-primary rounded-full pointer-events-none z-[9999] mix-difference"
+        className="fixed top-0 left-0 w-12 h-12 border border-accent rounded-full pointer-events-none z-[9999] mix-difference"
         style={{
           x: smoothX,
           y: smoothY,
@@ -64,7 +64,7 @@ export default function CustomCursor() {
       
       {/* Android Core Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-primary rounded-full pointer-events-none z-[10000]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-accent rounded-full pointer-events-none z-[10000]"
         style={{
           x: cursorX,
           y: cursorY,
@@ -72,7 +72,7 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
       >
-        <div className="absolute inset-0 bg-primary blur-[4px] animate-pulse" />
+        <div className="absolute inset-0 bg-accent blur-[4px] animate-pulse" />
       </motion.div>
     </>
   );

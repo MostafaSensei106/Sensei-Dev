@@ -40,7 +40,7 @@ export default function ProfessionalExperience() {
         aria-hidden="true"
         role="img"
       >
-        職歴 — EXPERIENCE
+        職歴
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -50,7 +50,8 @@ export default function ProfessionalExperience() {
             <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Professional Path</span>
           </div>
           <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-tight">
-            Professional <br /> <span className="text-accent italic">Experience.</span>
+            <span className="text-white">Professional</span> <br /> 
+            <span className="text-primary italic">Experience.</span>
           </h2>
         </div>
 

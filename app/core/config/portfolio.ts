@@ -156,7 +156,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       text: "#FFFFFF",
     },
     borderRadius: {
-      base: "0px", // Samurai/Traditional Japanese often uses sharp edges
+      base: "0px",
       card: "4px",
       button: "2px",
     },
