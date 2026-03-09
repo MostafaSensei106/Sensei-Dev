@@ -52,13 +52,11 @@ export const PORTFOLIO_DATA = {
   projects: {
     githubUsername: "MostafaSensei106",
     pinnedRepos: [
-      "network_reachability",
-      "radix_plus",
-      "fp_growth",
-      "gopix",
-      "tadamon",
-      "Motivational_Quotes",
-      "Move_App"
+      "Network-Reachability",
+      "Radix_Plus",
+      "FP-Growth",
+      "GoPix",
+      "Tadamon",
     ],
     highlights: [
       {
@@ -66,14 +64,14 @@ export const PORTFOLIO_DATA = {
         type: "Dart Package",
         description: "High-performance network monitoring library leveraging a native Rust core to execute complex multi-target probing and DNS resolution.",
         metrics: ["Native Rust Core", "DNS Resolution", "Circuit Breaker"],
-        link: "https://github.com/MostafaSensei106/network_reachability",
+        link: "https://github.com/MostafaSensei106/Network-Reachability",
       },
       {
         name: "Radix-Plus",
         type: "Dart Package",
         description: "High-performance sorting library outperforming Dart's native List.sort() by up to 7.0x.",
         metrics: ["~29ms for 1M elements", "Parallel Processing", "Zero-copy operations"],
-        link: "https://github.com/MostafaSensei106/radix_plus",
+        link: "https://github.com/MostafaSensei106/Radix_Plus",
       },
       {
         name: "FP-Growth",
