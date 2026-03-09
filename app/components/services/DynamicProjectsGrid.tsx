@@ -11,7 +11,11 @@ export default function DynamicProjectsGrid() {
   return (
     <section id="projects" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Japanese Watermark */}
-      <div className="absolute left-10 top-20 pointer-events-none select-none opacity-[0.1] text-[15vw] font-black leading-none -z-0 vertical-text uppercase" aria-hidden="true">
+      <div 
+        className="absolute left-10 top-20 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black leading-none -z-0 vertical-text uppercase" 
+        aria-hidden="true"
+        role="img"
+      >
         開発マニフェスト — MANIFESTO
       </div>
 
@@ -23,11 +27,11 @@ export default function DynamicProjectsGrid() {
               <span className="text-tertiary text-xs font-black tracking-[0.4em] uppercase">The Code Manifesto</span>
             </div>
             <h2 className="font-display text-6xl md:text-9xl font-black tracking-tighter uppercase leading-[0.85]">
-              System <br /> <span className="text-white/80 italic">Architecture.</span>
+              System <br /> <span className="text-tertiary italic">Architecture.</span>
             </h2>
           </div>
           <div className="flex flex-col items-end text-right max-w-sm">
-            <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed mb-6">
+            <p className="text-on-surface-variant text-lg md:text-xl font-light leading-relaxed mb-6">
               Precision-engineered repositories focused on high-performance concurrency, sorting algorithms, and native system integration.
             </p>
             <div className="flex gap-4">

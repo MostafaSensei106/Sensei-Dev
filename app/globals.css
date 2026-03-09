@@ -46,7 +46,8 @@
 
     --surface: #121212;
     --on-surface: #FCFCFC;
-    --on-surface-variant: #A0A0A0;
+    --on-surface-variant: #B0B0B0; /* High contrast gray for secondary text */
+    --on-surface-muted: #707070;   /* Muted but accessible gray */
     --surface-variant: #1A1A1A;
 
     --primary-container: rgba(227, 30, 36, 0.1);

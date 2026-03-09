@@ -50,7 +50,11 @@ export default function SamuraiHero() {
   return (
     <section id="home" ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-40 pb-20 bg-background">
       {/* Background Japanese Watermark */}
-      <div className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-8 text-white/[0.1] font-black text-[12vw] select-none pointer-events-none z-0 leading-none" aria-hidden="true">
+      <div 
+        className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-8 text-white/[0.02] font-black text-[12vw] select-none pointer-events-none z-0 leading-none" 
+        aria-hidden="true"
+        role="img"
+      >
         <span className="vertical-text">エンジニア</span>
         <span className="vertical-text">師匠</span>
       </div>
@@ -60,7 +64,7 @@ export default function SamuraiHero() {
           {/* Badge */}
           <div className="flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8 backdrop-blur-sm">
             <Cpu size={14} className="text-quaternary animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/80">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface-variant">
               {PORTFOLIO_DATA.profile.japaneseTitle}
             </span>
           </div>
@@ -74,7 +78,7 @@ export default function SamuraiHero() {
             <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-6">
               {PORTFOLIO_DATA.profile.hero.tagline}
             </p>
-            <p className="text-lg text-white/70 font-light leading-relaxed">
+            <p className="text-lg text-on-surface-variant font-light leading-relaxed">
               {PORTFOLIO_DATA.profile.hero.description}
             </p>
           </div>
@@ -149,8 +153,8 @@ export default function SamuraiHero() {
       </div>
 
       {/* Bottom Japanese Quote */}
-      <div className="absolute bottom-10 left-10 hidden md:block" aria-hidden="true">
-        <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/70">
+      <div className="absolute bottom-10 left-10 hidden md:block" aria-hidden="true" role="img">
+        <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-on-surface-muted">
           継続は力なり — PERSEVERANCE IS POWER
         </p>
       </div>
