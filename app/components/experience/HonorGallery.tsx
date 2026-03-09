@@ -23,21 +23,17 @@ export default function HonorGallery() {
         <div className="mb-32 flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="max-w-3xl">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-quaternary" />
-              <span className="text-quaternary text-xs font-black tracking-[0.4em] uppercase">Academic Excellence</span>
+              <div className="w-12 h-[2px] bg-accent" />
+              <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Academic Excellence</span>
             </div>
             <h2 className="font-display text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
-              Certifications <br /> 
-              <span className="text-quaternary italic">& Achievements.</span>
+              <span className="text-white">Certifications</span> <br /> 
+              <span className="text-primary italic">& Achievements.</span>
             </h2>
             </div>
-            <p className="text-on-surface-variant text-lg md:text-xl font-light max-w-sm text-right leading-relaxed">
-            Technical mastery validated by global industry leaders in Flutter and systems engineering.
-            </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {PORTFOLIO_DATA.certificates.map((cert, idx) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">            {PORTFOLIO_DATA.certificates.map((cert, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -105,11 +101,11 @@ export default function HonorGallery() {
 
             {/* Background Decorative Kanji */}
             <div 
-            className="absolute left-10 bottom-20 vertical-text font-black text-[12vw] text-white/[0.02] pointer-events-none select-none uppercase leading-none" 
-            aria-hidden="true"
-            role="img"
+              className="absolute left-10 bottom-20 vertical-text font-black text-[12vw] text-white/[0.02] pointer-events-none select-none uppercase leading-none" 
+              aria-hidden="true"
+              role="img"
             >
-            成就 - ACHIEVEMENT
+              成就
             </div>    </section>
   );
 }

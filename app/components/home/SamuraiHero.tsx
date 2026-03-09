@@ -111,10 +111,10 @@ export default function SamuraiHero() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-white/20 transition-all duration-300 ${s.color} hover:scale-125`}
+                  className={`text-white/40 transition-all duration-300 ${s.color} hover:scale-150 active:scale-95`}
                   aria-label={s.name}
                 >
-                  <s.icon size={20} />
+                  <s.icon size={22} />
                 </a>
               ))}
             </div>

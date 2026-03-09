@@ -28,19 +28,19 @@ export default function ArtSection() {
         aria-hidden="true"
         role="img"
       >
-        芸術적魂 — ARTISTIC SOUL
+        芸術적魂
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-32 flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="max-w-3xl">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-quaternary" />
-              <span className="text-quaternary text-xs font-black tracking-[0.4em] uppercase">Visual Archive</span>
+              <div className="w-12 h-[2px] bg-accent" />
+              <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Visual Archive</span>
             </div>
             <h2 className="font-display text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
-              Spirit <br /> 
-              <span className="text-quaternary italic">& Canvas.</span>
+              <span className="text-white">Spirit</span> <br /> 
+              <span className="text-primary italic">& Canvas.</span>
             </h2>
           </div>
           <div className="flex flex-col items-end text-right">

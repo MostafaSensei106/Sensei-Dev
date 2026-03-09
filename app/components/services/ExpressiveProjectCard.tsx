@@ -96,7 +96,7 @@ export default function ExpressiveProjectCard({ repo }: { repo: Repo }) {
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-3 px-4 bg-tertiary/10 border border-tertiary/30 text-tertiary rounded-button font-black text-[10px] tracking-widest text-center flex items-center justify-center gap-2 hover:bg-tertiary hover:text-black transition-all shadow-lg shadow-tertiary/10"
+            className="flex-1 py-3 px-4 bg-primary text-white rounded-button font-black text-[10px] tracking-widest text-center flex items-center justify-center gap-2 hover:bg-white hover:text-black transition-all shadow-lg shadow-primary/20"
           >
             SOURCE
           </a>
@@ -105,7 +105,7 @@ export default function ExpressiveProjectCard({ repo }: { repo: Repo }) {
               href={repo.homepage}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 border border-white/10 rounded-button hover:bg-tertiary hover:text-black hover:border-tertiary transition-all backdrop-blur-md text-white/60"
+              className="p-3 border border-white/10 rounded-button hover:bg-primary hover:text-white hover:border-primary transition-all backdrop-blur-md text-white/60"
               aria-label={`Visit live demo for ${repo.name}`}
             >
               <ExternalLink size={18} />
