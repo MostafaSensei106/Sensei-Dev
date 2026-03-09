@@ -148,8 +148,10 @@ export const PORTFOLIO_DATA: PortfolioData = {
     colors: {
       primary: "#E31E24", // Samurai Red
       secondary: "#1A1A1A",
-      accent: "#FFD700", // Gold accent for high quality feel
-      background: "#000000",
+      accent: "#FFD700", // Gold accent
+      tertiary: "#00D2EF", // Cyber Azure
+      quaternary: "#A29BFE", // Mystic Purple
+      background: "#050505",
       surface: "#121212",
       text: "#FFFFFF",
     },

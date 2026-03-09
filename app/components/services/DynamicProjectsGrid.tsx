@@ -23,11 +23,11 @@ export default function DynamicProjectsGrid() {
               <span className="text-primary text-xs font-black tracking-[0.4em] uppercase">The Code Manifesto</span>
             </div>
             <h2 className="font-display text-6xl md:text-9xl font-black tracking-tighter uppercase leading-[0.85]">
-              System <br /> <span className="text-white/40 italic">Architecture.</span>
+              System <br /> <span className="text-white/60 italic">Architecture.</span>
             </h2>
           </div>
           <div className="flex flex-col items-end text-right max-w-sm">
-            <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed mb-6">
+            <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed mb-6">
               Precision-engineered repositories focused on high-performance concurrency, sorting algorithms, and native system integration.
             </p>
             <div className="flex gap-4">

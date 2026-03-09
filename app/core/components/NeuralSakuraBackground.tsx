@@ -28,6 +28,8 @@ export default function NeuralSakuraBackground() {
 
     const primaryRGB = hexToRgb(PORTFOLIO_DATA.theme.colors.primary);
     const accentRGB = hexToRgb(PORTFOLIO_DATA.theme.colors.accent);
+    const tertiaryRGB = hexToRgb(PORTFOLIO_DATA.theme.colors.tertiary);
+    const quaternaryRGB = hexToRgb(PORTFOLIO_DATA.theme.colors.quaternary);
 
     class Petal {
       x: number;
@@ -49,7 +51,12 @@ export default function NeuralSakuraBackground() {
         this.rotation = Math.random() * 360;
         this.spin = Math.random() * 2 - 1;
         this.opacity = Math.random() * 0.5 + 0.2;
-        this.color = Math.random() > 0.5 ? primaryRGB : accentRGB;
+        
+        const rand = Math.random();
+        if (rand > 0.75) this.color = primaryRGB;
+        else if (rand > 0.5) this.color = accentRGB;
+        else if (rand > 0.25) this.color = tertiaryRGB;
+        else this.color = quaternaryRGB;
       }
 
       update(mouseX: number, mouseY: number) {

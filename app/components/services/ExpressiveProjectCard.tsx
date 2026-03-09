@@ -34,11 +34,12 @@ export default function ExpressiveProjectCard({ repo }: { repo: Repo }) {
 
   const languageColors: Record<string, string> = {
     Dart: "border-primary",
-    TypeScript: "border-secondary",
+    TypeScript: "border-quaternary",
     JavaScript: "border-accent",
     Kotlin: "border-orange-500",
     Python: "border-blue-400",
-    Go: "border-cyan-400",
+    Go: "border-tertiary",
+    Rust: "border-primary",
   };
 
   const accentColor = languageColors[repo.language] || "border-white/10";
@@ -126,6 +127,7 @@ export default function ExpressiveProjectCard({ repo }: { repo: Repo }) {
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 border border-white/10 rounded-button hover:bg-white/10 transition-colors backdrop-blur-md"
+              aria-label={`Visit live demo for ${repo.name}`}
             >
               <ExternalLink size={20} />
             </a>

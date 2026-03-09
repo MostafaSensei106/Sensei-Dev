@@ -36,14 +36,14 @@ export default function ArtSection() {
             </div>
             <h2 className="font-display text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
               Spirit <br /> 
-              <span className="text-white/40 italic">& Canvas.</span>
+              <span className="text-white/60 italic">& Canvas.</span>
             </h2>
           </div>
           <div className="flex flex-col items-end text-right">
-            <p className="text-white/30 text-lg md:text-xl font-light max-w-sm leading-relaxed mb-6">
+            <p className="text-white/60 text-lg md:text-xl font-light max-w-sm leading-relaxed mb-6">
               A curated collection of digital explorations, from brand identities to expressive character studies.
             </p>
-            <div className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">
+            <div className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-white/60 text-[10px] font-bold uppercase tracking-[0.2em]">
               {PORTFOLIO_DATA.artGallery.length} Items Indexed
             </div>
           </div>
@@ -62,7 +62,7 @@ export default function ArtSection() {
                 setIndex(idx);
                 setOpen(true);
               }}
-              className="relative group cursor-pointer overflow-hidden rounded-card bg-white/[0.02] border border-white/5 transition-all duration-700 hover:border-primary/40 hover:scale-[1.02]"
+              className="relative group cursor-pointer overflow-hidden rounded-card bg-white/[0.02] border border-white/5 transition-all duration-700 hover:border-accent/40 hover:scale-[1.02]"
             >
               <Image
                 src={img.thumb.startsWith("/") ? img.thumb : `/${img.thumb}`}
@@ -73,7 +73,7 @@ export default function ArtSection() {
               />
               
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
-                <div className="flex items-center gap-2 text-primary mb-2">
+                <div className="flex items-center gap-2 text-accent mb-2">
                   <Sparkles size={12} />
                   <span className="font-mono text-[10px] font-bold tracking-[0.3em] uppercase">Visual ENTRY 0{idx + 1}</span>
                 </div>
@@ -82,7 +82,7 @@ export default function ArtSection() {
                 </h3>
                 <div className="mt-4 flex items-center justify-between">
                   <div className="w-8 h-[1px] bg-white/20" />
-                  <Maximize2 size={16} className="text-white/40" />
+                  <Maximize2 size={16} className="text-white/60" />
                 </div>
               </div>
             </motion.div>

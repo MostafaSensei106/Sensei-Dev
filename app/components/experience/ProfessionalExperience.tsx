@@ -46,7 +46,7 @@ export default function ProfessionalExperience() {
             <span className="text-primary text-xs font-black tracking-[0.4em] uppercase">Professional Path</span>
           </div>
           <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-tight">
-            Professional <br /> <span className="text-white/40 italic">Experience.</span>
+            Professional <br /> <span className="text-white/60 italic">Experience.</span>
           </h2>
         </div>
 
@@ -58,14 +58,14 @@ export default function ProfessionalExperience() {
             >
               {/* Left Column: Metadata */}
               <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-3 text-accent">
+                <div className="flex items-center gap-3 text-tertiary">
                   <Calendar size={18} />
                   <span className="font-mono text-sm tracking-widest font-bold uppercase">{item.period}</span>
                 </div>
                 <h3 className="font-display text-3xl md:text-5xl font-black text-white group-hover:text-primary transition-colors duration-500">
                   {item.company}
                 </h3>
-                <div className="flex items-center gap-2 text-white/40 text-sm">
+                <div className="flex items-center gap-2 text-white/60 text-sm">
                   <MapPin size={14} />
                   <span>{item.location}</span>
                 </div>
@@ -86,7 +86,7 @@ export default function ProfessionalExperience() {
                       <div className="mt-1.5 shrink-0 w-4 h-4 rounded-full border border-accent/40 flex items-center justify-center group-hover/detail:border-accent transition-colors">
                         <CheckCircle2 size={10} className="text-accent opacity-0 group-hover/detail:opacity-100 transition-opacity" />
                       </div>
-                      <span className="text-white/50 group-hover/detail:text-white/80 transition-colors text-sm font-light leading-relaxed">
+                      <span className="text-white/70 group-hover/detail:text-white/90 transition-colors text-sm font-light leading-relaxed">
                         {detail}
                       </span>
                     </div>

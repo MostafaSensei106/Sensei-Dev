@@ -54,10 +54,14 @@ export default function NavigationPill() {
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
       >
         {/* Logo */}
-        <div className="font-display font-bold text-xl md:text-2xl tracking-tighter cursor-pointer flex items-center gap-2 group">
+        <a 
+          href="#home"
+          className="font-display font-bold text-xl md:text-2xl tracking-tighter cursor-pointer flex items-center gap-2 group"
+          aria-label="Sensei Portfolio Home"
+        >
           <span className="text-white group-hover:text-primary transition-colors">MH</span>
           <span className="text-primary text-3xl">.</span>
-        </div>
+        </a>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em]">
@@ -65,11 +69,11 @@ export default function NavigationPill() {
             <a
               key={item.name}
               href={item.href}
-              className="flex items-center gap-2 text-white/40 hover:text-white transition-all duration-300 interactive relative group"
+              className="flex items-center gap-2 text-white/70 hover:text-tertiary transition-all duration-300 interactive relative group"
             >
-              <item.icon size={14} className="group-hover:text-primary transition-colors" />
+              <item.icon size={14} className="group-hover:text-tertiary transition-colors" />
               <span>{item.name}</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-tertiary transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
         </div>
@@ -122,8 +126,8 @@ export default function NavigationPill() {
                 transition={{ delay: 0.4 }}
                 className="mt-12 flex flex-col items-center gap-2"
               >
-                <div className="w-16 h-[1px] bg-primary" />
-                <span className="text-[10px] font-mono text-white/20 tracking-[0.5em] uppercase">Sensei Portfolio Template</span>
+                <div className="w-16 h-[1px] bg-tertiary" />
+                <span className="text-[10px] font-mono text-white/60 tracking-[0.5em] uppercase">Sensei Portfolio Template</span>
               </motion.div>
             </motion.div>
           </motion.div>

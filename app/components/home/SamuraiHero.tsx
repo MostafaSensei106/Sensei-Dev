@@ -43,7 +43,7 @@ export default function SamuraiHero() {
 
   const socials = [
     { name: "GitHub", icon: Github, href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`, color: "hover:text-primary" },
-    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-blue-400" },
+    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-tertiary" },
     { name: "WhatsApp", icon: MessageCircle, href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`, color: "hover:text-green-400" },
   ];
 
@@ -71,10 +71,10 @@ export default function SamuraiHero() {
           </h1>
 
           <div className="max-w-xl mb-12">
-            <p className="text-xl md:text-2xl font-medium text-white/80 leading-relaxed mb-6">
+            <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-6">
               {PORTFOLIO_DATA.profile.hero.tagline}
             </p>
-            <p className="text-lg text-white/40 font-light leading-relaxed">
+            <p className="text-lg text-white/70 font-light leading-relaxed">
               {PORTFOLIO_DATA.profile.hero.description}
             </p>
           </div>
@@ -86,13 +86,14 @@ export default function SamuraiHero() {
                 href={PORTFOLIO_DATA.profile.hero.cvUrl}
                 download
                 className="interactive flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-button font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500 shadow-2xl shadow-primary/20"
+                aria-label="Download Resume PDF"
               >
                 <Download size={16} />
                 RESUME.pdf
               </a>
               <a
                 href="#projects"
-                className="interactive flex items-center gap-3 px-10 py-5 border border-white/10 bg-white/5 backdrop-blur-md rounded-button font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all duration-500"
+                className="interactive flex items-center gap-3 px-10 py-5 border border-tertiary/30 bg-tertiary/5 backdrop-blur-md text-tertiary rounded-button font-bold uppercase tracking-widest text-xs hover:bg-tertiary hover:text-black transition-all duration-500"
               >
                 PROJECTS
               </a>

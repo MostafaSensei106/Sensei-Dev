@@ -28,10 +28,10 @@ export default function HonorGallery() {
             </div>
             <h2 className="font-display text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
               Certifications <br /> 
-              <span className="text-white/40 italic">& Achievements.</span>
+              <span className="text-white/60 italic">& Achievements.</span>
             </h2>
           </div>
-          <p className="text-white/30 text-lg md:text-xl font-light max-w-sm text-right leading-relaxed">
+          <p className="text-white/60 text-lg md:text-xl font-light max-w-sm text-right leading-relaxed">
             Technical mastery validated by global industry leaders in Flutter and systems engineering.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function HonorGallery() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.8 }}
               onClick={() => { setIndex(idx); setOpen(true); }}
-              className="relative group cursor-pointer bg-white/[0.02] border border-white/5 rounded-card overflow-hidden backdrop-blur-3xl hover:border-primary/30 hover:bg-white/[0.04] transition-all duration-700"
+              className="relative group cursor-pointer bg-white/[0.02] border border-white/5 rounded-card overflow-hidden backdrop-blur-3xl hover:border-quaternary/30 hover:bg-white/[0.04] transition-all duration-700"
             >
               <div className="flex flex-col lg:flex-row h-full">
                 {/* Certificate Preview */}
@@ -57,7 +57,7 @@ export default function HonorGallery() {
                     height={300}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-quaternary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <div className="p-4 bg-white/10 backdrop-blur-xl rounded-full border border-white/20">
                       <ExternalLink className="text-white" size={24} />
                     </div>
@@ -66,16 +66,16 @@ export default function HonorGallery() {
 
                 {/* Content */}
                 <div className="w-full lg:w-3/5 p-10 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 text-primary mb-6">
+                  <div className="flex items-center gap-3 text-quaternary mb-6">
                     <ShieldCheck size={20} />
                     <span className="font-mono text-[10px] tracking-[0.3em] font-bold uppercase">Verified Achievement</span>
                   </div>
-                  <h3 className="font-display text-3xl md:text-4xl font-bold mb-6 text-white group-hover:text-primary transition-colors leading-tight">
+                  <h3 className="font-display text-3xl md:text-4xl font-bold mb-6 text-white group-hover:text-quaternary transition-colors leading-tight">
                     {cert.title}
                   </h3>
-                  <div className="flex items-center gap-6 text-white/40 text-sm font-medium">
+                  <div className="flex items-center gap-6 text-white/60 text-sm font-medium">
                     <div className="flex items-center gap-2">
-                      <Award size={14} className="text-secondary" />
+                      <Award size={14} className="text-quaternary" />
                       <span>{cert.issuer}</span>
                     </div>
                     <div className="flex items-center gap-2">
