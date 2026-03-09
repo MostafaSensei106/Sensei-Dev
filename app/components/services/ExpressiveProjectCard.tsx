@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ExternalLink, Github, Star, Shield } from "lucide-react";
 import { Repo } from "../../core/hooks/useGitHubRepos";
@@ -33,11 +34,12 @@ export default function ExpressiveProjectCard({ repo }: { repo: Repo }) {
 
   const languageColors: Record<string, string> = {
     Dart: "border-primary",
-    TypeScript: "border-secondary",
-    JavaScript: "border-tertiary",
+    TypeScript: "border-quaternary",
+    JavaScript: "border-accent",
     Kotlin: "border-orange-500",
     Python: "border-blue-400",
-    Go: "border-cyan-400",
+    Go: "border-tertiary",
+    Rust: "border-primary",
   };
 
   const accentColor = languageColors[repo.language] || "border-white/10";
@@ -48,12 +50,14 @@ export default function ExpressiveProjectCard({ repo }: { repo: Repo }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { x.set(0); y.set(0); }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`katana-card interactive group relative min-h-[480px] flex flex-col p-0 ${accentColor}`}
+      className={`katana-card interactive group relative min-h-[480px] flex flex-col p-0 rounded-card ${accentColor}`}
     >
       <div className="absolute inset-0 opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-700">
-        <img 
+        <Image 
           src={`https://opengraph.githubassets.com/1/${repo.html_url.replace("https://github.com/", "")}`} 
           alt={repo.name}
+          width={600}
+          height={300}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-background/60 group-hover:bg-background/20 transition-colors" />
@@ -113,7 +117,7 @@ export default function ExpressiveProjectCard({ repo }: { repo: Repo }) {
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-4 px-6 bg-primary text-on-primary rounded-katana font-black text-center flex items-center justify-center gap-2 hover:scale-105 transition-transform shadow-lg shadow-primary/20"
+            className="flex-1 py-4 px-6 bg-primary text-white rounded-button font-black text-center flex items-center justify-center gap-2 hover:scale-105 transition-transform shadow-lg shadow-primary/20"
           >
             SOURCE
           </a>
@@ -122,7 +126,8 @@ export default function ExpressiveProjectCard({ repo }: { repo: Repo }) {
               href={repo.homepage}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-4 border border-white/10 rounded-katana hover:bg-white/10 transition-colors backdrop-blur-md"
+              className="p-4 border border-white/10 rounded-button hover:bg-white/10 transition-colors backdrop-blur-md"
+              aria-label={`Visit live demo for ${repo.name}`}
             >
               <ExternalLink size={20} />
             </a>

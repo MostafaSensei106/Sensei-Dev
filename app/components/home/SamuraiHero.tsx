@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
@@ -42,16 +43,14 @@ export default function SamuraiHero() {
 
   const socials = [
     { name: "GitHub", icon: Github, href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`, color: "hover:text-primary" },
-    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-blue-400" },
+    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-tertiary" },
     { name: "WhatsApp", icon: MessageCircle, href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`, color: "hover:text-green-400" },
   ];
 
   return (
-    <section id="home" ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-40 pb-20 bg-[#050505]">
-      <NeuralSakuraBackground />
-
+    <section id="home" ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-40 pb-20 bg-background">
       {/* Background Japanese Watermark */}
-      <div className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-8 text-white/[0.03] font-black text-[12vw] select-none pointer-events-none z-0 leading-none">
+      <div className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-8 text-white/[0.1] font-black text-[12vw] select-none pointer-events-none z-0 leading-none" aria-hidden="true">
         <span className="vertical-text">エンジニア</span>
         <span className="vertical-text">師匠</span>
       </div>
@@ -60,8 +59,8 @@ export default function SamuraiHero() {
         <div className="hero-content flex flex-col items-start text-left">
           {/* Badge */}
           <div className="flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8 backdrop-blur-sm">
-            <Cpu size={14} className="text-primary animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/60">
+            <Cpu size={14} className="text-quaternary animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/80">
               {PORTFOLIO_DATA.profile.japaneseTitle}
             </span>
           </div>
@@ -72,10 +71,10 @@ export default function SamuraiHero() {
           </h1>
 
           <div className="max-w-xl mb-12">
-            <p className="text-xl md:text-2xl font-medium text-white/80 leading-relaxed mb-6">
+            <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-6">
               {PORTFOLIO_DATA.profile.hero.tagline}
             </p>
-            <p className="text-lg text-white/40 font-light leading-relaxed">
+            <p className="text-lg text-white/70 font-light leading-relaxed">
               {PORTFOLIO_DATA.profile.hero.description}
             </p>
           </div>
@@ -86,14 +85,15 @@ export default function SamuraiHero() {
               <a
                 href={PORTFOLIO_DATA.profile.hero.cvUrl}
                 download
-                className="interactive flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-full font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500 shadow-2xl shadow-primary/20"
+                className="interactive flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-button font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500 shadow-2xl shadow-primary/20"
+                aria-label="Download Resume PDF"
               >
                 <Download size={16} />
                 RESUME.pdf
               </a>
               <a
                 href="#projects"
-                className="interactive flex items-center gap-3 px-10 py-5 border border-white/10 bg-white/5 backdrop-blur-md rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all duration-500"
+                className="interactive flex items-center gap-3 px-10 py-5 border border-tertiary/30 bg-tertiary/5 backdrop-blur-md text-tertiary rounded-button font-bold uppercase tracking-widest text-xs hover:bg-tertiary hover:text-black transition-all duration-500"
               >
                 PROJECTS
               </a>
@@ -126,9 +126,12 @@ export default function SamuraiHero() {
 
             {/* The Photo */}
             <div className="absolute inset-4 rounded-full overflow-hidden border-4 border-white/5 shadow-2xl shadow-primary/10">
-              <img
+              <Image
                 src="/Assets/art-gallery/Images/logo/Mostafa.jpg"
                 alt={PORTFOLIO_DATA.profile.name}
+                width={500}
+                height={500}
+                priority
                 className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
@@ -146,8 +149,8 @@ export default function SamuraiHero() {
       </div>
 
       {/* Bottom Japanese Quote */}
-      <div className="absolute bottom-10 left-10 hidden md:block">
-        <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/20">
+      <div className="absolute bottom-10 left-10 hidden md:block" aria-hidden="true">
+        <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/70">
           継続は力なり — PERSEVERANCE IS POWER
         </p>
       </div>

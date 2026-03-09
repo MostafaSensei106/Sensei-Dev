@@ -8,7 +8,7 @@ import SamuraiFooter from "@/app/components/header/SamuraiFooter";
 
 export default function Home() {
   return (
-    <main className="relative w-full bg-[#050505]">
+    <main className="relative w-full bg-background">
       <NavigationPill />
       <div id="home">
         <SamuraiHero />

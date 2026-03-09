@@ -1,4 +1,6 @@
-export const PORTFOLIO_DATA = {
+import { PortfolioData } from "../types/portfolio";
+
+export const PORTFOLIO_DATA: PortfolioData = {
   profile: {
     name: "Mostafa Mahmoud",
     title: "Senior Software Engineer",
@@ -15,9 +17,9 @@ export const PORTFOLIO_DATA = {
     },
     hero: {
       tagline: "High-Performance Systems & Elegant Mobile Ecosystems.",
-      japaneseTagline: "高性能システムとエレガントなモバイルエコシステム。",
+      japaneseTagline: "高性能システムとエレガنتなモバイルエコシステム。",
       description: "Dedicated Software Engineer specialized in Flutter, Go, and Rust. Crafting high-performance, concurrent, and scalable solutions with a focus on technical excellence and user experience.",
-      photo: "/Assets/art-gallery/Images/image_display/DS_106.png",
+      photo: "/Assets/art-gallery/Images/logo/Mostafa.jpg", // Changed to the high-res one for optimization later
       cvUrl: "/Assets/cv/Mostafa_Mahmoud_CV.pdf",
     },
   },
@@ -47,6 +49,7 @@ export const PORTFOLIO_DATA = {
         "Studying Computer Science, building skills in programming and algorithms.",
       ],
       japaneseRole: "コンピューターサイエンス学士",
+      isEducation: true,
     },
   ],
   projects: {
@@ -111,34 +114,51 @@ export const PORTFOLIO_DATA = {
     },
   ],
   artGallery: [
-    { src: "Assets/art-gallery/Images/image_display/B2BVBA.png", thumb: "Assets/art-gallery/Images/web/B2BVBA.webp", title: "B2B Visual Analysis" },
-    { src: "Assets/art-gallery/Images/image_display/B2BVH.png", thumb: "Assets/art-gallery/Images/web/B2BVH.webp", title: "B2B Visual Hub" },
-    { src: "Assets/art-gallery/Images/image_display/B2BVKW.png", thumb: "Assets/art-gallery/Images/web/B2BVKW.webp", title: "B2B Visual Keyword" },
-    { src: "Assets/art-gallery/Images/image_display/BFCAI.png", thumb: "Assets/art-gallery/Images/web/BFCAI.webp", title: "BFCAI Identity" },
-    { src: "Assets/art-gallery/Images/image_display/BNG1.jpg", thumb: "Assets/art-gallery/Images/web/BNG1.webp", title: "Brand New Generation" },
-    { src: "Assets/art-gallery/Images/image_display/BNGKW.jpg", thumb: "Assets/art-gallery/Images/web/BNGKW.webp", title: "BNG Keyword Analysis" },
-    { src: "Assets/art-gallery/Images/image_display/BVSarada.jpg", thumb: "Assets/art-gallery/Images/web/BVSarada.webp", title: "Sarada Visual Art" },
-    { src: "Assets/art-gallery/Images/image_display/CHM_Makima.jpg", thumb: "Assets/art-gallery/Images/web/CHM_Makima.webp", title: "Chainsaw Man Makima" },
-    { src: "Assets/art-gallery/Images/image_display/DS_1.jpg", thumb: "Assets/art-gallery/Images/web/DS_1.webp", title: "Demon Slayer Art" },
-    { src: "Assets/art-gallery/Images/image_display/DS_106.png", thumb: "Assets/art-gallery/Images/web/DS_106.webp", title: "Sensei 106 Persona" },
-    { src: "Assets/art-gallery/Images/image_display/DS_14.png", thumb: "Assets/art-gallery/Images/web/DS_14.webp", title: "Digital Soul 14" },
-    { src: "Assets/art-gallery/Images/image_display/DS_2_BackGround.jpg", thumb: "Assets/art-gallery/Images/web/DS_2_BackGround.webp", title: "Ethereal Background" },
-    { src: "Assets/art-gallery/Images/image_display/Free_Palestine_Sensei_Art.png", thumb: "Assets/art-gallery/Images/web/Free_Palestine_Sensei_Art.webp", title: "Free Palestine Art" },
-    { src: "Assets/art-gallery/Images/image_display/HG_Logo.jpg", thumb: "Assets/art-gallery/Images/web/HG_Logo.webp", title: "Honor Gallery Logo" },
-    { src: "Assets/art-gallery/Images/image_display/Ice_Coffee_Team_Logo.png", thumb: "Assets/art-gallery/Images/web/Ice_Coffee_Team_Logo.webp", title: "Ice Coffee Team" },
-    { src: "Assets/art-gallery/Images/image_display/Japan_Coffee_Logo.png", thumb: "Assets/art-gallery/Images/web/Japan_Coffee_Logo.webp", title: "Japan Coffee Logo" },
-    { src: "Assets/art-gallery/Images/image_display/Japanese_Girl.jpg", thumb: "Assets/art-gallery/Images/web/Japanese_Girl.webp", title: "Japanese Girl Portrait" },
-    { src: "Assets/art-gallery/Images/image_display/JJK_Fight_1.jpg", thumb: "Assets/art-gallery/Images/web/JJK_Fight_1.webp", title: "JJK Fight Scene" },
-    { src: "Assets/art-gallery/Images/image_display/JJK_Sensei.jpg", thumb: "Assets/art-gallery/Images/web/JJK_Sensei.webp", title: "JJK Sensei Concept" },
-    { src: "Assets/art-gallery/Images/image_display/Mostafa_Logo.png", thumb: "Assets/art-gallery/Images/web/Mostafa_Logo.webp", title: "Mostafa Mahmoud Logo" },
-    { src: "Assets/art-gallery/Images/image_display/Naruto_Style.jpg", thumb: "Assets/art-gallery/Images/web/Naruto_Style.webp", title: "Naruto Style Art" },
-    { src: "Assets/art-gallery/Images/image_display/Night_Light.png", thumb: "Assets/art-gallery/Images/web/Night_Light.webp", title: "Night Light Concept" },
-    { src: "Assets/art-gallery/Images/image_display/Night14.jpg", thumb: "Assets/art-gallery/Images/web/Night14.webp", title: "Nightscape 14" },
-    { src: "Assets/art-gallery/Images/image_display/Pizza_Girl.jpg", thumb: "Assets/art-gallery/Images/web/Pizza_Girl.webp", title: "Pizza Girl Illustration" },
-    { src: "Assets/art-gallery/Images/image_display/Red_Night.jpg", thumb: "Assets/art-gallery/Images/web/Red_Night.webp", title: "Red Night Concept" },
-    { src: "Assets/art-gallery/Images/image_display/sakura.jpg", thumb: "Assets/art-gallery/Images/web/Sakura.webp", title: "Sakura Petals" },
-    { src: "Assets/art-gallery/Images/image_display/Sensei_106_Spy.jpg", thumb: "Assets/art-gallery/Images/web/Sensei_106_Spy.webp", title: "Sensei Spy Identity" },
-    { src: "Assets/art-gallery/Images/image_display/Sensei_Art44.jpg", thumb: "Assets/art-gallery/Images/web/Sensei_Art44.webp", title: "Sensei Art Archive 44" },
-    { src: "Assets/art-gallery/Images/image_display/Tadamon_App_Logo.png", thumb: "Assets/art-gallery/Images/web/Tadamon_App_Logo.webp", title: "Tadamon App Identity" },
+    { src: "/Assets/art-gallery/Images/image_display/B2BVBA.png", thumb: "/Assets/art-gallery/Images/web/B2BVBA.webp", title: "B2B Visual Analysis" },
+    { src: "/Assets/art-gallery/Images/image_display/B2BVH.png", thumb: "/Assets/art-gallery/Images/web/B2BVH.webp", title: "B2B Visual Hub" },
+    { src: "/Assets/art-gallery/Images/image_display/B2BVKW.png", thumb: "/Assets/art-gallery/Images/web/B2BVKW.webp", title: "B2B Visual Keyword" },
+    { src: "/Assets/art-gallery/Images/image_display/BFCAI.png", thumb: "/Assets/art-gallery/Images/web/BFCAI.webp", title: "BFCAI Identity" },
+    { src: "/Assets/art-gallery/Images/image_display/BNG1.jpg", thumb: "/Assets/art-gallery/Images/web/BNG1.webp", title: "Brand New Generation" },
+    { src: "/Assets/art-gallery/Images/image_display/BNGKW.jpg", thumb: "/Assets/art-gallery/Images/web/BNGKW.webp", title: "BNG Keyword Analysis" },
+    { src: "/Assets/art-gallery/Images/image_display/BVSarada.jpg", thumb: "/Assets/art-gallery/Images/web/BVSarada.webp", title: "Sarada Visual Art" },
+    { src: "/Assets/art-gallery/Images/image_display/CHM_Makima.jpg", thumb: "/Assets/art-gallery/Images/web/CHM_Makima.webp", title: "Chainsaw Man Makima" },
+    { src: "/Assets/art-gallery/Images/image_display/DS_1.jpg", thumb: "/Assets/art-gallery/Images/web/DS_1.webp", title: "Demon Slayer Art" },
+    { src: "/Assets/art-gallery/Images/image_display/DS_106.png", thumb: "/Assets/art-gallery/Images/web/DS_106.webp", title: "Sensei 106 Persona" },
+    { src: "/Assets/art-gallery/Images/image_display/DS_14.png", thumb: "/Assets/art-gallery/Images/web/DS_14.webp", title: "Digital Soul 14" },
+    { src: "/Assets/art-gallery/Images/image_display/DS_2_BackGround.jpg", thumb: "/Assets/art-gallery/Images/web/DS_2_BackGround.webp", title: "Ethereal Background" },
+    { src: "/Assets/art-gallery/Images/image_display/Free_Palestine_Sensei_Art.png", thumb: "/Assets/art-gallery/Images/web/Free_Palestine_Sensei_Art.webp", title: "Free Palestine Art" },
+    { src: "/Assets/art-gallery/Images/image_display/HG_Logo.jpg", thumb: "/Assets/art-gallery/Images/web/HG_Logo.webp", title: "Honor Gallery Logo" },
+    { src: "/Assets/art-gallery/Images/image_display/Ice_Coffee_Team_Logo.png", thumb: "/Assets/art-gallery/Images/web/Ice_Coffee_Team_Logo.webp", title: "Ice Coffee Team" },
+    { src: "/Assets/art-gallery/Images/image_display/Japan_Coffee_Logo.png", thumb: "/Assets/art-gallery/Images/web/Japan_Coffee_Logo.webp", title: "Japan Coffee Logo" },
+    { src: "/Assets/art-gallery/Images/image_display/Japanese_Girl.jpg", thumb: "/Assets/art-gallery/Images/web/Japanese_Girl.webp", title: "Japanese Girl Portrait" },
+    { src: "/Assets/art-gallery/Images/image_display/JJK_Fight_1.jpg", thumb: "/Assets/art-gallery/Images/web/JJK_Fight_1.webp", title: "JJK Fight Scene" },
+    { src: "/Assets/art-gallery/Images/image_display/JJK_Sensei.jpg", thumb: "/Assets/art-gallery/Images/web/JJK_Sensei.webp", title: "JJK Sensei Concept" },
+    { src: "/Assets/art-gallery/Images/image_display/Mostafa_Logo.png", thumb: "/Assets/art-gallery/Images/web/Mostafa_Logo.webp", title: "Mostafa Mahmoud Logo" },
+    { src: "/Assets/art-gallery/Images/image_display/Naruto_Style.jpg", thumb: "/Assets/art-gallery/Images/web/Naruto_Style.webp", title: "Naruto Style Art" },
+    { src: "/Assets/art-gallery/Images/image_display/Night_Light.png", thumb: "/Assets/art-gallery/Images/web/Night_Light.webp", title: "Night Light Concept" },
+    { src: "/Assets/art-gallery/Images/image_display/Night14.jpg", thumb: "/Assets/art-gallery/Images/web/Night14.webp", title: "Nightscape 14" },
+    { src: "/Assets/art-gallery/Images/image_display/Pizza_Girl.jpg", thumb: "/Assets/art-gallery/Images/web/Pizza_Girl.webp", title: "Pizza Girl Illustration" },
+    { src: "/Assets/art-gallery/Images/image_display/Red_Night.jpg", thumb: "/Assets/art-gallery/Images/web/Red_Night.webp", title: "Red Night Concept" },
+    { src: "/Assets/art-gallery/Images/image_display/sakura.jpg", thumb: "/Assets/art-gallery/Images/web/Sakura.webp", title: "Sakura Petals" },
+    { src: "/Assets/art-gallery/Images/image_display/Sensei_106_Spy.jpg", thumb: "/Assets/art-gallery/Images/web/Sensei_106_Spy.webp", title: "Sensei Spy Identity" },
+    { src: "/Assets/art-gallery/Images/image_display/Sensei_Art44.jpg", thumb: "/Assets/art-gallery/Images/web/Sensei_Art44.webp", title: "Sensei Art Archive 44" },
+    { src: "/Assets/art-gallery/Images/image_display/Tadamon_App_Logo.png", thumb: "/Assets/art-gallery/Images/web/Tadamon_App_Logo.webp", title: "Tadamon App Identity" },
   ],
+  theme: {
+    colors: {
+      primary: "#E31E24", // Samurai Red
+      secondary: "#1A1A1A",
+      accent: "#FFD700", // Gold accent
+      tertiary: "#00D2EF", // Cyber Azure
+      quaternary: "#A29BFE", // Mystic Purple
+      background: "#050505",
+      surface: "#121212",
+      text: "#FFFFFF",
+    },
+    borderRadius: {
+      base: "0px", // Samurai/Traditional Japanese often uses sharp edges
+      card: "4px",
+      button: "2px",
+    },
+  },
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
@@ -14,35 +15,35 @@ export default function ArtSection() {
   const [index, setIndex] = useState(0);
 
   const lightboxSlides = PORTFOLIO_DATA.artGallery.map((img) => ({
-    src: `/${img.src}`,
+    src: img.src.startsWith("/") ? img.src : `/${img.src}`,
     title: img.title,
     description: "Digital Art by Mostafa Mahmoud",
   }));
 
   return (
-    <section id="art" className="relative py-40 px-6 md:px-20 bg-[#050505] overflow-hidden">
+    <section id="art" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
-      <div className="absolute right-10 top-0 h-full vertical-text font-black text-[18vw] opacity-[0.01] pointer-events-none select-none uppercase leading-none z-0">
-        芸術的魂 — ARTISTIC SOUL
+      <div className="absolute right-10 top-0 h-full vertical-text font-black text-[18vw] opacity-[0.1] pointer-events-none select-none uppercase leading-none z-0" aria-hidden="true">
+        芸術적魂 — ARTISTIC SOUL
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-32 flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="max-w-3xl">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-primary" />
-              <span className="text-primary text-xs font-black tracking-[0.4em] uppercase">Visual Archive</span>
+              <div className="w-12 h-[2px] bg-quaternary" />
+              <span className="text-quaternary text-xs font-black tracking-[0.4em] uppercase">Visual Archive</span>
             </div>
             <h2 className="font-display text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
               Spirit <br /> 
-              <span className="text-white/40 italic">& Canvas.</span>
+              <span className="text-white/80 italic">& Canvas.</span>
             </h2>
           </div>
           <div className="flex flex-col items-end text-right">
-            <p className="text-white/30 text-lg md:text-xl font-light max-w-sm leading-relaxed mb-6">
+            <p className="text-white/80 text-lg md:text-xl font-light max-w-sm leading-relaxed mb-6">
               A curated collection of digital explorations, from brand identities to expressive character studies.
             </p>
-            <div className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">
+            <div className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-white/80 text-[10px] font-bold uppercase tracking-[0.2em]">
               {PORTFOLIO_DATA.artGallery.length} Items Indexed
             </div>
           </div>
@@ -61,17 +62,18 @@ export default function ArtSection() {
                 setIndex(idx);
                 setOpen(true);
               }}
-              className="relative group cursor-pointer overflow-hidden rounded-[2rem] bg-white/[0.02] border border-white/5 transition-all duration-700 hover:border-primary/40 hover:scale-[1.02]"
+              className="relative group cursor-pointer overflow-hidden rounded-card bg-white/[0.02] border border-white/5 transition-all duration-700 hover:border-accent/40 hover:scale-[1.02]"
             >
-              <img
-                src={`/${img.thumb}`}
+              <Image
+                src={img.thumb.startsWith("/") ? img.thumb : `/${img.thumb}`}
                 alt={img.title}
+                width={500}
+                height={500}
                 className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
-                loading="lazy"
               />
               
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
-                <div className="flex items-center gap-2 text-primary mb-2">
+                <div className="flex items-center gap-2 text-accent mb-2">
                   <Sparkles size={12} />
                   <span className="font-mono text-[10px] font-bold tracking-[0.3em] uppercase">Visual ENTRY 0{idx + 1}</span>
                 </div>
@@ -80,7 +82,7 @@ export default function ArtSection() {
                 </h3>
                 <div className="mt-4 flex items-center justify-between">
                   <div className="w-8 h-[1px] bg-white/20" />
-                  <Maximize2 size={16} className="text-white/40" />
+                  <Maximize2 size={16} className="text-white/80" />
                 </div>
               </div>
             </motion.div>

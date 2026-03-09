@@ -62,7 +62,7 @@ export default function SamuraiFooter() {
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="katana-card p-8 md:p-16 bg-surface/40 backdrop-blur-xl border-white/5 relative group"
+            className="katana-card p-8 md:p-16 bg-surface/40 backdrop-blur-xl border-white/5 relative group rounded-card"
           >
             <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-30 transition-opacity">
               <Mail size={100} className="text-primary" />
@@ -74,27 +74,39 @@ export default function SamuraiFooter() {
             </h3>
             
             <form className="flex flex-col gap-8" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="text"
-                required
-                className="interactive w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all text-xl font-light placeholder:text-white/20"
-                placeholder="Name / Organization"
-              />
-              <input
-                type="email"
-                required
-                className="interactive w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all text-xl font-light placeholder:text-white/20"
-                placeholder="Digital Address (Email)"
-              />
-              <textarea
-                required
-                rows={2}
-                className="interactive w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all text-xl font-light resize-none placeholder:text-white/20"
-                placeholder="The Scroll of Intent (Message)"
-              />
+              <div className="relative">
+                <label htmlFor="name" className="sr-only">Name / Organization</label>
+                <input
+                  id="name"
+                  type="text"
+                  required
+                  className="interactive w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all text-xl font-light placeholder:text-white/40"
+                  placeholder="Name / Organization"
+                />
+              </div>
+              <div className="relative">
+                <label htmlFor="email" className="sr-only">Digital Address (Email)</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  className="interactive w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all text-xl font-light placeholder:text-white/40"
+                  placeholder="Digital Address (Email)"
+                />
+              </div>
+              <div className="relative">
+                <label htmlFor="message" className="sr-only">The Scroll of Intent (Message)</label>
+                <textarea
+                  id="message"
+                  required
+                  rows={2}
+                  className="interactive w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all text-xl font-light resize-none placeholder:text-white/40"
+                  placeholder="The Scroll of Intent (Message)"
+                />
+              </div>
               <button
                 type="submit"
-                className="interactive mt-4 py-6 bg-primary text-black rounded-katana font-black uppercase tracking-[0.3em] text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-primary/20"
+                className="interactive mt-4 py-6 bg-primary text-white rounded-button font-black uppercase tracking-[0.3em] text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-primary/20"
               >
                 DISPATCH MESSAGE
               </button>
@@ -103,7 +115,7 @@ export default function SamuraiFooter() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-on-surface-variant font-mono text-[10px] tracking-[0.3em] uppercase opacity-50">
+        <div className="mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-on-surface-variant font-mono text-[10px] tracking-[0.3em] uppercase opacity-70">
           <div className="flex items-center gap-4">
             <span className="text-primary font-bold text-base tracking-normal">MM.</span>
             <span>© {currentYear} {PORTFOLIO_DATA.profile.name}</span>
@@ -115,7 +127,7 @@ export default function SamuraiFooter() {
       </div>
 
       {/* Floating Final Kanji */}
-      <div className="absolute right-0 bottom-10 vertical-text font-black text-[20vw] opacity-[0.005] pointer-events-none select-none">
+      <div className="absolute right-0 bottom-10 vertical-text font-black text-[20vw] opacity-[0.01] pointer-events-none select-none" aria-hidden="true">
         終わり
       </div>
     </footer>

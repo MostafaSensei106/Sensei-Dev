@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { PORTFOLIO_DATA } from "../config/portfolio";
 
 export default function NeuralSakuraBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -18,6 +18,19 @@ export default function NeuralSakuraBackground() {
     const petals: Petal[] = [];
     const petalCount = 40;
 
+    // Convert hex to rgb for canvas
+    const hexToRgb = (hex: string) => {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? 
+        `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : 
+        "255, 255, 255";
+    };
+
+    const primaryRGB = hexToRgb(PORTFOLIO_DATA.theme.colors.primary);
+    const accentRGB = hexToRgb(PORTFOLIO_DATA.theme.colors.accent);
+    const tertiaryRGB = hexToRgb(PORTFOLIO_DATA.theme.colors.tertiary);
+    const quaternaryRGB = hexToRgb(PORTFOLIO_DATA.theme.colors.quaternary);
+
     class Petal {
       x: number;
       y: number;
@@ -27,6 +40,7 @@ export default function NeuralSakuraBackground() {
       rotation: number;
       spin: number;
       opacity: number;
+      color: string;
 
       constructor() {
         this.x = Math.random() * width;
@@ -37,6 +51,12 @@ export default function NeuralSakuraBackground() {
         this.rotation = Math.random() * 360;
         this.spin = Math.random() * 2 - 1;
         this.opacity = Math.random() * 0.5 + 0.2;
+        
+        const rand = Math.random();
+        if (rand > 0.75) this.color = primaryRGB;
+        else if (rand > 0.5) this.color = accentRGB;
+        else if (rand > 0.25) this.color = tertiaryRGB;
+        else this.color = quaternaryRGB;
       }
 
       update(mouseX: number, mouseY: number) {
@@ -44,7 +64,6 @@ export default function NeuralSakuraBackground() {
         this.x += this.speedX;
         this.rotation += this.spin;
 
-        // Interaction with mouse
         const dx = this.x - mouseX;
         const dy = this.y - mouseY;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -66,11 +85,9 @@ export default function NeuralSakuraBackground() {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate((this.rotation * Math.PI) / 180);
-        ctx.fillStyle = `rgba(128, 255, 232, ${this.opacity})`; // Android Teal
-        if (Math.random() > 0.5) ctx.fillStyle = `rgba(230, 57, 70, ${this.opacity})`; // Samurai Red
+        ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
         
         ctx.beginPath();
-        // Rectangular "Pixel" petal for Android vibe
         ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size * 1.5);
         ctx.restore();
       }
@@ -88,13 +105,14 @@ export default function NeuralSakuraBackground() {
     };
     window.addEventListener("mousemove", handleMouseMove);
 
+    let animationFrameId: number;
     function animate() {
       ctx!.clearRect(0, 0, width, height);
       petals.forEach((petal) => {
         petal.update(mouseX, mouseY);
         petal.draw();
       });
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     }
 
     animate();
@@ -108,6 +126,7 @@ export default function NeuralSakuraBackground() {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 

@@ -4,28 +4,22 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Neo-Samurai Android Palette */
+  /* Three-Color Palette & Design Tokens */
   --color-primary: var(--primary);
-  --color-on-primary: var(--on-primary);
-  --color-primary-container: var(--primary-container);
-
   --color-secondary: var(--secondary);
-  --color-on-secondary: var(--on-secondary);
-
-  --color-tertiary: var(--tertiary);
-  --color-on-tertiary: var(--on-tertiary);
+  --color-accent: var(--accent);
 
   --color-surface: var(--surface);
   --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
   --color-surface-variant: var(--surface-variant);
 
-  --color-samurai-red: #e63946;
-  --color-android-teal: #80ffe8;
-  --color-sakura-pink: #ffb7c5;
-
+  /* Geometry Tokens */
+  --radius-base: var(--radius-base);
+  --radius-card: var(--radius-card);
+  --radius-button: var(--radius-button);
   --radius-katana: 0.5rem 2rem 0.5rem 2rem;
-  /* Asymmetrical Samurai Cut */
-  --radius-m3: 2rem;
+  /* Kept for specialized look */
 
   --font-display: 'Syne', 'Noto Sans JP', sans-serif;
   --font-body: 'Outfit', sans-serif;
@@ -33,33 +27,43 @@
 
 @layer base {
   :root {
-    --background: #0a0a0a;
-    /* Ink Black */
-    --foreground: #fcfcfc;
-
-    --primary: #80ffe8;
-    /* Android Teal */
-    --on-primary: #000000;
-    --primary-container: #00332c;
-
-    --secondary: #e63946;
+    /* Main Theme Variables - Expanded Palette */
+    --primary: #E31E24;
     /* Samurai Red */
-    --on-secondary: #ffffff;
+    --secondary: #1A1A1A;
+    /* Deep Charcoal */
+    --accent: #FFD700;
+    /* Honor Gold */
+    --tertiary: #00D2EF;
+    /* Cyber Azure */
+    --quaternary: #A29BFE;
+    /* Mystic Purple */
 
-    --tertiary: #9d4edd;
-    /* Neon Violet */
-    --on-tertiary: #ffffff;
+    --background: #050505;
+    /* Rich Black */
+    --foreground: #FFFFFF;
+    /* Pure White */
 
-    --surface: #141414;
-    --on-surface: #fcfcfc;
-    --surface-variant: #252525;
+    --surface: #121212;
+    --on-surface: #FCFCFC;
+    --on-surface-variant: #A0A0A0;
+    --surface-variant: #1A1A1A;
+
+    --primary-container: rgba(227, 30, 36, 0.1);
+    --tertiary-container: rgba(0, 210, 239, 0.1);
+
+    /* Border Radius Tokens */
+    --radius-base: 0px;
+    --radius-card: 4px;
+    --radius-button: 2px;
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased selection:bg-primary selection:text-on-primary;
+    @apply bg-background text-foreground font-body antialiased selection:bg-primary selection:text-white;
     cursor: none;
   }
 }
+
 
 /* Neo-Samurai Components */
 .katana-card {
