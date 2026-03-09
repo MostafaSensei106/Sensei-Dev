@@ -1,29 +1,35 @@
 import React from "react";
 import "./globals.css";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import { config } from "@fortawesome/fontawesome-svg-core";
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/app/core/components/ThemeProvider";
+import { SmoothScroll } from "@/app/core/components/SmoothScroll";
+import CustomCursor from "@/app/core/components/CustomCursor";
+import ClientOnly from "@/app/core/components/ClientOnly";
+import NeuralSakuraBackground from "@/app/core/components/NeuralSakuraBackground";
 
-// Custom Metadata
-type CustomMetadata = Metadata & {
-  description: string;
-  keywords: string;
-  author: string;
-  charset: string;
-  viewport: string;
+// Fonts
+import { Outfit, Syne, Noto_Sans_JP } from "next/font/google";
+
+const outfit = Outfit({ 
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+
+const syne = Syne({ 
+  subsets: ["latin"],
+  variable: "--font-display",
+});
+
+const notoJP = Noto_Sans_JP({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-jp",
+});
+
+export const metadata: Metadata = {
+  title: "Mostafa Mahmoud | Samurai Android",
+  description: "Neo-Samurai Software Engineering Portfolio.",
 };
-
-// Metadata configuration
-export const metadata: CustomMetadata = {
-  description:
-    "Hello! I'm Mostafa Mahmoud, a Software Engineer specializing in Flutter, backend development, and AI.",
-  keywords: "Mostafa Mahmoud, Flutter, Backend Development, AI",
-  author: "Mostafa Sensei106",
-  charset: "UTF-8",
-  viewport: "width=device-width, initial-scale=1.0",
-};
-
-config.autoAddCss = false;
 
 export default function RootLayout({
   children,
@@ -31,24 +37,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" dir="ltr">
-      <head>
-        <title>Mostafa Mahmoud</title>
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content={metadata.keywords} />
-        <meta name="author" content={metadata.author} />
-        <meta name="viewport" content={metadata.viewport} />
-        <meta name="google-site-verification" content="VCIeVhcDb-vQGmE68weZARtruR_F2bUwv6hcjKYdwqo" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&amp;family=Overlock&amp;family=Yuji+Syuku&amp;display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="bg-black text-white">{children}</body>
+    <html lang="en" suppressHydrationWarning className={`${outfit.variable} ${syne.variable} ${notoJP.variable}`}>
+      <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
+        <ThemeProvider>
+          <ClientOnly>
+            <SmoothScroll>
+              <CustomCursor />
+              <NeuralSakuraBackground />
+              {children}
+            </SmoothScroll>
+          </ClientOnly>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -1,50 +1,43 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
-import { GITHUB_USERNAME } from "@/app/core/data";
 
-const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
+import { useEffect, useState } from "react";
+import { PORTFOLIO_DATA } from "../config/portfolio";
 
-interface GitHubRepository {
+export interface Repo {
   id: number;
   name: string;
   description: string;
-  language: string;
   html_url: string;
+  homepage: string;
   stargazers_count: number;
-  open_issues_count: number;
-  updated_at: string;
-  created_at: string;
-  owner: {
-    login: string;
-    avatar_url: string;
-  };
+  language: string;
   topics: string[];
-  default_branch: string;
-  watchers_count: number;
-  license: {
-    name: string;
-  } | null;
+  license: { spdx_id: string } | null;
 }
 
-export const useGitHubRepos = () => {
-  const [repos, setRepos] = useState<GitHubRepository[]>([]);
-
-  const fetchGitHubRepos = useCallback(async () => {
-    try {
-      const response = await fetch(API_URL);
-      if (!response.ok) {
-        throw new Error("Failed to fetch repositories");
-      }
-      const data = await response.json();
-      setRepos(data);
-    } catch (error) {
-      console.error("Error fetching repositories:", error);
-    }
-  }, []);
+export function useGitHubRepos() {
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchGitHubRepos();
-  }, [fetchGitHubRepos]);
+    async function fetchRepos() {
+      try {
+        const response = await fetch(
+          `https://api.github.com/users/${PORTFOLIO_DATA.projects.githubUsername}/repos?sort=updated&per_page=12`
+        );
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          setRepos(data);
+        }
+      } catch (error) {
+        console.error("Error fetching GitHub repos:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
 
-  return repos;
-};
+    fetchRepos();
+  }, []);
+
+  return { repos, isLoading };
+}

@@ -1,92 +1,76 @@
-/**
- * @author Mostafa Sensei106
- * @description Global CSS
- **/
+@import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  border: none;
-  outline: none;
-  scroll-behavior: smooth;
-  font-family: "Overlock", serif;
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Neo-Samurai Android Palette */
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+
+  --color-surface: var(--surface);
+  --color-on-surface: var(--on-surface);
+  --color-surface-variant: var(--surface-variant);
+
+  --color-samurai-red: #e63946;
+  --color-android-teal: #80ffe8;
+  --color-sakura-pink: #ffb7c5;
+  
+  --radius-katana: 0.5rem 2rem 0.5rem 2rem; /* Asymmetrical Samurai Cut */
+  --radius-m3: 2rem;
+  
+  --font-display: 'Syne', 'Noto Sans JP', sans-serif;
+  --font-body: 'Outfit', sans-serif;
 }
 
-:root {
-  --bg-color: #000000;
-  --second-bg-color: #000000;
-  --text-color: #ffffff;
-  --main-color: #fef2e2;
-}
+@layer base {
+  :root {
+    --background: #0a0a0a; /* Ink Black */
+    --foreground: #fcfcfc;
+    
+    --primary: #80ffe8; /* Android Teal */
+    --on-primary: #000000;
+    --primary-container: #00332c;
+    
+    --secondary: #e63946; /* Samurai Red */
+    --on-secondary: #ffffff;
+    
+    --tertiary: #9d4edd; /* Neon Violet */
+    --on-tertiary: #ffffff;
 
-html[lang="en"] body {
-  font-family: "Overlock", sans-serif;
-}
+    --surface: #141414;
+    --on-surface: #fcfcfc;
+    --surface-variant: #252525;
+  }
 
-html[lang="ja"] body {
-  font-family: "Yuji Syuku", serif;
-}
-
-[lang="en"] {
-  font-family: "Overlock", sans-serif;
-}
-
-[lang="ja"] {
-  font-family: "Yuji Syuku", serif;
-}
-
-html {
-  font-size: 62.5%;
-  overflow-x: hidden;
-}
-
-body {
-  background-color: var(--second-bg-color);
-  font-family: "Overlock", serif;
-  color: var(--text-color);
-  overflow-x: hidden;
-}
-
-html::-webkit-scrollbar {
-  width: 0.8rem;
-}
-
-html::-webkit-scrollbar-track {
-  background: var(--bg-color);
-}
-
-html::-webkit-scrollbar-thumb {
-  background: var(--main-color);
-}
-
-/*---------This is General Section Style---------*/
-/*---------This is General Section Style---------*/
-/*---------This is General Section Style---------*/
-
-section {
-  min-height: 100vh;
-  padding: 6rem 6% 5rem;
-}
-
-@media (max-width: 991px) {
-  section {
-    min-height: 100vh;
-    padding: 0 1.5rem 5%;
+  body {
+    @apply bg-background text-foreground font-body antialiased selection:bg-primary selection:text-on-primary;
+    cursor: none;
   }
 }
 
-@media (max-width: 768px) {
-  section {
-    min-height: 100vh;
-    padding: 0 1.5rem 5%;
-  }
+/* Neo-Samurai Components */
+.katana-card {
+  @apply bg-surface/80 backdrop-blur-md border border-white/5 rounded-katana overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-xl;
 }
 
-@media (max-width: 480px) {
-  section {
-    min-height: 100vh;
-    padding: 0 1.5rem 5%;
-  }
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.neural-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.mix-difference {
+  mix-blend-mode: difference;
 }
