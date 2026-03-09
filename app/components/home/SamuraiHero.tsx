@@ -125,9 +125,9 @@ export default function SamuraiHero() {
             <div className="absolute inset-8 border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
 
             {/* The Photo */}
-            <div className="absolute inset-4 rounded-full overflow-hidden  contrast-125 border-4 border-white/5 shadow-2xl shadow-primary/10">
+            <div className="absolute inset-4 rounded-full overflow-hidden border-4 border-white/5 shadow-2xl shadow-primary/10">
               <img
-                src="/Assets/art-gallery/Images/logo/My_Logo.webp"
+                src="/Assets/art-gallery/Images/logo/Mostafa.jpg"
                 alt={PORTFOLIO_DATA.profile.name}
                 className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-1000"
               />

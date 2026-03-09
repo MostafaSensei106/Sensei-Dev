@@ -2,15 +2,15 @@
 
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
-import { 
-  Menu, 
-  X, 
-  Home, 
-  Briefcase, 
-  Code2, 
-  Award, 
-  Palette, 
-  Mail 
+import {
+  Menu,
+  X,
+  Home,
+  Briefcase,
+  Code2,
+  Award,
+  Palette,
+  Mail
 } from "lucide-react";
 
 export default function NavigationPill() {
@@ -31,7 +31,6 @@ export default function NavigationPill() {
 
   if (!mounted) return null;
 
-  // تعريف العناصر مع الأيقونات المقابلة
   const navItems = [
     { name: "Home", href: "#home", icon: Home },
     { name: "Experience", href: "#experience", icon: Briefcase },
@@ -56,7 +55,7 @@ export default function NavigationPill() {
       >
         {/* Logo */}
         <div className="font-display font-bold text-xl md:text-2xl tracking-tighter cursor-pointer flex items-center gap-2 group">
-          <span className="text-white group-hover:text-primary transition-colors">SENSEI</span>
+          <span className="text-white group-hover:text-primary transition-colors">MH</span>
           <span className="text-primary text-3xl">.</span>
         </div>
 
@@ -116,8 +115,8 @@ export default function NavigationPill() {
                   <span>{item.name}</span>
                 </motion.a>
               ))}
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
