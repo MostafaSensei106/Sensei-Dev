@@ -8,10 +8,10 @@
   --color-primary: var(--primary);
   --color-on-primary: var(--on-primary);
   --color-primary-container: var(--primary-container);
-  
+
   --color-secondary: var(--secondary);
   --color-on-secondary: var(--on-secondary);
-  
+
   --color-tertiary: var(--tertiary);
   --color-on-tertiary: var(--on-tertiary);
 
@@ -22,27 +22,32 @@
   --color-samurai-red: #e63946;
   --color-android-teal: #80ffe8;
   --color-sakura-pink: #ffb7c5;
-  
-  --radius-katana: 0.5rem 2rem 0.5rem 2rem; /* Asymmetrical Samurai Cut */
+
+  --radius-katana: 0.5rem 2rem 0.5rem 2rem;
+  /* Asymmetrical Samurai Cut */
   --radius-m3: 2rem;
-  
+
   --font-display: 'Syne', 'Noto Sans JP', sans-serif;
   --font-body: 'Outfit', sans-serif;
 }
 
 @layer base {
   :root {
-    --background: #0a0a0a; /* Ink Black */
+    --background: #0a0a0a;
+    /* Ink Black */
     --foreground: #fcfcfc;
-    
-    --primary: #80ffe8; /* Android Teal */
+
+    --primary: #80ffe8;
+    /* Android Teal */
     --on-primary: #000000;
     --primary-container: #00332c;
-    
-    --secondary: #e63946; /* Samurai Red */
+
+    --secondary: #e63946;
+    /* Samurai Red */
     --on-secondary: #ffffff;
-    
-    --tertiary: #9d4edd; /* Neon Violet */
+
+    --tertiary: #9d4edd;
+    /* Neon Violet */
     --on-tertiary: #ffffff;
 
     --surface: #141414;

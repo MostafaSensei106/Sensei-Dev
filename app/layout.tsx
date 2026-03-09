@@ -10,12 +10,12 @@ import NeuralSakuraBackground from "@/app/core/components/NeuralSakuraBackground
 // Fonts
 import { Outfit, Syne, Noto_Sans_JP } from "next/font/google";
 
-const outfit = Outfit({ 
+const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-body",
 });
 
-const syne = Syne({ 
+const syne = Syne({
   subsets: ["latin"],
   variable: "--font-display",
 });
@@ -27,7 +27,7 @@ const notoJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "Mostafa Mahmoud | Samurai Android",
+  title: "Mostafa Mahmoud",
   description: "Neo-Samurai Software Engineering Portfolio.",
 };
 

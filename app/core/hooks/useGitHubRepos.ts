@@ -23,11 +23,17 @@ export function useGitHubRepos() {
     async function fetchRepos() {
       try {
         const response = await fetch(
-          `https://api.github.com/users/${PORTFOLIO_DATA.projects.githubUsername}/repos?sort=updated&per_page=12`
+          `https://api.github.com/users/${PORTFOLIO_DATA.projects.githubUsername}/repos?sort=updated&per_page=100`
         );
         const data = await response.json();
         if (Array.isArray(data)) {
-          setRepos(data);
+          // Filter only pinned repos defined in PORTFOLIO_DATA
+          const pinnedRepos = PORTFOLIO_DATA.projects.pinnedRepos || [];
+          const filteredRepos = data
+            .filter((repo: Repo) => pinnedRepos.includes(repo.name))
+            .sort((a, b) => pinnedRepos.indexOf(a.name) - pinnedRepos.indexOf(b.name));
+          
+          setRepos(filteredRepos);
         }
       } catch (error) {
         console.error("Error fetching GitHub repos:", error);

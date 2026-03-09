@@ -1,7 +1,8 @@
 export const PORTFOLIO_DATA = {
   profile: {
     name: "Mostafa Mahmoud",
-    title: "Software Engineer",
+    title: "Senior Software Engineer",
+    japaneseTitle: "シニアソフトウェアエンジニア",
     contact: {
       email: "wwwmostafagmer100@gmail.com",
       phone: "+201014414536",
@@ -13,10 +14,11 @@ export const PORTFOLIO_DATA = {
       x: "Sensei106",
     },
     hero: {
-      tagline: "Mastering The Blade & Code.",
-      description: "Software Ronin crafting Android-infused digital experiences with Samurai precision and Material 3 Expressive motion.",
+      tagline: "High-Performance Systems & Elegant Mobile Ecosystems.",
+      japaneseTagline: "高性能システムとエレガントなモバイルエコシステム。",
+      description: "Dedicated Software Engineer specialized in Flutter, Go, and Rust. Crafting high-performance, concurrent, and scalable solutions with a focus on technical excellence and user experience.",
       photo: "/Assets/art-gallery/Images/image_display/DS_106.png",
-      cvUrl: "/Assets/cv/Mostafa-Mahmoud-CV.pdf",
+      cvUrl: "/Assets/cv/Mostafa_Mahmoud_CV.pdf",
     },
   },
   experience: [
@@ -27,11 +29,13 @@ export const PORTFOLIO_DATA = {
       period: "Aug 2024 – Aug 2024",
       description: "Engineered the 'LothgaTablet' ecosystem, constructing foundational systems and core kernel features.",
       details: [
+        "Developed the project's core and kernel features.",
         "Constructed a foundational system to support the application.",
         "Implemented an audio system to enhance user experience.",
         "Created a central database to integrate all games into a cohesive system.",
         "Enabled parental oversight of children's progress and provided extensive control over game content.",
       ],
+      japaneseRole: "フラッターデベロッパー",
     },
     {
       company: "Benha University",
@@ -42,69 +46,101 @@ export const PORTFOLIO_DATA = {
       details: [
         "Studying Computer Science, building skills in programming and algorithms.",
       ],
+      japaneseRole: "コンピューターサイエンス学士",
     },
   ],
   projects: {
     githubUsername: "MostafaSensei106",
+    pinnedRepos: [
+      "network_reachability",
+      "radix_plus",
+      "fp_growth",
+      "gopix",
+      "tadamon",
+      "Motivational_Quotes",
+      "Move_App"
+    ],
     highlights: [
       {
         name: "Network-Reachability",
         type: "Dart Package",
-        description: "High-performance network monitoring library utilizing native Rust core for non-blocking multi-target probing.",
-        metrics: ["Native Rust Core", "DNS Resolution", "Connection Stability"],
+        description: "High-performance network monitoring library leveraging a native Rust core to execute complex multi-target probing and DNS resolution.",
+        metrics: ["Native Rust Core", "DNS Resolution", "Circuit Breaker"],
+        link: "https://github.com/MostafaSensei106/network_reachability",
       },
       {
         name: "Radix-Plus",
         type: "Dart Package",
-        description: "Sorting library outperforming native List.sort() by up to 7.0x for 1M+ elements.",
-        metrics: ["~29ms for 1M elements", "Parallel Isolate Processing", "Zero-copy operations"],
+        description: "High-performance sorting library outperforming Dart's native List.sort() by up to 7.0x.",
+        metrics: ["~29ms for 1M elements", "Parallel Processing", "Zero-copy operations"],
+        link: "https://github.com/MostafaSensei106/radix_plus",
       },
       {
         name: "FP-Growth",
         type: "Dart Package",
-        description: "High-performance data mining library capable of processing 1,000,000+ transactions in ~1.46s.",
-        metrics: ["Memory-optimized", "Isolate Pool", "Data Insights"],
+        description: "High-performance data mining library implementing the FP-Growth algorithm, capable of processing 1,000,000+ transactions in ~1.46s.",
+        metrics: ["Isolate Pool", "Memory-optimized", "Data Insights"],
+        link: "https://github.com/MostafaSensei106/fp_growth",
+      },
+      {
+        name: "GoPix",
+        type: "CLI Tool",
+        description: "Blazing-fast image conversion CLI tool supporting multi-format conversion and parallel processing.",
+        metrics: ["Parallel Processing", "Multi-Format", "Robust & Reliable"],
+        link: "https://github.com/MostafaSensei106/gopix",
+      },
+      {
+        name: "Tadamon",
+        type: "Flutter App",
+        description: "Helping users make ethical purchasing decisions supporting the Palestinian cause.",
+        metrics: ["Offline-First", "Google ML Kit", "BLoC Architecture"],
+        link: "https://github.com/MostafaSensei106/tadamon",
       },
     ],
   },
   certificates: [
     {
-      title: "The Art of Flutter",
-      issuer: "Google Developers",
+      title: "The Complete Dart Development Guide",
+      issuer: "Udemy / Google Developers",
       date: "2024",
       image: "/Assets/art-gallery/Images/image_display/HG_Logo.jpg",
     },
     {
-      title: "Clean Code Bushido",
-      issuer: "Software Craftsmanship",
-      date: "2023",
+      title: "The Complete Flutter Development Guide",
+      issuer: "Udemy / Google Developers",
+      date: "2024",
       image: "/Assets/art-gallery/Images/image_display/HG_Logo.jpg",
     },
   ],
   artGallery: [
-    { 
-      src: "Assets/art-gallery/Images/image_display/Free_Palestine_Sensei_Art.png",
-      thumb: "Assets/art-gallery/Images/web/Free_Palestine_Sensei_Art.webp"
-    },
-    { 
-      src: "Assets/art-gallery/Images/image_display/BFCAI.png",
-      thumb: "Assets/art-gallery/Images/web/BFCAI.webp"
-    },
-    { 
-      src: "Assets/art-gallery/Images/image_display/Sensei_106_Spy.jpg",
-      thumb: "Assets/art-gallery/Images/web/Sensei_106_Spy.webp"
-    },
-    { 
-      src: "Assets/art-gallery/Images/image_display/Ice_Coffee_Team_Logo.png",
-      thumb: "Assets/art-gallery/Images/web/Ice_Coffee_Team_Logo.webp"
-    },
-    { 
-      src: "Assets/art-gallery/Images/image_display/Tadamon_App_Logo.png",
-      thumb: "Assets/art-gallery/Images/web/Tadamon_App_Logo.webp"
-    },
-    { 
-      src: "Assets/art-gallery/Images/image_display/Mostafa_Logo.png",
-      thumb: "Assets/art-gallery/Images/web/Mostafa_Logo.webp"
-    },
+    { src: "Assets/art-gallery/Images/image_display/B2BVBA.png", thumb: "Assets/art-gallery/Images/web/B2BVBA.webp", title: "B2B Visual Analysis" },
+    { src: "Assets/art-gallery/Images/image_display/B2BVH.png", thumb: "Assets/art-gallery/Images/web/B2BVH.webp", title: "B2B Visual Hub" },
+    { src: "Assets/art-gallery/Images/image_display/B2BVKW.png", thumb: "Assets/art-gallery/Images/web/B2BVKW.webp", title: "B2B Visual Keyword" },
+    { src: "Assets/art-gallery/Images/image_display/BFCAI.png", thumb: "Assets/art-gallery/Images/web/BFCAI.webp", title: "BFCAI Identity" },
+    { src: "Assets/art-gallery/Images/image_display/BNG1.jpg", thumb: "Assets/art-gallery/Images/web/BNG1.webp", title: "Brand New Generation" },
+    { src: "Assets/art-gallery/Images/image_display/BNGKW.jpg", thumb: "Assets/art-gallery/Images/web/BNGKW.webp", title: "BNG Keyword Analysis" },
+    { src: "Assets/art-gallery/Images/image_display/BVSarada.jpg", thumb: "Assets/art-gallery/Images/web/BVSarada.webp", title: "Sarada Visual Art" },
+    { src: "Assets/art-gallery/Images/image_display/CHM_Makima.jpg", thumb: "Assets/art-gallery/Images/web/CHM_Makima.webp", title: "Chainsaw Man Makima" },
+    { src: "Assets/art-gallery/Images/image_display/DS_1.jpg", thumb: "Assets/art-gallery/Images/web/DS_1.webp", title: "Demon Slayer Art" },
+    { src: "Assets/art-gallery/Images/image_display/DS_106.png", thumb: "Assets/art-gallery/Images/web/DS_106.webp", title: "Sensei 106 Persona" },
+    { src: "Assets/art-gallery/Images/image_display/DS_14.png", thumb: "Assets/art-gallery/Images/web/DS_14.webp", title: "Digital Soul 14" },
+    { src: "Assets/art-gallery/Images/image_display/DS_2_BackGround.jpg", thumb: "Assets/art-gallery/Images/web/DS_2_BackGround.webp", title: "Ethereal Background" },
+    { src: "Assets/art-gallery/Images/image_display/Free_Palestine_Sensei_Art.png", thumb: "Assets/art-gallery/Images/web/Free_Palestine_Sensei_Art.webp", title: "Free Palestine Art" },
+    { src: "Assets/art-gallery/Images/image_display/HG_Logo.jpg", thumb: "Assets/art-gallery/Images/web/HG_Logo.webp", title: "Honor Gallery Logo" },
+    { src: "Assets/art-gallery/Images/image_display/Ice_Coffee_Team_Logo.png", thumb: "Assets/art-gallery/Images/web/Ice_Coffee_Team_Logo.webp", title: "Ice Coffee Team" },
+    { src: "Assets/art-gallery/Images/image_display/Japan_Coffee_Logo.png", thumb: "Assets/art-gallery/Images/web/Japan_Coffee_Logo.webp", title: "Japan Coffee Logo" },
+    { src: "Assets/art-gallery/Images/image_display/Japanese_Girl.jpg", thumb: "Assets/art-gallery/Images/web/Japanese_Girl.webp", title: "Japanese Girl Portrait" },
+    { src: "Assets/art-gallery/Images/image_display/JJK_Fight_1.jpg", thumb: "Assets/art-gallery/Images/web/JJK_Fight_1.webp", title: "JJK Fight Scene" },
+    { src: "Assets/art-gallery/Images/image_display/JJK_Sensei.jpg", thumb: "Assets/art-gallery/Images/web/JJK_Sensei.webp", title: "JJK Sensei Concept" },
+    { src: "Assets/art-gallery/Images/image_display/Mostafa_Logo.png", thumb: "Assets/art-gallery/Images/web/Mostafa_Logo.webp", title: "Mostafa Mahmoud Logo" },
+    { src: "Assets/art-gallery/Images/image_display/Naruto_Style.jpg", thumb: "Assets/art-gallery/Images/web/Naruto_Style.webp", title: "Naruto Style Art" },
+    { src: "Assets/art-gallery/Images/image_display/Night_Light.png", thumb: "Assets/art-gallery/Images/web/Night_Light.webp", title: "Night Light Concept" },
+    { src: "Assets/art-gallery/Images/image_display/Night14.jpg", thumb: "Assets/art-gallery/Images/web/Night14.webp", title: "Nightscape 14" },
+    { src: "Assets/art-gallery/Images/image_display/Pizza_Girl.jpg", thumb: "Assets/art-gallery/Images/web/Pizza_Girl.webp", title: "Pizza Girl Illustration" },
+    { src: "Assets/art-gallery/Images/image_display/Red_Night.jpg", thumb: "Assets/art-gallery/Images/web/Red_Night.webp", title: "Red Night Concept" },
+    { src: "Assets/art-gallery/Images/image_display/sakura.jpg", thumb: "Assets/art-gallery/Images/web/Sakura.webp", title: "Sakura Petals" },
+    { src: "Assets/art-gallery/Images/image_display/Sensei_106_Spy.jpg", thumb: "Assets/art-gallery/Images/web/Sensei_106_Spy.webp", title: "Sensei Spy Identity" },
+    { src: "Assets/art-gallery/Images/image_display/Sensei_Art44.jpg", thumb: "Assets/art-gallery/Images/web/Sensei_Art44.webp", title: "Sensei Art Archive 44" },
+    { src: "Assets/art-gallery/Images/image_display/Tadamon_App_Logo.png", thumb: "Assets/art-gallery/Images/web/Tadamon_App_Logo.webp", title: "Tadamon App Identity" },
   ],
 };

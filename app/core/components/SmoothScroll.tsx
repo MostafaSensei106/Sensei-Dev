@@ -14,14 +14,14 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     if (lenis) {
       // Connect Lenis to ScrollTrigger
       lenis.on("scroll", ScrollTrigger.update);
-      
+
       gsap.ticker.add((time) => {
         lenis.raf(time * 1000);
       });
-      
+
       gsap.ticker.lagSmoothing(0);
     }
-    
+
     return () => {
       if (lenis) {
         lenis.off("scroll", ScrollTrigger.update);
