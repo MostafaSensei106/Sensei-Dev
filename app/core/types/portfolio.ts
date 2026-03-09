@@ -68,6 +68,8 @@ export interface ThemeConfig {
     primary: string;
     secondary: string;
     accent: string;
+    tertiary: string;
+    quaternary: string;
     background: string;
     surface: string;
     text: string;
