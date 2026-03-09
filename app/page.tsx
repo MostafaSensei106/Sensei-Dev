@@ -1,31 +1,33 @@
-import AppBar from "@/app/components/header/sensei-header";
-import HomeSection from "@/app/components/home/sensei-home";
-import ServicesSection from "@/app/components/services/sensei-services-projects";
-import ExperienceSection from "@/app/components/experience/experience-section";
-import ArtGallerySection from "@/app/components/art_gallery/sensei-art";
-import ContactMeSection from "@/app/components/contact_me/sensei-contact";
-import LoadingScreen from "@/app/components/loader/sensei_loader";
-import AnimatedBackground from "@/app/components/animated_background/animated_background";
-import ProjectsSection from "@/app/components/services/sensei-projects";
+import SamuraiHero from "@/app/components/home/SamuraiHero";
+import NavigationPill from "@/app/components/header/NavigationPill";
+import ProfessionalExperience from "@/app/components/experience/ProfessionalExperience";
+import DynamicProjectsGrid from "@/app/components/services/DynamicProjectsGrid";
+import HonorGallery from "@/app/components/experience/HonorGallery";
+import ArtSection from "@/app/components/art_gallery/ArtSection";
+import SamuraiFooter from "@/app/components/header/SamuraiFooter";
 
-// Main component
-// @returns {JSX.Element}
-// @author Mostafa Sensei106
-// @description A functional component that renders the page of the website.
-
-function Main() {
+export default function Home() {
   return (
-    <main>
-      <LoadingScreen />
-      <AnimatedBackground />
-      <AppBar />
-      <HomeSection />
-      <ServicesSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <ArtGallerySection />
-      <ContactMeSection />
+    <main className="relative w-full bg-[#050505]">
+      <NavigationPill />
+      <div id="home">
+        <SamuraiHero />
+      </div>
+      <div id="experience">
+        <ProfessionalExperience />
+      </div>
+      <div id="projects">
+        <DynamicProjectsGrid />
+      </div>
+      <div id="certificates">
+        <HonorGallery />
+      </div>
+      <div id="art">
+        <ArtSection />
+      </div>
+      <div id="contact">
+        <SamuraiFooter />
+      </div>
     </main>
   );
 }
-export default Main;

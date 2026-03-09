@@ -185,3 +185,31 @@ export const images = [
     thumb: "Assets/art-gallery/Images/web/HG_Logo.webp",
   },
 ];
+
+export const honorsAndCertificates = [
+  {
+    title: "The Art of Flutter",
+    issuer: "Google Developers",
+    date: "2024",
+    icon: "award",
+  },
+  {
+    title: "Clean Code Bushido",
+    issuer: "Software Craftsmanship",
+    date: "2023",
+    icon: "shield-check",
+  },
+  {
+    title: "AI & Neural Networks",
+    issuer: "DeepLearning.AI",
+    date: "2024",
+    icon: "brain",
+  },
+  {
+    title: "Mobile Architecture Mastery",
+    issuer: "Android Dev Summit",
+    date: "2023",
+    icon: "layout",
+  },
+];
+
