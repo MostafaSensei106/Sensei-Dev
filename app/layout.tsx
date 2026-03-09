@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/app/core/components/SmoothScroll";
 import CustomCursor from "@/app/core/components/CustomCursor";
 import ClientOnly from "@/app/core/components/ClientOnly";
 import NeuralSakuraBackground from "@/app/core/components/NeuralSakuraBackground";
+import LoadingScreen from "@/app/core/components/LoadingScreen";
 
 // Fonts
 import { Outfit, Syne, Noto_Sans_JP } from "next/font/google";
@@ -55,6 +56,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${outfit.variable} ${syne.variable} ${notoJP.variable}`}>
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
         <ClientOnly>
+          <LoadingScreen />
           <SmoothScroll>
             <CustomCursor />
             <NeuralSakuraBackground />

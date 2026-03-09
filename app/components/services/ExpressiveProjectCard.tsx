@@ -50,74 +50,53 @@ export default function ExpressiveProjectCard({ repo }: { repo: Repo }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { x.set(0); y.set(0); }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`katana-card interactive group relative min-h-[480px] flex flex-col p-0 rounded-card ${accentColor}`}
+      className={`katana-card interactive group relative min-h-[380px] md:min-h-[320px] flex flex-col p-0 rounded-card ${accentColor}`}
     >
-      <div className="absolute inset-0 opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-700">
+      <div className="absolute inset-0 opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-30 transition-all duration-700">
         <Image 
           src={`https://opengraph.githubassets.com/1/${repo.html_url.replace("https://github.com/", "")}`} 
           alt={repo.name}
           width={600}
           height={300}
           className="w-full h-full object-cover"
+          loading="lazy"
         />
-        <div className="absolute inset-0 bg-background/60 group-hover:bg-background/20 transition-colors" />
+        <div className="absolute inset-0 bg-background/80 group-hover:bg-background/40 transition-colors" />
       </div>
 
-      <div style={{ transform: "translateZ(60px)" }} className="relative z-10 h-full flex flex-col p-8 md:p-10">
-        <div className="flex justify-between items-start mb-6">
-          <div className="p-3 bg-white/5 rounded-2xl backdrop-blur-md">
-            <Github className="text-primary" size={24} />
+      <div style={{ transform: "translateZ(60px)" }} className="relative z-10 h-full flex flex-col p-6 md:p-8">
+        <div className="flex justify-between items-start mb-4">
+          <div className="p-2.5 bg-white/5 rounded-xl backdrop-blur-md border border-white/10">
+            <Github className="text-tertiary" size={20} />
           </div>
           <div className="flex flex-col items-end gap-2">
-            <div className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full text-xs font-bold backdrop-blur-md">
-              <Star size={12} className="text-primary" />
+            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white/5 rounded-full text-[10px] font-bold backdrop-blur-md border border-white/10">
+              <Star size={10} className="text-accent" />
               {repo.stargazers_count}
             </div>
-            {repo.license && (
-              <div className="flex items-center gap-1.5 px-3 py-1 bg-primary/10 rounded-full text-[10px] font-bold text-primary border border-primary/20">
-                <Shield size={10} />
-                {repo.license.spdx_id}
-              </div>
-            )}
           </div>
         </div>
 
-        <h3 className="font-display text-3xl md:text-4xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors text-shadow-lg">
+        <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 tracking-tight group-hover:text-tertiary transition-colors text-shadow-lg uppercase">
           {highlight?.name || repo.name.replace(/-/g, " ")}
         </h3>
 
-        <p className="text-on-surface-variant line-clamp-3 mb-6 text-lg font-light leading-relaxed">
+        <p className="text-on-surface-variant line-clamp-2 mb-6 text-base font-light leading-relaxed">
           {highlight?.description || repo.description || "Experimental Ronin Project."}
         </p>
 
-        {highlight?.metrics && (
-          <div className="flex flex-col gap-2 mb-6">
-            {highlight.metrics.map((metric, i) => (
-              <div key={i} className="flex items-center gap-2 text-primary font-mono text-[10px] uppercase tracking-widest">
-                <div className="w-4 h-[1px] bg-primary" />
-                {metric}
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div className="flex flex-wrap gap-2 mb-8 mt-auto">
-          <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary/20 rounded-full text-primary border border-primary/30">
+        <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+          <span className="px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest bg-tertiary/10 rounded-full text-tertiary border border-tertiary/20">
             {repo.language || "Native"}
           </span>
-          {repo.topics?.slice(0, 2).map((topic) => (
-            <span key={topic} className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest bg-white/10 rounded-full text-white/50">
-              {topic}
-            </span>
-          ))}
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-3">
           <a
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-4 px-6 bg-primary text-white rounded-button font-black text-center flex items-center justify-center gap-2 hover:scale-105 transition-transform shadow-lg shadow-primary/20"
+            className="flex-1 py-3 px-4 bg-tertiary/10 border border-tertiary/30 text-tertiary rounded-button font-black text-[10px] tracking-widest text-center flex items-center justify-center gap-2 hover:bg-tertiary hover:text-black transition-all shadow-lg shadow-tertiary/10"
           >
             SOURCE
           </a>
@@ -126,10 +105,10 @@ export default function ExpressiveProjectCard({ repo }: { repo: Repo }) {
               href={repo.homepage}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-4 border border-white/10 rounded-button hover:bg-white/10 transition-colors backdrop-blur-md"
+              className="p-3 border border-white/10 rounded-button hover:bg-tertiary hover:text-black hover:border-tertiary transition-all backdrop-blur-md text-white/60"
               aria-label={`Visit live demo for ${repo.name}`}
             >
-              <ExternalLink size={20} />
+              <ExternalLink size={18} />
             </a>
           )}
         </div>

@@ -22,32 +22,32 @@ export default function NavigationPill() {
     setMounted(true);
   }, []);
 
-  const navWidth = useTransform(scrollY, [0, 100], ["90%", "65%"]);
+  const navWidth = useTransform(scrollY, [0, 100], ["95%", "85%"]);
   const navBackground = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(255, 255, 255, 0.03)", "rgba(255, 255, 255, 0.08)"]
+    ["rgba(5, 5, 5, 0.4)", "rgba(18, 18, 18, 0.8)"]
   );
 
   if (!mounted) return null;
 
   const navItems = [
     { name: "Home", href: "#home", icon: Home },
-    { name: "Experience", href: "#experience", icon: Briefcase },
-    { name: "Projects", href: "#projects", icon: Code2 },
-    { name: "Certificates", href: "#certificates", icon: Award },
+    { name: "Exp", href: "#experience", icon: Briefcase },
+    { name: "Work", href: "#projects", icon: Code2 },
+    { name: "Honor", href: "#certificates", icon: Award },
     { name: "Art", href: "#art", icon: Palette },
-    { name: "Contact", href: "#contact", icon: Mail },
+    { name: "Mail", href: "#contact", icon: Mail },
   ];
 
   return (
     <>
       <motion.nav
-        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-2xl border border-white/10 rounded-card px-6 md:px-8 py-3 md:py-4 flex items-center justify-between transition-all duration-500 ease-out"
+        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-xl border border-white/10 rounded-full px-4 md:px-8 py-2 md:py-3 flex items-center justify-between transition-all duration-500 ease-out"
         style={{
           width: navWidth,
           backgroundColor: navBackground,
-          top: 24,
+          top: 20,
         }}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -56,22 +56,22 @@ export default function NavigationPill() {
         {/* Logo */}
         <a 
           href="#home"
-          className="font-display font-bold text-xl md:text-2xl tracking-tighter cursor-pointer flex items-center gap-2 group"
+          className="font-display font-bold text-lg md:text-xl tracking-tighter cursor-pointer flex items-center gap-1.5 group shrink-0"
           aria-label="Sensei Portfolio Home"
         >
-          <span className="text-white group-hover:text-primary transition-colors">MH</span>
-          <span className="text-primary text-3xl">.</span>
+          <span className="text-white group-hover:text-primary transition-colors">MM</span>
+          <span className="text-primary text-2xl">.</span>
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em]">
+        <div className="hidden md:flex items-center gap-4 lg:gap-8 text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em]">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="flex items-center gap-2 text-white/70 hover:text-tertiary transition-all duration-300 interactive relative group"
+              className="flex items-center gap-1.5 text-white/60 hover:text-tertiary transition-all duration-300 interactive relative group"
             >
-              <item.icon size={14} className="group-hover:text-tertiary transition-colors" />
+              <item.icon size={12} className="group-hover:text-tertiary transition-colors" />
               <span>{item.name}</span>
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-tertiary transition-all duration-300 group-hover:w-full"></span>
             </a>
@@ -81,10 +81,10 @@ export default function NavigationPill() {
         {/* Mobile Toggle Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 text-white/60 hover:text-primary transition-colors z-[110]"
+          className="md:hidden p-2 text-white/60 hover:text-primary transition-colors z-[110]"
           aria-label="Toggle Menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </motion.nav>
 

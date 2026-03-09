@@ -97,7 +97,7 @@ export default function SamuraiHero() {
               </a>
               <a
                 href="#projects"
-                className="interactive flex items-center gap-3 px-10 py-5 border border-tertiary/30 bg-tertiary/5 backdrop-blur-md text-tertiary rounded-button font-bold uppercase tracking-widest text-xs hover:bg-tertiary hover:text-black transition-all duration-500"
+                className="interactive flex items-center gap-3 px-10 py-5 border border-white/20 bg-white/5 backdrop-blur-md text-white rounded-button font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500"
               >
                 PROJECTS
               </a>
