@@ -127,7 +127,7 @@ export default function SamuraiFooter() {
       </div>
 
       {/* Floating Final Kanji */}
-      <div className="absolute right-0 bottom-10 vertical-text font-black text-[20vw] opacity-[0.005] pointer-events-none select-none">
+      <div className="absolute right-0 bottom-10 vertical-text font-black text-[20vw] opacity-[0.01] pointer-events-none select-none" aria-hidden="true">
         終わり
       </div>
     </footer>

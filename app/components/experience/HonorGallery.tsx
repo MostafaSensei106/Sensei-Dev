@@ -23,17 +23,17 @@ export default function HonorGallery() {
         <div className="mb-32 flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="max-w-3xl">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-secondary" />
-              <span className="text-secondary text-xs font-black tracking-[0.4em] uppercase">Academic Excellence</span>
+              <div className="w-12 h-[2px] bg-quaternary" />
+              <span className="text-quaternary text-xs font-black tracking-[0.4em] uppercase">Academic Excellence</span>
             </div>
             <h2 className="font-display text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
               Certifications <br /> 
-              <span className="text-white/60 italic">& Achievements.</span>
+              <span className="text-white/80 italic">& Achievements.</span>
             </h2>
-          </div>
-          <p className="text-white/60 text-lg md:text-xl font-light max-w-sm text-right leading-relaxed">
+            </div>
+            <p className="text-white/80 text-lg md:text-xl font-light max-w-sm text-right leading-relaxed">
             Technical mastery validated by global industry leaders in Flutter and systems engineering.
-          </p>
+            </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -73,7 +73,7 @@ export default function HonorGallery() {
                   <h3 className="font-display text-3xl md:text-4xl font-bold mb-6 text-white group-hover:text-quaternary transition-colors leading-tight">
                     {cert.title}
                   </h3>
-                  <div className="flex items-center gap-6 text-white/60 text-sm font-medium">
+                  <div className="flex items-center gap-6 text-white/80 text-sm font-medium">
                     <div className="flex items-center gap-2">
                       <Award size={14} className="text-quaternary" />
                       <span>{cert.issuer}</span>
@@ -104,7 +104,7 @@ export default function HonorGallery() {
       />
 
       {/* Background Decorative Kanji */}
-      <div className="absolute left-10 bottom-20 vertical-text font-black text-[12vw] opacity-[0.01] pointer-events-none select-none uppercase leading-none">
+      <div className="absolute left-10 bottom-20 vertical-text font-black text-[12vw] opacity-[0.1] pointer-events-none select-none uppercase leading-none" aria-hidden="true">
         成就 - ACHIEVEMENT
       </div>
     </section>

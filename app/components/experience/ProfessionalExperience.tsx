@@ -35,18 +35,18 @@ export default function ProfessionalExperience() {
   return (
     <section ref={sectionRef} className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Decorative Background Text */}
-      <div className="absolute top-20 right-0 pointer-events-none select-none opacity-[0.02] text-[15vw] font-black leading-none z-0 vertical-text uppercase">
+      <div className="absolute top-20 right-0 pointer-events-none select-none opacity-[0.1] text-[15vw] font-black leading-none z-0 vertical-text uppercase" aria-hidden="true">
         職歴 — EXPERIENCE
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-24">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-[2px] bg-primary" />
-            <span className="text-primary text-xs font-black tracking-[0.4em] uppercase">Professional Path</span>
+            <div className="w-12 h-[2px] bg-accent" />
+            <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Professional Path</span>
           </div>
           <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-tight">
-            Professional <br /> <span className="text-white/60 italic">Experience.</span>
+            Professional <br /> <span className="text-white/80 italic">Experience.</span>
           </h2>
         </div>
 
@@ -65,11 +65,11 @@ export default function ProfessionalExperience() {
                 <h3 className="font-display text-3xl md:text-5xl font-black text-white group-hover:text-primary transition-colors duration-500">
                   {item.company}
                 </h3>
-                <div className="flex items-center gap-2 text-white/60 text-sm">
+                <div className="flex items-center gap-2 text-white/70 text-sm">
                   <MapPin size={14} />
                   <span>{item.location}</span>
                 </div>
-                <div className="mt-4 inline-flex px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-primary text-[10px] font-black uppercase tracking-widest w-fit">
+                <div className="mt-4 inline-flex px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-quaternary text-[10px] font-black uppercase tracking-widest w-fit">
                   {item.japaneseRole || "ソフトウェア開発者"}
                 </div>
               </div>
@@ -86,7 +86,7 @@ export default function ProfessionalExperience() {
                       <div className="mt-1.5 shrink-0 w-4 h-4 rounded-full border border-accent/40 flex items-center justify-center group-hover/detail:border-accent transition-colors">
                         <CheckCircle2 size={10} className="text-accent opacity-0 group-hover/detail:opacity-100 transition-opacity" />
                       </div>
-                      <span className="text-white/70 group-hover/detail:text-white/90 transition-colors text-sm font-light leading-relaxed">
+                      <span className="text-white/80 group-hover/detail:text-white transition-colors text-sm font-light leading-relaxed">
                         {detail}
                       </span>
                     </div>
