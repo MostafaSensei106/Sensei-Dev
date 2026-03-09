@@ -43,7 +43,7 @@ export default function SamuraiHero() {
 
   const socials = [
     { name: "GitHub", icon: Github, href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`, color: "hover:text-primary" },
-    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-tertiary" },
+    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-[#0077b5]" },
     { name: "WhatsApp", icon: MessageCircle, href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`, color: "hover:text-green-400" },
   ];
 
