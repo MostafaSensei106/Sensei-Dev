@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
-import { Calendar, MapPin, CheckCircle2 } from "lucide-react";
+import { Calendar, MapPin, CheckCircle2, ExternalLink } from "lucide-react";
 
 export default function ProfessionalExperience() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -34,22 +34,25 @@ export default function ProfessionalExperience() {
 
   return (
     <section ref={sectionRef} className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
-      {/* Decorative Background Text */}
+      {/* Background Decorative Kanji */}
       <div 
-        className="absolute top-20 right-0 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black leading-none z-0 vertical-text uppercase" 
+        className="absolute top-20 right-10 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black z-0 vertical-text uppercase" 
         aria-hidden="true"
         role="img"
       >
-        職歴
+        <span>職</span>
+        <span>歴</span>
+        <span>経</span>
+        <span>験</span>
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-24">
-          <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[2px] bg-accent" />
             <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Professional Path</span>
           </div>
-          <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-tight">
+          <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
             <span className="text-white">Professional</span> <br /> 
             <span className="text-primary italic">Experience.</span>
           </h2>
@@ -67,16 +70,33 @@ export default function ProfessionalExperience() {
                   <Calendar size={18} />
                   <span className="font-mono text-sm tracking-widest font-bold uppercase">{item.period}</span>
                 </div>
-                <h3 className="font-display text-3xl md:text-5xl font-black text-white group-hover:text-primary transition-colors duration-500">
-                  {item.company}
-                </h3>
+                
+                <div className="flex flex-col gap-2">
+                  <span className="text-xs font-black uppercase tracking-[0.2em] text-accent/80">
+                    {item.role}
+                  </span>
+                  <a 
+                    href={item.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group/link flex items-center gap-4 w-fit"
+                  >
+                    <h3 className="font-display text-3xl md:text-5xl font-black text-white group-hover/link:text-primary transition-colors duration-500 flex items-center gap-3">
+                      {item.company}
+                      <ExternalLink size={20} className="text-white/20 group-hover/link:text-primary transition-colors" />
+                    </h3>
+                  </a>
+                </div>
+
                 <div className="flex items-center gap-2 text-on-surface-variant text-sm">
                   <MapPin size={14} />
                   <span>{item.location}</span>
                 </div>
-                <div className="mt-4 inline-flex px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-quaternary text-[10px] font-black uppercase tracking-widest w-fit">
-                  {item.japaneseRole || "ソフトウェア開発者"}
-                </div>
+                {item.japaneseRole && (
+                  <div className="mt-2 inline-flex px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-quaternary text-[10px] font-black uppercase tracking-widest w-fit">
+                    {item.japaneseRole}
+                  </div>
+                )}
               </div>
 
               {/* Right Column: Details */}

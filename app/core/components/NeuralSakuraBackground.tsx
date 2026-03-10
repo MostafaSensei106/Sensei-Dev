@@ -16,13 +16,13 @@ export default function NeuralSakuraBackground() {
     let height = (canvas.height = window.innerHeight);
 
     const petals: Petal[] = [];
-    const petalCount = 40;
+    const petalCount = 60; // Increased for better density
 
     // Convert hex to rgb for canvas
     const hexToRgb = (hex: string) => {
       const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-      return result ? 
-        `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : 
+      return result ?
+        `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` :
         "255, 255, 255";
     };
 
@@ -45,13 +45,13 @@ export default function NeuralSakuraBackground() {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 5 + 2;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 + 0.5;
+        this.size = Math.random() * 4 + 2;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 1.5 + 0.5;
         this.rotation = Math.random() * 360;
         this.spin = Math.random() * 2 - 1;
-        this.opacity = Math.random() * 0.5 + 0.2;
-        
+        this.opacity = Math.random() * 0.4 + 0.1;
+
         const rand = Math.random();
         if (rand > 0.75) this.color = primaryRGB;
         else if (rand > 0.5) this.color = accentRGB;
@@ -61,23 +61,25 @@ export default function NeuralSakuraBackground() {
 
       update(mouseX: number, mouseY: number) {
         this.y += this.speedY;
-        this.x += this.speedX;
+        this.x += this.speedX + Math.sin(this.y / 50) * 0.5;
         this.rotation += this.spin;
 
         const dx = this.x - mouseX;
         const dy = this.y - mouseY;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 150) {
-          this.x += dx / 20;
-          this.y += dy / 20;
+        if (distance < 200) {
+          const force = (200 - distance) / 200;
+          this.x += (dx / distance) * force * 5;
+          this.y += (dy / distance) * force * 5;
         }
 
-        if (this.y > height) {
-          this.y = -10;
+        if (this.y > height + 20) {
+          this.y = -20;
           this.x = Math.random() * width;
+          this.opacity = Math.random() * 0.4 + 0.1;
         }
-        if (this.x > width) this.x = 0;
-        if (this.x < 0) this.x = width;
+        if (this.x > width + 20) this.x = -20;
+        if (this.x < -20) this.x = width + 20;
       }
 
       draw() {
@@ -86,9 +88,13 @@ export default function NeuralSakuraBackground() {
         ctx.translate(this.x, this.y);
         ctx.rotate((this.rotation * Math.PI) / 180);
         ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-        
+
+        // Petal shape (ellipse-like)
         ctx.beginPath();
-        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size * 1.5);
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(this.size, -this.size, this.size * 2, this.size, 0, this.size * 2);
+        ctx.bezierCurveTo(-this.size * 2, this.size, -this.size, -this.size, 0, 0);
+        ctx.fill();
         ctx.restore();
       }
     }
@@ -97,8 +103,8 @@ export default function NeuralSakuraBackground() {
       petals.push(new Petal());
     }
 
-    let mouseX = 0;
-    let mouseY = 0;
+    let mouseX = -1000;
+    let mouseY = -1000;
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
@@ -132,8 +138,8 @@ export default function NeuralSakuraBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 bg-background overflow-hidden neural-grid">
-      <canvas ref={canvasRef} className="opacity-40" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
+      <canvas ref={canvasRef} className="opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background pointer-events-none" />
     </div>
   );
 }

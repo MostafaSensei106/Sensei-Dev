@@ -19,21 +19,34 @@ export default function HonorGallery() {
 
   return (
     <section id="certificates" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+      {/* Background Decorative Kanji */}
+      <div 
+        className="absolute left-10 top-20 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black z-0 vertical-text uppercase" 
+        aria-hidden="true"
+        role="img"
+      >
+        <span>実</span>
+        <span>績</span>
+        <span>認</span>
+        <span>定</span>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-32 flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="max-w-3xl">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-[2px] bg-accent" />
               <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Academic Excellence</span>
             </div>
-            <h2 className="font-display text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
+            <h2 className="font-display text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter">
               <span className="text-white">Certifications</span> <br /> 
               <span className="text-primary italic">& Achievements.</span>
             </h2>
-            </div>
-            </div>
+          </div>
+        </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">            {PORTFOLIO_DATA.certificates.map((cert, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {PORTFOLIO_DATA.certificates.map((cert, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -87,25 +100,17 @@ export default function HonorGallery() {
                 認定
               </div>
             </motion.div>
-            ))}
-            </div>
-            </div>
+          ))}
+        </div>
+      </div>
 
-            <Lightbox
-            open={open}
-            close={() => setOpen(false)}
-            index={index}
-            slides={slides}
-            styles={{ container: { backgroundColor: "rgba(0, 0, 0, 0.98)" } }}
-            />
-
-            {/* Background Decorative Kanji */}
-            <div 
-              className="absolute left-10 bottom-20 vertical-text font-black text-[12vw] text-white/[0.02] pointer-events-none select-none uppercase leading-none" 
-              aria-hidden="true"
-              role="img"
-            >
-              成就
-            </div>    </section>
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        index={index}
+        slides={slides}
+        styles={{ container: { backgroundColor: "rgba(0, 0, 0, 0.98)" } }}
+      />
+    </section>
   );
 }

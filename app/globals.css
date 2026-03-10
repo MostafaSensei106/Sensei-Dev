@@ -73,6 +73,16 @@
 .vertical-text {
   writing-mode: vertical-rl;
   text-orientation: upright;
+  gap: 0.1em;
+  line-height: 1.2;
+  font-family: var(--font-jp);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vertical-text span {
+  display: block;
 }
 
 .neural-grid {

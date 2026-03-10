@@ -26,6 +26,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   experience: [
     {
       company: "Lothga",
+      link: "https://lothgha.com/",
       role: "Flutter Developer [Volunteer]",
       location: "Jeddah, Saudi Arabia, SA",
       period: "Aug 2024 – Aug 2024",
@@ -41,6 +42,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     },
     {
       company: "Benha University",
+      link: "https://www.bu.edu.eg/",
       role: "Bachelor of Computer Science",
       location: "Benha, Egypt",
       period: "Oct 2022 – May 2026",
