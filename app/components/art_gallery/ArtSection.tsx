@@ -15,7 +15,7 @@ export default function ArtSection() {
   const [index, setIndex] = useState(0);
 
   const lightboxSlides = PORTFOLIO_DATA.artGallery.map((img) => ({
-    src: img.src.startsWith("/") ? img.src : `/${img.src}`,
+    src: img.src,
     title: img.title,
     description: "Digital Art by Mostafa Mahmoud",
   }));
