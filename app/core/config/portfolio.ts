@@ -121,7 +121,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       title: "The Complete Dart Development Guide",
       issuer: "Udemy",
       date: "Jan 2025",
-      image: "Assets/art-gallery/Images/certificates/flutter/ Dart Development_Ud_Certificates.webp",
+      image: "Assets/art-gallery/Images/certificates/flutter/Dart Development_Ud_Certificates.webp",
     },
 
   ],
