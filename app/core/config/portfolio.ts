@@ -19,7 +19,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       tagline: "High-Performance Systems & Elegant Mobile Ecosystems.",
       japaneseTagline: "高性能システムとエレガなモバイルエコシステム。",
       description: "Dedicated Software Engineer specialized in Flutter, Go, and Rust. Crafting high-performance, concurrent, and scalable solutions with a focus on technical excellence and user experience.",
-      photo: "Assets/art-gallery/Images/logo/Mostafa.jpg",
+      photo: "Assets/art-gallery/Images/logo/Mostafa.webp",
       cvUrl: "Assets/cv/Mostafa_Mahmoud_CV.pdf",
     },
   },
@@ -103,17 +103,27 @@ export const PORTFOLIO_DATA: PortfolioData = {
   },
   certificates: [
     {
-      title: "The Complete Dart Development Guide",
-      issuer: "Udemy / Google Developers",
-      date: "2024",
-      image: "/Assets/art-gallery/Images/image_display/HG_Logo.jpg",
+      title: "Head of Flutter",
+      issuer: "Benha University",
+      date: "Feb 2026",
+      image: "Assets/art-gallery/Images/certificates/gdg/Head_Flutter_GDGoC_Certificate.webp"
+
     },
+
     {
       title: "The Complete Flutter Development Guide",
-      issuer: "Udemy / Google Developers",
-      date: "2024",
-      image: "/Assets/art-gallery/Images/image_display/HG_Logo.jpg",
+      issuer: "Udemy",
+      date: "Aug 2025",
+      image: "Assets/art-gallery/Images/certificates/flutter/Flutter_Development_Udemy_Certificates.webp",
     },
+
+    {
+      title: "The Complete Dart Development Guide",
+      issuer: "Udemy",
+      date: "Jan 2025",
+      image: "Assets/art-gallery/Images/certificates/flutter/ Dart Development_Ud_Certificates.webp",
+    },
+
   ],
   artGallery: [
     { src: "Assets/art-gallery/Images/image_display/B2BVBA.png", thumb: "Assets/art-gallery/Images/web/B2BVBA.webp", title: "B2B Visual Analysis" },
