@@ -43,7 +43,7 @@ export interface ProjectHighlight {
   description: string;
   metrics: string[];
   link: string;
-  githubRepo: string;
+  githubRepo?: string;
 }
 
 export interface ProjectsData {
@@ -89,4 +89,5 @@ export interface PortfolioData {
   projects: ProjectsData;
   certificates: Certificate[];
   artGallery: ArtGalleryItem[];
+  theme: ThemeConfig;
 }
