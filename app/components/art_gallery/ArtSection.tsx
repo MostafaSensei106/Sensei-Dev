@@ -72,7 +72,7 @@ export default function ArtSection() {
               className="relative group cursor-pointer overflow-hidden rounded-card bg-surface border border-white/5 transition-all duration-700 hover:border-quaternary/40 hover:scale-[1.02]"
             >
               <Image
-                src={img.thumb.startsWith("/") ? img.thumb : `/${img.thumb}`}
+                src={img.thumb}
                 alt={img.title}
                 width={500}
                 height={500}
