@@ -42,7 +42,7 @@ export default function SamuraiHero() {
 
   const socials = [
     { name: "GitHub", icon: Github, href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`, color: "hover:text-primary" },
-    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:text-[#0077b5]" },
+    { name: "LinkedIn", icon: Linkedin, href: `${PORTFOLIO_DATA.profile.contact.linkedin}`, color: "hover:text-[#0077b5]" },
     { name: "WhatsApp", icon: MessageCircle, href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`, color: "hover:text-green-400" },
   ];
 
@@ -91,6 +91,8 @@ export default function SamuraiHero() {
             <div className="flex gap-4">
               <a
                 href={PORTFOLIO_DATA.profile.hero.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 download
                 className="interactive flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-primary text-white rounded-button font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500 shadow-2xl shadow-primary/20"
                 aria-label="Download Resume PDF"

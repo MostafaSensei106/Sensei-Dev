@@ -9,10 +9,10 @@ export default function SamuraiFooter() {
 
   const socialLinks = [
     { name: "GitHub", icon: Github, href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`, color: "text-primary" },
-    { name: "LinkedIn", icon: Linkedin, href: "#", color: "text-[#0077b5]" },
+    { name: "LinkedIn", icon: Linkedin, href: `${PORTFOLIO_DATA.profile.contact.linkedin}`, color: "text-[#0077b5]" },
     { name: "WhatsApp", icon: MessageCircle, href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`, color: "text-[#25d366]" },
-    { name: "Facebook", icon: Facebook, href: `https://facebook.com/${PORTFOLIO_DATA.profile.contact.facebook}`, color: "text-[#1877f2]" },
-    { name: "X", icon: Twitter, href: `https://x.com/${PORTFOLIO_DATA.profile.contact.x}`, color: "text-white" },
+    { name: "Facebook", icon: Facebook, href: `${PORTFOLIO_DATA.profile.contact.facebook}`, color: "text-[#1877f2]" },
+    { name: "X", icon: Twitter, href: `${PORTFOLIO_DATA.profile.contact.x}`, color: "text-white" },
   ];
 
   return (

@@ -35,7 +35,7 @@ export default function NavigationPill() {
     { name: "Home", href: "#home", icon: Home },
     { name: "Exp", href: "#experience", icon: Briefcase },
     { name: "Work", href: "#projects", icon: Code2 },
-    { name: "Honor", href: "#certificates", icon: Award },
+    { name: "Cert", href: "#certificates", icon: Award },
     { name: "Art", href: "#art", icon: Palette },
     { name: "Mail", href: "#contact", icon: Mail },
   ];
