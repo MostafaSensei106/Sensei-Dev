@@ -43,7 +43,7 @@ export default function NavigationPill() {
   return (
     <>
       <motion.nav
-        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-xl border border-white/10 rounded-full px-4 md:px-8 py-2 md:py-3 flex items-center justify-between transition-all duration-500 ease-out"
+        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-xl border border-white/10 rounded-none px-4 md:px-8 py-2 md:py-3 flex items-center justify-between transition-all duration-500 ease-out"
         style={{
           width: navWidth,
           backgroundColor: navBackground,
@@ -54,12 +54,12 @@ export default function NavigationPill() {
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
       >
         {/* Logo */}
-        <a 
+        <a
           href="#home"
           className="font-display font-bold text-lg md:text-xl tracking-tighter cursor-pointer flex items-center gap-1.5 group shrink-0"
           aria-label="Sensei Portfolio Home"
         >
-          <span className="text-white group-hover:text-primary transition-colors">MM</span>
+          <span className="text-white group-hover:text-primary transition-colors">MH</span>
           <span className="text-primary text-2xl">.</span>
         </a>
 
@@ -69,7 +69,7 @@ export default function NavigationPill() {
             <a
               key={item.name}
               href={item.href}
-              className="flex items-center gap-1.5 text-white/60 hover:text-tertiary transition-all duration-300 interactive relative group"
+              className="flex items-center gap-1.5 text-white/65 hover:text-primary transition-all duration-300 interactive relative group"
             >
               <item.icon size={12} className="group-hover:text-tertiary transition-colors" />
               <span>{item.name}</span>

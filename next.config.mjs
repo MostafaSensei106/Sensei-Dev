@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   output: "export",
+  basePath: process.env.NODE_ENV === "production" ? "/Sensei-Dev" : "",
   images: {
     unoptimized: true,
   },

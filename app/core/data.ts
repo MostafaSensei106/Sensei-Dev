@@ -16,11 +16,13 @@ export const knowledgeEducationItems = PORTFOLIO_DATA.experience.map((exp) => ({
 export const images = PORTFOLIO_DATA.artGallery.map((item) => ({
   src: item.src,
   thumb: item.thumb,
+  title: item.title,
 }));
 
 export const honorsAndCertificates = PORTFOLIO_DATA.certificates.map((cert) => ({
   title: cert.title,
   issuer: cert.issuer,
   date: cert.date,
-  icon: "award", // Default icon
+  icon: "award",
+  image: cert.image,
 }));

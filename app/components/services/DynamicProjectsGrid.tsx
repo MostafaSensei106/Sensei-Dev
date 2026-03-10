@@ -11,45 +11,32 @@ export default function DynamicProjectsGrid() {
   return (
     <section id="projects" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Japanese Watermark */}
-      <div 
-        className="absolute left-10 top-20 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black leading-none -z-0 vertical-text uppercase" 
+      <div
+        className="absolute left-10 top-20 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
         aria-hidden="true"
         role="img"
       >
-        開発マニフェスト
+        <span>設</span>
+        <span>計</span>
+        <span>開</span>
+        <span>発</span>
       </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 mb-32 items-end">
           {/* Left Block: Identity */}
-          <div className="flex flex-col gap-8">
-            <div className="flex items-center flex-wrap gap-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-[2px] bg-accent" />
-                <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">The Code Manifesto</span>
-              </div>
-              <div className="flex gap-3">
-                <div className="p-2 bg-white/5 border border-white/10 rounded-lg">
-                  <Cpu size={16} className="text-primary" />
-                </div>
-                <div className="p-2 bg-white/5 border border-white/10 rounded-lg">
-                  <Terminal size={16} className="text-accent" />
-                </div>
-              </div>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-[2px] bg-accent" />
+              <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">The Code Manifesto</span>
             </div>
-            
-            <h2 className="font-display text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter uppercase leading-[0.8] mb-0">
-              <span className="text-white">System</span> <br /> 
+
+            <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
+              <span className="text-white">System</span> <br />
               <span className="text-primary italic">Architecture.</span>
             </h2>
           </div>
 
-          {/* Right Block: Description */}
-          <div className="flex flex-col items-start lg:items-end lg:text-right pb-4">
-            <p className="text-on-surface-variant text-lg md:text-xl font-light leading-relaxed max-w-sm">
-              Precision-engineered repositories focused on high-performance concurrency, sorting algorithms, and native system integration.
-            </p>
-          </div>
+
         </div>
 
         {isLoading ? (

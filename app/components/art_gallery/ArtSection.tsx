@@ -23,14 +23,16 @@ export default function ArtSection() {
   return (
     <section id="art" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
-      <div 
-        className="absolute right-10 top-0 h-full vertical-text font-black text-[18vw] text-white/[0.02] pointer-events-none select-none uppercase leading-none z-0" 
+      <div
+        className="absolute right-10 top-20 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
         aria-hidden="true"
         role="img"
       >
-        芸術적魂
+        <span>芸</span>
+        <span>術</span>
+        <span>創</span>
+        <span>造</span>
       </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-32 flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="max-w-3xl">
@@ -38,15 +40,12 @@ export default function ArtSection() {
               <div className="w-12 h-[2px] bg-accent" />
               <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Visual Archive</span>
             </div>
-            <h2 className="font-display text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter">
-              <span className="text-white">Spirit</span> <br /> 
-              <span className="text-primary italic">& Canvas.</span>
+            <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
+              <span className="text-white">Art</span> <br />
+              <span className="text-primary italic">Gallary.</span>
             </h2>
           </div>
           <div className="flex flex-col items-end text-right">
-            <p className="text-on-surface-variant text-lg md:text-xl font-light max-w-sm leading-relaxed mb-6">
-              A curated collection of digital explorations, from brand identities to expressive character studies.
-            </p>
             <div className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-on-surface-variant text-[10px] font-bold uppercase tracking-[0.2em]">
               {PORTFOLIO_DATA.artGallery.length} Items Indexed
             </div>
@@ -61,10 +60,10 @@ export default function ArtSection() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                duration: 0.8, 
+              transition={{
+                duration: 0.8,
                 delay: (idx % 6) * 0.1,
-                ease: [0.215, 0.61, 0.355, 1] 
+                ease: [0.215, 0.61, 0.355, 1]
               }}
               onClick={() => {
                 setIndex(idx);
@@ -81,7 +80,7 @@ export default function ArtSection() {
                 loading="lazy"
                 unoptimized={true}
               />
-              
+
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
                 <div className="flex items-center gap-2 text-quaternary mb-2">
                   <Sparkles size={12} />
