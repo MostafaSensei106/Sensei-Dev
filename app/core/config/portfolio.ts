@@ -17,7 +17,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     },
     hero: {
       tagline: "High-Performance Systems & Elegant Mobile Ecosystems.",
-      japaneseTagline: "高性能システムとエレガنتなモバイルエコシステム。",
+      japaneseTagline: "高性能システムとエレガなモバイルエコシステム。",
       description: "Dedicated Software Engineer specialized in Flutter, Go, and Rust. Crafting high-performance, concurrent, and scalable solutions with a focus on technical excellence and user experience.",
       photo: "Assets/art-gallery/Images/logo/Mostafa.jpg",
       cvUrl: "Assets/cv/Mostafa_Mahmoud_CV.pdf",
