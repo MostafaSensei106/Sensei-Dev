@@ -132,7 +132,7 @@ export default function SamuraiHero() {
             <div className="absolute inset-4 md:inset-8 border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
 
             {/* The Photo */}
-            <a href="https://www.youtube.com/watch?v=7nQAGywy3Rw" target="_blank" rel="noopener noreferrer"><div className="absolute inset-2 md:inset-4 rounded-full overflow-hidden border-4 border-white/5 shadow-2xl shadow-primary/10">
+            <a href="https://youtu.be/-RRWvHTQjPE?si=m3W9ZcEmMZ1Z59O3&t=167" target="_blank" rel="noopener noreferrer"><div className="absolute inset-2 md:inset-4 rounded-full overflow-hidden border-4 border-white/5 shadow-2xl shadow-primary/10">
               <Image
                 src={PORTFOLIO_DATA.profile.hero.photo}
                 alt={PORTFOLIO_DATA.profile.name}
