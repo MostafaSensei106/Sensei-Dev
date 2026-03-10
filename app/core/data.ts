@@ -22,5 +22,5 @@ export const honorsAndCertificates = PORTFOLIO_DATA.certificates.map((cert) => (
   title: cert.title,
   issuer: cert.issuer,
   date: cert.date,
-  icon: "award", // Default icon
+  icon: "award",
 }));

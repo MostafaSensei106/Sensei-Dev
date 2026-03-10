@@ -27,6 +27,7 @@ export interface Profile {
 
 export interface Experience {
   company: string;
+  link: string;
   role: string;
   japaneseRole?: string;
   location: string;
@@ -42,6 +43,7 @@ export interface ProjectHighlight {
   description: string;
   metrics: string[];
   link: string;
+  githubRepo: string;
 }
 
 export interface ProjectsData {
@@ -87,5 +89,4 @@ export interface PortfolioData {
   projects: ProjectsData;
   certificates: Certificate[];
   artGallery: ArtGalleryItem[];
-  theme: ThemeConfig;
 }
