@@ -50,7 +50,7 @@ export default function SamuraiHero() {
     <section id="home" ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-40 pb-20 bg-background">
       {/* Background Japanese Watermark */}
       <div
-        className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-white/[0.02] font-black text-[10vw] select-none pointer-events-none z-0 leading-none"
+        className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-white/[0.03] font-black text-[10vw] select-none pointer-events-none z-0 leading-none"
         aria-hidden="true"
         role="img"
       >
@@ -149,7 +149,7 @@ export default function SamuraiHero() {
 
       {/* Bottom Japanese Quote */}
       <div className="absolute bottom-10 left-10 hidden md:block" aria-hidden="true" role="img">
-        <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-on-surface-muted">
+        <p className="text-[10px] text-white/10 font-bold uppercase tracking-[0.5em] text-on-surface-muted">
           継続は力なり — PERSEVERANCE IS POWER
         </p>
       </div>

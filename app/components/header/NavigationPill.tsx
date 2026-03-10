@@ -69,7 +69,7 @@ export default function NavigationPill() {
             <a
               key={item.name}
               href={item.href}
-              className="flex items-center gap-1.5 text-white/60 hover:text-tertiary transition-all duration-300 interactive relative group"
+              className="flex items-center gap-1.5 text-white/65 hover:text-primary transition-all duration-300 interactive relative group"
             >
               <item.icon size={12} className="group-hover:text-tertiary transition-colors" />
               <span>{item.name}</span>

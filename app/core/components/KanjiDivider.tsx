@@ -38,11 +38,11 @@ export default function KanjiDivider({
     >
       <motion.div
         style={{ x }}
-        className="flex whitespace-nowrap gap-12 text-2xl md:text-4xl font-black text-white/10 uppercase tracking-[0.5em] select-none pointer-events-none italic"
+        className="flex whitespace-nowrap gap-12 text-2xl md:text-4xl font-black text-white/15 uppercase tracking-[0.5em] select-none pointer-events-none italic"
       >
         {[...Array(10)].map((_, i) => (
           <span key={i} className="flex items-center gap-12">
-            <span className="text-primary/40 text-sm italic mr-4">Sensei</span>
+            <span className="text-primary/100 text-sm italic mr-4">Sensei</span>
             {text}
           </span>
         ))}

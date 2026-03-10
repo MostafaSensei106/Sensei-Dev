@@ -89,5 +89,4 @@ export interface PortfolioData {
   projects: ProjectsData;
   certificates: Certificate[];
   artGallery: ArtGalleryItem[];
-  theme: ThemeConfig;
 }

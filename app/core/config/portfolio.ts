@@ -146,21 +146,5 @@ export const PORTFOLIO_DATA: PortfolioData = {
     { src: "/Assets/art-gallery/Images/image_display/Sensei_Art44.jpg", thumb: "/Assets/art-gallery/Images/web/Sensei_Art44.webp", title: "Sensei Art Archive 44" },
     { src: "/Assets/art-gallery/Images/image_display/Tadamon_App_Logo.png", thumb: "/Assets/art-gallery/Images/web/Tadamon_App_Logo.webp", title: "Tadamon App Identity" },
   ],
-  theme: {
-    colors: {
-      primary: "#E31E24", // Samurai Red
-      secondary: "#1A1A1A",
-      accent: "#FFD700", // Gold accent
-      tertiary: "#00D2EF", // Cyber Azure
-      quaternary: "#A29BFE", // Mystic Purple
-      background: "#050505",
-      surface: "#121212",
-      text: "#FFFFFF",
-    },
-    borderRadius: {
-      base: "0px",
-      card: "4px",
-      button: "2px",
-    },
-  },
+
 };

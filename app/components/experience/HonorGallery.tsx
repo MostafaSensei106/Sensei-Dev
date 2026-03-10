@@ -20,8 +20,8 @@ export default function HonorGallery() {
   return (
     <section id="certificates" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
-      <div 
-        className="absolute left-10 top-20 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black z-0 vertical-text uppercase" 
+      <div
+        className="absolute left-10 top-20 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
         aria-hidden="true"
         role="img"
       >
@@ -39,7 +39,7 @@ export default function HonorGallery() {
               <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Academic Excellence</span>
             </div>
             <h2 className="font-display text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter">
-              <span className="text-white">Certifications</span> <br /> 
+              <span className="text-white">Certifications</span> <br />
               <span className="text-primary italic">& Achievements.</span>
             </h2>
           </div>
@@ -59,8 +59,8 @@ export default function HonorGallery() {
               <div className="flex flex-col lg:flex-row h-full">
                 {/* Certificate Preview */}
                 <div className="w-full lg:w-2/5 h-64 lg:h-full relative overflow-hidden">
-                  <Image 
-                    src={cert.image} 
+                  <Image
+                    src={cert.image}
                     alt={cert.title}
                     width={400}
                     height={300}

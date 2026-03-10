@@ -37,7 +37,7 @@ export default function SamuraiFooter() {
               <h2 className="font-display text-6xl sm:text-7xl md:text-9xl font-black uppercase leading-[0.8] mb-10 tracking-tighter">
                 Forge <br /> <span className="text-primary italic">Together.</span>
               </h2>
-              
+
               <div className="flex flex-wrap gap-4 md:gap-6 mb-16">
                 {socialLinks.map((social) => (
                   <a
@@ -67,12 +67,12 @@ export default function SamuraiFooter() {
             <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-30 transition-opacity">
               <Mail size={100} className="text-primary" />
             </div>
-            
+
             <h3 className="font-display text-3xl font-bold mb-8 uppercase tracking-tighter flex items-center gap-4">
               <div className="w-8 h-[2px] bg-primary" />
               Seal Intent
             </h3>
-            
+
             <form className="flex flex-col gap-8" onSubmit={(e) => e.preventDefault()}>
               <div className="relative">
                 <label htmlFor="name" className="sr-only">Name / Organization</label>
@@ -117,17 +117,17 @@ export default function SamuraiFooter() {
         {/* Bottom bar */}
         <div className="mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-on-surface-variant font-mono text-[10px] tracking-[0.3em] uppercase opacity-70">
           <div className="flex items-center gap-4">
-            <span className="text-primary font-bold text-base tracking-normal">MM.</span>
+            <span className="text-primary font-bold text-base tracking-normal">MH.</span>
             <span>© {currentYear} {PORTFOLIO_DATA.profile.name}</span>
           </div>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <span>Constructed with Honor in {PORTFOLIO_DATA.profile.contact.location}</span>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Floating Final Kanji */}
-      <div className="absolute right-0 bottom-10 vertical-text font-black text-[20vw] opacity-[0.01] pointer-events-none select-none" aria-hidden="true">
+      <div className="absolute right-0 bottom-10 vertical-text font-black text-[20vw] opacity-[0.03] pointer-events-none select-none" aria-hidden="true">
         終わり
       </div>
     </footer>

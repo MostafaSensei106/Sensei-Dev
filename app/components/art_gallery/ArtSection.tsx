@@ -24,7 +24,7 @@ export default function ArtSection() {
     <section id="art" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
       <div
-        className="absolute right-10 top-20 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black z-0 vertical-text uppercase"
+        className="absolute right-10 top-20 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
         aria-hidden="true"
         role="img"
       >

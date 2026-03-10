@@ -12,7 +12,7 @@ export default function ProfessionalExperience() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray(".exp-item");
-      
+
       cards.forEach((card: any, i: number) => {
         gsap.from(card, {
           x: i % 2 === 0 ? -100 : 100,
@@ -35,8 +35,8 @@ export default function ProfessionalExperience() {
   return (
     <section ref={sectionRef} className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
-      <div 
-        className="absolute top-20 right-10 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black z-0 vertical-text uppercase" 
+      <div
+        className="absolute top-20 right-10 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
         aria-hidden="true"
         role="img"
       >
@@ -53,15 +53,15 @@ export default function ProfessionalExperience() {
             <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Professional Path</span>
           </div>
           <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
-            <span className="text-white">Professional</span> <br /> 
+            <span className="text-white">Professional</span> <br />
             <span className="text-primary italic">Experience.</span>
           </h2>
         </div>
 
         <div className="flex flex-col gap-20">
           {PORTFOLIO_DATA.experience.map((item, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="exp-item group relative grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 items-start"
             >
               {/* Left Column: Metadata */}
@@ -70,14 +70,14 @@ export default function ProfessionalExperience() {
                   <Calendar size={18} />
                   <span className="font-mono text-sm tracking-widest font-bold uppercase">{item.period}</span>
                 </div>
-                
+
                 <div className="flex flex-col gap-2">
                   <span className="text-xs font-black uppercase tracking-[0.2em] text-accent/80">
                     {item.role}
                   </span>
-                  <a 
-                    href={item.link} 
-                    target="_blank" 
+                  <a
+                    href={item.link}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="group/link flex items-center gap-4 w-fit"
                   >
@@ -104,7 +104,7 @@ export default function ProfessionalExperience() {
                 <p className="text-xl md:text-2xl font-light text-white mb-8 leading-relaxed italic border-l-2 border-primary pl-6">
                   {item.description}
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {item.details.map((detail, i) => (
                     <div key={i} className="flex items-start gap-4 group/detail">
