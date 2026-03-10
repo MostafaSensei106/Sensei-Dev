@@ -5,7 +5,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { Github, Linkedin, MessageCircle, Download, ExternalLink, Cpu, Code2, Sparkles } from "lucide-react";
-import NeuralSakuraBackground from "@/app/core/components/NeuralSakuraBackground";
 
 export default function SamuraiHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -50,8 +49,8 @@ export default function SamuraiHero() {
   return (
     <section id="home" ref={containerRef} className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-40 pb-20 bg-background">
       {/* Background Japanese Watermark */}
-      <div 
-        className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-white/[0.02] font-black text-[10vw] select-none pointer-events-none z-0 leading-none" 
+      <div
+        className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-white/[0.02] font-black text-[10vw] select-none pointer-events-none z-0 leading-none"
         aria-hidden="true"
         role="img"
       >
@@ -133,7 +132,7 @@ export default function SamuraiHero() {
             <div className="absolute inset-4 md:inset-8 border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
 
             {/* The Photo */}
-            <div className="absolute inset-2 md:inset-4 rounded-full overflow-hidden border-4 border-white/5 shadow-2xl shadow-primary/10">
+            <a href="https://www.youtube.com/watch?v=7nQAGywy3Rw" target="_blank" rel="noopener noreferrer"><div className="absolute inset-2 md:inset-4 rounded-full overflow-hidden border-4 border-white/5 shadow-2xl shadow-primary/10">
               <Image
                 src={PORTFOLIO_DATA.profile.hero.photo}
                 alt={PORTFOLIO_DATA.profile.name}
@@ -143,7 +142,7 @@ export default function SamuraiHero() {
                 className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
-            </div>
+            </div> </a>
           </div>
         </div>
       </div>

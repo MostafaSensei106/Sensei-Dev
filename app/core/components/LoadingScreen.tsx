@@ -31,7 +31,7 @@ export default function LoadingScreen() {
         >
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-[0.03] neural-grid" />
-          
+
           <div className="relative">
             {/* Animated Ring */}
             <motion.div
@@ -39,14 +39,14 @@ export default function LoadingScreen() {
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               className="w-32 h-32 border-2 border-primary/20 border-t-primary rounded-full"
             />
-            
+
             {/* Center Symbol */}
             <div className="absolute inset-0 flex items-center justify-center font-display text-4xl font-black text-primary">
               師
             </div>
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -58,7 +58,7 @@ export default function LoadingScreen() {
               <div className="w-8 h-[1px] bg-primary/40" />
             </div>
             <h2 className="text-xl font-display font-black text-white tracking-tighter uppercase">
-              The Sensei <span className="text-primary italic">Way.</span>
+              The Samurai <span className="text-primary italic">Way.</span>
             </h2>
           </motion.div>
 

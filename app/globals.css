@@ -28,21 +28,14 @@
 @layer base {
   :root {
     /* Main Theme Variables - Expanded Palette */
-    --primary: #E31E24;
-    /* Samurai Red */
+    --primary: #BC002D;
     --secondary: #1A1A1A;
-    /* Deep Charcoal */
     --accent: #FFD700;
-    /* Honor Gold */
     --tertiary: #00D2EF;
-    /* Cyber Azure */
     --quaternary: #A29BFE;
-    /* Mystic Purple */
 
     --background: #050505;
-    /* Rich Black */
     --foreground: #FFFFFF;
-    /* Pure White */
 
     --surface: #121212;
     --on-surface: #FCFCFC;

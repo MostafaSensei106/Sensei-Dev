@@ -59,7 +59,7 @@ export default function NavigationPill() {
           className="font-display font-bold text-lg md:text-xl tracking-tighter cursor-pointer flex items-center gap-1.5 group shrink-0"
           aria-label="Sensei Portfolio Home"
         >
-          <span className="text-white group-hover:text-primary transition-colors">MM</span>
+          <span className="text-white group-hover:text-primary transition-colors">MH</span>
           <span className="text-primary text-2xl">.</span>
         </a>
 

@@ -23,8 +23,8 @@ export default function ArtSection() {
   return (
     <section id="art" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
-      <div 
-        className="absolute right-10 top-20 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black z-0 vertical-text uppercase" 
+      <div
+        className="absolute right-10 top-20 pointer-events-none select-none text-white/[0.02] text-[15vw] font-black z-0 vertical-text uppercase"
         aria-hidden="true"
         role="img"
       >
@@ -40,9 +40,9 @@ export default function ArtSection() {
               <div className="w-12 h-[2px] bg-accent" />
               <span className="text-accent text-xs font-black tracking-[0.4em] uppercase">Visual Archive</span>
             </div>
-            <h2 className="font-display text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter">
-              <span className="text-white">Spirit</span> <br />
-              <span className="text-primary italic">& Canvas.</span>
+            <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
+              <span className="text-white">Art</span> <br />
+              <span className="text-primary italic">Gallary.</span>
             </h2>
           </div>
           <div className="flex flex-col items-end text-right">

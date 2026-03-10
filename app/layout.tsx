@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { SmoothScroll } from "@/app/core/components/SmoothScroll";
 import CustomCursor from "@/app/core/components/CustomCursor";
 import ClientOnly from "@/app/core/components/ClientOnly";
-import NeuralSakuraBackground from "@/app/core/components/NeuralSakuraBackground";
 import LoadingScreen from "@/app/core/components/LoadingScreen";
 
 // Fonts
@@ -59,7 +58,6 @@ export default function RootLayout({
           <LoadingScreen />
           <SmoothScroll>
             <CustomCursor />
-            <NeuralSakuraBackground />
             {children}
           </SmoothScroll>
         </ClientOnly>
