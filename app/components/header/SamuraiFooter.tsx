@@ -72,13 +72,24 @@ export default function SamuraiFooter() {
               <div className="w-8 h-[2px] bg-primary" />
               Seal Intent
             </h3>
-
-            <form className="flex flex-col gap-8" onSubmit={(e) => e.preventDefault()}>
+            <form
+              className="flex flex-col gap-8"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const name = formData.get("name");
+                const message = formData.get("message");
+                const subject = encodeURIComponent(`Inquiry from ${name}`);
+                const body = encodeURIComponent(message as string);
+                window.location.href = `mailto:${PORTFOLIO_DATA.profile.contact.email}?subject=${subject}&body=${body}`;
+              }}
+            >
               <div className="relative">
                 <label htmlFor="name" className="sr-only">Name / Organization</label>
                 <input
                   id="name"
                   type="text"
+                  name="name"
                   required
                   className="interactive w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all text-xl font-light placeholder:text-white/40"
                   placeholder="Name / Organization"
@@ -89,6 +100,7 @@ export default function SamuraiFooter() {
                 <input
                   id="email"
                   type="email"
+                  name="email"
                   required
                   className="interactive w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all text-xl font-light placeholder:text-white/40"
                   placeholder="Digital Address (Email)"
@@ -98,6 +110,7 @@ export default function SamuraiFooter() {
                 <label htmlFor="message" className="sr-only">The Scroll of Intent (Message)</label>
                 <textarea
                   id="message"
+                  name="message"
                   required
                   rows={2}
                   className="interactive w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all text-xl font-light resize-none placeholder:text-white/40"
@@ -106,6 +119,7 @@ export default function SamuraiFooter() {
               </div>
               <button
                 type="submit"
+
                 className="interactive mt-4 py-6 bg-primary text-white rounded-button font-black uppercase tracking-[0.3em] text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-primary/20"
               >
                 DISPATCH MESSAGE
