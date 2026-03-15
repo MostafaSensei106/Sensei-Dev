@@ -76,12 +76,18 @@ export default function SamuraiFooter() {
               className="flex flex-col gap-8"
               onSubmit={(e) => {
                 e.preventDefault();
+
                 const formData = new FormData(e.currentTarget);
                 const name = formData.get("name");
                 const message = formData.get("message");
+
                 const subject = encodeURIComponent(`Inquiry from ${name}`);
                 const body = encodeURIComponent(message as string);
-                window.location.href = `mailto:${PORTFOLIO_DATA.profile.contact.email}?subject=${subject}&body=${body}`;
+
+                const mailto =
+                  `mailto:${PORTFOLIO_DATA.profile.contact.email}?subject=${subject}&body=${body}`;
+
+                window.open(mailto);
               }}
             >
               <div className="relative">
@@ -119,7 +125,7 @@ export default function SamuraiFooter() {
               </div>
               <button
                 type="submit"
-
+                aria-label="Dispatch Message"
                 className="interactive mt-4 py-6 bg-primary text-white rounded-button font-black uppercase tracking-[0.3em] text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-primary/20"
               >
                 DISPATCH MESSAGE
