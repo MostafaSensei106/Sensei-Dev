@@ -4,7 +4,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   profile: {
     name: "Mostafa Mahmoud",
     title: "Senior Software Engineer",
-    japaneseTitle: "シニアソフトウェアエンジニア",
+    japaneseTitle: "モバイルアプリエンジニア • Mobile Software Engineer",
     contact: {
       email: "wwwmostafagmer100@gmail.com",
       phone: "+201014414536",
