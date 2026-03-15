@@ -77,17 +77,19 @@ export default function SamuraiFooter() {
               onSubmit={(e) => {
                 e.preventDefault();
 
-                const formData = new FormData(e.currentTarget);
-                const name = formData.get("name");
-                const message = formData.get("message");
+                const form = e.currentTarget;
+                const formData = new FormData(form);
+
+                const name = formData.get("name")?.toString() || "";
+                const message = formData.get("message")?.toString() || "";
 
                 const subject = encodeURIComponent(`Inquiry from ${name}`);
-                const body = encodeURIComponent(message as string);
+                const body = encodeURIComponent(message || "");
 
                 const mailto =
                   `mailto:${PORTFOLIO_DATA.profile.contact.email}?subject=${subject}&body=${body}`;
 
-                window.open(mailto);
+                window.location.assign(mailto);
               }}
             >
               <div className="relative">
