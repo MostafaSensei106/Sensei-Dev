@@ -25,6 +25,21 @@ export const PORTFOLIO_DATA: PortfolioData = {
   },
   experience: [
     {
+      company: "GDGoC Benha University",
+      link: "https://gdg.community.dev/gdg-on-campus-benha-university-benha-egypt",
+      role: "Head of Flutter",
+      location: "Benha, Egypt",
+      period: "Oct 2024 – Present",
+      description: "Leading the Flutter department, mentoring students, and organizing technical workshops on cross-platform development.",
+      details: [
+        "Developing GDGoC Benha App V2 to organize community events and deliver live bootcamps.",
+        "Curating a comprehensive Flutter roadmap for 200+ students.",
+        "Organizing hands-on workshops covering State Management and Clean Architecture",
+        "Mentoring junior developers and overseeing community project development."
+      ],
+      japaneseRole: "フラッター部門責任者",
+    },
+    {
       company: "Lothga",
       link: "https://lothgha.com/",
       role: "Flutter Developer [Volunteer]",
@@ -57,6 +72,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   projects: {
     githubUsername: "MostafaSensei106",
     pinnedRepos: [
+      "Flutter-Dicom",
       "Network-Reachability",
       "Radix_Plus",
       "FP-Growth",
@@ -64,6 +80,13 @@ export const PORTFOLIO_DATA: PortfolioData = {
       "Tadamon",
     ],
     highlights: [
+      {
+        name: "Flutter-Dicom",
+        type: "Dart Package",
+        description: "An advanced medical imaging and DICOM processing library for Flutter, poIred by a high-performance Rust core and GPU Shaders. ",
+        metrics: ["Native Rust Core", "Dicom", "Medical Imaging", "GPU Shaders"],
+        link: "https://github.com/MostafaSensei106/Flutter-Dicom",
+      },
       {
         name: "Network-Reachability",
         type: "Dart Package",

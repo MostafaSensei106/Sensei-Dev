@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useGitHubRepos } from "@/app/core/hooks/useGitHubRepos";
 import ExpressiveProjectCard from "./ExpressiveProjectCard";
-import { Cpu, Terminal } from "lucide-react";
 
 export default function DynamicProjectsGrid() {
   const { repos, isLoading } = useGitHubRepos();
