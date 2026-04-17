@@ -57,6 +57,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   projects: {
     githubUsername: "MostafaSensei106",
     pinnedRepos: [
+      "Flutter-Dicom",
       "Network-Reachability",
       "Radix_Plus",
       "FP-Growth",
@@ -64,6 +65,13 @@ export const PORTFOLIO_DATA: PortfolioData = {
       "Tadamon",
     ],
     highlights: [
+      {
+        name: "Flutter-Dicom",
+        type: "Dart Package",
+        description: "An advanced medical imaging and DICOM processing library for Flutter, poIred by a high-performance Rust core and GPU Shaders. ",
+        metrics: ["Native Rust Core", "Dicom", "Medical Imaging", "GPU Shaders"],
+        link: "https://github.com/MostafaSensei106/Flutter-Dicom",
+      },
       {
         name: "Network-Reachability",
         type: "Dart Package",
