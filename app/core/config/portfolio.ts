@@ -25,6 +25,21 @@ export const PORTFOLIO_DATA: PortfolioData = {
   },
   experience: [
     {
+      company: "GDGoC Benha University",
+      link: "https://gdg.community.dev/gdg-on-campus-benha-university-benha-egypt",
+      role: "Head of Flutter",
+      location: "Benha, Egypt",
+      period: "Oct 2024 – Present",
+      description: "Leading the Flutter department, mentoring students, and organizing technical workshops on cross-platform development.",
+      details: [
+        "Developing GDGoC Benha App V2 to organize community events and deliver live bootcamps.",
+        "Curating a comprehensive Flutter roadmap for 200+ students.",
+        "Organizing hands-on workshops covering State Management and Clean Architecture",
+        "Mentoring junior developers and overseeing community project development."
+      ],
+      japaneseRole: "フラッター部門責任者",
+    },
+    {
       company: "Lothga",
       link: "https://lothgha.com/",
       role: "Flutter Developer [Volunteer]",
