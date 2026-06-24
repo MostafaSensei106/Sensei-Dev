@@ -35,7 +35,7 @@
 @layer base {
   :root {
     /* Main Theme Variables */
-    --primary: #E2001A;
+    --primary: #BC002D;
     --secondary: #1A1A1A;
     --accent: #FFD700;
     --tertiary: #00D2EF;
@@ -73,28 +73,28 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #E2001A;
+    background: #BC002D;
     border-radius: 0;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #ff1a33;
+    background: #BC002D;
   }
 
   /* Firefox scrollbar */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #E2001A #080808;
+    scrollbar-color: #BC002D #080808;
   }
 
   /* Selection Styling */
   ::selection {
-    background: #E2001A;
+    background: #BC002D;
     color: #FFFFFF;
   }
 
   ::-moz-selection {
-    background: #E2001A;
+    background: #BC002D;
     color: #FFFFFF;
   }
 }
@@ -132,13 +132,11 @@
 /* ─── JDM Overlay Effects ─── */
 
 .scanlines {
-  background-image: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.1) 0px,
-    rgba(0, 0, 0, 0.1) 1px,
-    transparent 1px,
-    transparent 4px
-  );
+  background-image: repeating-linear-gradient(0deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px,
+      transparent 4px);
   background-size: 100% 4px;
   pointer-events: none;
 }
@@ -149,13 +147,11 @@
 }
 
 .speed-lines {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(255, 255, 255, 0.02) 10px,
-    rgba(255, 255, 255, 0.02) 11px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.02) 10px,
+      rgba(255, 255, 255, 0.02) 11px);
 }
 
 /* ─── Katana Cut Shapes ─── */
@@ -174,7 +170,7 @@
 /* ─── Glow Effects ─── */
 
 .glow-red {
-  color: #E2001A;
+  color: #BC002D;
   text-shadow:
     0 0 7px rgba(226, 0, 26, 0.6),
     0 0 20px rgba(226, 0, 26, 0.4),

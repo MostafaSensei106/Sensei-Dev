@@ -60,7 +60,7 @@ export default function NavigationPill() {
           width: navWidth,
           backgroundColor: navBackground,
           top: 20,
-          borderTop: "2px solid #E2001A",
+          borderTop: "2px solid #BC002D",
           clipPath: "polygon(0 0, 100% 0, 98% 100%, 2% 100%)",
         }}
         initial={{ y: -100, opacity: 0 }}

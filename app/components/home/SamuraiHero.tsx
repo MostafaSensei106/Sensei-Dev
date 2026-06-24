@@ -166,10 +166,9 @@ export default function SamuraiHero() {
       {/* ─── Scanline Overlay ─── */}
       <div
         className="absolute inset-0 pointer-events-none z-[1] opacity-[0.03]"
-        aria-hidden="true"
-        style={{
+        aria-hidden="true" style={{
           backgroundImage:
-            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)",
+            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)", filter: "grayscale(100%)"
         }}
       />
 
@@ -290,7 +289,7 @@ export default function SamuraiHero() {
                 className="w-[80%] h-[80%] rounded-full opacity-[0.07]"
                 style={{
                   background:
-                    "radial-gradient(circle, #E2001A 0%, #E2001A 40%, transparent 70%)",
+                    "radial-gradient(circle, #BC002D 0%, #BC002D 40%, transparent 70%)",
                 }}
               />
             </div>
