@@ -8,41 +8,48 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-tertiary: var(--tertiary);
+  --color-quaternary: var(--quaternary);
 
   --color-surface: var(--surface);
   --color-on-surface: var(--on-surface);
   --color-on-surface-variant: var(--on-surface-variant);
   --color-surface-variant: var(--surface-variant);
 
+  --color-primary-container: var(--primary-container);
+  --color-tertiary-container: var(--tertiary-container);
+
   /* Geometry Tokens */
   --radius-base: var(--radius-base);
   --radius-card: var(--radius-card);
   --radius-button: var(--radius-button);
   --radius-katana: 0.5rem 2rem 0.5rem 2rem;
-  /* Kept for specialized look */
 
-  --font-display: 'Syne', 'Noto Sans JP', sans-serif;
+  /* Font Families */
+  --font-display: 'Dela Gothic One', 'Noto Sans JP', sans-serif;
   --font-body: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-jp: 'Noto Sans JP', sans-serif;
 }
 
 @layer base {
   :root {
-    /* Main Theme Variables - Expanded Palette */
-    --primary: #BC002D;
+    /* Main Theme Variables */
+    --primary: #E2001A;
     --secondary: #1A1A1A;
     --accent: #FFD700;
     --tertiary: #00D2EF;
     --quaternary: #A29BFE;
 
-    --background: #050505;
+    --background: #080808;
     --foreground: #FFFFFF;
 
     --surface: #121212;
     --on-surface: #FCFCFC;
     --on-surface-variant: #A0A0A0;
-    --surface-variant: #1A1A1A;
+    --surface-variant: #1E1E1E;
 
-    --primary-container: rgba(227, 30, 36, 0.1);
+    --primary-container: rgba(226, 0, 26, 0.1);
     --tertiary-container: rgba(0, 210, 239, 0.1);
 
     /* Border Radius Tokens */
@@ -52,13 +59,48 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased selection:bg-primary selection:text-white;
+    @apply bg-background text-foreground font-body antialiased;
     cursor: none;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #E2001A;
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff1a33;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #E2001A #080808;
+  }
+
+  /* Selection Styling */
+  ::selection {
+    background: #E2001A;
+    color: #FFFFFF;
+  }
+
+  ::-moz-selection {
+    background: #E2001A;
+    color: #FFFFFF;
   }
 }
 
+/* ─── Neo-Samurai Components ─── */
 
-/* Neo-Samurai Components */
 .katana-card {
   @apply bg-surface/80 backdrop-blur-md border border-white/5 rounded-katana overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-xl;
 }
@@ -85,4 +127,64 @@
 
 .mix-difference {
   mix-blend-mode: difference;
+}
+
+/* ─── JDM Overlay Effects ─── */
+
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+.halftone {
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 8px 8px;
+}
+
+.speed-lines {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.02) 10px,
+    rgba(255, 255, 255, 0.02) 11px
+  );
+}
+
+/* ─── Katana Cut Shapes ─── */
+
+.katana-slash {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2rem), 0 100%);
+}
+
+/* ─── Typography Effects ─── */
+
+.text-stroke {
+  -webkit-text-stroke: 1px currentColor;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Glow Effects ─── */
+
+.glow-red {
+  color: #E2001A;
+  text-shadow:
+    0 0 7px rgba(226, 0, 26, 0.6),
+    0 0 20px rgba(226, 0, 26, 0.4),
+    0 0 40px rgba(226, 0, 26, 0.2);
+}
+
+.glow-gold {
+  color: #FFD700;
+  text-shadow:
+    0 0 7px rgba(255, 215, 0, 0.6),
+    0 0 20px rgba(255, 215, 0, 0.4),
+    0 0 40px rgba(255, 215, 0, 0.2);
 }

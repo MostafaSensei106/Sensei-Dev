@@ -7,16 +7,22 @@ import ClientOnly from "@/app/core/components/ClientOnly";
 import LoadingScreen from "@/app/core/components/LoadingScreen";
 
 // Fonts
-import { Outfit, Syne, Noto_Sans_JP } from "next/font/google";
+import { Outfit, Dela_Gothic_One, Noto_Sans_JP, JetBrains_Mono } from "next/font/google";
+
+const delaGothic = Dela_Gothic_One({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-display",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-body",
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-display",
 });
 
 const notoJP = Noto_Sans_JP({
@@ -52,7 +58,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${outfit.variable} ${syne.variable} ${notoJP.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${delaGothic.variable} ${jetbrainsMono.variable} ${outfit.variable} ${notoJP.variable}`}
+    >
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
         <ClientOnly>
           <LoadingScreen />
@@ -62,6 +72,6 @@ export default function RootLayout({
           </SmoothScroll>
         </ClientOnly>
       </body>
-    </html >
+    </html>
   );
 }

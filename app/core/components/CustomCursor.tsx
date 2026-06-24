@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
@@ -8,7 +8,7 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 30, stiffness: 400, mass: 0.5 };
+  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
   const smoothX = useSpring(cursorX, springConfig);
   const smoothY = useSpring(cursorY, springConfig);
 
@@ -44,9 +44,9 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Samurai Focus Ring */}
+      {/* Outer JDM Speedometer / Viewfinder Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 border border-accent rounded-full pointer-events-none z-[9999] mix-difference"
+        className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
           x: smoothX,
           y: smoothY,
@@ -54,17 +54,61 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          scale: isHovering ? 1.5 : 1,
-          rotate: isHovering ? 90 : 0,
-          borderWidth: isHovering ? "2px" : "1px",
-          borderRadius: isHovering ? "20%" : "50%",
+          width: isHovering ? 64 : 40,
+          height: isHovering ? 64 : 40,
+          rotate: isHovering ? 45 : 0,
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      />
-      
-      {/* Android Core Dot */}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      >
+        <div 
+          className={`relative w-full h-full transition-all duration-300 flex items-center justify-center
+            ${isHovering ? 'rounded-none' : 'rounded-full border border-white/30'}`}
+        >
+          {/* Inner tick marks mimicking speedometer */}
+          {!isHovering && (
+            <div className="absolute inset-1 rounded-full border border-white/10 border-dashed animate-[spin_10s_linear_infinite_reverse]" />
+          )}
+
+          {/* Hover targeting brackets */}
+          <motion.div 
+            className="absolute inset-[-4px] pointer-events-none"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ 
+              opacity: isHovering ? 1 : 0, 
+              scale: isHovering ? 1 : 0.8 
+            }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary shadow-[0_0_10px_rgba(226,0,26,0.5)]" />
+            <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary shadow-[0_0_10px_rgba(226,0,26,0.5)]" />
+            <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary shadow-[0_0_10px_rgba(226,0,26,0.5)]" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary shadow-[0_0_10px_rgba(226,0,26,0.5)]" />
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* JDM Text Overlay near cursor */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-accent rounded-full pointer-events-none z-[10000]"
+        className="fixed top-0 left-0 pointer-events-none z-[9999]"
+        style={{
+          x: smoothX,
+          y: smoothY,
+        }}
+      >
+        <motion.div
+          className="ml-8 mt-6 flex flex-col gap-0.5 bg-background/80 backdrop-blur-md px-2 py-1 border-l-2 border-primary"
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: isHovering ? 1 : 0, x: isHovering ? 0 : -10 }}
+          transition={{ duration: 0.2 }}
+        >
+            <span className="font-mono text-[8px] text-primary tracking-widest font-black uppercase leading-none">Target</span>
+            <span className="font-mono text-[9px] text-white/80 tracking-widest leading-none mt-0.5">ロックオン</span>
+        </motion.div>
+      </motion.div>
+
+      {/* Core Dot - Katana Diamond */}
+      <motion.div
+        className="fixed top-0 left-0 pointer-events-none z-[10000]"
         style={{
           x: cursorX,
           y: cursorY,
@@ -72,7 +116,26 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
       >
-        <div className="absolute inset-0 bg-accent blur-[4px] animate-pulse" />
+        <div 
+            className={`transition-all duration-300 transform rotate-45 shadow-[0_0_15px_rgba(226,0,26,0.8)]
+            ${isHovering ? 'w-1.5 h-1.5 bg-white' : 'w-2 h-2 bg-primary'}`} 
+        />
+      </motion.div>
+
+      {/* Trailing Ghost */}
+      <motion.div
+        className="fixed top-0 left-0 pointer-events-none z-[9998]"
+        style={{
+          x: smoothX,
+          y: smoothY,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+      >
+        <div 
+            className={`transition-all duration-300 transform rotate-45 border border-primary/40
+            ${isHovering ? 'w-8 h-8 opacity-0 scale-150' : 'w-4 h-4 opacity-100 scale-100'}`} 
+        />
       </motion.div>
     </>
   );
