@@ -10,13 +10,26 @@ import KanjiDivider from "@/app/core/components/KanjiDivider";
 export default function Home() {
   return (
     <main className="relative w-full bg-background overflow-x-hidden">
+      {/* ─── Full-page scanlines overlay ─── */}
+      <div
+        className="fixed inset-0 pointer-events-none z-[50] opacity-[0.015] scanlines"
+        aria-hidden="true"
+      />
+
+      {/* ─── Subtle neural-grid background ─── */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0 opacity-[0.02] neural-grid"
+        aria-hidden="true"
+      />
+
       <NavigationPill />
+
       <div id="home">
         <SamuraiHero />
       </div>
-      
+
       <KanjiDivider text="武士道 • 継続は力なり • 改善 • 不撓不屈" angle={1.5} />
-      
+
       <div id="experience">
         <ProfessionalExperience />
       </div>
