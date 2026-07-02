@@ -3,7 +3,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { SmoothScroll } from "@/app/core/components/SmoothScroll";
 import CustomCursor from "@/app/core/components/CustomCursor";
-import ClientOnly from "@/app/core/components/ClientOnly";
 import LoadingScreen from "@/app/core/components/LoadingScreen";
 
 // Fonts
@@ -64,13 +63,11 @@ export default function RootLayout({
       className={`${delaGothic.variable} ${jetbrainsMono.variable} ${outfit.variable} ${notoJP.variable}`}
     >
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
-        <ClientOnly>
-          <LoadingScreen />
-          <SmoothScroll>
-            <CustomCursor />
-            {children}
-          </SmoothScroll>
-        </ClientOnly>
+        <LoadingScreen />
+        <SmoothScroll>
+          <CustomCursor />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
