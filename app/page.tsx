@@ -1,13 +1,18 @@
+import dynamic from "next/dynamic";
 import SamuraiHero from "@/app/components/home/SamuraiHero";
 import NavigationPill from "@/app/components/header/NavigationPill";
-import ProfessionalExperience from "@/app/components/experience/ProfessionalExperience";
-import DynamicProjectsGrid from "@/app/components/services/DynamicProjectsGrid";
-import HonorGallery from "@/app/components/experience/HonorGallery";
-import ArtSection from "@/app/components/art_gallery/ArtSection";
-import SamuraiFooter from "@/app/components/header/SamuraiFooter";
 import KanjiDivider from "@/app/core/components/KanjiDivider";
+import { getGitHubRepos } from "@/app/core/api/github";
 
-export default function Home() {
+const ProfessionalExperience = dynamic(() => import("@/app/components/experience/ProfessionalExperience"));
+const DynamicProjectsGrid = dynamic(() => import("@/app/components/services/DynamicProjectsGrid"));
+const HonorGallery = dynamic(() => import("@/app/components/experience/HonorGallery"));
+const ArtSection = dynamic(() => import("@/app/components/art_gallery/ArtSection"));
+const SamuraiFooter = dynamic(() => import("@/app/components/header/SamuraiFooter"));
+
+export default async function Home() {
+  const repos = await getGitHubRepos();
+
   return (
     <main className="relative w-full bg-background overflow-x-hidden">
       {/* ─── Full-page scanlines overlay ─── */}
@@ -37,7 +42,7 @@ export default function Home() {
       <KanjiDivider text="設計 • 開発 • 構築 • 実装 • 実験" reverse={true} angle={-1.5} />
 
       <div id="projects">
-        <DynamicProjectsGrid />
+        <DynamicProjectsGrid repos={repos} />
       </div>
 
       <KanjiDivider text="認定 • 成就 • 学問 • 知識 • 技能" angle={2} />
