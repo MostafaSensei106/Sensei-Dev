@@ -1,12 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useGitHubRepos } from "@/app/core/hooks/useGitHubRepos";
+import { Repo } from "@/app/core/api/github";
 import ExpressiveProjectCard from "./ExpressiveProjectCard";
 
-export default function DynamicProjectsGrid() {
-  const { repos, isLoading } = useGitHubRepos();
-
+export default function DynamicProjectsGrid({ repos }: { repos: Repo[] }) {
   return (
     <section id="projects" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Japanese Watermark */}
@@ -64,7 +62,7 @@ export default function DynamicProjectsGrid() {
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary" />
               <div className="flex items-center gap-3">
                 <span className="font-mono text-primary text-2xl font-black">
-                  {isLoading ? "--" : String(repos.length).padStart(2, "0")}
+                  {String(repos.length).padStart(2, "0")}
                 </span>
                 <div className="flex flex-col">
                   <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
@@ -80,43 +78,24 @@ export default function DynamicProjectsGrid() {
         </div>
 
         {/* Project Grid */}
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="relative aspect-[4/5] bg-surface/50 border border-white/5 overflow-hidden">
-                {/* Skeleton pulse with red accent */}
-                <div className="absolute inset-0 animate-pulse bg-gradient-to-b from-primary/5 via-surface to-surface" />
-                <div className="absolute top-6 left-6 w-8 h-8 bg-white/5 animate-pulse" />
-                <div className="absolute bottom-6 left-6 right-6 space-y-3">
-                  <div className="h-6 bg-white/5 animate-pulse w-3/4" />
-                  <div className="h-3 bg-white/5 animate-pulse w-full" />
-                  <div className="h-3 bg-white/5 animate-pulse w-2/3" />
-                </div>
-                {/* Red accent line */}
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary/40 via-primary/20 to-transparent animate-pulse" />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
-            {repos.map((repo, idx) => (
-              <motion.div
-                key={repo.id}
-                initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{
-                  delay: idx * 0.12,
-                  duration: 0.9,
-                  ease: [0.23, 1, 0.32, 1],
-                }}
-                className="flex"
-              >
-                <ExpressiveProjectCard repo={repo} index={idx} />
-              </motion.div>
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
+          {repos.map((repo, idx) => (
+            <motion.div
+              key={repo.id}
+              initial={{ opacity: 0, y: 60, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{
+                delay: idx * 0.12,
+                duration: 0.9,
+                ease: [0.23, 1, 0.32, 1],
+              }}
+              className="flex"
+            >
+              <ExpressiveProjectCard repo={repo} index={idx} />
+            </motion.div>
+          ))}
+        </div>
 
         {/* Bottom Decorative Line — gradient from transparent to red to transparent */}
         <div className="mt-32 w-full h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />

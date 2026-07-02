@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ExternalLink, Github, Star } from "lucide-react";
-import { Repo } from "../../core/hooks/useGitHubRepos";
+import { Repo } from "@/app/core/api/github";
 import { useRef } from "react";
 import { PORTFOLIO_DATA } from "../../core/config/portfolio";
 
