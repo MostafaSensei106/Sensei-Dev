@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { PORTFOLIO_DATA } from './core/config/portfolio'
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   // We can dynamically add routes if you had multiple pages
   // But for a single page portfolio, we define the root

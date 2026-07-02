@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { PORTFOLIO_DATA } from './core/config/portfolio'
 
+export const dynamic = 'force-static'
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: `${PORTFOLIO_DATA.profile.name} Portfolio`,
