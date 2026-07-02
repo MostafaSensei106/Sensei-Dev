@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     siteName: PORTFOLIO_DATA.profile.name,
     images: [
       {
-        url: "/Assets/art-gallery/Images/logo/Mostafa.webp",
+        url: "/Assets/art-gallery/Images/image_display/Mostafa_Logo.png",
         width: 1200,
         height: 630,
         alt: `${PORTFOLIO_DATA.profile.name} - ${PORTFOLIO_DATA.profile.title}`,
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: PORTFOLIO_DATA.profile.name,
     description: PORTFOLIO_DATA.profile.hero.description,
     creator: "@MostafaSensei",
-    images: ["/Assets/art-gallery/Images/logo/Mostafa.webp"],
+    images: ["/Assets/art-gallery/Images/image_display/Mostafa_Logo.png"],
   },
 };
 
@@ -107,7 +107,7 @@ export default function RootLayout({
                 `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`,
                 PORTFOLIO_DATA.profile.contact.x,
               ],
-              image: "https://mostafa-mahmoud.dev/Assets/art-gallery/Images/logo/Mostafa.webp",
+              image: "https://mostafa-mahmoud.dev/Assets/art-gallery/Images/image_display/Mostafa_Logo.png",
               alumniOf: "Benha University",
               knowsAbout: ["Software Engineering", "Flutter", "Go", "Rust", "Mobile Development"]
             })
