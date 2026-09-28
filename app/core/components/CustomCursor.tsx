@@ -3,8 +3,14 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
+/**
+ * Katana cursor — your blade for browsing the dojo.
+ * States: gold blade (default) → red lock-on (interactive) → slash flash (click).
+ * Desktop fine-pointers only; touch keeps the native cursor.
+ */
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
+  const [slashes, setSlashes] = useState<number[]>([]);
   const [enabled, setEnabled] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -19,6 +25,7 @@ export default function CustomCursor() {
     if (!fine || reduced) return;
     setEnabled(true);
     document.body.classList.add("custom-cursor-on");
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -39,13 +46,24 @@ export default function CustomCursor() {
       }
     };
 
+    // Katana slash on every click
+    const handleSlash = () => {
+      const id = Date.now() + Math.random();
+      setSlashes((prev) => [...prev.slice(-2), id]);
+      setTimeout(() => {
+        setSlashes((prev) => prev.filter((s) => s !== id));
+      }, 400);
+    };
+
     window.addEventListener("mousemove", moveCursor);
     window.addEventListener("mouseover", handleElementHover);
+    window.addEventListener("mousedown", handleSlash);
 
     return () => {
       document.body.classList.remove("custom-cursor-on");
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleElementHover);
+      window.removeEventListener("mousedown", handleSlash);
     };
   }, [cursorX, cursorY]);
 
@@ -53,7 +71,7 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Outer JDM Speedometer / Viewfinder Ring */}
+      {/* Outer ring — gold at rest, brackets lock on-hover */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
@@ -69,22 +87,22 @@ export default function CustomCursor() {
         }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
       >
-        <div 
+        <div
           className={`relative w-full h-full transition-all duration-300 flex items-center justify-center
-            ${isHovering ? 'rounded-none' : 'rounded-full border border-white/30'}`}
+            ${isHovering ? "rounded-none" : "rounded-full border border-accent/60"}`}
         >
-          {/* Inner tick marks mimicking speedometer */}
+          {/* Inner gold orbit */}
           {!isHovering && (
-            <div className="absolute inset-1 rounded-full border border-white/10 border-dashed animate-[spin_10s_linear_infinite_reverse]" />
+            <div className="absolute inset-1 rounded-full border border-accent/25 border-dashed animate-[spin_10s_linear_infinite_reverse]" />
           )}
 
-          {/* Hover targeting brackets */}
-          <motion.div 
+          {/* Red lock-on brackets */}
+          <motion.div
             className="absolute inset-[-4px] pointer-events-none"
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ 
-              opacity: isHovering ? 1 : 0, 
-              scale: isHovering ? 1 : 0.8 
+            animate={{
+              opacity: isHovering ? 1 : 0,
+              scale: isHovering ? 1 : 0.8,
             }}
             transition={{ duration: 0.2 }}
           >
@@ -96,7 +114,7 @@ export default function CustomCursor() {
         </div>
       </motion.div>
 
-      {/* JDM Text Overlay near cursor */}
+      {/* Lock-on label */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
@@ -110,12 +128,16 @@ export default function CustomCursor() {
           animate={{ opacity: isHovering ? 1 : 0, x: isHovering ? 0 : -10 }}
           transition={{ duration: 0.2 }}
         >
-            <span className="font-mono text-[8px] text-primary tracking-widest font-black uppercase leading-none">Target</span>
-            <span className="font-mono text-[9px] text-white/80 tracking-widest leading-none mt-0.5">ロックオン</span>
+          <span className="font-mono text-[8px] text-primary tracking-widest font-black uppercase leading-none">
+            Target
+          </span>
+          <span className="brush-jp text-sm text-white/80 leading-none mt-0.5" lang="ja">
+            斬
+          </span>
         </motion.div>
       </motion.div>
 
-      {/* Core Dot - Katana Diamond */}
+      {/* Blade tip — gold at rest, red on lock-on */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[10000]"
         style={{
@@ -125,13 +147,17 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
       >
-        <div 
-            className={`transition-all duration-300 transform rotate-45 shadow-[0_0_15px_rgba(226,0,26,0.8)]
-            ${isHovering ? 'w-1.5 h-1.5 bg-white' : 'w-2 h-2 bg-primary'}`} 
+        <div
+          className={`transition-all duration-300 transform rotate-45
+            ${
+              isHovering
+                ? "w-2 h-2 bg-primary shadow-[0_0_15px_rgba(226,0,26,0.9)]"
+                : "w-2 h-2 bg-accent shadow-[0_0_15px_rgba(255,215,0,0.8)]"
+            }`}
         />
       </motion.div>
 
-      {/* Trailing Ghost */}
+      {/* Trailing gold ghost */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9998]"
         style={{
@@ -141,11 +167,27 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
       >
-        <div 
-            className={`transition-all duration-300 transform rotate-45 border border-primary/40
-            ${isHovering ? 'w-8 h-8 opacity-0 scale-150' : 'w-4 h-4 opacity-100 scale-100'}`} 
+        <div
+          className={`transition-all duration-300 transform rotate-45 border border-accent/40
+            ${isHovering ? "w-8 h-8 opacity-0 scale-150" : "w-4 h-4 opacity-100 scale-100"}`}
         />
       </motion.div>
+
+      {/* Click slashes */}
+      {slashes.map((id) => (
+        <motion.div
+          key={id}
+          className="fixed top-0 left-0 pointer-events-none z-[10001]"
+          style={{ x: cursorX, y: cursorY, translateX: "-50%", translateY: "-50%" }}
+        >
+          <motion.div
+            initial={{ scaleX: 0, opacity: 1, rotate: -30 }}
+            animate={{ scaleX: 1.8, opacity: 0 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="h-[2px] w-14 origin-center bg-gradient-to-r from-transparent via-primary to-accent"
+          />
+        </motion.div>
+      ))}
     </>
   );
 }

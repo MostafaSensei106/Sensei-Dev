@@ -42,10 +42,11 @@ export default function LoadingScreen() {
     };
   }, []);
 
-  const lineIndex = Math.min(
-    BOOT_LINES.length - 1,
-    Math.floor((progress / 100) * BOOT_LINES.length)
+  const safeIndex = Math.max(
+    0,
+    Math.min(BOOT_LINES.length - 1, Math.floor((progress / 100) * BOOT_LINES.length))
   );
+  const line = BOOT_LINES[safeIndex] ?? BOOT_LINES[0] ?? { en: "LOADING", jp: "起動中" };
 
   return (
     <AnimatePresence>
@@ -94,14 +95,14 @@ export default function LoadingScreen() {
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <motion.span
-                key={lineIndex}
+                key={safeIndex}
                 initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
                 className="brush-jp text-6xl text-primary drop-shadow-[0_0_25px_rgba(188,0,45,0.55)]"
                 lang="ja"
               >
-                {BOOT_LINES[lineIndex].jp}
+                {line.jp}
               </motion.span>
               <span className="mt-2 font-mono text-[9px] tracking-[0.4em] text-white/40">
                 {String(progress).padStart(3, "0")}%
@@ -113,12 +114,12 @@ export default function LoadingScreen() {
           <div className="mt-10 flex items-center gap-4">
             <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
             <motion.span
-              key={lineIndex}
+              key={safeIndex}
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-[10px] font-mono font-bold tracking-[0.4em] text-accent/80 uppercase"
             >
-              {BOOT_LINES[lineIndex].en}
+              {line.en}
             </motion.span>
             <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
           </div>
