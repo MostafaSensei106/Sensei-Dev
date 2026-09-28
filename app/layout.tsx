@@ -6,7 +6,7 @@ import CustomCursor from "@/app/core/components/CustomCursor";
 import LoadingScreen from "@/app/core/components/LoadingScreen";
 
 // Fonts
-import { Outfit, Dela_Gothic_One, Noto_Sans_JP, JetBrains_Mono } from "next/font/google";
+import { Outfit, Dela_Gothic_One, Noto_Sans_JP, JetBrains_Mono, Yuji_Syuku } from "next/font/google";
 
 const delaGothic = Dela_Gothic_One({
   subsets: ["latin"],
@@ -30,6 +30,13 @@ const notoJP = Noto_Sans_JP({
   variable: "--font-jp",
 });
 
+// Handwritten Japanese brush (calligraphy) for decorative kanji / watermarks
+const yujiSyuku = Yuji_Syuku({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-jp-brush",
+});
+
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 
 export const metadata: Metadata = {
@@ -39,7 +46,7 @@ export const metadata: Metadata = {
     template: `%s | ${PORTFOLIO_DATA.profile.name}`,
   },
   description: PORTFOLIO_DATA.profile.hero.description,
-  keywords: ["Software Engineer", "Flutter", "Go", "Rust", "Portfolio", PORTFOLIO_DATA.profile.name, "Senior Developer", "Mobile Engineer"],
+  keywords: ["Software Engineer", "Flutter", "Dart", "Kotlin", "Android Native", "Go", "Gin", "Spring Boot", "Rust", "Portfolio", PORTFOLIO_DATA.profile.name, "Senior Developer", "Mobile Engineer"],
   authors: [{ name: PORTFOLIO_DATA.profile.name, url: "https://mostafa-mahmoud.dev" }],
   creator: PORTFOLIO_DATA.profile.name,
   alternates: {
@@ -90,9 +97,10 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${delaGothic.variable} ${jetbrainsMono.variable} ${outfit.variable} ${notoJP.variable}`}
+      className={`${delaGothic.variable} ${jetbrainsMono.variable} ${outfit.variable} ${notoJP.variable} ${yujiSyuku.variable}`}
     >
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
+        <a href="#home" className="skip-link">Skip to content</a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -109,7 +117,7 @@ export default function RootLayout({
               ],
               image: "https://mostafa-mahmoud.dev/Assets/art-gallery/Images/image_display/Mostafa_Logo.png",
               alumniOf: "Benha University",
-              knowsAbout: ["Software Engineering", "Flutter", "Go", "Rust", "Mobile Development"]
+              knowsAbout: ["Software Engineering", "Flutter", "Dart", "Kotlin", "Android Native", "Go", "Gin", "Spring Boot", "Rust", "Mobile Development"]
             })
           }}
         />

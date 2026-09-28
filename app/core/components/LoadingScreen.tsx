@@ -4,141 +4,149 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BOOT_LINES = [
-  "INITIALIZING SYSTEMS",
-  "LOADING BUSHIDO PROTOCOL",
-  "CALIBRATING DRIFT ANGLE",
-  "ENGINE CHECK — ALL CLEAR",
-  "BOOST PRESSURE NOMINAL",
-  "SENSEI READY",
+  { en: "INITIALIZING SYSTEMS", jp: "起動中" },
+  { en: "LOADING BUSHIDO PROTOCOL", jp: "武士道" },
+  { en: "FORGING THE KATANA", jp: "鍛錬" },
+  { en: "CALIBRATING STACK", jp: "技術調整" },
+  { en: "SENSEI READY", jp: "出陣" },
 ];
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
-  const [currentLine, setCurrentLine] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const handleLoad = () => {
-      setTimeout(() => setLoading(false), 2200);
-    };
+    let raf = 0;
+    const start = performance.now();
+    const DURATION = 2100;
 
-    if (document.readyState === "complete") {
-      handleLoad();
-    } else {
-      window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
-    }
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / DURATION);
+      // ease-out so it feels fast then settles
+      const eased = 1 - Math.pow(1 - t, 3);
+      setProgress(Math.round(eased * 100));
+      if (t < 1) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        setTimeout(() => setLoading(false), 250);
+      }
+    };
+    raf = requestAnimationFrame(tick);
+
+    // Safety: never trap the user
+    const fallback = setTimeout(() => setLoading(false), 4000);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(fallback);
+    };
   }, []);
 
-  useEffect(() => {
-    if (!loading) return;
-
-    const interval = setInterval(() => {
-      setCurrentLine((prev) => (prev + 1) % BOOT_LINES.length);
-    }, 350);
-
-    return () => clearInterval(interval);
-  }, [loading]);
+  const lineIndex = Math.min(
+    BOOT_LINES.length - 1,
+    Math.floor((progress / 100) * BOOT_LINES.length)
+  );
 
   return (
     <AnimatePresence>
       {loading && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{
-            y: "-100%",
-            opacity: 0,
-            scale: 1.05,
-          }}
-          transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+          exit={{ y: "-100%", opacity: 0.4 }}
+          transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center overflow-hidden"
+          onClick={() => setLoading(false)}
+          role="status"
+          aria-label="Loading portfolio"
         >
-          {/* Speed Lines Background */}
-          <div className="absolute inset-0 speed-lines opacity-40" />
+          {/* Backdrop texture */}
+          <div className="absolute inset-0 speed-lines opacity-30" aria-hidden="true" />
+          <div className="absolute inset-0 neural-grid opacity-[0.04]" aria-hidden="true" />
 
-          {/* Neural Grid */}
-          <div className="absolute inset-0 neural-grid opacity-[0.04]" />
+          {/* Giant brush watermark */}
+          <div
+            className="brush-jp pointer-events-none absolute inset-0 flex items-center justify-center text-white/[0.04] text-[38vw] leading-none select-none"
+            aria-hidden="true"
+            lang="ja"
+          >
+            侍
+          </div>
 
-          {/* Scanlines Overlay */}
-          <div className="absolute inset-0 scanlines opacity-30" />
+          {/* Corner brackets */}
+          <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-primary/60" aria-hidden="true" />
+          <div className="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-primary/60" aria-hidden="true" />
+          <div className="absolute bottom-6 left-6 w-12 h-12 border-b-2 border-l-2 border-primary/60" aria-hidden="true" />
+          <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-primary/60" aria-hidden="true" />
 
-          {/* Corner Accents */}
-          <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-primary/60" />
-          <div className="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-primary/60" />
-          <div className="absolute bottom-6 left-6 w-12 h-12 border-b-2 border-l-2 border-primary/60" />
-          <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-primary/60" />
-
-          {/* Center Emblem */}
+          {/* Center emblem */}
           <div className="relative">
-            {/* Outer Spinning Ring */}
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              className="w-36 h-36 border-2 border-primary/20 border-t-primary"
+              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+              className="h-40 w-40 border border-primary/25 border-t-primary"
               style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+              aria-hidden="true"
             />
-
-            {/* Inner Pulsing Ring */}
-            <motion.div
-              animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-3 border border-primary/30"
+            <div
+              className="absolute inset-3 border border-white/10"
               style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+              aria-hidden="true"
             />
-
-            {/* Kanji Symbol */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
               <motion.span
-                animate={{ opacity: [0.8, 1, 0.8] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="font-display text-5xl text-primary drop-shadow-[0_0_20px_rgba(226,0,26,0.5)]"
+                key={lineIndex}
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+                className="brush-jp text-6xl text-primary drop-shadow-[0_0_25px_rgba(188,0,45,0.55)]"
+                lang="ja"
               >
-                師
+                {BOOT_LINES[lineIndex].jp}
               </motion.span>
+              <span className="mt-2 font-mono text-[9px] tracking-[0.4em] text-white/40">
+                {String(progress).padStart(3, "0")}%
+              </span>
             </div>
           </div>
 
-          {/* Boot Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mt-14 flex flex-col items-center gap-5 text-center"
-          >
+          {/* Boot line */}
+          <div className="mt-10 flex flex-col items-center gap-4 text-center">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-[2px] bg-primary/60" />
+              <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
               <motion.span
-                key={currentLine}
-                initial={{ opacity: 0, y: 4 }}
+                key={lineIndex}
+                initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                className="text-[10px] font-mono font-bold tracking-[0.4em] text-accent/70 uppercase"
+                className="text-[10px] font-mono font-bold tracking-[0.4em] text-accent/80 uppercase"
               >
-                {BOOT_LINES[currentLine]}
+                {BOOT_LINES[lineIndex].en}
               </motion.span>
-              <div className="w-10 h-[2px] bg-primary/60" />
+              <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
             </div>
-
-            <h2 className="text-2xl font-display text-white tracking-wider uppercase">
-              The Samurai <span className="text-primary">Way.</span>
+            <h2 className="font-display text-xl md:text-2xl text-white tracking-wider uppercase">
+              Ready to <span className="text-primary">ship.</span>
+              <span className="brush-jp ml-3 text-lg text-white/40 normal-case" lang="ja">
+                出陣
+              </span>
             </h2>
-          </motion.div>
+          </div>
 
-          {/* Progress Bar */}
-          <div className="absolute bottom-0 left-0 w-full h-1 bg-white/5">
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 2.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="h-full bg-gradient-to-r from-primary via-primary to-accent"
+          {/* Katana progress bar */}
+          <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white/5" aria-hidden="true">
+            <div
+              className="h-full bg-gradient-to-r from-primary via-primary to-accent transition-[width] duration-100"
+              style={{
+                width: `${progress}%`,
+                clipPath: "polygon(0 0, 100% 0, 99% 100%, 0 100%)",
+              }}
             />
           </div>
 
-          {/* Side Labels */}
-          <div className="absolute left-6 bottom-6 text-[9px] font-mono text-white/20 tracking-widest uppercase">
-            SEN-001
+          <div className="absolute left-6 bottom-6 text-[9px] font-mono text-white/25 tracking-widest uppercase">
+            SEN-001 — tap to skip
           </div>
-          <div className="absolute right-6 bottom-6 text-[9px] font-mono text-white/20 tracking-widest uppercase">
-            武士道
+          <div className="brush-jp absolute right-6 bottom-5 text-lg text-white/25" lang="ja" aria-hidden="true">
+            準備中
           </div>
         </motion.div>
       )}

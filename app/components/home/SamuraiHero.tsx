@@ -201,39 +201,46 @@ export default function SamuraiHero() {
             <div className="px-4 py-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="spec-item flex flex-col gap-1">
                 <span className="font-mono text-[9px] font-bold text-accent tracking-[0.2em] uppercase">
-                  Framework
+                  Mobile
                 </span>
                 <span className="font-mono text-xs text-white/80">
-                  Flutter, Gin
+                  Flutter, Dart, Kotlin
                 </span>
               </div>
               <div className="spec-item flex flex-col gap-1">
-                <span className="font-mono text-[9px] font-bold text-accent tracking-[0.2em] uppercase">
-                  Systems
+                <span className="font-mono text-[9px] font-bold text-tertiary tracking-[0.2em] uppercase">
+                  Backend
                 </span>
                 <span className="font-mono text-xs text-white/80">
-                  Go, Rust
+                  Go Gin, Spring Boot
                 </span>
               </div>
               <div className="spec-item flex flex-col gap-1">
-                <span className="font-mono text-[9px] font-bold text-accent tracking-[0.2em] uppercase">
-                  Arch
+                <span className="font-mono text-[9px] font-bold text-white/50 tracking-[0.2em] uppercase">
+                  Core
                 </span>
                 <span className="font-mono text-xs text-white/80">
-                  Clean Architecture
+                  Rust, Android Native
                 </span>
               </div>
             </div>
           </div>
 
           {/* Tagline & Description */}
-          <div className="max-w-xl mb-12">
-            <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-6">
+          <div className="max-w-xl mb-8">
+            <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-5">
               {PORTFOLIO_DATA.profile.hero.tagline}
             </p>
             <p className="text-base text-on-surface-variant font-light leading-relaxed">
               {PORTFOLIO_DATA.profile.hero.description}
             </p>
+          </div>
+
+          {/* Terminal line — programming spirit, same JDM HUD language */}
+          <div className="mb-10 w-full max-w-xl px-4 py-3 bg-black/60 border border-white/10 font-mono text-[11px] md:text-xs text-white/70 flex items-center gap-2" role="presentation">
+            <span className="text-primary font-bold">$</span>
+            <span className="terminal-caret">sensei ship --mobile --api --bench</span>
+            <span className="ml-auto hidden sm:inline text-tertiary/70 tracking-widest">出荷 OK</span>
           </div>
 
           {/* CTA Buttons + Socials */}

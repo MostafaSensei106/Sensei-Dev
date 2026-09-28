@@ -37,16 +37,19 @@ export default function DynamicProjectsGrid({ repos }: { repos: Repo[] }) {
             className="flex flex-col"
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-accent" />
-              <span className="text-accent text-xs font-black tracking-[0.4em] uppercase font-mono">
-                The Code Manifesto
+              <div className="w-12 h-[2px] bg-primary" />
+              <span className="text-primary text-xs font-black tracking-[0.4em] uppercase font-mono">
+                Open Source // ライブラリ
               </span>
             </div>
 
             <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
-              <span className="text-white">System</span> <br />
-              <span className="text-primary italic">Architecture.</span>
+              <span className="text-white">Code</span> <br />
+              <span className="text-primary italic">Libraries.</span>
             </h2>
+            <p className="mt-5 text-white/55 max-w-xl font-light leading-relaxed">
+              Packages with bench scripts and documented limits. Numbers live in each repo, not in headlines.
+            </p>
           </motion.div>
 
           {/* Counter Badge */}

@@ -1,7 +1,12 @@
 import dynamic from "next/dynamic";
 import SamuraiHero from "@/app/components/home/SamuraiHero";
+import TrustStrip from "@/app/components/home/TrustStrip";
 import NavigationPill from "@/app/components/header/NavigationPill";
 import KanjiDivider from "@/app/core/components/KanjiDivider";
+import ServicesSection from "@/app/components/services/ServicesSection";
+import StackStrip from "@/app/components/services/StackStrip";
+import SelectedWorkSection from "@/app/components/services/SelectedWorkSection";
+import ProcessSection from "@/app/components/services/ProcessSection";
 import { getGitHubRepos } from "@/app/core/api/github";
 
 const ProfessionalExperience = dynamic(() => import("@/app/components/experience/ProfessionalExperience"));
@@ -33,25 +38,39 @@ export default async function Home() {
         <SamuraiHero />
       </div>
 
-      <KanjiDivider text="武士道 • 継続は力なり • 改善 • 不撓不屈" angle={1.5} />
+      <TrustStrip />
+
+      <div id="services">
+        <ServicesSection />
+      </div>
+
+      <StackStrip />
+
+      <KanjiDivider text="継続は力なり • 改善 • 実務 • 計測" angle={-1.5} />
 
       <div id="experience">
         <ProfessionalExperience />
       </div>
 
-      <KanjiDivider text="設計 • 開発 • 構築 • 実装 • 実験" reverse={true} angle={-1.5} />
+      <div id="work">
+        <SelectedWorkSection />
+      </div>
+
+      <KanjiDivider text="設計 • 開発 • 構築 • 計測 • 出荷" reverse={true} angle={-1.5} />
 
       <div id="projects">
         <DynamicProjectsGrid repos={repos} />
       </div>
 
-      <KanjiDivider text="認定 • 成就 • 学問 • 知識 • 技能" angle={2} />
+      <ProcessSection />
+
+      <KanjiDivider text="認定 • 実績 • 知識 • 技能" angle={-1.5} />
 
       <div id="certificates">
         <HonorGallery />
       </div>
 
-      <KanjiDivider text="芸術 • 創造 • 精神 • 表現 • 魂" reverse={true} angle={-2} />
+      <KanjiDivider text="芸術 • 創造 • 表現" reverse={true} angle={-1.5} />
 
       <div id="art">
         <ArtSection />

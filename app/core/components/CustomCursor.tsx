@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
+  const [enabled, setEnabled] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
@@ -13,6 +14,11 @@ export default function CustomCursor() {
   const smoothY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!fine || reduced) return;
+    setEnabled(true);
+    document.body.classList.add("custom-cursor-on");
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -37,10 +43,13 @@ export default function CustomCursor() {
     window.addEventListener("mouseover", handleElementHover);
 
     return () => {
+      document.body.classList.remove("custom-cursor-on");
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleElementHover);
     };
   }, [cursorX, cursorY]);
+
+  if (!enabled) return null;
 
   return (
     <>

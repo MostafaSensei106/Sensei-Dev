@@ -15,21 +15,40 @@ import {
 
 const navItems = [
   { name: "Home", href: "#home", icon: Home, katakana: "ホーム" },
-  { name: "Exp", href: "#experience", icon: Briefcase, katakana: "経験" },
-  { name: "Work", href: "#projects", icon: Code2, katakana: "作品" },
-  { name: "Cert", href: "#certificates", icon: Award, katakana: "証明" },
+  { name: "Services", href: "#services", icon: Briefcase, katakana: "役務" },
+  { name: "Experience", href: "#experience", icon: Briefcase, katakana: "経験" },
+  { name: "Work", href: "#work", icon: Code2, katakana: "仕事" },
+  { name: "Honors", href: "#certificates", icon: Award, katakana: "認定" },
   { name: "Art", href: "#art", icon: Palette, katakana: "芸術" },
-  { name: "Mail", href: "#contact", icon: Mail, katakana: "連絡" },
+  { name: "Contact", href: "#contact", icon: Mail, katakana: "連絡" },
 ];
 
 export default function NavigationPill() {
   const { scrollY } = useScroll();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState("#home");
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    const ids = navItems.map((i) => i.href.slice(1));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(`#${e.target.id}`);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [mounted]);
 
   useEffect(() => {
     if (isOpen) {
@@ -80,21 +99,24 @@ export default function NavigationPill() {
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+        <div className="hidden md:flex items-center gap-5 lg:gap-7">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="relative flex items-center gap-2 text-[9px] lg:text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-white/60 hover:text-white transition-all duration-300 group"
+              aria-current={active === item.href ? "page" : undefined}
+              className={`relative flex items-center gap-2 text-[9px] lg:text-[10px] font-mono font-bold uppercase tracking-[0.22em] transition-all duration-300 group ${
+                active === item.href ? "text-white" : "text-white/60 hover:text-white"
+              }`}
             >
               <item.icon
                 size={12}
                 strokeWidth={2.5}
-                className="text-white/30 group-hover:text-primary transition-colors duration-300"
+                className={`transition-colors duration-300 ${active === item.href ? "text-primary" : "text-white/30 group-hover:text-primary"}`}
               />
               <span>{item.name}</span>
               {/* Red dot indicator */}
-              <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-none transition-opacity duration-300 ${active === item.href ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
             </a>
           ))}
         </div>

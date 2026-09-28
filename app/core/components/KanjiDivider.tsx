@@ -67,7 +67,7 @@ export default function KanjiDivider({
             >
               SENSEI
             </motion.span>
-            {text}
+            <span className="brush-jp font-normal normal-case" lang="ja">{text}</span>
           </span>
         ))}
       </motion.div>

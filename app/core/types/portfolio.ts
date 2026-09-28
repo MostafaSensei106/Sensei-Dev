@@ -44,12 +44,64 @@ export interface ProjectHighlight {
   metrics: string[];
   link: string;
   githubRepo?: string;
+  proofUrl?: string;
 }
 
 export interface ProjectsData {
   githubUsername: string;
   pinnedRepos: string[];
   highlights: ProjectHighlight[];
+}
+
+export type WorkType = "app" | "backend" | "library" | "tool";
+
+export interface WorkLink {
+  github?: string;
+  live?: string;
+  playStore?: string;
+  appStore?: string;
+  docs?: string;
+  caseStudy?: string;
+}
+
+export interface WorkItem {
+  id: string;
+  title: string;
+  type: WorkType;
+  tagline: string;
+  problem: string;
+  role: string;
+  stack: string[];
+  platform: string;
+  status: "live" | "private-demo" | "open-source";
+  year: string;
+  links: WorkLink;
+  metrics: string[];
+  featured?: boolean;
+}
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  japanese: string;
+  description: string;
+  stack: string[];
+  deliverable: string;
+}
+
+export interface StackGroup {
+  id: string;
+  title: string;
+  japanese: string;
+  items: string[];
+}
+
+export interface ProcessStep {
+  id: string;
+  index: string;
+  title: string;
+  japanese: string;
+  description: string;
 }
 
 export interface Certificate {
@@ -87,6 +139,10 @@ export interface PortfolioData {
   profile: Profile;
   experience: Experience[];
   projects: ProjectsData;
+  work: WorkItem[];
+  services: ServiceItem[];
+  stack: StackGroup[];
+  process: ProcessStep[];
   certificates: Certificate[];
   artGallery: ArtGalleryItem[];
 }
