@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { EASE } from "@/app/core/motion";
 import { useState } from "react";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import Lightbox from "yet-another-react-lightbox";
@@ -21,7 +22,7 @@ export default function ArtSection() {
   }));
 
   return (
-    <section id="art" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
+    <section id="art" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
       <div
         className="absolute right-10 top-20 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
@@ -36,7 +37,7 @@ export default function ArtSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="mb-32 flex flex-col md:flex-row justify-between items-end gap-12">
+        <div className="mb-16 md:mb-20 flex flex-col md:flex-row justify-between items-end gap-8">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -94,7 +95,7 @@ export default function ArtSection() {
               transition={{
                 duration: 0.8,
                 delay: (idx % 6) * 0.08,
-                ease: [0.215, 0.61, 0.355, 1],
+                ease: EASE,
               }}
               onClick={() => {
                 setIndex(idx);

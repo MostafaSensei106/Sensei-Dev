@@ -49,7 +49,7 @@ export default function ProfessionalExperience() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-40 px-6 md:px-20 bg-background overflow-hidden"
+      className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden"
     >
       {/* ─── Background Decorative Kanji ─── */}
       <div
@@ -75,7 +75,7 @@ export default function ProfessionalExperience() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* ─── Section Header ─── */}
-        <div className="exp-header mb-24">
+        <div className="exp-header mb-16 md:mb-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-[2px] bg-accent" />
             <span className="text-accent text-[10px] font-mono font-bold tracking-[0.4em] uppercase">
@@ -95,7 +95,7 @@ export default function ProfessionalExperience() {
         </div>
 
         {/* ─── Experience Cards ─── */}
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-10">
           {PORTFOLIO_DATA.experience.map((item, idx) => (
             <div
               key={idx}

@@ -9,10 +9,15 @@ interface KanjiDividerProps {
   angle?: number;
 }
 
+/**
+ * Noren divider — a calm black banner with a red katana edge.
+ * Brush Japanese drifts with page scroll; small red diamonds
+ * mark the SENSEI seal. No hazard stripes, no flicker.
+ */
 export default function KanjiDivider({
   text = "武士道 • 継続は力なり • 改善 • 不撓不屈 • 七転八起",
   reverse = false,
-  angle = -1.5,
+  angle = -1,
 }: KanjiDividerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -23,51 +28,44 @@ export default function KanjiDivider({
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    reverse ? ["-40%", "0%"] : ["0%", "-40%"]
+    reverse ? ["-25%", "0%"] : ["0%", "-25%"]
   );
 
   return (
     <div
       ref={containerRef}
-      className="relative h-24 w-full overflow-hidden z-20 flex items-center"
+      className="relative z-20 flex h-20 md:h-24 w-full items-center overflow-hidden border-y border-white/10 bg-black/70 backdrop-blur-sm"
       style={{
-        transform: `rotate(${angle}deg) scale(1.1)`,
-        margin: "2rem 0",
-        backgroundImage:
-          "repeating-linear-gradient(45deg, #FFD700 0px, #FFD700 10px, #080808 10px, #080808 20px)",
-        backgroundSize: "28px 28px",
+        transform: `rotate(${angle}deg) scale(1.05)`,
+        margin: "2.5rem 0",
       }}
     >
-      {/* Red Accent Borders */}
-      <div className="absolute top-0 left-0 w-full h-[3px] bg-primary z-10" />
-      <div className="absolute bottom-0 left-0 w-full h-[3px] bg-primary z-10" />
-
-      {/* Dark Overlay for Text Readability */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      {/* Katana edges */}
+      <div
+        className="absolute top-0 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-primary to-transparent"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent"
+        aria-hidden="true"
+      />
 
       <motion.div
         style={{ x }}
-        className="relative flex whitespace-nowrap gap-12 text-2xl md:text-4xl font-black text-white/20 uppercase tracking-[0.5em] select-none pointer-events-none italic"
+        className="relative flex items-center gap-10 whitespace-nowrap select-none"
       >
-        {[...Array(10)].map((_, i) => (
-          <span key={i} className="flex items-center gap-12">
-            {/* Glitch/Flicker Sensei Label */}
-            <motion.span
-              animate={{
-                opacity: [1, 0.4, 1, 1, 0.6, 1],
-                x: [0, -2, 0, 1, 0, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "linear",
-                delay: i * 0.15,
-              }}
-              className="text-primary text-sm font-mono font-bold not-italic mr-4 tracking-widest"
-            >
-              SENSEI
-            </motion.span>
-            {text}
+        {[...Array(8)].map((_, i) => (
+          <span key={i} className="flex items-center gap-10">
+            <span className="brush-jp text-2xl md:text-3xl text-white/25" lang="ja">
+              {text}
+            </span>
+            <span className="flex items-center gap-2.5" aria-hidden="true">
+              <span className="inline-block h-1.5 w-1.5 rotate-45 bg-primary/80" />
+              <span className="font-mono text-[10px] font-bold tracking-[0.45em] text-primary/80">
+                SENSEI
+              </span>
+              <span className="inline-block h-1.5 w-1.5 rotate-45 bg-primary/80" />
+            </span>
           </span>
         ))}
       </motion.div>

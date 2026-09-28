@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { EASE } from "@/app/core/motion";
 import { useState } from "react";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import Lightbox from "yet-another-react-lightbox";
@@ -18,7 +19,7 @@ export default function HonorGallery() {
   }));
 
   return (
-    <section id="certificates" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
+    <section id="certificates" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
       <div
         className="absolute left-10 top-20 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
@@ -37,8 +38,8 @@ export default function HonorGallery() {
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-          className="mb-32 flex flex-col md:flex-row justify-between items-end gap-12"
+          transition={{ duration: 0.8, ease: EASE }}
+          className="mb-16 md:mb-20 flex flex-col md:flex-row justify-between items-end gap-8"
         >
           <div className="max-w-3xl">
             <div className="flex items-center gap-4 mb-6">
@@ -55,10 +56,10 @@ export default function HonorGallery() {
 
           {/* Counter */}
           <div className="relative px-6 py-3 border border-white/10 bg-surface/60 backdrop-blur-sm">
-            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-quaternary" />
-            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-quaternary" />
+            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent" />
             <div className="flex items-center gap-3">
-              <span className="font-mono text-quaternary text-2xl font-black">
+              <span className="font-mono text-accent text-2xl font-black">
                 {String(PORTFOLIO_DATA.certificates.length).padStart(2, "0")}
               </span>
               <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
@@ -76,12 +77,12 @@ export default function HonorGallery() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ delay: idx * 0.15, duration: 0.8, ease: EASE }}
               onClick={() => {
                 setIndex(idx);
                 setOpen(true);
               }}
-              className="relative group cursor-pointer bg-surface/60 border border-white/5 overflow-hidden backdrop-blur-xl hover:border-quaternary/40 transition-all duration-700"
+              className="relative group cursor-pointer bg-surface/60 border border-white/5 overflow-hidden backdrop-blur-xl hover:border-accent/40 transition-all duration-700"
             >
               <div className="flex flex-col lg:flex-row h-full">
                 {/* Certificate Image — 40% width on desktop */}
@@ -105,7 +106,7 @@ export default function HonorGallery() {
                   </div>
 
                   {/* Expand icon overlay */}
-                  <div className="absolute inset-0 bg-quaternary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                     <div className="p-3 bg-white/10 backdrop-blur-xl border border-white/20">
                       <ExternalLink className="text-white" size={22} />
                     </div>
@@ -114,20 +115,20 @@ export default function HonorGallery() {
 
                 {/* Content */}
                 <div className="w-full lg:w-3/5 p-8 md:p-10 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 text-quaternary mb-5">
+                  <div className="flex items-center gap-3 text-accent mb-5">
                     <ShieldCheck size={18} />
                     <span className="font-mono text-[10px] tracking-[0.3em] font-bold uppercase">
                       Verified Achievement
                     </span>
                   </div>
 
-                  <h3 className="font-display text-2xl md:text-3xl font-black mb-5 text-white group-hover:text-quaternary transition-colors duration-300 leading-tight uppercase tracking-tight">
+                  <h3 className="font-display text-2xl md:text-3xl font-black mb-5 text-white group-hover:text-accent transition-colors duration-300 leading-tight uppercase tracking-tight">
                     {cert.title}
                   </h3>
 
                   <div className="flex items-center gap-6 text-on-surface-variant text-sm">
                     <div className="flex items-center gap-2">
-                      <Award size={14} className="text-quaternary" />
+                      <Award size={14} className="text-accent" />
                       <span className="font-mono text-xs">{cert.issuer}</span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -140,7 +141,7 @@ export default function HonorGallery() {
 
               {/* Japanese Decorative 認定 Watermark — more visible on hover */}
               <div
-                className="absolute bottom-4 right-6 text-white/[0.04] font-black text-7xl select-none group-hover:text-quaternary/15 transition-colors duration-700 pointer-events-none"
+                className="absolute bottom-4 right-6 text-white/[0.04] font-black text-7xl select-none group-hover:text-accent/15 transition-colors duration-700 pointer-events-none"
                 role="presentation"
               >
                 認定

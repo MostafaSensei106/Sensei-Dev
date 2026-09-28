@@ -29,7 +29,8 @@
   --font-display: 'Dela Gothic One', 'Noto Sans JP', sans-serif;
   --font-body: 'Outfit', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-jp: 'Noto Sans JP', sans-serif;
+  --font-jp: 'Yuji Syuku', 'Noto Sans JP', sans-serif;
+  --font-jp-brush: 'Yuji Syuku', 'Noto Sans JP', serif;
 }
 
 @layer base {
@@ -60,7 +61,37 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    cursor: none;
+  }
+
+  /* Custom cursor only on precise pointers; touch keeps native cursor */
+  @media (pointer: fine) {
+    body.custom-cursor-on,
+    body.custom-cursor-on a,
+    body.custom-cursor-on button {
+      cursor: none;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+
+  /* Skip link */
+  .skip-link {
+    position: fixed;
+    top: -60px;
+    left: 16px;
+    z-index: 10001;
+    background: var(--primary);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 10px 16px;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: 16px;
   }
 
   /* Scrollbar Styling */
@@ -110,10 +141,16 @@
   text-orientation: upright;
   gap: 0.1em;
   line-height: 1.2;
-  font-family: var(--font-jp);
+  font-family: var(--font-jp-brush);
+  font-weight: 400;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.brush-jp {
+  font-family: var(--font-jp-brush);
+  font-weight: 400;
 }
 
 .vertical-text span {
@@ -183,4 +220,45 @@
     0 0 7px rgba(255, 215, 0, 0.6),
     0 0 20px rgba(255, 215, 0, 0.4),
     0 0 40px rgba(255, 215, 0, 0.2);
+}
+
+/* ─── Button sheen — one delight, used by every primary CTA ─── */
+
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.btn-sheen:hover::after {
+  left: 135%;
+}
+
+/* ─── Samurai Theme Discipline ───
+   Red = action/structure, Gold = metrics/proof, Sky = stack/systems.
+   Quaternary is retired from core sections (Art only). */
+
+.jp-eyebrow {
+  font-family: var(--font-jp);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
 }

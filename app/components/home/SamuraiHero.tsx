@@ -9,7 +9,7 @@ import {
   Linkedin,
   MessageCircle,
   Download,
-  ExternalLink,
+  ArrowDown,
 } from "lucide-react";
 
 export default function SamuraiHero() {
@@ -84,19 +84,16 @@ export default function SamuraiHero() {
       name: "GitHub",
       icon: Github,
       href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`,
-      hoverClass: "hover:text-primary hover:border-primary/50",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
       href: `${PORTFOLIO_DATA.profile.contact.linkedin}`,
-      hoverClass: "hover:text-[#0077b5] hover:border-[#0077b5]/50",
     },
     {
       name: "WhatsApp",
       icon: MessageCircle,
       href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`,
-      hoverClass: "hover:text-green-400 hover:border-green-400/50",
     },
   ];
 
@@ -179,7 +176,7 @@ export default function SamuraiHero() {
           {/* Badge */}
           <div className="flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/10 mb-8 backdrop-blur-sm">
             <div className="w-2 h-2 bg-primary animate-pulse" />
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-on-surface-variant">
+            <span className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-on-surface-variant">
               {PORTFOLIO_DATA.profile.japaneseTitle}
             </span>
           </div>
@@ -194,44 +191,44 @@ export default function SamuraiHero() {
           <div className="mb-10 w-full max-w-xl border border-white/5 bg-white/[0.02] backdrop-blur-sm">
             <div className="border-b border-white/5 px-4 py-2 flex items-center gap-2">
               <div className="w-1.5 h-1.5 bg-primary" />
-              <span className="font-mono text-[9px] text-white/40 uppercase tracking-[0.3em]">
+              <span className="font-mono text-[10px] text-white/40 uppercase tracking-[0.3em]">
                 Technical Specifications
               </span>
             </div>
-            <div className="px-4 py-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="spec-item flex flex-col gap-1">
-                <span className="font-mono text-[9px] font-bold text-accent tracking-[0.2em] uppercase">
-                  Framework
+            <div className="px-4 py-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="spec-item flex flex-col gap-1.5">
+                <span className="font-mono text-[10px] font-bold text-accent tracking-[0.2em] uppercase">
+                  Mobile
                 </span>
-                <span className="font-mono text-xs text-white/80">
-                  Flutter, Gin
-                </span>
-              </div>
-              <div className="spec-item flex flex-col gap-1">
-                <span className="font-mono text-[9px] font-bold text-accent tracking-[0.2em] uppercase">
-                  Systems
-                </span>
-                <span className="font-mono text-xs text-white/80">
-                  Go, Rust
+                <span className="font-mono text-sm text-white/85">
+                  Flutter, Dart, Kotlin
                 </span>
               </div>
-              <div className="spec-item flex flex-col gap-1">
-                <span className="font-mono text-[9px] font-bold text-accent tracking-[0.2em] uppercase">
-                  Arch
+              <div className="spec-item flex flex-col gap-1.5">
+                <span className="font-mono text-[10px] font-bold text-tertiary tracking-[0.2em] uppercase">
+                  Backend
                 </span>
-                <span className="font-mono text-xs text-white/80">
-                  Clean Architecture
+                <span className="font-mono text-sm text-white/85">
+                  Go Gin, Spring Boot
+                </span>
+              </div>
+              <div className="spec-item flex flex-col gap-1.5">
+                <span className="font-mono text-[10px] font-bold text-white/50 tracking-[0.2em] uppercase">
+                  Core
+                </span>
+                <span className="font-mono text-sm text-white/85">
+                  Rust, Android Native
                 </span>
               </div>
             </div>
           </div>
 
           {/* Tagline & Description */}
-          <div className="max-w-xl mb-12">
-            <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-6">
+          <div className="max-w-xl mb-10">
+            <p className="text-2xl md:text-3xl font-medium text-white leading-relaxed mb-5">
               {PORTFOLIO_DATA.profile.hero.tagline}
             </p>
-            <p className="text-base text-on-surface-variant font-light leading-relaxed">
+            <p className="text-lg text-on-surface-variant font-light leading-relaxed">
               {PORTFOLIO_DATA.profile.hero.description}
             </p>
           </div>
@@ -244,21 +241,27 @@ export default function SamuraiHero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 download
-                className="interactive flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-primary text-white font-mono font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500 shadow-2xl shadow-primary/20"
+                className="interactive btn-sheen group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-primary text-white font-mono font-black uppercase tracking-widest text-sm transition-all duration-300 shadow-2xl shadow-primary/25 hover:bg-[#d60030] hover:-translate-y-0.5 active:translate-y-0"
                 style={{
                   clipPath: "polygon(0 0, 100% 0, 96% 100%, 4% 100%)",
                 }}
                 aria-label="Download Resume PDF"
               >
-                <Download size={16} />
+                <Download size={16} className="transition-transform duration-300 group-hover:translate-y-0.5" />
                 RESUME.pdf
+                <span className="brush-jp text-base normal-case tracking-normal opacity-70" lang="ja">
+                  履歴書
+                </span>
               </a>
               <a
-                href="#projects"
-                className="interactive flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 border border-white/20 bg-white/[0.03] backdrop-blur-md text-white font-mono font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500"
+                href="#work"
+                className="interactive group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 border border-white/15 border-l-2 border-l-primary bg-white/[0.02] backdrop-blur-md text-white font-mono font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:border-primary hover:bg-primary/10 hover:-translate-y-0.5 active:translate-y-0"
               >
-                <ExternalLink size={14} />
-                PROJECTS
+                <ArrowDown size={14} className="text-primary transition-transform duration-300 group-hover:translate-y-0.5" />
+                View Work
+                <span className="brush-jp text-base normal-case tracking-normal text-white/50" lang="ja">
+                  仕事
+                </span>
               </a>
             </div>
 
@@ -270,10 +273,20 @@ export default function SamuraiHero() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-10 h-10 flex items-center justify-center border border-white/10 text-white/40 transition-all duration-300 ${s.hoverClass} hover:scale-110 active:scale-95`}
+                  className="group/social relative w-11 h-11 flex items-center justify-center border border-white/10 bg-white/[0.02] text-white/40 transition-all duration-300 hover:border-primary hover:text-primary hover:-translate-y-1 hover:shadow-[0_0_18px_rgba(188,0,45,0.35)] active:translate-y-0"
                   aria-label={s.name}
                 >
+                  <span
+                    className="absolute top-0 left-0 w-2.5 h-2.5 border-t-2 border-l-2 border-primary/0 group-hover/social:border-primary transition-colors duration-300"
+                    aria-hidden="true"
+                  />
                   <s.icon size={18} strokeWidth={1.5} />
+                  <span
+                    className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 bg-background border border-primary/40 font-mono text-[9px] font-bold tracking-[0.25em] uppercase text-primary opacity-0 group-hover/social:opacity-100 transition-opacity duration-300"
+                    aria-hidden="true"
+                  >
+                    {s.name}
+                  </span>
                 </a>
               ))}
             </div>
@@ -294,9 +307,25 @@ export default function SamuraiHero() {
               />
             </div>
 
-            {/* Rotating Red Ring */}
-            <div className="absolute inset-0 border-2 border-primary/30 rounded-full animate-[spin_25s_linear_infinite]" />
-            <div className="absolute inset-2 border border-primary/10 rounded-full animate-[spin_20s_linear_infinite_reverse]" />
+            {/* Orbit inscription — stack names circling the portrait */}
+            <div
+              className="absolute -inset-3 md:-inset-5 animate-[spin_36s_linear_infinite] pointer-events-none"
+              aria-hidden="true"
+            >
+              <svg viewBox="0 0 200 200" className="w-full h-full">
+                <defs>
+                  <path
+                    id="hero-orbit"
+                    d="M 100,100 m -86,0 a 86,86 0 1,1 172,0 a 86,86 0 1,1 -172,0"
+                  />
+                </defs>
+                <text fontSize="8" letterSpacing="2.5" className="fill-white/30 font-mono uppercase">
+                  <textPath href="#hero-orbit">
+                    Flutter • Go • Rust • Kotlin • Spring • 侍 •
+                  </textPath>
+                </text>
+              </svg>
+            </div>
 
             {/* Camera Viewfinder Brackets */}
             <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/20 pointer-events-none" />
@@ -327,19 +356,33 @@ export default function SamuraiHero() {
               href="https://youtu.be/-RRWvHTQjPE?si=m3W9ZcEmMZ1Z59O3&t=167"
               target="_blank"
               rel="noopener noreferrer"
+              className="group/photo block"
+              aria-label="Watch intro video"
             >
-              <div className="absolute inset-6 md:inset-8 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl shadow-primary/10">
+              <div className="absolute inset-6 md:inset-8 rounded-full overflow-hidden border-2 border-white/10 group-hover/photo:border-primary/40 transition-colors duration-700 shadow-2xl shadow-primary/10">
                 <Image
                   src={PORTFOLIO_DATA.profile.hero.photo}
                   alt={PORTFOLIO_DATA.profile.name}
                   width={500}
                   height={500}
                   priority
-                  className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-1000"
+                  className="w-full h-full object-cover object-top grayscale group-hover/photo:grayscale-0 group-hover/photo:scale-105 transition-all duration-1000"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/25 via-transparent to-transparent group-hover/photo:from-transparent transition-all duration-700" />
               </div>
             </a>
+
+            {/* Hanko seal — the maker's stamp */}
+            <div
+              className="absolute bottom-8 right-8 md:bottom-10 md:right-10 z-20 w-14 h-14 md:w-16 md:h-16 bg-primary rotate-6 hover:rotate-0 transition-transform duration-500 shadow-[0_0_25px_rgba(188,0,45,0.5)] flex items-center justify-center"
+              role="img"
+              aria-label="Maker's seal"
+            >
+              <div className="absolute inset-1.5 border border-white/40 pointer-events-none" />
+              <span className="brush-jp text-2xl md:text-3xl text-white leading-none" lang="ja">
+                斬
+              </span>
+            </div>
 
             {/* Outer decorative ring with dashes */}
             <div

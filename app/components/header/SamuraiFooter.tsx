@@ -16,7 +16,7 @@ export default function SamuraiFooter() {
   ];
 
   return (
-    <footer className="relative bg-background pt-32 pb-12 px-6 md:px-20 overflow-hidden border-t border-white/5">
+    <footer className="relative bg-background pt-24 md:pt-32 pb-12 px-6 md:px-20 overflow-hidden border-t border-white/5">
       {/* Background Torii Silhouette */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140vw] h-[70vh] opacity-[0.02] pointer-events-none select-none z-0">
         <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
@@ -109,12 +109,15 @@ export default function SamuraiFooter() {
             <div className="flex items-center gap-3 mb-2">
               <div className="w-6 h-[2px] bg-primary" />
               <span className="font-mono text-[9px] text-primary tracking-[0.4em] uppercase font-bold">
-                Mission Briefing
+                Mission Briefing // 依頼
               </span>
             </div>
-            <h3 className="font-display text-3xl font-black mb-8 uppercase tracking-tight text-white">
+            <h3 className="font-display text-3xl font-black mb-3 uppercase tracking-tight text-white">
               Seal Intent
             </h3>
+            <p className="font-mono text-[11px] text-white/45 tracking-wider mb-8">
+              Open for freelance: apps, Go APIs, and package work. Replies within 48h.
+            </p>
 
             <form
               className="flex flex-col gap-6"
@@ -125,9 +128,10 @@ export default function SamuraiFooter() {
                 const formData = new FormData(form);
 
                 const name = formData.get("name")?.toString() || "";
+                const type = formData.get("type")?.toString() || "project";
                 const message = formData.get("message")?.toString() || "";
 
-                const subject = encodeURIComponent(`Inquiry from ${name}`);
+                const subject = encodeURIComponent(`[${type}] Inquiry from ${name}`);
                 const body = encodeURIComponent(message || "");
 
                 const mailto = `mailto:${PORTFOLIO_DATA.profile.contact.email}?subject=${subject}&body=${body}`;
@@ -150,7 +154,7 @@ export default function SamuraiFooter() {
               </div>
               <div className="relative">
                 <label htmlFor="email" className="sr-only">
-                  Digital Address (Email)
+                  Email
                 </label>
                 <input
                   id="email"
@@ -158,12 +162,28 @@ export default function SamuraiFooter() {
                   name="email"
                   required
                   className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light placeholder:text-white/30 font-mono"
-                  placeholder="Digital Address (Email)"
+                  placeholder="Email"
                 />
               </div>
               <div className="relative">
+                <label htmlFor="type" className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">
+                  Project type
+                </label>
+                <select
+                  id="type"
+                  name="type"
+                  className="mt-2 w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-base font-mono text-white/80 [&>option]:bg-surface"
+                  defaultValue="Mobile app"
+                >
+                  <option>Mobile app</option>
+                  <option>Backend API</option>
+                  <option>Package / perf</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div className="relative">
                 <label htmlFor="message" className="sr-only">
-                  The Scroll of Intent (Message)
+                  Project details
                 </label>
                 <textarea
                   id="message"
@@ -171,13 +191,13 @@ export default function SamuraiFooter() {
                   required
                   rows={3}
                   className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light resize-none placeholder:text-white/30 font-mono"
-                  placeholder="The Scroll of Intent (Message)"
+                  placeholder="What are we building? Platform, timeline, links"
                 />
               </div>
               <button
                 type="submit"
                 aria-label="Dispatch Message"
-                className="mt-4 w-full py-5 bg-primary text-white font-mono font-black uppercase tracking-[0.3em] text-sm hover:bg-white hover:text-background active:scale-[0.98] transition-all duration-300 shadow-2xl shadow-primary/20"
+                className="btn-sheen mt-4 w-full py-5 bg-primary text-white font-mono font-black uppercase tracking-[0.3em] text-sm hover:bg-white hover:text-background active:scale-[0.98] transition-all duration-300 shadow-2xl shadow-primary/20"
               >
                 DISPATCH MESSAGE
               </button>
