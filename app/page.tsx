@@ -7,7 +7,6 @@ import ServicesSection from "@/app/components/services/ServicesSection";
 import StackStrip from "@/app/components/services/StackStrip";
 import SelectedWorkSection from "@/app/components/services/SelectedWorkSection";
 import ProcessSection from "@/app/components/services/ProcessSection";
-import ScrollChrome from "@/app/core/components/ScrollChrome";
 import { getGitHubRepos } from "@/app/core/api/github";
 
 const ProfessionalExperience = dynamic(() => import("@/app/components/experience/ProfessionalExperience"));
@@ -34,7 +33,6 @@ export default async function Home() {
       />
 
       <NavigationPill />
-      <ScrollChrome />
 
       {/* 01 — Who: face, name, stack in 5 seconds */}
       <div id="home">

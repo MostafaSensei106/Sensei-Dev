@@ -110,25 +110,17 @@ export default function LoadingScreen() {
           </div>
 
           {/* Boot line */}
-          <div className="mt-10 flex flex-col items-center gap-4 text-center">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
-              <motion.span
-                key={lineIndex}
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-[10px] font-mono font-bold tracking-[0.4em] text-accent/80 uppercase"
-              >
-                {BOOT_LINES[lineIndex].en}
-              </motion.span>
-              <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
-            </div>
-            <h2 className="font-display text-xl md:text-2xl text-white tracking-wider uppercase">
-              Ready to <span className="text-primary">ship.</span>
-              <span className="brush-jp ml-3 text-lg text-white/40 normal-case" lang="ja">
-                出陣
-              </span>
-            </h2>
+          <div className="mt-10 flex items-center gap-4">
+            <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
+            <motion.span
+              key={lineIndex}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-[10px] font-mono font-bold tracking-[0.4em] text-accent/80 uppercase"
+            >
+              {BOOT_LINES[lineIndex].en}
+            </motion.span>
+            <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
           </div>
 
           {/* Katana progress bar */}
