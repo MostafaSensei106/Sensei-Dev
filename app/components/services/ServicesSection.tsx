@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { EASE } from "@/app/core/motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { Code2, Server, Package, GraduationCap } from "lucide-react";
@@ -36,7 +37,7 @@ export default function ServicesSection() {
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.7, delay: idx * 0.08, ease: [0.23, 1, 0.32, 1] }}
+                transition={{ duration: 0.7, delay: idx * 0.08, ease: EASE }}
                 className="group relative bg-surface/60 border border-white/5 p-7 flex flex-col hover:border-primary/40 transition-colors duration-500"
               >
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-primary/0 group-hover:bg-primary transition-colors duration-500" aria-hidden="true" />

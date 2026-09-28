@@ -11,6 +11,7 @@ import {
   Download,
   ExternalLink,
 } from "lucide-react";
+import HeroTerminal from "./HeroTerminal";
 
 export default function SamuraiHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -236,11 +237,9 @@ export default function SamuraiHero() {
             </p>
           </div>
 
-          {/* Terminal line — programming spirit, same JDM HUD language */}
-          <div className="mb-10 w-full max-w-xl px-4 py-3 bg-black/60 border border-white/10 font-mono text-[11px] md:text-xs text-white/70 flex items-center gap-2" role="presentation">
-            <span className="text-primary font-bold">$</span>
-            <span className="terminal-caret">sensei ship --mobile --api --bench</span>
-            <span className="ml-auto hidden sm:inline text-tertiary/70 tracking-widest">出荷 OK</span>
+          {/* Terminal — live typing through the real stack */}
+          <div className="mb-10 w-full max-w-xl">
+            <HeroTerminal />
           </div>
 
           {/* CTA Buttons + Socials */}
@@ -251,7 +250,7 @@ export default function SamuraiHero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 download
-                className="interactive flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-primary text-white font-mono font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500 shadow-2xl shadow-primary/20"
+                className="interactive btn-sheen flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-primary text-white font-mono font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500 shadow-2xl shadow-primary/20"
                 style={{
                   clipPath: "polygon(0 0, 100% 0, 96% 100%, 4% 100%)",
                 }}
@@ -262,7 +261,7 @@ export default function SamuraiHero() {
               </a>
               <a
                 href="#projects"
-                className="interactive flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 border border-white/20 bg-white/[0.03] backdrop-blur-md text-white font-mono font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500"
+                className="interactive btn-sheen flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 border border-white/20 bg-white/[0.03] backdrop-blur-md text-white font-mono font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500"
               >
                 <ExternalLink size={14} />
                 PROJECTS

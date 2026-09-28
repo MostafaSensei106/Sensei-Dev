@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { EASE } from "@/app/core/motion";
 import { useState } from "react";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import Lightbox from "yet-another-react-lightbox";
@@ -18,7 +19,7 @@ export default function HonorGallery() {
   }));
 
   return (
-    <section id="certificates" className="relative py-40 px-6 md:px-20 bg-background overflow-hidden">
+    <section id="certificates" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
       <div
         className="absolute left-10 top-20 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
@@ -37,8 +38,8 @@ export default function HonorGallery() {
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-          className="mb-32 flex flex-col md:flex-row justify-between items-end gap-12"
+          transition={{ duration: 0.8, ease: EASE }}
+          className="mb-16 md:mb-20 flex flex-col md:flex-row justify-between items-end gap-8"
         >
           <div className="max-w-3xl">
             <div className="flex items-center gap-4 mb-6">
@@ -76,7 +77,7 @@ export default function HonorGallery() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ delay: idx * 0.15, duration: 0.8, ease: EASE }}
               onClick={() => {
                 setIndex(idx);
                 setOpen(true);

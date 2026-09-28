@@ -16,8 +16,8 @@ import {
 const navItems = [
   { name: "Home", href: "#home", icon: Home, katakana: "ホーム" },
   { name: "Services", href: "#services", icon: Briefcase, katakana: "役務" },
-  { name: "Experience", href: "#experience", icon: Briefcase, katakana: "経験" },
   { name: "Work", href: "#work", icon: Code2, katakana: "仕事" },
+  { name: "Experience", href: "#experience", icon: Briefcase, katakana: "経験" },
   { name: "Honors", href: "#certificates", icon: Award, katakana: "認定" },
   { name: "Art", href: "#art", icon: Palette, katakana: "芸術" },
   { name: "Contact", href: "#contact", icon: Mail, katakana: "連絡" },

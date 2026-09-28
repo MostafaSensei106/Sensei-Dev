@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { EASE } from "@/app/core/motion";
 
 interface SectionHeaderProps {
   eyebrow: string;
@@ -24,7 +25,7 @@ export default function SectionHeader({
       initial={{ opacity: 0, x: -32 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+      transition={{ duration: 0.7, ease: EASE }}
       className={align === "split" ? "mb-16 md:mb-20" : "mb-16 md:mb-20 max-w-3xl"}
     >
       <div className="flex items-center gap-4 mb-5">

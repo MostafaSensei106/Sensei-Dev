@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { EASE } from "@/app/core/motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import type { WorkType } from "@/app/core/types/portfolio";
@@ -71,7 +72,7 @@ export default function SelectedWorkSection() {
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.7, delay: (idx % 2) * 0.1, ease: [0.23, 1, 0.32, 1] }}
+                transition={{ duration: 0.7, delay: (idx % 2) * 0.1, ease: EASE }}
                 className="group relative bg-surface/60 border border-white/5 p-8 hover:border-primary/40 transition-colors duration-500 flex flex-col"
               >
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-primary/40 to-transparent opacity-70" aria-hidden="true" />
@@ -122,7 +123,7 @@ export default function SelectedWorkSection() {
 
                 <div className="flex gap-3 mt-auto pt-5 border-t border-white/5">
                   {w.links.github && (
-                    <a href={w.links.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 bg-primary text-white font-mono text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors">
+                    <a href={w.links.github} target="_blank" rel="noopener noreferrer" className="btn-sheen flex items-center gap-2 px-4 py-2.5 bg-primary text-white font-mono text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors">
                       <Github size={13} /> Source
                     </a>
                   )}

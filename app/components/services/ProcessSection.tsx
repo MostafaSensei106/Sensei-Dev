@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { EASE } from "@/app/core/motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 
@@ -22,7 +23,7 @@ export default function ProcessSection() {
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.65, delay: idx * 0.08, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
               className="relative bg-background/60 border border-white/5 p-7 hover:border-primary/40 transition-colors duration-500"
             >
               <div className="font-mono text-5xl font-black text-white/[0.06] absolute top-4 right-5 select-none" aria-hidden="true">

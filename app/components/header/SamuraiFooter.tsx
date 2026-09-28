@@ -16,7 +16,7 @@ export default function SamuraiFooter() {
   ];
 
   return (
-    <footer className="relative bg-background pt-32 pb-12 px-6 md:px-20 overflow-hidden border-t border-white/5">
+    <footer className="relative bg-background pt-24 md:pt-32 pb-12 px-6 md:px-20 overflow-hidden border-t border-white/5">
       {/* Background Torii Silhouette */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140vw] h-[70vh] opacity-[0.02] pointer-events-none select-none z-0">
         <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
@@ -197,7 +197,7 @@ export default function SamuraiFooter() {
               <button
                 type="submit"
                 aria-label="Dispatch Message"
-                className="mt-4 w-full py-5 bg-primary text-white font-mono font-black uppercase tracking-[0.3em] text-sm hover:bg-white hover:text-background active:scale-[0.98] transition-all duration-300 shadow-2xl shadow-primary/20"
+                className="btn-sheen mt-4 w-full py-5 bg-primary text-white font-mono font-black uppercase tracking-[0.3em] text-sm hover:bg-white hover:text-background active:scale-[0.98] transition-all duration-300 shadow-2xl shadow-primary/20"
               >
                 DISPATCH MESSAGE
               </button>

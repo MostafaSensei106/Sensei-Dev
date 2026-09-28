@@ -1,63 +1,74 @@
 "use client";
 
-import { Fragment } from "react";
+import { motion } from "framer-motion";
+import { EASE } from "@/app/core/motion";
+import SectionHeader from "@/app/core/components/SectionHeader";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 
+/**
+ * Arsenal — static stack grid (no marquee).
+ * Same card language as Services: red structure, sky stack chips.
+ * Hover edge turns sky to mark it as the "tools" section.
+ */
 export default function StackStrip() {
-  const groups = PORTFOLIO_DATA.stack;
-
-  const Row = ({ hidden }: { hidden?: boolean }) => (
-    <div className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
-      {groups.map((g) => (
-        <Fragment key={g.id}>
-          <span className="mx-5 flex items-center gap-3">
-            <span className="brush-jp text-xl text-accent" lang="ja">
-              {g.japanese}
-            </span>
-            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-tertiary">
-              {g.title}
-            </span>
-          </span>
-          {g.items.map((item) => (
-            <span key={`${g.id}-${item}`} className="flex items-center">
-              <span className="px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-white bg-tertiary/15 border border-tertiary/50 hover:bg-accent/15 hover:border-accent/60 hover:text-accent transition-colors">
-                {item}
-              </span>
-              <span className="mx-3 inline-block h-1.5 w-1.5 rotate-45 bg-accent" aria-hidden="true" />
-            </span>
-          ))}
-        </Fragment>
-      ))}
-    </div>
-  );
-
   return (
-    <section aria-label="Tech stack" className="relative py-10 border-y border-tertiary/20 bg-tertiary/[0.04] overflow-hidden">
+    <section aria-label="Tech stack" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       <div
-        className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-tertiary to-accent"
+        className="absolute left-8 top-16 pointer-events-none select-none text-white/[0.03] text-[13vw] font-black z-0 vertical-text"
         aria-hidden="true"
-      />
-      <div className="max-w-7xl mx-auto px-6 md:px-20 mb-6 flex flex-wrap items-center gap-4">
-        <div className="w-8 h-[2px] bg-accent" aria-hidden="true" />
-        <span className="font-mono text-[10px] font-bold tracking-[0.35em] uppercase text-tertiary">
-          Stack // 技術
-        </span>
-        <span className="brush-jp text-lg text-accent" lang="ja">
-          技術は刀なり
-        </span>
-        <span className="font-mono text-[10px] text-white/40 tracking-widest hidden lg:inline">
-          Flutter • Dart • Kotlin • Go Gin • Spring Boot • Rust • Android Native
-        </span>
+        lang="ja"
+      >
+        <span>武</span>
+        <span>器</span>
+        <span>庫</span>
       </div>
-      <div className="stack-marquee-mask relative overflow-hidden" role="presentation">
-        <div className="stack-marquee">
-          <Row />
-          <Row hidden />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <SectionHeader
+          eyebrow="Arsenal // The exact tools"
+          japanese="武器庫"
+          titleA="Tools of"
+          titleB="The Trade."
+          description="No buzzword bingo. Every item below is used in the work you just scrolled past — or the proof coming next."
+        />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {PORTFOLIO_DATA.stack.map((g, idx) => (
+            <motion.article
+              key={g.id}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
+              className="group relative bg-surface/60 border border-white/5 p-7 hover:border-tertiary/50 transition-colors duration-500"
+            >
+              <div
+                className="absolute top-0 left-0 w-full h-[2px] bg-tertiary/0 group-hover:bg-tertiary transition-colors duration-500"
+                aria-hidden="true"
+              />
+              <div className="flex items-baseline justify-between mb-1">
+                <h3 className="font-display text-lg font-black uppercase tracking-tight text-white">
+                  {g.title}
+                </h3>
+                <span className="brush-jp text-xl text-accent" lang="ja">
+                  {g.japanese}
+                </span>
+              </div>
+              <div className="w-8 h-[2px] bg-tertiary/60 mb-5" aria-hidden="true" />
+              <ul className="flex flex-wrap gap-2" aria-label={`${g.title} tools`}>
+                {g.items.map((item) => (
+                  <li
+                    key={item}
+                    className="px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-white bg-tertiary/10 border border-tertiary/40"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
+          ))}
         </div>
       </div>
-      <p className="sr-only">
-        {groups.map((g) => `${g.title}: ${g.items.join(", ")}`).join(". ")}
-      </p>
     </section>
   );
 }
