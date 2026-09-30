@@ -14,7 +14,7 @@ export default function ContactSection() {
           className="glass-panel p-10 md:p-20 rounded-[3rem] md:rounded-[4rem] text-center"
         >
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-6">
-            Let&apos;s build something <span className="text-primary italic">beautiful</span> together.
+            Let&apos;s build something <span className="text-primary italic">solid</span> together.
           </h2>
           <p className="text-on-surface-variant text-lg md:text-xl mb-12 max-w-2xl mx-auto">
             I&apos;m always open to discussing new projects, creative ideas or opportunities to be part of your visions.

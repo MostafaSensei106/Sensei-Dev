@@ -116,7 +116,7 @@ export default function SamuraiFooter() {
               Seal Intent
             </h3>
             <p className="font-mono text-[11px] text-white/45 tracking-wider mb-8">
-              Open for freelance: apps, Go APIs, and package work. Replies within 48h.
+              Open for freelance: apps, backends, and package work. Replies within 48h.
             </p>
 
             <form
@@ -216,7 +216,7 @@ export default function SamuraiFooter() {
             </span>
           </div>
           <div className="flex items-center gap-2 text-on-surface-variant/50">
-            <span>Built with precision</span>
+            <span>Shipped with care</span>
             <span className="text-primary">•</span>
             <span>次のレベル</span>
           </div>

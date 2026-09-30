@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 const STATS = [
-  { value: "3+", label: "Years shipping", japanese: "年" },
+  { value: "10+", label: "Projects shipped", japanese: "出荷" },
   { value: "6", label: "OSS packages", japanese: "庫" },
   { value: "200+", label: "Students mentored", japanese: "指導" },
-  { value: "Cairo / Remote", label: "Base / availability", japanese: "場所" },
+  { value: "Egypt / Remote", label: "Base / availability", japanese: "場所" },
 ];
 
 export default function TrustStrip() {
