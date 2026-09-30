@@ -117,6 +117,13 @@ export interface ArtGalleryItem {
   title: string;
 }
 
+export interface Contribution {
+  name: string;
+  org: string;
+  description: string;
+  link: string;
+}
+
 export interface ThemeConfig {
   colors: {
     primary: string;
@@ -143,6 +150,7 @@ export interface PortfolioData {
   services: ServiceItem[];
   stack: StackGroup[];
   process: ProcessStep[];
+  contributions: Contribution[];
   certificates: Certificate[];
   artGallery: ArtGalleryItem[];
 }

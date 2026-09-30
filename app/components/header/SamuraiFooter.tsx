@@ -83,6 +83,17 @@ export default function SamuraiFooter() {
                   </a>
                 ))}
               </div>
+
+              {/* Languages */}
+              <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase text-white/35">
+                <span className="text-white/60">AR — Native</span>
+                <span className="text-primary">•</span>
+                <span className="text-white/60">EN — Fluent</span>
+                <span className="text-primary">•</span>
+                <span className="brush-jp text-sm normal-case tracking-normal text-white/45" lang="ja">
+                  JP — 初級
+                </span>
+              </div>
             </motion.div>
           </div>
 
@@ -116,7 +127,7 @@ export default function SamuraiFooter() {
               Seal Intent
             </h3>
             <p className="font-mono text-[11px] text-white/45 tracking-wider mb-8">
-              Open for freelance: apps, Go APIs, and package work. Replies within 48h.
+              Open for freelance: apps, backends, and package work. Replies within 48h.
             </p>
 
             <form
@@ -216,7 +227,7 @@ export default function SamuraiFooter() {
             </span>
           </div>
           <div className="flex items-center gap-2 text-on-surface-variant/50">
-            <span>Built with precision</span>
+            <span>Shipped with care</span>
             <span className="text-primary">•</span>
             <span>次のレベル</span>
           </div>

@@ -45,7 +45,7 @@ export default function HonorGallery() {
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-[2px] bg-accent" />
               <span className="text-accent text-xs font-black tracking-[0.4em] uppercase font-mono">
-                Academic Excellence
+                Credentials
               </span>
             </div>
             <h2 className="font-display text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter">
