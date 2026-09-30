@@ -3,8 +3,9 @@ import { PortfolioData } from "../types/portfolio";
 export const PORTFOLIO_DATA: PortfolioData = {
   profile: {
     name: "Mostafa Mahmoud",
-    title: "Senior Software Engineer",
+    title: "Mobile Software Engineer",
     japaneseTitle: "モバイルアプリエンジニア • Mobile Software Engineer",
+    availability: "Open for new opportunities",
     contact: {
       email: "mostafasensei106@gmail.com",
       phone: "+201014414536",
@@ -16,7 +17,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       x: "https://x.com/MostafaSensei",
     },
     hero: {
-      tagline: "High-Performance Systems & Elegant Mobile Ecosystems.",
+      tagline: "High Performance Systems & Elegant Mobile Ecosystems.",
       japaneseTagline: "高性能システムとエレガなモバイルエコシステム。",
       description: "Dedicated Software Engineer specialized in Flutter, Dart, Go (Gin), Rust, and Kotlin (Spring Boot / Android native). Crafting high performance, concurrent, and scalable solutions with a focus on technical excellence and user experience.",
       photo: "Assets/art-gallery/Images/logo/Mostafa.webp",
@@ -257,6 +258,11 @@ export const PORTFOLIO_DATA: PortfolioData = {
     { id: "build", index: "02", title: "Build", japanese: "構築", description: "Thin slice first: working app or endpoint, then iterate." },
     { id: "measure", index: "03", title: "Measure", japanese: "計測", description: "Bench, latency, and edge cases. Numbers go in README." },
     { id: "harden", index: "04", title: "Harden", japanese: "強化", description: "Errors, empty states, and store/API docs. Then handover." },
+  ],
+  languages: [
+    { code: "AR", name: "Arabic", level: "Native" },
+    { code: "EN", name: "English", level: "Fluent" },
+    { code: "JP", name: "Japanese", level: "Basic" },
   ],
   contributions: [
     {

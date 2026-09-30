@@ -12,6 +12,19 @@ import {
   ArrowDown,
 } from "lucide-react";
 
+function FieldRow({ label, value, hot = false }: { label: string; value: string; hot?: boolean }) {
+  return (
+    <div className="flex items-baseline justify-between gap-4 py-2.5 border-b border-white/5 last:border-b-0">
+      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35 shrink-0">
+        {label}
+      </dt>
+      <dd className={`font-mono text-xs text-right leading-relaxed ${hot ? "text-accent font-bold" : "text-white/80"}`}>
+        {value}
+      </dd>
+    </div>
+  );
+}
+
 export default function SamuraiHero() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -97,14 +110,11 @@ export default function SamuraiHero() {
     },
   ];
 
-  const fieldRecord: [string, string, boolean][] = [
-    ["Status", "● Available", true],
-    ["Base", "Egypt", false],
-    ["Focus", "Mobile apps + Backend APIs", false],
-    ["Stack", "Flutter · Go · Rust · Kotlin", false],
-    ["Mode", "Tested & measured", false],
-    ["Signal", "REC 106 — F/2.8 1/250s", false],
-  ];
+  const focusServices = PORTFOLIO_DATA.services;
+  const focusLabel = `${focusServices[0].title} + ${focusServices[1].title} +${focusServices.length - 2}`;
+  const shippedTotal =
+    PORTFOLIO_DATA.work.length + PORTFOLIO_DATA.projects.pinnedRepos.length;
+  const tongueCodes = PORTFOLIO_DATA.languages.map((l) => l.code).join(" · ");
 
   return (
     <section
@@ -277,7 +287,7 @@ export default function SamuraiHero() {
             >
               <div className="absolute inset-1.5 border border-white/40 pointer-events-none" />
               <span className="brush-jp text-xl lg:text-2xl text-white leading-none" lang="ja">
-                斬
+                先生
               </span>
             </div>
 
@@ -292,7 +302,7 @@ export default function SamuraiHero() {
 
         </div>
 
-        {/* ─── Content row: proof + field record ─── */}
+        {/* ─── Content: proof + field record ─── */}
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-[1.35fr_.65fr] gap-10 items-start w-full">
           <div>
             {/* Tech Spec Sheet */}
@@ -401,7 +411,7 @@ export default function SamuraiHero() {
             </div>
           </div>
 
-          {/* Field record — HUD panel */}
+          {/* Field record — live portfolio data, zero hardcodes */}
           <aside
             className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-6 md:p-7"
             aria-label="Field record"
@@ -418,21 +428,12 @@ export default function SamuraiHero() {
               </span>
             </div>
             <dl className="flex flex-col">
-              {fieldRecord.map(([label, value, hot]) => (
-                <div
-                  key={label}
-                  className="flex items-baseline justify-between gap-4 py-2.5 border-b border-white/5 last:border-b-0"
-                >
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35 shrink-0">
-                    {label}
-                  </dt>
-                  <dd
-                    className={`font-mono text-xs text-right leading-relaxed ${hot ? "text-accent font-bold" : "text-white/80"}`}
-                  >
-                    {value}
-                  </dd>
-                </div>
-              ))}
+              <FieldRow label="Status" value={PORTFOLIO_DATA.profile.availability} hot />
+              <FieldRow label="Role" value={PORTFOLIO_DATA.profile.title} />
+              <FieldRow label="Base" value={PORTFOLIO_DATA.profile.contact.location} />
+              <FieldRow label="Focus" value={focusLabel} />
+              <FieldRow label="Shipped" value={`${shippedTotal} builds tracked`} />
+              <FieldRow label="Languages" value={tongueCodes} />
             </dl>
           </aside>
         </div>

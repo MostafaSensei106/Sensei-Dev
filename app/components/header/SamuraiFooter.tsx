@@ -84,15 +84,20 @@ export default function SamuraiFooter() {
                 ))}
               </div>
 
-              {/* Languages */}
-              <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase text-white/35">
-                <span className="text-white/60">AR — Native</span>
-                <span className="text-primary">•</span>
-                <span className="text-white/60">EN — Fluent</span>
-                <span className="text-primary">•</span>
-                <span className="brush-jp text-sm normal-case tracking-normal text-white/45" lang="ja">
-                  JP — 初級
-                </span>
+              {/* Languages — from portfolio data */}
+              <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase">
+                {PORTFOLIO_DATA.languages.map((l, i) => (
+                  <span key={l.code} className="flex items-center gap-3">
+                    {i > 0 && (
+                      <span className="text-primary" aria-hidden="true">
+                        •
+                      </span>
+                    )}
+                    <span className="text-white/60">
+                      {l.code} — {l.level}
+                    </span>
+                  </span>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -127,7 +132,7 @@ export default function SamuraiFooter() {
               Seal Intent
             </h3>
             <p className="font-mono text-[11px] text-white/45 tracking-wider mb-8">
-              Open for freelance: apps, backends, and package work. Replies within 48h.
+              {PORTFOLIO_DATA.profile.availability}: apps, backends, and package work. Replies within 48h.
             </p>
 
             <form
