@@ -191,7 +191,7 @@ export default function SamuraiHero() {
         {/* ─── Masthead: name first, portrait second — one row ─── */}
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16 w-full">
           {/* Name */}
-          <div className="text-center md:text-left order-1">
+          <div className="text-center md:text-left order-2 md:order-1">
             <p className="font-mono text-[11px] md:text-xs font-bold uppercase tracking-[0.4em] text-primary mb-3">
               Portfolio — 履歴書
             </p>
@@ -210,7 +210,7 @@ export default function SamuraiHero() {
           </div>
 
           {/* Portrait */}
-          <div className="hero-image relative w-[220px] sm:w-[260px] lg:w-[320px] aspect-square shrink-0 order-2 md:ml-auto">
+          <div className="hero-image relative w-[220px] sm:w-[260px] lg:w-[320px] aspect-square shrink-0 order-1 md:order-2 md:ml-auto">
             {/* Hinomaru — Red Sun */}
             <div className="hinomaru-sun absolute inset-[-20%] flex items-center justify-center pointer-events-none">
               <div
