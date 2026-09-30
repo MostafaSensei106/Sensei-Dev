@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     template: `%s | ${PORTFOLIO_DATA.profile.name}`,
   },
   description: PORTFOLIO_DATA.profile.hero.description,
-  keywords: ["Software Engineer", "Flutter", "Dart", "Kotlin", "Android Native", "Go", "Gin", "Spring Boot", "Rust", "Portfolio", PORTFOLIO_DATA.profile.name, "Senior Developer", "Mobile Engineer"],
+  keywords: ["Software Engineer", "Flutter", "Dart", "Kotlin", "Android Native", "Go", "Gin", "Spring Boot", "Rust", "Cryptography", "Vector Database", "Portfolio", PORTFOLIO_DATA.profile.name, "Senior Developer", "Mobile Engineer"],
   authors: [{ name: PORTFOLIO_DATA.profile.name, url: "https://mostafa-mahmoud.dev" }],
   creator: PORTFOLIO_DATA.profile.name,
   alternates: {
@@ -117,7 +117,7 @@ export default function RootLayout({
               ],
               image: "https://mostafa-mahmoud.dev/Assets/art-gallery/Images/image_display/Mostafa_Logo.png",
               alumniOf: "Benha University",
-              knowsAbout: ["Software Engineering", "Flutter", "Dart", "Kotlin", "Android Native", "Go", "Gin", "Spring Boot", "Rust", "Mobile Development"]
+              knowsAbout: ["Software Engineering", "Flutter", "Dart", "Kotlin", "Android Native", "Go", "Gin", "Spring Boot", "Rust", "Post-Quantum Cryptography", "Vector Databases", "Mobile Development"]
             })
           }}
         />

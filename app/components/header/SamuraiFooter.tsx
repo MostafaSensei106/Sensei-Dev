@@ -83,6 +83,17 @@ export default function SamuraiFooter() {
                   </a>
                 ))}
               </div>
+
+              {/* Languages */}
+              <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase text-white/35">
+                <span className="text-white/60">AR — Native</span>
+                <span className="text-primary">•</span>
+                <span className="text-white/60">EN — Fluent</span>
+                <span className="text-primary">•</span>
+                <span className="brush-jp text-sm normal-case tracking-normal text-white/45" lang="ja">
+                  JP — 初級
+                </span>
+              </div>
             </motion.div>
           </div>
 

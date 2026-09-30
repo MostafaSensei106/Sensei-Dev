@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
 const SCRIPT = [
-  { cmd: "flutter build apk --release", out: "✓ apk assembled — 38.2MB, offline-first" },
+  { cmd: "flutter build apk --release", out: "✓ apk assembled — 38.2MB, release-ready" },
   { cmd: "go run ./cmd/api --port 8080", out: "✓ listening on :8080 — p99 6ms" },
   { cmd: "cargo test -p dicom-core --release", out: "✓ 214 passed — 0 failed" },
 ];

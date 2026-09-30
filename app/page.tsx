@@ -7,6 +7,7 @@ import ServicesSection from "@/app/components/services/ServicesSection";
 import StackStrip from "@/app/components/services/StackStrip";
 import SelectedWorkSection from "@/app/components/services/SelectedWorkSection";
 import ProcessSection from "@/app/components/services/ProcessSection";
+import ContributionsStrip from "@/app/components/services/ContributionsStrip";
 import { getGitHubRepos } from "@/app/core/api/github";
 
 const ProfessionalExperience = dynamic(() => import("@/app/components/experience/ProfessionalExperience"));
@@ -61,6 +62,9 @@ export default async function Home() {
       <div id="projects">
         <DynamicProjectsGrid repos={repos} />
       </div>
+
+      {/* 06b — Proof C: upstream contributions */}
+      <ContributionsStrip />
 
       <KanjiDivider text="継続は力なり • 改善 • 実務 • 計測" angle={-1.5} />
 

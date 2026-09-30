@@ -102,7 +102,7 @@ export default function SamuraiHero() {
     ["Base", "Egypt", false],
     ["Focus", "Mobile apps + Backend APIs", false],
     ["Stack", "Flutter · Go · Rust · Kotlin", false],
-    ["Mode", "Offline-first, measured", false],
+    ["Mode", "Tested & measured", false],
     ["Signal", "REC 106 — F/2.8 1/250s", false],
   ];
 
