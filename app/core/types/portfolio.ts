@@ -21,6 +21,7 @@ export interface Profile {
   name: string;
   title: string;
   japaneseTitle: string;
+  availability: string;
   contact: ContactInfo;
   hero: HeroInfo;
 }
@@ -124,6 +125,12 @@ export interface Contribution {
   link: string;
 }
 
+export interface Language {
+  code: string;
+  name: string;
+  level: string;
+}
+
 export interface ThemeConfig {
   colors: {
     primary: string;
@@ -151,6 +158,7 @@ export interface PortfolioData {
   stack: StackGroup[];
   process: ProcessStep[];
   contributions: Contribution[];
+  languages: Language[];
   certificates: Certificate[];
   artGallery: ArtGalleryItem[];
 }
