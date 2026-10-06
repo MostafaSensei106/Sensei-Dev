@@ -4,10 +4,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
-import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Award, ExternalLink, Calendar, ShieldCheck } from "lucide-react";
+
+const Lightbox = dynamic(() => import("yet-another-react-lightbox"), { ssr: false });
 
 export default function HonorGallery() {
   const [open, setOpen] = useState(false);
@@ -92,6 +94,8 @@ export default function HonorGallery() {
                     alt={cert.title}
                     width={400}
                     height={300}
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 400px"
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
                   />
 
@@ -155,13 +159,15 @@ export default function HonorGallery() {
         </div>
       </div>
 
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        index={index}
-        slides={slides}
-        styles={{ container: { backgroundColor: "rgba(0, 0, 0, 0.98)" } }}
-      />
+      {open && (
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          index={index}
+          slides={slides}
+          styles={{ container: { backgroundColor: "rgba(0, 0, 0, 0.98)" } }}
+        />
+      )}
     </section>
   );
 }

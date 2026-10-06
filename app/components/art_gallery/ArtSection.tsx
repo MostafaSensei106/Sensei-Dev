@@ -5,11 +5,10 @@ import { motion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
 import { useState } from "react";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-import { Zoom, Fullscreen, Thumbnails } from "yet-another-react-lightbox/plugins";
-import "yet-another-react-lightbox/plugins/thumbnails.css";
+import dynamic from "next/dynamic";
 import { Sparkles, Maximize2 } from "lucide-react";
+
+const ArtLightbox = dynamic(() => import("./ArtLightbox"), { ssr: false });
 
 export default function ArtSection() {
   const [open, setOpen] = useState(false);
@@ -115,6 +114,7 @@ export default function ArtSection() {
                 alt={img.title}
                 width={500}
                 height={500}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                 loading="lazy"
                 unoptimized={true}
@@ -152,14 +152,14 @@ export default function ArtSection() {
         </div>
       </div>
 
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        index={index}
-        slides={lightboxSlides}
-        plugins={[Zoom, Fullscreen, Thumbnails]}
-        styles={{ container: { backgroundColor: "rgba(0, 0, 0, 0.98)" } }}
-      />
+      {open && (
+        <ArtLightbox
+          open={open}
+          close={() => setOpen(false)}
+          index={index}
+          slides={lightboxSlides}
+        />
+      )}
     </section>
   );
 }

@@ -262,3 +262,19 @@
     scroll-behavior: auto !important;
   }
 }
+
+@keyframes float-particle {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate3d(10px, -20px, 0);
+    opacity: 0.1;
+  }
+}
+
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}

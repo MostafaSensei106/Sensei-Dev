@@ -12,22 +12,26 @@ const delaGothic = Dela_Gothic_One({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-display",
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
 });
 
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-body",
+  display: "swap",
 });
 
 const notoJP = Noto_Sans_JP({
   subsets: ["latin"],
   weight: ["400", "700", "900"],
   variable: "--font-jp",
+  display: "swap",
 });
 
 // Handwritten Japanese brush (calligraphy) for decorative kanji / watermarks
@@ -35,6 +39,7 @@ const yujiSyuku = Yuji_Syuku({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-jp-brush",
+  display: "swap",
 });
 
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";

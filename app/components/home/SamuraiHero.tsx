@@ -276,6 +276,7 @@ export default function SamuraiHero() {
                   width={500}
                   height={500}
                   priority
+                  sizes="(max-width: 640px) 220px, (max-width: 1024px) 260px, 320px"
                   className="w-full h-full object-cover object-top grayscale group-hover/photo:grayscale-0 group-hover/photo:scale-105 transition-all duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/25 via-transparent to-transparent group-hover/photo:from-transparent transition-all duration-700" />
@@ -453,20 +454,6 @@ export default function SamuraiHero() {
           継続は力なり — PERSEVERANCE IS POWER
         </p>
       </div>
-
-      {/* ─── Floating Particle Keyframes (CSS) ─── */}
-      <style jsx>{`
-        @keyframes float-particle {
-          0% {
-            transform: translateY(0px) translateX(0px);
-            opacity: 0.3;
-          }
-          100% {
-            transform: translateY(-20px) translateX(10px);
-            opacity: 0.1;
-          }
-        }
-      `}</style>
     </section>
   );
 }
