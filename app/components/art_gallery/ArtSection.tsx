@@ -42,7 +42,7 @@ export default function ArtSection() {
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+            transition={{ duration: 0.8, ease: EASE }}
             className="max-w-3xl"
           >
             <div className="flex items-center gap-4 mb-6">

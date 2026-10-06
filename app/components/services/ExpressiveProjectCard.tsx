@@ -2,7 +2,7 @@
 
 import { ExternalLink, Github, Star } from "lucide-react";
 import { Repo } from "@/app/core/api/github";
-import { PORTFOLIO_DATA } from "../../core/config/portfolio";
+import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 
 interface ExpressiveProjectCardProps {
   repo: Repo;

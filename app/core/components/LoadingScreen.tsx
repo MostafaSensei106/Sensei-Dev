@@ -17,6 +17,7 @@ export default function LoadingScreen() {
 
   useEffect(() => {
     let raf = 0;
+    let doneTimer: NodeJS.Timeout | undefined;
     const start = performance.now();
     const DURATION = 2100;
 
@@ -28,7 +29,7 @@ export default function LoadingScreen() {
       if (t < 1) {
         raf = requestAnimationFrame(tick);
       } else {
-        setTimeout(() => setLoading(false), 250);
+        doneTimer = setTimeout(() => setLoading(false), 250);
       }
     };
     raf = requestAnimationFrame(tick);
@@ -39,6 +40,7 @@ export default function LoadingScreen() {
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(fallback);
+      if (doneTimer) clearTimeout(doneTimer);
     };
   }, []);
 
