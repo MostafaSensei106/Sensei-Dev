@@ -28,18 +28,18 @@ const outfit = Outfit({
 });
 
 const notoJP = Noto_Sans_JP({
-  subsets: ["latin"],
   weight: ["400", "700", "900"],
   variable: "--font-jp",
   display: "swap",
+  preload: false,
 });
 
 // Handwritten Japanese brush (calligraphy) for decorative kanji / watermarks
 const yujiSyuku = Yuji_Syuku({
-  subsets: ["latin"],
   weight: "400",
   variable: "--font-jp-brush",
   display: "swap",
+  preload: false,
 });
 
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
