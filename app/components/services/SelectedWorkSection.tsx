@@ -11,7 +11,7 @@ import { ExternalLink, Github, Smartphone, Server, Package, Lock } from "lucide-
 const FILTERS: { id: WorkType | "all"; label: string; japanese: string }[] = [
   { id: "all", label: "All", japanese: "全部" },
   { id: "app", label: "Apps", japanese: "アプリ" },
-  { id: "backend", label: "Backend", japanese: "后端" },
+  { id: "backend", label: "Backend", japanese: "バックエンド" },
   { id: "library", label: "Libraries", japanese: "庫" },
 ];
 

@@ -131,24 +131,6 @@ export interface Language {
   level: string;
 }
 
-export interface ThemeConfig {
-  colors: {
-    primary: string;
-    secondary: string;
-    accent: string;
-    tertiary: string;
-    quaternary: string;
-    background: string;
-    surface: string;
-    text: string;
-  };
-  borderRadius: {
-    base: string;
-    card: string;
-    button: string;
-  };
-}
-
 export interface PortfolioData {
   profile: Profile;
   experience: Experience[];

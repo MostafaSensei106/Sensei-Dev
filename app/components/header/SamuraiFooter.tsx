@@ -144,11 +144,13 @@ export default function SamuraiFooter() {
                 const formData = new FormData(form);
 
                 const name = formData.get("name")?.toString() || "";
+                const email = formData.get("email")?.toString() || "";
                 const type = formData.get("type")?.toString() || "project";
                 const message = formData.get("message")?.toString() || "";
 
                 const subject = encodeURIComponent(`[${type}] Inquiry from ${name}`);
-                const body = encodeURIComponent(message || "");
+                const fullBody = `Sender: ${name} (${email})\nType: ${type}\n\n${message}`;
+                const body = encodeURIComponent(fullBody);
 
                 const mailto = `mailto:${PORTFOLIO_DATA.profile.contact.email}?subject=${subject}&body=${body}`;
 

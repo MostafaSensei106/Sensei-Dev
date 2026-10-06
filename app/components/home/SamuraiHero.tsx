@@ -111,7 +111,10 @@ export default function SamuraiHero() {
   ];
 
   const focusServices = PORTFOLIO_DATA.services;
-  const focusLabel = `${focusServices[0].title} + ${focusServices[1].title} +${focusServices.length - 2}`;
+  const focusLabel =
+    focusServices.length >= 2
+      ? `${focusServices[0].title} + ${focusServices[1].title} +${Math.max(0, focusServices.length - 2)}`
+      : focusServices.map((s) => s.title).join(" + ") || "Full-Stack";
   const shippedTotal =
     PORTFOLIO_DATA.work.length + PORTFOLIO_DATA.projects.pinnedRepos.length;
   const tongueCodes = PORTFOLIO_DATA.languages.map((l) => l.code).join(" · ");
