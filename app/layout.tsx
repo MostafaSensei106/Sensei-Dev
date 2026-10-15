@@ -1,46 +1,11 @@
 import React from "react";
+import "./fonts.css";
+import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/app/core/components/ThemeProvider";
 import { SmoothScroll } from "@/app/core/components/SmoothScroll";
 import CursorOverlay from "@/app/core/components/CursorOverlay";
 import AppLoader from "@/app/core/components/AppLoader";
-
-// Fonts
-import { Outfit, Dela_Gothic_One, Noto_Sans_JP, JetBrains_Mono, Yuji_Syuku } from "next/font/google";
-
-const delaGothic = Dela_Gothic_One({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-display",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-const notoJP = Noto_Sans_JP({
-  weight: ["400", "700", "900"],
-  variable: "--font-jp",
-  display: "swap",
-  preload: false,
-});
-
-// Handwritten Japanese brush (calligraphy) for decorative kanji / watermarks
-const yujiSyuku = Yuji_Syuku({
-  weight: "400",
-  variable: "--font-jp-brush",
-  display: "swap",
-  preload: false,
-});
 
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 
@@ -102,7 +67,6 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${delaGothic.variable} ${jetbrainsMono.variable} ${outfit.variable} ${notoJP.variable} ${yujiSyuku.variable}`}
     >
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
         <ThemeProvider>
