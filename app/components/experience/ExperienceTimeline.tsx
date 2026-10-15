@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { TiltCard } from "@/app/core/components/Motion";
 import { Calendar, MapPin, CheckCircle2, ExternalLink } from "lucide-react";
 
 export default function ExperienceTimeline() {
@@ -148,7 +149,7 @@ export default function ExperienceTimeline() {
               </div>
 
               {/* Right Column: Service Record Panel */}
-              <div className="relative bg-surface/60 border border-foreground/5 backdrop-blur-sm group-hover:border-primary/20 transition-all duration-700 overflow-hidden">
+              <TiltCard className="spotlight relative bg-surface/60 border border-foreground/5 backdrop-blur-sm group-hover:border-primary/20 transition-all duration-700 overflow-hidden">
                 {/* Red left accent border */}
                 <div className="absolute top-0 left-0 w-[3px] h-full bg-primary" />
 
@@ -220,7 +221,7 @@ export default function ExperienceTimeline() {
                     <div className="w-1 h-1 bg-foreground/10" />
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </div>
           ))}
         </div>

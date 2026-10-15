@@ -3,6 +3,7 @@
 import { ExternalLink, Github, Star } from "lucide-react";
 import { Repo } from "@/app/core/api/github";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { TiltCard } from "@/app/core/components/Motion";
 
 interface ProjectCardProps {
   repo: Repo;
@@ -25,7 +26,7 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
   const metrics = highlight?.metrics ?? [];
 
   return (
-    <article className="group relative w-full min-h-[380px] md:min-h-[340px] flex flex-col bg-surface/60 border border-foreground/5 p-8 hover:border-primary/40 transition-colors duration-500">
+    <TiltCard className="spotlight group relative w-full min-h-[380px] md:min-h-[340px] flex flex-col bg-surface/60 border border-foreground/5 p-8 hover:border-primary/40 transition-colors duration-500">
       {/* Top katana line */}
       <div
         className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-primary/40 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500"
@@ -115,13 +116,13 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
             href={repo.homepage}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 border border-foreground/10 hover:bg-primary hover:text-foreground hover:border-primary transition-all duration-300 text-foreground/60 flex items-center justify-center"
+            className="p-3 border border-foreground/10 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 text-foreground/60 flex items-center justify-center"
             aria-label={`Visit live demo for ${repo.name}`}
           >
             <ExternalLink size={16} />
           </a>
         )}
       </div>
-    </article>
+    </TiltCard>
   );
 }

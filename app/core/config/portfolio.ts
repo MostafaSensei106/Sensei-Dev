@@ -264,6 +264,34 @@ export const PORTFOLIO_DATA: PortfolioData = {
     { code: "EN", name: "English", level: "Fluent" },
     { code: "JP", name: "Japanese", level: "Basic" },
   ],
+  uses: [
+    { id: "write", title: "Write", japanese: "書く", items: ["Flutter", "Dart", "Kotlin", "Go", "Rust"] },
+    { id: "ship", title: "Ship", japanese: "出荷", items: ["Git", "Linux", "Docker", "CI/CD"] },
+    { id: "observe", title: "Observe", japanese: "観測", items: ["Sentry", "Bench scripts", "Dio", "JWT"] },
+    { id: "explore", title: "Exploring", japanese: "探求", items: ["ML-KEM / ML-DSA", "HNSW search", "GPU shaders"] },
+  ],
+  now: [
+    { label: "Leading", detail: "Flutter track at GDGoC Benha — roadmap, workshops, and the community app V2." },
+    { label: "Studying", detail: "Final stretch of the CS degree at Benha University (2022 – 2026)." },
+    { label: "Shipping", detail: "Go backends and Dart packages with bench scripts and documented limits." },
+    { label: "Open to", detail: "Apps, backends, and package work. Replies within 48h." },
+  ],
+  faq: [
+    { q: "Are you available for work?", a: "Yes — open for new opportunities: apps, backends, and package work. Replies within 48 hours." },
+    { q: "How do we start?", a: "A short brief: scope, platform, and what done looks like. Every engagement follows the same rhythm — brief, build, measure, harden." },
+    { q: "What do I actually receive?", a: "A concrete deliverable plus docs: store build, API with compose file, or package with bench scripts. Never just slides." },
+    { q: "What does private-demo mean?", a: "Client work under NDA. There is no public repo, but a live demo can be arranged on request." },
+    { q: "Do you mentor or teach?", a: "Yes — Flutter roadmaps, workshops, and code review for student teams. 200+ students mentored through GDGoC Benha." },
+    { q: "Which platforms and stacks?", a: "Flutter + Dart + Kotlin for mobile, Go (Gin) or Spring Boot for backends, Rust cores over FFI when performance demands it." },
+  ],
+  milestones: [
+    { year: "2022", title: "Started CS", detail: "Began Computer Science at Benha University — software engineering, algorithms, AI." },
+    { year: "2024", title: "First client app", detail: "Built the LothgaTablet shell: core structure, audio layer, and local database." },
+    { year: "2024", title: "Led Flutter track", detail: "Became Head of Flutter at GDGoC Benha — roadmap used by 200+ students." },
+    { year: "2024", title: "Shipped Tadamon", detail: "On-device product scanning with cloud sync — open source." },
+    { year: "2025", title: "Backends + packages", detail: "Go APIs with Docker deploys, plus Dart packages with Rust cores and bench scripts." },
+    { year: "2026", title: "Graduation", detail: "Final year — closing the degree while staying open for apps, backends, and package work." },
+  ],
   contributions: [
     {
       name: "Yaru.dart",

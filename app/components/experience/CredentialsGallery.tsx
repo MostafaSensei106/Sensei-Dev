@@ -6,6 +6,7 @@ import { EASE } from "@/app/core/motion";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { TiltCard } from "@/app/core/components/Motion";
 import "yet-another-react-lightbox/styles.css";
 import { Award, ExternalLink, Calendar, ShieldCheck } from "lucide-react";
 
@@ -84,8 +85,10 @@ export default function CredentialsGallery() {
                 setIndex(idx);
                 setOpen(true);
               }}
-              className="relative group cursor-pointer bg-surface/60 border border-foreground/5 overflow-hidden backdrop-blur-xl hover:border-accent/40 transition-all duration-700"
+              className="cursor-pointer"
             >
+              <TiltCard className="spotlight relative group bg-surface/60 border border-foreground/5 overflow-hidden backdrop-blur-xl hover:border-accent/40 transition-all duration-700 h-full"
+              >
               <div className="flex flex-col lg:flex-row h-full">
                 {/* Certificate Image — 40% width on desktop */}
                 <div className="w-full lg:w-2/5 h-64 lg:h-auto relative overflow-hidden">
@@ -154,6 +157,7 @@ export default function CredentialsGallery() {
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-500" />
               <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-500" />
+              </TiltCard>
             </motion.div>
           ))}
         </div>

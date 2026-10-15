@@ -1,11 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useMemo } from "react";
 import { EASE } from "@/app/core/motion";
 import { Repo } from "@/app/core/api/github";
 import ProjectCard from "./ProjectCard";
+import { CountUp } from "@/app/core/components/CountUp";
+import { Pacman } from "@/app/core/components/Pacman";
 
 export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
+  const totalStars = useMemo(
+    () => repos.reduce((s, r) => s + (r.stargazers_count || 0), 0),
+    [repos]
+  );
   return (
     <section id="projects" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Japanese Watermark */}
@@ -53,7 +60,7 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
             </p>
           </motion.div>
 
-          {/* Counter Badge */}
+          {/* Counter Badge — pacman eats the numbers up */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,12 +68,13 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex lg:justify-end"
           >
-            <div className="relative px-6 py-3 border border-foreground/10 bg-surface/60 backdrop-blur-sm">
-              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary" />
+            <div className="relative flex items-center gap-4 px-6 py-3 border border-accent/40 bg-surface/60 backdrop-blur-sm">
+              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent" />
+              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent" />
+              <Pacman size={30} />
               <div className="flex items-center gap-3">
-                <span className="font-mono text-primary text-2xl font-black">
-                  {String(repos.length).padStart(2, "0")}
+                <span className="font-mono text-accent text-2xl font-black tabular-nums">
+                  <CountUp target={repos.length} />
                 </span>
                 <div className="flex flex-col">
                   <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
@@ -74,6 +82,20 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
                   </span>
                   <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
                     Indexed
+                  </span>
+                </div>
+                <span className="font-mono text-accent/50 text-xl font-black" aria-hidden="true">
+                  •
+                </span>
+                <span className="font-mono text-accent text-2xl font-black tabular-nums">
+                  <CountUp target={totalStars} />
+                </span>
+                <div className="flex flex-col">
+                  <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
+                    Stars
+                  </span>
+                  <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
+                    Earned
                   </span>
                 </div>
               </div>

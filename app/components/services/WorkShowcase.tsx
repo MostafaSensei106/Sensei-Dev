@@ -7,6 +7,7 @@ import SectionHeader from "@/app/core/components/SectionHeader";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import type { WorkType } from "@/app/core/types/portfolio";
 import { ExternalLink, Github, Smartphone, Server, Package, Lock } from "lucide-react";
+import { TiltCard } from "@/app/core/components/Motion";
 
 const FILTERS: { id: WorkType | "all"; label: string; japanese: string }[] = [
   { id: "all", label: "All", japanese: "全部" },
@@ -67,13 +68,14 @@ export default function WorkShowcase() {
           {items.map((w, idx) => {
             const Icon = TYPE_ICON[w.type];
             return (
-              <motion.article
+              <motion.div
                 key={w.id}
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.7, delay: (idx % 2) * 0.1, ease: EASE }}
-                className="group relative bg-surface/60 border border-foreground/5 p-8 hover:border-primary/40 transition-colors duration-500 flex flex-col"
+              >
+              <TiltCard className="spotlight group relative bg-surface/60 border border-foreground/5 p-8 hover:border-primary/40 transition-colors duration-500 flex flex-col h-full"
               >
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-primary/40 to-transparent opacity-70" aria-hidden="true" />
                 <div className="flex items-start justify-between gap-4 mb-5">
@@ -136,7 +138,8 @@ export default function WorkShowcase() {
                     <span className="font-mono text-[10px] text-foreground/35 tracking-[0.2em] uppercase">Demo on request — NDA client work</span>
                   )}
                 </div>
-              </motion.article>
+              </TiltCard>
+              </motion.div>
             );
           })}
         </div>

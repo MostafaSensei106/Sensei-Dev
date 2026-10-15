@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { useContributionStats } from "@/app/core/api/contributions";
+import { ContributionGraph } from "./ContributionGraph";
+import { CountUp } from "@/app/core/components/CountUp";
 import { ExternalLink } from "lucide-react";
 
 /**
@@ -10,6 +13,8 @@ import { ExternalLink } from "lucide-react";
  * Compact strip inside the proof cluster, same card language.
  */
 export default function ContributionsGrid() {
+  const stats = useContributionStats(PORTFOLIO_DATA.projects.githubUsername);
+
   return (
     <section aria-label="Open-source contributions" className="relative py-16 md:py-20 px-6 md:px-20 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -27,6 +32,16 @@ export default function ContributionsGrid() {
           <span className="brush-jp text-lg text-foreground/30" lang="ja">
             貢献
           </span>
+          {stats.status === "ready" && (
+            <span className="ml-auto flex items-center gap-3 border border-foreground/10 bg-surface/60 px-4 py-2">
+              <span className="font-mono text-lg font-black text-accent tabular-nums">
+                <CountUp target={stats.total} />
+              </span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-foreground/50">
+                commits // last year
+              </span>
+            </span>
+          )}
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -40,7 +55,7 @@ export default function ContributionsGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
-              className="group relative bg-surface/60 border border-foreground/5 p-6 hover:border-tertiary/50 transition-colors duration-500 flex flex-col"
+              className="group spotlight relative bg-surface/60 border border-foreground/5 p-6 hover:border-tertiary/50 transition-colors duration-500 flex flex-col"
               aria-label={`${c.name} — ${c.org}`}
             >
               <div
@@ -62,6 +77,10 @@ export default function ContributionsGrid() {
               <p className="text-sm text-foreground/55 font-light leading-relaxed">{c.description}</p>
             </motion.a>
           ))}
+        </div>
+
+        <div className="mt-6">
+          <ContributionGraph stats={stats} />
         </div>
       </div>
     </section>

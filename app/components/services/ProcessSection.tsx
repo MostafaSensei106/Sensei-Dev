@@ -24,7 +24,7 @@ export default function ProcessSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
-              className="relative bg-background/60 border border-foreground/5 p-7 hover:border-primary/40 transition-colors duration-500"
+              className="relative spotlight bg-background/60 border border-foreground/5 p-7 hover:border-primary/40 transition-colors duration-500"
             >
               <div className="font-mono text-5xl font-black text-foreground/[0.06] absolute top-4 right-5 select-none" aria-hidden="true">
                 {p.index}

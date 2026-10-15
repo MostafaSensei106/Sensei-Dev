@@ -5,13 +5,21 @@ import SiteNav from "@/app/components/header/SiteNav";
 import SectionDivider from "@/app/core/components/SectionDivider";
 import ServicesSection from "@/app/components/services/ServicesSection";
 import TechStackGrid from "@/app/components/services/TechStackGrid";
+import UsesSection from "@/app/components/services/UsesSection";
 import WorkShowcase from "@/app/components/services/WorkShowcase";
 import ProcessSection from "@/app/components/services/ProcessSection";
+import FaqSection from "@/app/components/services/FaqSection";
 import ContributionsGrid from "@/app/components/services/ContributionsGrid";
 import { getGitHubRepos } from "@/app/core/api/github";
 
 const ExperienceTimeline = dynamic(
   () => import("@/app/components/experience/ExperienceTimeline")
+);
+const MilestonesSection = dynamic(
+  () => import("@/app/components/experience/MilestonesSection")
+);
+const NowSection = dynamic(
+  () => import("@/app/components/experience/NowSection")
 );
 const ProjectsGrid = dynamic(
   () => import("@/app/components/services/ProjectsGrid")
@@ -28,6 +36,8 @@ const ContactFooter = dynamic(
 
 export default async function Home() {
   const repos = await getGitHubRepos();
+  const projectCount = repos.length;
+  const starCount = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
 
   return (
     <main className="relative w-full bg-background text-foreground overflow-x-hidden">
@@ -47,7 +57,7 @@ export default async function Home() {
 
       {/* 01 — Who: face, name, stack in 5 seconds */}
       <div id="home">
-        <HeroSection />
+        <HeroSection projectCount={projectCount} starCount={starCount} />
       </div>
 
       {/* 02 — Trust: numbers before claims */}
@@ -58,33 +68,45 @@ export default async function Home() {
         <ServicesSection />
       </div>
 
-      {/* 04 — Tools: the exact stack behind the offer */}
-      <TechStackGrid />
-
       <SectionDivider text="設計 • 開発 • 構築 • 計測 • 出荷" reverse={true} angle={-1.5} />
 
-      {/* 05 — Proof A: shipped apps & backend APIs */}
+      {/* 04 — Proof A: shipped apps & backend APIs */}
       <div id="work">
         <WorkShowcase />
       </div>
 
-      {/* 06 — Proof B: open-source depth */}
+      {/* 05 — Proof B: open-source depth */}
       <div id="projects">
         <ProjectsGrid repos={repos} />
       </div>
 
-      {/* 06b — Proof C: upstream contributions */}
+      {/* 05b — Proof C: upstream contributions */}
       <ContributionsGrid />
 
       <SectionDivider text="継続は力なり • 改善 • 実務 • 計測" angle={-1.5} />
+
+      {/* 06 — Toolbox: the tools behind the proof above */}
+      <TechStackGrid />
+
+      {/* 06b — Daily drivers */}
+      <UsesSection />
 
       {/* 07 — Authority: where this happened */}
       <div id="experience">
         <ExperienceTimeline />
       </div>
 
+      {/* 07b — Path recap + present snapshot */}
+      <MilestonesSection />
+      <NowSection />
+
       {/* 08 — Risk removal: how we will work together */}
       <ProcessSection />
+
+      {/* 08b — Pre-call answers */}
+      <div id="faq">
+        <FaqSection />
+      </div>
 
       <SectionDivider text="認定 • 実績 • 知識 • 技能" angle={-1.5} />
 

@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CountUp } from "@/app/core/components/CountUp";
 
 const STATS = [
-  { value: "10+", label: "Projects shipped", japanese: "出荷" },
-  { value: "6", label: "OSS packages", japanese: "庫" },
-  { value: "200+", label: "Students mentored", japanese: "指導" },
-  { value: "Egypt / Remote", label: "Base / availability", japanese: "場所" },
+  { target: 10, suffix: "+", label: "Projects shipped", japanese: "出荷" },
+  { target: 6, suffix: "", label: "OSS packages", japanese: "庫" },
+  { target: 200, suffix: "+", label: "Students mentored", japanese: "指導" },
+  { target: 3, suffix: "+", label: "Years experience", japanese: "経験" },
 ];
 
 export default function StatsBar() {
@@ -22,7 +23,9 @@ export default function StatsBar() {
             transition={{ duration: 0.55, delay: i * 0.07 }}
             className="px-6 py-5 flex items-center gap-4"
           >
-            <span className="font-mono text-xl md:text-2xl font-black text-accent">{s.value}</span>
+            <span className="font-mono text-xl md:text-2xl font-black text-accent tabular-nums">
+              <CountUp target={s.target} suffix={s.suffix} />
+            </span>
             <span className="flex flex-col">
               <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-foreground/60">{s.label}</span>
               <span className="jp-eyebrow text-[9px] text-foreground/25" lang="ja">{s.japanese}</span>

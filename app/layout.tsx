@@ -3,6 +3,9 @@ import "./fonts.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/app/core/components/ThemeProvider";
+import { ThemeFxProvider } from "@/app/core/theme/ThemeFxProvider";
+import { SpotlightHost } from "@/app/core/components/Motion";
+import { CommandPalette } from "@/app/core/components/CommandPalette";
 import { SmoothScroll } from "@/app/core/components/SmoothScroll";
 import CursorOverlay from "@/app/core/components/CursorOverlay";
 import AppLoader from "@/app/core/components/AppLoader";
@@ -70,6 +73,7 @@ export default function RootLayout({
     >
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
         <ThemeProvider>
+        <ThemeFxProvider>
           <a href="#home" className="skip-link">Skip to content</a>
           <script
             type="application/ld+json"
@@ -92,10 +96,13 @@ export default function RootLayout({
             }}
           />
           <AppLoader />
+          <SpotlightHost />
+          <CommandPalette />
           <SmoothScroll>
             <CursorOverlay />
             {children}
           </SmoothScroll>
+        </ThemeFxProvider>
         </ThemeProvider>
       </body>
     </html>

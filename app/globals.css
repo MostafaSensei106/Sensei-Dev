@@ -101,6 +101,15 @@
     outline-offset: 3px;
   }
 
+  /* Pointer affordance on touch / non-fine pointers
+     (fine pointers use the custom cursor with cursor:none). */
+  @media (pointer: coarse) {
+    button,
+    [role="button"] {
+      cursor: pointer;
+    }
+  }
+
   /* Skip link */
   .skip-link {
     position: fixed;
@@ -285,9 +294,67 @@
   letter-spacing: 0.35em;
 }
 
+/* ─── Mouse spotlight cards — radial highlight follows the cursor.
+   TiltCard sets --mx/--my. Zero JS cost beyond the tilt handler. */
+.spotlight {
+  position: relative;
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--primary) 14%, transparent),
+    transparent 70%
+  );
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Blue variant — tools-flavored glow (tertiary) instead of red. */
+.spotlight-blue::before {
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--tertiary) 16%, transparent),
+    transparent 70%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight::before {
+    display: none;
+  }
+}
+
+/* ─── Theme water-drop morph — gradual token easing while the
+   canvas ripple covers the flip. Added/removed by ThemeFxProvider. */
+.fx-morph,
+.fx-morph *,
+.fx-morph *::before,
+.fx-morph *::after {
+  transition:
+    background-color 0.55s ease,
+    color 0.55s ease,
+    border-color 0.55s ease,
+    fill 0.55s ease,
+    stroke 0.55s ease !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto !important;
+  }
+  /* Infinite indicators are decoration, not information. */
+  .animate-ping,
+  .animate-pulse {
+    animation: none !important;
   }
 }
 

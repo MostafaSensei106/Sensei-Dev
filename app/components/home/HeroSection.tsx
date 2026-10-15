@@ -3,7 +3,9 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { RevealText } from "@/app/core/components/RevealText";
 import {
   Github,
   Linkedin,
@@ -11,6 +13,8 @@ import {
   Download,
   ArrowDown,
 } from "lucide-react";
+
+import { prefersReducedMotion } from "@/app/core/theme/fx";
 
 function FieldRow({ label, value, hot = false }: { label: string; value: string; hot?: boolean }) {
   return (
@@ -25,10 +29,22 @@ function FieldRow({ label, value, hot = false }: { label: string; value: string;
   );
 }
 
-export default function HeroSection() {
+export default function HeroSection({
+  projectCount,
+  starCount,
+}: {
+  projectCount: number;
+  starCount: number;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 140]);
 
   useEffect(() => {
+    if (prefersReducedMotion()) return; // final state is the natural layout
     const ctx = gsap.context(() => {
       /* Entrance: content stack */
       gsap.from(".hero-content > *", {
@@ -92,8 +108,7 @@ export default function HeroSection() {
     return () => ctx.revert();
   }, []);
 
-  const socials = [
-    {
+  const socials = [    {
       name: "GitHub",
       icon: Github,
       href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`,
@@ -115,8 +130,7 @@ export default function HeroSection() {
     focusServices.length >= 2
       ? `${focusServices[0].title} + ${focusServices[1].title} +${Math.max(0, focusServices.length - 2)}`
       : focusServices.map((s) => s.title).join(" + ") || "Full-Stack";
-  const shippedTotal =
-    PORTFOLIO_DATA.work.length + PORTFOLIO_DATA.projects.pinnedRepos.length;
+  const shippedLabel = `${projectCount} projects · ${starCount} stars`;
   const tongueCodes = PORTFOLIO_DATA.languages.map((l) => l.code).join(" · ");
 
   return (
@@ -163,10 +177,10 @@ export default function HeroSection() {
         ))}
       </div>
 
-      {/* ─── Background Japanese Watermark ─── */}
+      {/* ─── Background Japanese Watermark (parallax) ─── */}
+      <motion.div style={{ y: bgY }} className="absolute inset-0 pointer-events-none" aria-hidden="true">
       <div
         className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-foreground/[0.03] font-black text-[10vw] select-none pointer-events-none z-0 leading-none"
-        aria-hidden="true"
         role="img"
       >
         <div className="vertical-text">
@@ -181,6 +195,7 @@ export default function HeroSection() {
           <span>匠</span>
         </div>
       </div>
+      </motion.div>
 
       {/* ─── Scanline Overlay ─── */}
       <div
@@ -209,13 +224,13 @@ export default function HeroSection() {
               Portfolio — 履歴書
             </p>
             <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.85] tracking-tighter uppercase">
-              <span className="block text-foreground">Mostafa</span>
-              <span
+              <RevealText text="Mostafa" className="block text-foreground" />
+              <RevealText
+                text="Mahmoud"
+                delay={0.12}
                 className="block md:ml-10 text-transparent"
                 style={{ WebkitTextStroke: "2px #BC002D" }}
-              >
-                Mahmoud
-              </span>
+              />
             </h1>
             <p className="brush-jp text-xl md:text-2xl text-foreground/40 mt-4" lang="ja">
               モスタファ・マフムード — モバイルアプリエンジニア
@@ -436,7 +451,7 @@ export default function HeroSection() {
               <FieldRow label="Role" value={PORTFOLIO_DATA.profile.title} />
               <FieldRow label="Base" value={PORTFOLIO_DATA.profile.contact.location} />
               <FieldRow label="Focus" value={focusLabel} />
-              <FieldRow label="Shipped" value={`${shippedTotal} builds tracked`} />
+              <FieldRow label="Shipped" value={shippedLabel} />
               <FieldRow label="Languages" value={tongueCodes} />
             </dl>
           </aside>

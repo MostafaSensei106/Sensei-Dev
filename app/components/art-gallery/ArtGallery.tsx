@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
 import { useState } from "react";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { TiltCard } from "@/app/core/components/Motion";
 import dynamic from "next/dynamic";
 import { Sparkles, Maximize2 } from "lucide-react";
 

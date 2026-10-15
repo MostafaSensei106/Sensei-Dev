@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { TiltCard } from "@/app/core/components/Motion";
 import { Code2, Server, Package, GraduationCap } from "lucide-react";
 
 const ICONS = [Code2, Server, Package, GraduationCap];
@@ -32,18 +33,19 @@ export default function ServicesSection() {
           {PORTFOLIO_DATA.services.map((s, idx) => {
             const Icon = ICONS[idx % ICONS.length];
             return (
-              <motion.article
+              <motion.div
                 key={s.id}
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.7, delay: idx * 0.08, ease: EASE }}
-                className="group relative bg-surface/60 border border-foreground/5 p-7 flex flex-col hover:border-primary/40 transition-colors duration-500"
               >
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-primary/0 group-hover:bg-primary transition-colors duration-500" aria-hidden="true" />
+              <TiltCard className="group spotlight spotlight-blue relative bg-surface/60 border border-foreground/5 p-7 flex flex-col h-full hover:border-tertiary/50 transition-colors duration-500"
+              >
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-tertiary/0 group-hover:bg-tertiary transition-colors duration-500" aria-hidden="true" />
                 <div className="flex items-center justify-between mb-6">
                   <div className="p-2.5 bg-foreground/5 border border-foreground/10">
-                    <Icon size={18} className="text-primary" />
+                    <Icon size={18} className="text-tertiary" />
                   </div>
                   <span className="jp-eyebrow text-[10px] text-foreground/25" lang="ja">{s.japanese}</span>
                 </div>
@@ -64,7 +66,8 @@ export default function ServicesSection() {
                 <div className="pt-4 border-t border-foreground/5 font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
                   → {s.deliverable}
                 </div>
-              </motion.article>
+              </TiltCard>
+              </motion.div>
             );
           })}
         </div>

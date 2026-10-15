@@ -12,6 +12,8 @@ import {
   Award,
   Palette,
   Mail,
+  MessageCircle,
+  Command,
 } from "lucide-react";
 
 const navItems = [
@@ -19,6 +21,7 @@ const navItems = [
   { name: "Services", href: "#services", icon: Briefcase, katakana: "役務" },
   { name: "Work", href: "#work", icon: Code2, katakana: "仕事" },
   { name: "Experience", href: "#experience", icon: Briefcase, katakana: "経験" },
+  { name: "FAQ", href: "#faq", icon: MessageCircle, katakana: "質問" },
   { name: "Honors", href: "#certificates", icon: Award, katakana: "認定" },
   { name: "Art", href: "#art", icon: Palette, katakana: "芸術" },
   { name: "Contact", href: "#contact", icon: Mail, katakana: "連絡" },
@@ -129,7 +132,17 @@ export default function SiteNav() {
         </div>
 
         {/* Desktop theme toggle */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event("sensei:palette"))}
+            aria-label="Open command palette (Ctrl+K)"
+            title="Commands (Ctrl+K)"
+            className="flex items-center gap-1.5 border border-foreground/10 bg-foreground/[0.03] px-2.5 py-2.5 font-mono text-[10px] text-foreground/50 transition-colors duration-300 hover:border-primary hover:text-primary"
+          >
+            <Command size={14} />
+            <kbd>K</kbd>
+          </button>
           <ThemeToggle />
         </div>
       </motion.nav>
