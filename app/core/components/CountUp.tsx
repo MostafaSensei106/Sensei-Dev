@@ -22,7 +22,7 @@ export function useCountUp(
     let raf = 0;
     const start = performance.now();
     const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / duration);
+      const t = Math.min(1, Math.max(0, (now - start) / duration));
       setValue(Math.round((1 - Math.pow(1 - t, 3)) * target));
       if (t < 1) raf = requestAnimationFrame(tick);
     };

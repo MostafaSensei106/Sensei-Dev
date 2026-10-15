@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { RevealText } from "@/app/core/components/RevealText";
+import { HeroMascot } from "@/app/components/home/HeroMascot";
 import {
   Github,
   Linkedin,
@@ -317,6 +318,9 @@ export default function HeroSection({
                 border: "1px dashed rgba(255,255,255,0.06)",
               }}
             />
+
+            {/* Mascot companion — random language mascot per visit */}
+            <HeroMascot className="absolute -bottom-3 -left-4 z-20 lg:-left-8" />
           </div>
 
         </div>

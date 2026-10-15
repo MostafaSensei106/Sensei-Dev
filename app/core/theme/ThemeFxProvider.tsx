@@ -106,7 +106,9 @@ export function ThemeFxProvider({ children }: { children: ReactNode }) {
       const start = performance.now();
 
       const frame = (now: number) => {
-        const t = Math.min(1, (now - start) / duration);
+        // rAF timestamps can predate `start` (vsync vs event clock) —
+        // clamp so the radius never goes negative (IndexSizeError).
+        const t = Math.min(1, Math.max(0, (now - start) / duration));
         const eased = 1 - Math.pow(1 - t, 3);
         const r = eased * maxR;
 

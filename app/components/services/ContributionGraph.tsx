@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { CountUp } from "@/app/core/components/CountUp";
-import { Pacman } from "@/app/core/components/Pacman";
-import { prefersReducedMotion } from "@/app/core/theme/fx";
 import type { ContributionStats } from "@/app/core/api/contributions";
 
 const LEVEL_BG = [
@@ -55,9 +53,6 @@ export function ContributionGraph({ stats }: { stats: ContributionStats }) {
     );
   }
 
-  const reduced =
-    typeof window !== "undefined" && prefersReducedMotion();
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -90,18 +85,6 @@ export function ContributionGraph({ stats }: { stats: ContributionStats }) {
               />
             ))}
           </div>
-          {!reduced && (
-            <motion.div
-              aria-hidden="true"
-              className="pointer-events-none absolute top-1/2 z-10 -translate-y-1/2"
-              initial={{ left: "-5%" }}
-              whileInView={{ left: "101%" }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 2.6, ease: "linear", delay: 0.4 }}
-            >
-              <Pacman size={36} />
-            </motion.div>
-          )}
         </div>
       </div>
       <div className="mt-3 flex items-center justify-end gap-1.5 font-mono text-[9px] text-foreground/40">

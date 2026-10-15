@@ -7,7 +7,7 @@ import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="relative py-24 md:py-32 px-6 md:px-20 bg-surface/30 border-y border-foreground/5 overflow-hidden">
+    <section id="process" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       <div
         className="absolute right-8 top-16 pointer-events-none select-none text-foreground/[0.03] text-[13vw] font-black z-0 vertical-text"
         aria-hidden="true"
@@ -33,7 +33,7 @@ export default function ProcessSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
-              className="relative spotlight bg-background/60 border border-foreground/5 p-7 hover:border-primary/40 transition-colors duration-500"
+              className="relative spotlight bg-surface/60 border border-foreground/5 p-7 hover:border-primary/40 transition-colors duration-500"
             >
               <div className="font-mono text-5xl font-black text-foreground/[0.06] absolute top-4 right-5 select-none" aria-hidden="true">
                 {p.index}

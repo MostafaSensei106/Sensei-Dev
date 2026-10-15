@@ -6,7 +6,7 @@ import { EASE } from "@/app/core/motion";
 import { Repo } from "@/app/core/api/github";
 import ProjectCard from "./ProjectCard";
 import { CountUp } from "@/app/core/components/CountUp";
-import { Pacman } from "@/app/core/components/Pacman";
+import { Star } from "lucide-react";
 
 export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
   const totalStars = useMemo(
@@ -71,7 +71,7 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
             <div className="relative flex items-center gap-4 px-6 py-3 border border-accent/40 bg-surface/60 backdrop-blur-sm">
               <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent" />
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent" />
-              <Pacman size={30} />
+              <Star size={26} className="text-accent" fill="var(--accent)" />
               <div className="flex items-center gap-3">
                 <span className="font-mono text-accent text-2xl font-black tabular-nums">
                   <CountUp target={repos.length} />

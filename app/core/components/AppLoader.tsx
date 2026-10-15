@@ -2,28 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Pacman } from "@/app/core/components/Pacman";
 import { prefersReducedMotion } from "@/app/core/theme/fx";
 
-const BOOT_LINES = [
-  { en: "INITIALIZING SYSTEMS", jp: "起動中" },
-  { en: "LOADING BUSHIDO PROTOCOL", jp: "武士道" },
-  { en: "FORGING THE KATANA", jp: "鍛錬" },
-  { en: "CALIBRATING STACK", jp: "技術調整" },
-  { en: "SENSEI READY", jp: "出陣" },
-];
-
-const DOTS = 28;
+const BOOT_WORDS = ["起動中", "武士道", "鍛錬", "技術調整", "出陣"];
 
 /**
- * Boot loader — hex emblem + cycling boot lines, progress eaten
- * by a Pac-Man dot track (same motif as the Libraries counter).
- *
- * ui-review notes applied:
- * - No hardcoded hex: glow uses color-mix over --primary.
- * - Skip target is the whole overlay + cursor-pointer/title affordance.
- * - % readout is aria-hidden (per-frame updates would spam SRs).
- * - Infinite motion (spin/chomp) disabled under reduced-motion.
+ * Minimal boot screen: monogram, cycling kanji, hairline progress.
+ * Click anywhere to skip. Respects reduced-motion (short + static).
  */
 export default function AppLoader() {
   const [loading, setLoading] = useState(true);
@@ -36,23 +21,21 @@ export default function AppLoader() {
     let raf = 0;
     let doneTimer: NodeJS.Timeout | undefined;
     const start = performance.now();
-    const DURATION = reduced ? 700 : 2100;
+    const DURATION = reduced ? 600 : 1900;
 
     const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / DURATION);
-      // ease-out so it feels fast then settles
-      const eased = 1 - Math.pow(1 - t, 3);
-      setProgress(Math.round(eased * 100));
+      const t = Math.min(1, Math.max(0, (now - start) / DURATION));
+      setProgress(Math.round((1 - Math.pow(1 - t, 3)) * 100));
       if (t < 1) {
         raf = requestAnimationFrame(tick);
       } else {
-        doneTimer = setTimeout(() => setLoading(false), 250);
+        doneTimer = setTimeout(() => setLoading(false), 200);
       }
     };
     raf = requestAnimationFrame(tick);
 
     // Safety: never trap the user
-    const fallback = setTimeout(() => setLoading(false), 4000);
+    const fallback = setTimeout(() => setLoading(false), 3500);
 
     return () => {
       cancelAnimationFrame(raf);
@@ -61,127 +44,63 @@ export default function AppLoader() {
     };
   }, [reduced]);
 
-  const safeIndex = Math.max(
-    0,
-    Math.min(BOOT_LINES.length - 1, Math.floor((progress / 100) * BOOT_LINES.length))
-  );
-  const line = BOOT_LINES[safeIndex] ?? BOOT_LINES[0] ?? { en: "LOADING", jp: "起動中" };
+  const word =
+    BOOT_WORDS[
+      Math.max(
+        0,
+        Math.min(BOOT_WORDS.length - 1, Math.floor((progress / 100) * BOOT_WORDS.length))
+      )
+    ] ?? "起動中";
 
   return (
     <AnimatePresence>
       {loading && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ y: "-100%", opacity: 0.4 }}
-          transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center overflow-hidden cursor-pointer"
+          exit={{ y: "-100%" }}
+          transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[9999] flex cursor-pointer flex-col items-center justify-center bg-background"
           onClick={() => setLoading(false)}
           title="Skip intro"
           role="status"
           aria-label="Loading portfolio"
         >
-          {/* Backdrop texture */}
-          <div className="absolute inset-0 speed-lines opacity-30" aria-hidden="true" />
-          <div className="absolute inset-0 neural-grid opacity-[0.04]" aria-hidden="true" />
-
-          {/* Giant brush watermark */}
-          <div
-            className="brush-jp pointer-events-none absolute inset-0 flex items-center justify-center text-foreground/[0.04] text-[38vw] leading-none select-none"
-            aria-hidden="true"
+          <motion.span
+            key={word}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            className="brush-jp text-5xl text-foreground/80"
             lang="ja"
           >
-            侍
-          </div>
+            {word}
+          </motion.span>
 
-          {/* Corner brackets */}
-          <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-primary/60" aria-hidden="true" />
-          <div className="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-primary/60" aria-hidden="true" />
-          <div className="absolute bottom-6 left-6 w-12 h-12 border-b-2 border-l-2 border-primary/60" aria-hidden="true" />
-          <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-primary/60" aria-hidden="true" />
+          <h1 className="mt-4 font-display text-xl font-black uppercase tracking-tighter text-foreground">
+            Mostafa<span className="text-primary">.</span>
+          </h1>
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.45em] text-foreground/40">
+            Portfolio
+          </p>
 
-          {/* Center emblem */}
-          <div className="relative">
-            <motion.div
-              animate={reduced ? {} : { rotate: 360 }}
-              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-              className="h-40 w-40 border border-primary/25 border-t-primary"
-              style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
-              aria-hidden="true"
-            />
-            <div
-              className="absolute inset-3 border border-foreground/10"
-              style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
-              aria-hidden="true"
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <motion.span
-                key={safeIndex}
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
-                className="brush-jp text-6xl text-primary"
-                style={{
-                  filter:
-                    "drop-shadow(0 0 25px color-mix(in srgb, var(--primary) 55%, transparent))",
-                }}
-                lang="ja"
-              >
-                {line.jp}
-              </motion.span>
-              <span
-                aria-hidden="true"
-                className="mt-2 font-mono text-[10px] tracking-[0.4em] text-foreground/40 tabular-nums"
-              >
+          <div className="mt-10 w-56 md:w-72">
+            <div className="h-px w-full bg-foreground/10" aria-hidden="true">
+              <div
+                className="h-px bg-primary transition-[width] duration-100"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            <div className="mt-3 flex items-center justify-between font-mono text-[10px] tracking-[0.3em] text-foreground/40">
+              <span>LOADING</span>
+              <span aria-hidden="true" className="tabular-nums">
                 {String(progress).padStart(3, "0")}%
               </span>
             </div>
           </div>
 
-          {/* Boot line */}
-          <div className="mt-10 flex items-center gap-4">
-            <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
-            <motion.span
-              key={safeIndex}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-[11px] font-mono font-bold tracking-[0.4em] text-accent/80 uppercase"
-            >
-              {line.en}
-            </motion.span>
-            <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
-          </div>
-
-          {/* Pac-Man progress track */}
-          <div className="absolute bottom-16 left-0 w-full px-10 md:px-24" aria-hidden="true">
-            <div className="relative h-8">
-              <div className="absolute inset-x-0 bottom-1 flex items-center justify-between">
-                {Array.from({ length: DOTS }).map((_, i) => {
-                  const eaten = (i / DOTS) * 100 < progress;
-                  return (
-                    <span
-                      key={i}
-                      className={`h-1.5 w-1.5 rotate-45 transition-opacity duration-150 ${
-                        eaten ? "bg-accent/15 opacity-40" : "bg-accent"
-                      }`}
-                    />
-                  );
-                })}
-              </div>
-              <div
-                className="absolute -top-1 -translate-x-1/2 transition-[left] duration-100"
-                style={{ left: `${progress}%` }}
-              >
-                <Pacman size={30} />
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute left-6 bottom-6 text-[10px] font-mono text-foreground/25 tracking-widest uppercase">
-            SEN-001 — tap to skip
-          </div>
-          <div className="brush-jp absolute right-6 bottom-5 text-lg text-foreground/25" lang="ja" aria-hidden="true">
-            準備中
-          </div>
+          <span className="absolute bottom-6 font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/25">
+            tap anywhere to skip
+          </span>
         </motion.div>
       )}
     </AnimatePresence>
