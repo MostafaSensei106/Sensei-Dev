@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "@/app/core/components/ThemeToggle";
 import {
   Menu,
   X,
@@ -62,11 +63,6 @@ export default function SiteNav() {
   }, [isOpen]);
 
   const navWidth = useTransform(scrollY, [0, 100], ["95%", "85%"]);
-  const navBackground = useTransform(
-    scrollY,
-    [0, 100],
-    ["rgba(5, 5, 5, 0.4)", "rgba(18, 18, 18, 0.85)"]
-  );
 
   if (!mounted) return null;
 
@@ -74,10 +70,9 @@ export default function SiteNav() {
     <>
       {/* ─── Main Navigation Bar ─── */}
       <motion.nav
-        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-xl border border-foreground/10 px-4 md:px-8 py-2 md:py-3 flex items-center justify-between transition-all duration-500 ease-out"
+        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-xl bg-background/60 border border-foreground/10 px-4 md:px-8 py-2 md:py-3 flex items-center justify-between transition-all duration-500 ease-out"
         style={{
           width: navWidth,
-          backgroundColor: navBackground,
           top: 20,
           borderTop: "2px solid #BC002D",
           clipPath: "polygon(0 0, 100% 0, 98% 100%, 2% 100%)",
@@ -122,13 +117,21 @@ export default function SiteNav() {
         </div>
 
         {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden relative p-2 text-foreground/60 hover:text-primary transition-colors z-[110]"
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="relative p-2 text-foreground/60 hover:text-primary transition-colors z-[110]"
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+
+        {/* Desktop theme toggle */}
+        <div className="hidden md:block">
+          <ThemeToggle />
+        </div>
       </motion.nav>
 
       {/* ─── Mobile Full-Screen Overlay ─── */}
