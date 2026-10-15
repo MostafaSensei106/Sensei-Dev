@@ -74,12 +74,12 @@ export default function ExperienceTimeline() {
         }}
       />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* ─── Section Header ─── */}
         <div className="exp-header mb-16 md:mb-20">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-[2px] bg-accent" />
-            <span className="text-accent text-[10px] font-mono font-bold tracking-[0.4em] uppercase">
+            <div className="w-12 h-[2px] bg-primary" />
+            <span className="text-primary text-[10px] font-mono font-bold tracking-[0.4em] uppercase">
               Professional Path // 職歴
             </span>
           </div>
@@ -96,11 +96,11 @@ export default function ExperienceTimeline() {
         </div>
 
         {/* ─── Experience Cards ─── */}
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-14 md:gap-20">
           {PORTFOLIO_DATA.experience.map((item, idx) => (
             <div
               key={idx}
-              className="exp-item group relative grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 lg:gap-12 items-start"
+              className="exp-item group relative grid grid-cols-1 lg:grid-cols-[1fr_1.7fr] gap-10 lg:gap-16 items-start"
             >
               {/* Left Column: Metadata */}
               <div className="flex flex-col gap-4">
@@ -159,7 +159,7 @@ export default function ExperienceTimeline() {
                 </div>
 
                 {/* Panel Header */}
-                <div className="relative z-10 px-6 md:px-10 pt-6 md:pt-8 pb-4 border-b border-foreground/5 flex items-center justify-between">
+                <div className="relative z-10 px-6 md:px-12 pt-6 md:pt-8 pb-4 border-b border-foreground/5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-accent" />
                     <span className="font-mono text-[9px] text-foreground/30 tracking-[0.3em] uppercase">
@@ -172,17 +172,17 @@ export default function ExperienceTimeline() {
                 </div>
 
                 {/* Description */}
-                <div className="relative z-10 px-6 md:px-10 py-6">
+                <div className="relative z-10 px-6 md:px-12 py-6 md:py-8">
                   <p className="text-base md:text-lg font-light text-foreground/80 leading-relaxed border-l-2 border-foreground/10 pl-5 italic">
                     {item.description}
                   </p>
                 </div>
 
                 {/* Horizontal Rule */}
-                <div className="mx-6 md:mx-10 h-[1px] bg-foreground/5" />
+                <div className="mx-6 md:mx-12 h-[1px] bg-foreground/5" />
 
                 {/* Details Checklist */}
-                <div className="relative z-10 px-6 md:px-10 py-6 flex flex-col gap-0">
+                <div className="relative z-10 px-6 md:px-12 py-6 md:py-8 flex flex-col gap-0">
                   {item.details.map((detail, i) => (
                     <div key={i}>
                       <div className="flex items-start gap-4 group/detail py-3">
@@ -211,7 +211,7 @@ export default function ExperienceTimeline() {
                 </div>
 
                 {/* Panel Footer */}
-                <div className="px-6 md:px-10 py-3 border-t border-foreground/5 flex items-center justify-between">
+                <div className="px-6 md:px-12 py-4 border-t border-foreground/5 flex items-center justify-between">
                   <span className="font-mono text-[8px] text-foreground/15 tracking-[0.2em] uppercase">
                     {item.details.length} entries logged
                   </span>

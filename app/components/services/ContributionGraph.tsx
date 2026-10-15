@@ -3,14 +3,17 @@
 import { motion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { CountUp } from "@/app/core/components/CountUp";
+import { Pacman } from "@/app/core/components/Pacman";
+import { prefersReducedMotion } from "@/app/core/theme/fx";
 import type { ContributionStats } from "@/app/core/api/contributions";
 
 const LEVEL_BG = [
   "bg-foreground/[0.06]",
-  "bg-primary/25",
-  "bg-primary/50",
-  "bg-primary/75",
-  "bg-primary",
+  "bg-accent/25",
+  "bg-accent/50",
+  "bg-accent/75",
+  "bg-accent",
 ];
 
 /**
@@ -22,7 +25,6 @@ const LEVEL_BG = [
 export function ContributionGraph({ stats }: { stats: ContributionStats }) {
   const { status, days, total } = stats;
   const username = PORTFOLIO_DATA.projects.githubUsername;
-
   if (status === "loading") {
     return (
       <div aria-label="Loading contribution graph" className="border border-foreground/10 bg-surface/60 p-6">
@@ -53,6 +55,9 @@ export function ContributionGraph({ stats }: { stats: ContributionStats }) {
     );
   }
 
+  const reduced =
+    typeof window !== "undefined" && prefersReducedMotion();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -63,25 +68,40 @@ export function ContributionGraph({ stats }: { stats: ContributionStats }) {
     >
       <div className="mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-1">
         <span className="font-mono text-2xl font-black text-accent tabular-nums">
-          {total.toLocaleString("en-US")}
+          <CountUp target={total} duration={1800} />
         </span>
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/50">
           contributions in the last year
         </span>
       </div>
       <div className="overflow-x-auto pb-1 [-webkit-overflow-scrolling:touch]">
-        <div
-          className="grid min-w-[560px] grid-flow-col grid-rows-7 gap-1"
-          role="img"
-          aria-label={`${total} contributions in the last year`}
-        >
-          {days.map((d) => (
-            <div
-              key={d.date}
-              title={`${d.date}: ${d.count} contribution${d.count === 1 ? "" : "s"}`}
-              className={`h-3 w-3 ${LEVEL_BG[Math.min(4, Math.max(0, d.level))] ?? LEVEL_BG[0]}`}
-            />
-          ))}
+        <div className="relative">
+          <div
+            className="grid min-w-[560px] grid-flow-col grid-rows-7 gap-1"
+            role="img"
+            aria-label={`${total} contributions in the last year`}
+          >
+            {days.map((d, i) => (
+              <div
+                key={d.date}
+                title={`${d.date}: ${d.count} contribution${d.count === 1 ? "" : "s"}`}
+                style={{ "--i": i } as React.CSSProperties}
+                className={`cell-pop h-3 w-3 ${LEVEL_BG[Math.min(4, Math.max(0, d.level))] ?? LEVEL_BG[0]}`}
+              />
+            ))}
+          </div>
+          {!reduced && (
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute top-1/2 z-10 -translate-y-1/2"
+              initial={{ left: "-5%" }}
+              whileInView={{ left: "101%" }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 2.6, ease: "linear", delay: 0.4 }}
+            >
+              <Pacman size={36} />
+            </motion.div>
+          )}
         </div>
       </div>
       <div className="mt-3 flex items-center justify-end gap-1.5 font-mono text-[9px] text-foreground/40">

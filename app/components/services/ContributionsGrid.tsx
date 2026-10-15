@@ -25,8 +25,8 @@ export default function ContributionsGrid() {
           transition={{ duration: 0.7, ease: EASE }}
           className="mb-10 flex flex-wrap items-center gap-4"
         >
-          <div className="w-12 h-[2px] bg-tertiary" aria-hidden="true" />
-          <span className="text-tertiary text-[11px] font-mono font-bold tracking-[0.35em] uppercase">
+          <div className="w-12 h-[2px] bg-primary" aria-hidden="true" />
+          <span className="text-primary text-[11px] font-mono font-bold tracking-[0.35em] uppercase">
             Upstream // Contributed
           </span>
           <span className="brush-jp text-lg text-foreground/30" lang="ja">

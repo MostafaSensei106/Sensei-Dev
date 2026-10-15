@@ -333,6 +333,30 @@
   }
 }
 
+/* ─── Contribution cells pop as Pac-Man passes ─── */
+
+.cell-pop {
+  animation: cell-pop 0.45s ease both;
+  animation-delay: calc(var(--i, 0) * 12ms);
+}
+
+@keyframes cell-pop {
+  0% {
+    transform: scale(0.4);
+    filter: brightness(1.8);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cell-pop {
+    animation: none;
+  }
+}
+
 /* ─── Theme water-drop morph — gradual token easing while the
    canvas ripple covers the flip. Added/removed by ThemeFxProvider. */
 .fx-morph,

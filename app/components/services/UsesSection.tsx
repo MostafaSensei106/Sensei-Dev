@@ -9,7 +9,16 @@ export default function UsesSection() {
   const toolCount = PORTFOLIO_DATA.uses.reduce((s, g) => s + g.items.length, 0);
 
   return (
-    <section aria-label="Daily drivers" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
+    <section aria-label="Daily drivers" className="relative pt-4 md:pt-8 pb-24 md:pb-32 px-6 md:px-20 bg-background overflow-hidden">
+      <div
+        className="absolute right-8 top-16 pointer-events-none select-none text-foreground/[0.03] text-[13vw] font-black z-0 vertical-text"
+        aria-hidden="true"
+        lang="ja"
+      >
+        <span>毎</span>
+        <span>日</span>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-16 md:mb-20 flex flex-col md:flex-row justify-between items-end gap-8">
           <motion.div
@@ -20,8 +29,8 @@ export default function UsesSection() {
             className="max-w-3xl"
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-tertiary" />
-              <span className="text-tertiary text-xs font-black tracking-[0.4em] uppercase font-mono">
+              <div className="w-12 h-[2px] bg-primary" />
+              <span className="text-primary text-xs font-black tracking-[0.4em] uppercase font-mono">
                 Uses // Daily drivers
               </span>
               <span className="jp-eyebrow text-[11px] text-foreground/30 uppercase" lang="ja">
@@ -30,7 +39,7 @@ export default function UsesSection() {
             </div>
             <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
               <span className="text-foreground">Daily</span> <br />
-              <span className="text-tertiary italic">Drivers.</span>
+              <span className="text-primary italic">Drivers.</span>
             </h2>
             <p className="mt-5 text-foreground/55 max-w-xl font-light leading-relaxed">
               The tools behind the work above — write, ship, observe, and what is being explored next.
@@ -44,10 +53,10 @@ export default function UsesSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="relative px-6 py-3 border border-foreground/10 bg-surface/60 backdrop-blur-sm">
-              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-tertiary" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-tertiary" />
+              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary" />
+              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary" />
               <div className="flex items-center gap-3">
-                <span className="font-mono text-tertiary text-2xl font-black tabular-nums">
+                <span className="font-mono text-primary text-2xl font-black tabular-nums">
                   {String(toolCount).padStart(2, "0")}
                 </span>
                 <div className="flex flex-col">

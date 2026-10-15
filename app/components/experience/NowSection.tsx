@@ -7,6 +7,15 @@ import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 export default function NowSection() {
   return (
     <section aria-label="What I am doing now" className="relative py-24 md:py-32 px-6 md:px-20 bg-surface/30 border-y border-foreground/5 overflow-hidden">
+      <div
+        className="absolute left-8 top-16 pointer-events-none select-none text-foreground/[0.03] text-[13vw] font-black z-0 vertical-text"
+        aria-hidden="true"
+        lang="ja"
+      >
+        <span>現</span>
+        <span>在</span>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-16 md:mb-20 flex flex-col md:flex-row justify-between items-end gap-8">
           <motion.div
@@ -17,8 +26,8 @@ export default function NowSection() {
             className="max-w-3xl"
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-accent" />
-              <span className="text-accent text-xs font-black tracking-[0.4em] uppercase font-mono">
+              <div className="w-12 h-[2px] bg-primary" />
+              <span className="text-primary text-xs font-black tracking-[0.4em] uppercase font-mono">
                 Now // Loading the present
               </span>
               <span className="jp-eyebrow text-[11px] text-foreground/30 uppercase" lang="ja">
@@ -27,7 +36,7 @@ export default function NowSection() {
             </div>
             <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
               <span className="text-foreground">Right</span> <br />
-              <span className="text-accent italic">Now.</span>
+              <span className="text-primary italic">Now.</span>
             </h2>
             <p className="mt-5 text-foreground/55 max-w-xl font-light leading-relaxed">
               A snapshot, not a promise — updated as the work shifts.
@@ -40,14 +49,14 @@ export default function NowSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="relative flex items-center gap-3 px-6 py-3 border border-accent/40 bg-surface/60 backdrop-blur-sm">
-              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent" />
+            <div className="relative flex items-center gap-3 px-6 py-3 border border-primary/40 bg-surface/60 backdrop-blur-sm">
+              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary" />
+              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary" />
               <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping bg-accent opacity-60" />
-                <span className="relative inline-flex h-2.5 w-2.5 bg-accent" />
+                <span className="absolute inline-flex h-full w-full animate-ping bg-primary opacity-60" />
+                <span className="relative inline-flex h-2.5 w-2.5 bg-primary" />
               </span>
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.35em] text-accent">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.35em] text-primary">
                 Live
               </span>
             </div>
@@ -61,18 +70,18 @@ export default function NowSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
-              className="spotlight spotlight-blue relative bg-background/60 border border-foreground/5 p-7 hover:border-tertiary/50 transition-colors duration-500"
+              className="spotlight spotlight-blue relative bg-background/60 border border-foreground/5 p-7 hover:border-primary/50 transition-colors duration-500"
             >
               <div className="flex items-center gap-2 mb-3">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping bg-tertiary opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 bg-tertiary" />
+                  <span className="absolute inline-flex h-full w-full animate-ping bg-primary opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 bg-primary" />
                 </span>
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-tertiary">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
                   {n.label}
                 </span>
               </div>
-              <p className="border-l-2 border-tertiary/70 pl-4 text-sm text-foreground/75 font-light leading-relaxed">
+              <p className="border-l-2 border-primary/70 pl-4 text-sm text-foreground/75 font-light leading-relaxed">
                 {n.detail}
               </p>
             </motion.div>

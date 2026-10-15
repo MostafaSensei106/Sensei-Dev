@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Pacman } from "@/app/core/components/Pacman";
+import { prefersReducedMotion } from "@/app/core/theme/fx";
 
 const BOOT_LINES = [
   { en: "INITIALIZING SYSTEMS", jp: "起動中" },
@@ -11,15 +13,30 @@ const BOOT_LINES = [
   { en: "SENSEI READY", jp: "出陣" },
 ];
 
+const DOTS = 28;
+
+/**
+ * Boot loader — hex emblem + cycling boot lines, progress eaten
+ * by a Pac-Man dot track (same motif as the Libraries counter).
+ *
+ * ui-review notes applied:
+ * - No hardcoded hex: glow uses color-mix over --primary.
+ * - Skip target is the whole overlay + cursor-pointer/title affordance.
+ * - % readout is aria-hidden (per-frame updates would spam SRs).
+ * - Infinite motion (spin/chomp) disabled under reduced-motion.
+ */
 export default function AppLoader() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [reduced] = useState(
+    () => typeof window !== "undefined" && prefersReducedMotion()
+  );
 
   useEffect(() => {
     let raf = 0;
     let doneTimer: NodeJS.Timeout | undefined;
     const start = performance.now();
-    const DURATION = 2100;
+    const DURATION = reduced ? 700 : 2100;
 
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / DURATION);
@@ -42,7 +59,7 @@ export default function AppLoader() {
       clearTimeout(fallback);
       if (doneTimer) clearTimeout(doneTimer);
     };
-  }, []);
+  }, [reduced]);
 
   const safeIndex = Math.max(
     0,
@@ -57,8 +74,9 @@ export default function AppLoader() {
           initial={{ opacity: 1 }}
           exit={{ y: "-100%", opacity: 0.4 }}
           transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center overflow-hidden cursor-pointer"
           onClick={() => setLoading(false)}
+          title="Skip intro"
           role="status"
           aria-label="Loading portfolio"
         >
@@ -84,7 +102,7 @@ export default function AppLoader() {
           {/* Center emblem */}
           <div className="relative">
             <motion.div
-              animate={{ rotate: 360 }}
+              animate={reduced ? {} : { rotate: 360 }}
               transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
               className="h-40 w-40 border border-primary/25 border-t-primary"
               style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
@@ -101,12 +119,19 @@ export default function AppLoader() {
                 initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
-                className="brush-jp text-6xl text-primary drop-shadow-[0_0_25px_rgba(188,0,45,0.55)]"
+                className="brush-jp text-6xl text-primary"
+                style={{
+                  filter:
+                    "drop-shadow(0 0 25px color-mix(in srgb, var(--primary) 55%, transparent))",
+                }}
                 lang="ja"
               >
                 {line.jp}
               </motion.span>
-              <span className="mt-2 font-mono text-[9px] tracking-[0.4em] text-foreground/40">
+              <span
+                aria-hidden="true"
+                className="mt-2 font-mono text-[10px] tracking-[0.4em] text-foreground/40 tabular-nums"
+              >
                 {String(progress).padStart(3, "0")}%
               </span>
             </div>
@@ -119,25 +144,39 @@ export default function AppLoader() {
               key={safeIndex}
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[10px] font-mono font-bold tracking-[0.4em] text-accent/80 uppercase"
+              className="text-[11px] font-mono font-bold tracking-[0.4em] text-accent/80 uppercase"
             >
               {line.en}
             </motion.span>
             <div className="w-10 h-[2px] bg-primary/60" aria-hidden="true" />
           </div>
 
-          {/* Katana progress bar */}
-          <div className="absolute bottom-0 left-0 w-full h-[3px] bg-foreground/5" aria-hidden="true">
-            <div
-              className="h-full bg-gradient-to-r from-primary via-primary to-accent transition-[width] duration-100"
-              style={{
-                width: `${progress}%`,
-                clipPath: "polygon(0 0, 100% 0, 99% 100%, 0 100%)",
-              }}
-            />
+          {/* Pac-Man progress track */}
+          <div className="absolute bottom-16 left-0 w-full px-10 md:px-24" aria-hidden="true">
+            <div className="relative h-8">
+              <div className="absolute inset-x-0 bottom-1 flex items-center justify-between">
+                {Array.from({ length: DOTS }).map((_, i) => {
+                  const eaten = (i / DOTS) * 100 < progress;
+                  return (
+                    <span
+                      key={i}
+                      className={`h-1.5 w-1.5 rotate-45 transition-opacity duration-150 ${
+                        eaten ? "bg-accent/15 opacity-40" : "bg-accent"
+                      }`}
+                    />
+                  );
+                })}
+              </div>
+              <div
+                className="absolute -top-1 -translate-x-1/2 transition-[left] duration-100"
+                style={{ left: `${progress}%` }}
+              >
+                <Pacman size={30} />
+              </div>
+            </div>
           </div>
 
-          <div className="absolute left-6 bottom-6 text-[9px] font-mono text-foreground/25 tracking-widest uppercase">
+          <div className="absolute left-6 bottom-6 text-[10px] font-mono text-foreground/25 tracking-widest uppercase">
             SEN-001 — tap to skip
           </div>
           <div className="brush-jp absolute right-6 bottom-5 text-lg text-foreground/25" lang="ja" aria-hidden="true">

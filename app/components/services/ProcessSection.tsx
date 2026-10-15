@@ -8,6 +8,15 @@ import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 export default function ProcessSection() {
   return (
     <section id="process" className="relative py-24 md:py-32 px-6 md:px-20 bg-surface/30 border-y border-foreground/5 overflow-hidden">
+      <div
+        className="absolute right-8 top-16 pointer-events-none select-none text-foreground/[0.03] text-[13vw] font-black z-0 vertical-text"
+        aria-hidden="true"
+        lang="ja"
+      >
+        <span>手</span>
+        <span>順</span>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
           eyebrow="Process // How I work"

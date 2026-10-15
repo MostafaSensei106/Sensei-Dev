@@ -46,8 +46,8 @@ export default function ArtGallery() {
             className="max-w-3xl"
           >
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-accent" />
-              <span className="text-accent text-xs font-black tracking-[0.4em] uppercase font-mono">
+              <div className="w-12 h-[2px] bg-primary" />
+              <span className="text-primary text-xs font-black tracking-[0.4em] uppercase font-mono">
                 Visual Archive
               </span>
             </div>
@@ -101,8 +101,12 @@ export default function ArtGallery() {
                 setIndex(idx);
                 setOpen(true);
               }}
-              className="relative group cursor-pointer overflow-hidden bg-surface border border-foreground/5 transition-all duration-700 hover:border-primary/40 break-inside-avoid"
+              className="cursor-pointer break-inside-avoid"
             >
+              <TiltCard
+                max={5}
+                className="spotlight relative group overflow-hidden bg-surface border border-foreground/5 transition-all duration-700 hover:border-primary/40"
+              >
               {/* Corner bracket accents */}
               <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
               <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
@@ -148,6 +152,7 @@ export default function ArtGallery() {
                   </div>
                 </div>
               </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

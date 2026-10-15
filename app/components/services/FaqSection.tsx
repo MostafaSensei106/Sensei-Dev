@@ -11,6 +11,15 @@ export default function FaqSection() {
 
   return (
     <section id="faq" aria-label="Frequently asked questions" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
+      <div
+        className="absolute left-8 top-16 pointer-events-none select-none text-foreground/[0.03] text-[13vw] font-black z-0 vertical-text"
+        aria-hidden="true"
+        lang="ja"
+      >
+        <span>質</span>
+        <span>問</span>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-16 md:mb-20 flex flex-col md:flex-row justify-between items-end gap-8">
           <motion.div
