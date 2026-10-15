@@ -1,5 +1,4 @@
 import React from "react";
-import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/app/core/components/ThemeProvider";
 import { SmoothScroll } from "@/app/core/components/SmoothScroll";
@@ -107,32 +106,32 @@ export default function RootLayout({
     >
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
         <ThemeProvider>
-        <a href="#home" className="skip-link">Skip to content</a>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: PORTFOLIO_DATA.profile.name,
-              jobTitle: PORTFOLIO_DATA.profile.title,
-              url: "https://mostafa-mahmoud.dev",
-              sameAs: [
-                PORTFOLIO_DATA.profile.contact.linkedin,
-                `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`,
-                PORTFOLIO_DATA.profile.contact.x,
-              ],
-              image: "https://mostafa-mahmoud.dev/Assets/art-gallery/Images/image_display/Mostafa_Logo.png",
-              alumniOf: "Benha University",
-              knowsAbout: ["Software Engineering", "Flutter", "Dart", "Kotlin", "Android Native", "Go", "Gin", "Spring Boot", "Rust", "Post-Quantum Cryptography", "Vector Databases", "Mobile Development"]
-            })
-          }}
-        />
-        <AppLoader />
-        <SmoothScroll>
-          <CursorOverlay />
-          {children}
-        </SmoothScroll>
+          <a href="#home" className="skip-link">Skip to content</a>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: PORTFOLIO_DATA.profile.name,
+                jobTitle: PORTFOLIO_DATA.profile.title,
+                url: "https://mostafa-mahmoud.dev",
+                sameAs: [
+                  PORTFOLIO_DATA.profile.contact.linkedin,
+                  `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`,
+                  PORTFOLIO_DATA.profile.contact.x,
+                ],
+                image: "https://mostafa-mahmoud.dev/Assets/art-gallery/Images/image_display/Mostafa_Logo.png",
+                alumniOf: "Benha University",
+                knowsAbout: ["Software Engineering", "Flutter", "Dart", "Kotlin", "Android Native", "Go", "Gin", "Spring Boot", "Rust", "Post-Quantum Cryptography", "Vector Databases", "Mobile Development"]
+              })
+            }}
+          />
+          <AppLoader />
+          <SmoothScroll>
+            <CursorOverlay />
+            {children}
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>
