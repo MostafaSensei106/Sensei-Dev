@@ -5,7 +5,7 @@ import "yet-another-react-lightbox/styles.css";
 import { Zoom, Fullscreen, Thumbnails } from "yet-another-react-lightbox/plugins";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
-interface ArtLightboxProps {
+interface GalleryLightboxProps {
   open: boolean;
   close: () => void;
   index: number;
@@ -16,7 +16,7 @@ interface ArtLightboxProps {
   }[];
 }
 
-export default function ArtLightbox({ open, close, index, slides }: ArtLightboxProps) {
+export default function GalleryLightbox({ open, close, index, slides }: GalleryLightboxProps) {
   return (
     <Lightbox
       open={open}

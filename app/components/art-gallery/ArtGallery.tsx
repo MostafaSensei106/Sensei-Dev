@@ -8,9 +8,9 @@ import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import dynamic from "next/dynamic";
 import { Sparkles, Maximize2 } from "lucide-react";
 
-const ArtLightbox = dynamic(() => import("./ArtLightbox"), { ssr: false });
+const GalleryLightbox = dynamic(() => import("./GalleryLightbox"), { ssr: false });
 
-export default function ArtSection() {
+export default function ArtGallery() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
@@ -24,7 +24,7 @@ export default function ArtSection() {
     <section id="art" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
       <div
-        className="absolute right-10 top-20 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
+        className="absolute right-10 top-20 pointer-events-none select-none text-foreground/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
         aria-hidden="true"
         role="img"
       >
@@ -51,7 +51,7 @@ export default function ArtSection() {
               </span>
             </div>
             <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
-              <span className="text-white">Art</span> <br />
+              <span className="text-foreground">Art</span> <br />
               <span className="text-primary italic">Gallery.</span>
             </h2>
           </motion.div>
@@ -63,7 +63,7 @@ export default function ArtSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="relative px-6 py-3 border border-white/10 bg-surface/60 backdrop-blur-sm">
+            <div className="relative px-6 py-3 border border-foreground/10 bg-surface/60 backdrop-blur-sm">
               <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary" />
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary" />
               <div className="flex items-center gap-3">
@@ -100,7 +100,7 @@ export default function ArtSection() {
                 setIndex(idx);
                 setOpen(true);
               }}
-              className="relative group cursor-pointer overflow-hidden bg-surface border border-white/5 transition-all duration-700 hover:border-primary/40 break-inside-avoid"
+              className="relative group cursor-pointer overflow-hidden bg-surface border border-foreground/5 transition-all duration-700 hover:border-primary/40 break-inside-avoid"
             >
               {/* Corner bracket accents */}
               <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
@@ -138,7 +138,7 @@ export default function ArtSection() {
                       Visual Entry {String(idx + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="font-display text-lg font-black text-white uppercase tracking-tight">
+                  <h3 className="font-display text-lg font-black text-foreground uppercase tracking-tight">
                     {img.title}
                   </h3>
                   <div className="mt-4 flex items-center justify-between">
@@ -153,7 +153,7 @@ export default function ArtSection() {
       </div>
 
       {open && (
-        <ArtLightbox
+        <GalleryLightbox
           open={open}
           close={() => setOpen(false)}
           index={index}

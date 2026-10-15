@@ -9,7 +9,7 @@ import { ExternalLink } from "lucide-react";
  * Upstream contributions — fixes shipped to projects I don't own.
  * Compact strip inside the proof cluster, same card language.
  */
-export default function ContributionsStrip() {
+export default function ContributionsGrid() {
   return (
     <section aria-label="Open-source contributions" className="relative py-16 md:py-20 px-6 md:px-20 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -24,7 +24,7 @@ export default function ContributionsStrip() {
           <span className="text-tertiary text-[11px] font-mono font-bold tracking-[0.35em] uppercase">
             Upstream // Contributed
           </span>
-          <span className="brush-jp text-lg text-white/30" lang="ja">
+          <span className="brush-jp text-lg text-foreground/30" lang="ja">
             貢献
           </span>
         </motion.div>
@@ -40,7 +40,7 @@ export default function ContributionsStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
-              className="group relative bg-surface/60 border border-white/5 p-6 hover:border-tertiary/50 transition-colors duration-500 flex flex-col"
+              className="group relative bg-surface/60 border border-foreground/5 p-6 hover:border-tertiary/50 transition-colors duration-500 flex flex-col"
               aria-label={`${c.name} — ${c.org}`}
             >
               <div
@@ -48,18 +48,18 @@ export default function ContributionsStrip() {
                 aria-hidden="true"
               />
               <div className="flex items-center justify-between gap-3 mb-3">
-                <h3 className="font-display text-lg font-black uppercase tracking-tight text-white group-hover:text-tertiary transition-colors duration-300">
+                <h3 className="font-display text-lg font-black uppercase tracking-tight text-foreground group-hover:text-tertiary transition-colors duration-300">
                   {c.name}
                 </h3>
                 <ExternalLink
                   size={14}
-                  className="text-white/25 group-hover:text-tertiary transition-colors duration-300 shrink-0"
+                  className="text-foreground/25 group-hover:text-tertiary transition-colors duration-300 shrink-0"
                 />
               </div>
               <span className="mb-3 w-fit px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-tertiary bg-tertiary/10 border border-tertiary/25">
                 {c.org}
               </span>
-              <p className="text-sm text-white/55 font-light leading-relaxed">{c.description}</p>
+              <p className="text-sm text-foreground/55 font-light leading-relaxed">{c.description}</p>
             </motion.a>
           ))}
         </div>

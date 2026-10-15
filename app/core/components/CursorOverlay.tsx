@@ -8,7 +8,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
  * States: gold blade (default) → red lock-on (interactive) → slash flash (click).
  * Desktop fine-pointers only; touch keeps the native cursor.
  */
-export default function CustomCursor() {
+export default function CursorOverlay() {
   const [isHovering, setIsHovering] = useState(false);
   const [slashes, setSlashes] = useState<number[]>([]);
   const [enabled, setEnabled] = useState(false);
@@ -131,7 +131,7 @@ export default function CustomCursor() {
           <span className="font-mono text-[8px] text-primary tracking-widest font-black uppercase leading-none">
             Target
           </span>
-          <span className="brush-jp text-sm text-white/80 leading-none mt-0.5" lang="ja">
+          <span className="brush-jp text-sm text-foreground/80 leading-none mt-0.5" lang="ja">
             斬
           </span>
         </motion.div>

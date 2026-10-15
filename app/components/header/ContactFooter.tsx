@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, MessageCircle, Facebook, Twitter, ArrowUpRight, Mail } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 
-export default function SamuraiFooter() {
+export default function ContactFooter() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -12,14 +12,14 @@ export default function SamuraiFooter() {
     { name: "LinkedIn", icon: Linkedin, href: `${PORTFOLIO_DATA.profile.contact.linkedin}`, color: "text-[#0077b5]" },
     { name: "WhatsApp", icon: MessageCircle, href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`, color: "text-[#25d366]" },
     { name: "Facebook", icon: Facebook, href: `${PORTFOLIO_DATA.profile.contact.facebook}`, color: "text-[#1877f2]" },
-    { name: "X", icon: Twitter, href: `${PORTFOLIO_DATA.profile.contact.x}`, color: "text-white" },
+    { name: "X", icon: Twitter, href: `${PORTFOLIO_DATA.profile.contact.x}`, color: "text-foreground" },
   ];
 
   return (
-    <footer className="relative bg-background pt-24 md:pt-32 pb-12 px-6 md:px-20 overflow-hidden border-t border-white/5">
+    <footer className="relative bg-background pt-24 md:pt-32 pb-12 px-6 md:px-20 overflow-hidden border-t border-foreground/5">
       {/* Background Torii Silhouette */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140vw] h-[70vh] opacity-[0.02] pointer-events-none select-none z-0">
-        <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
+        <svg viewBox="0 0 100 100" className="w-full h-full fill-foreground">
           <path d="M5,25 Q50,15 95,25 L95,32 Q50,22 5,32 Z M20,32 L20,100 M80,32 L80,100 M15,50 L85,50" />
         </svg>
       </div>
@@ -35,9 +35,9 @@ export default function SamuraiFooter() {
       {/* Decorative speed lines */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-[15%] left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/5 to-transparent" />
-        <div className="absolute top-[30%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/3 to-transparent" />
+        <div className="absolute top-[30%] left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground/3 to-transparent" />
         <div className="absolute top-[60%] left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/5 to-transparent" />
-        <div className="absolute top-[85%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/3 to-transparent" />
+        <div className="absolute top-[85%] left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground/3 to-transparent" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -69,7 +69,7 @@ export default function SamuraiFooter() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex items-center gap-3 px-5 py-3 bg-white/5 border border-white/10 hover:border-primary/40 transition-all duration-300 ${social.color}`}
+                    className={`group flex items-center gap-3 px-5 py-3 bg-foreground/5 border border-foreground/10 hover:border-primary/40 transition-all duration-300 ${social.color}`}
                     aria-label={social.name}
                   >
                     <social.icon size={18} />
@@ -93,7 +93,7 @@ export default function SamuraiFooter() {
                         •
                       </span>
                     )}
-                    <span className="text-white/60">
+                    <span className="text-foreground/60">
                       {l.code} — {l.level}
                     </span>
                   </span>
@@ -108,7 +108,7 @@ export default function SamuraiFooter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            className="relative bg-surface/60 backdrop-blur-xl border border-white/5 p-8 md:p-12 group"
+            className="relative bg-surface/60 backdrop-blur-xl border border-foreground/5 p-8 md:p-12 group"
           >
             {/* Corner bracket accents */}
             <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/40" />
@@ -128,10 +128,10 @@ export default function SamuraiFooter() {
                 Mission Briefing // 依頼
               </span>
             </div>
-            <h3 className="font-display text-3xl font-black mb-3 uppercase tracking-tight text-white">
+            <h3 className="font-display text-3xl font-black mb-3 uppercase tracking-tight text-foreground">
               Seal Intent
             </h3>
-            <p className="font-mono text-[11px] text-white/45 tracking-wider mb-8">
+            <p className="font-mono text-[11px] text-foreground/45 tracking-wider mb-8">
               {PORTFOLIO_DATA.profile.availability}: apps, backends, and package work. Replies within 48h.
             </p>
 
@@ -166,7 +166,7 @@ export default function SamuraiFooter() {
                   type="text"
                   name="name"
                   required
-                  className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light placeholder:text-white/30 font-mono"
+                  className="w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light placeholder:text-foreground/30 font-mono"
                   placeholder="Name / Organization"
                 />
               </div>
@@ -179,18 +179,18 @@ export default function SamuraiFooter() {
                   type="email"
                   name="email"
                   required
-                  className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light placeholder:text-white/30 font-mono"
+                  className="w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light placeholder:text-foreground/30 font-mono"
                   placeholder="Email"
                 />
               </div>
               <div className="relative">
-                <label htmlFor="type" className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">
+                <label htmlFor="type" className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/40">
                   Project type
                 </label>
                 <select
                   id="type"
                   name="type"
-                  className="mt-2 w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-base font-mono text-white/80 [&>option]:bg-surface"
+                  className="mt-2 w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-base font-mono text-foreground/80 [&>option]:bg-surface"
                   defaultValue="Mobile app"
                 >
                   <option>Mobile app</option>
@@ -208,14 +208,14 @@ export default function SamuraiFooter() {
                   name="message"
                   required
                   rows={3}
-                  className="w-full bg-transparent border-b border-white/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light resize-none placeholder:text-white/30 font-mono"
+                  className="w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light resize-none placeholder:text-foreground/30 font-mono"
                   placeholder="What are we building? Platform, timeline, links"
                 />
               </div>
               <button
                 type="submit"
                 aria-label="Dispatch Message"
-                className="btn-sheen mt-4 w-full py-5 bg-primary text-white font-mono font-black uppercase tracking-[0.3em] text-sm hover:bg-white hover:text-background active:scale-[0.98] transition-all duration-300 shadow-2xl shadow-primary/20"
+                className="btn-sheen mt-4 w-full py-5 bg-primary text-white font-mono font-black uppercase tracking-[0.3em] text-sm hover:bg-foreground hover:text-background active:scale-[0.98] transition-all duration-300 shadow-2xl shadow-primary/20"
               >
                 DISPATCH MESSAGE
               </button>
@@ -224,7 +224,7 @@ export default function SamuraiFooter() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-on-surface-variant font-mono text-[10px] tracking-[0.3em] uppercase opacity-70">
+        <div className="mt-32 pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-6 text-on-surface-variant font-mono text-[10px] tracking-[0.3em] uppercase opacity-70">
           <div className="flex items-center gap-4">
             <span className="text-primary font-black text-base tracking-normal font-display">
               MH.

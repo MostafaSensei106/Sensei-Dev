@@ -33,16 +33,16 @@ export default function SectionHeader({
         <span className="text-primary text-[11px] font-mono font-bold tracking-[0.35em] uppercase">
           {eyebrow}
         </span>
-        <span className="jp-eyebrow text-[11px] text-white/30 uppercase" lang="ja">
+        <span className="jp-eyebrow text-[11px] text-foreground/30 uppercase" lang="ja">
           {japanese}
         </span>
       </div>
       <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.9]">
-        <span className="text-white">{titleA}</span> <br />
+        <span className="text-foreground">{titleA}</span> <br />
         <span className="text-primary italic">{titleB}</span>
       </h2>
       {description ? (
-        <p className="mt-5 text-base md:text-lg text-white/60 font-light leading-relaxed max-w-2xl">
+        <p className="mt-5 text-base md:text-lg text-foreground/60 font-light leading-relaxed max-w-2xl">
           {description}
         </p>
       ) : null}

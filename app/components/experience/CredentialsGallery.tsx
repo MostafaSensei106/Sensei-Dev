@@ -11,7 +11,7 @@ import { Award, ExternalLink, Calendar, ShieldCheck } from "lucide-react";
 
 const Lightbox = dynamic(() => import("yet-another-react-lightbox"), { ssr: false });
 
-export default function HonorGallery() {
+export default function CredentialsGallery() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
@@ -24,7 +24,7 @@ export default function HonorGallery() {
     <section id="certificates" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Decorative Kanji */}
       <div
-        className="absolute left-10 top-20 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
+        className="absolute left-10 top-20 pointer-events-none select-none text-foreground/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
         aria-hidden="true"
         role="img"
       >
@@ -51,13 +51,13 @@ export default function HonorGallery() {
               </span>
             </div>
             <h2 className="font-display text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter">
-              <span className="text-white">Certifications</span> <br />
+              <span className="text-foreground">Certifications</span> <br />
               <span className="text-primary italic">&amp; Achievements.</span>
             </h2>
           </div>
 
           {/* Counter */}
-          <div className="relative px-6 py-3 border border-white/10 bg-surface/60 backdrop-blur-sm">
+          <div className="relative px-6 py-3 border border-foreground/10 bg-surface/60 backdrop-blur-sm">
             <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent" />
             <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent" />
             <div className="flex items-center gap-3">
@@ -84,7 +84,7 @@ export default function HonorGallery() {
                 setIndex(idx);
                 setOpen(true);
               }}
-              className="relative group cursor-pointer bg-surface/60 border border-white/5 overflow-hidden backdrop-blur-xl hover:border-accent/40 transition-all duration-700"
+              className="relative group cursor-pointer bg-surface/60 border border-foreground/5 overflow-hidden backdrop-blur-xl hover:border-accent/40 transition-all duration-700"
             >
               <div className="flex flex-col lg:flex-row h-full">
                 {/* Certificate Image — 40% width on desktop */}
@@ -111,8 +111,8 @@ export default function HonorGallery() {
 
                   {/* Expand icon overlay */}
                   <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                    <div className="p-3 bg-white/10 backdrop-blur-xl border border-white/20">
-                      <ExternalLink className="text-white" size={22} />
+                    <div className="p-3 bg-foreground/10 backdrop-blur-xl border border-foreground/20">
+                      <ExternalLink className="text-foreground" size={22} />
                     </div>
                   </div>
                 </div>
@@ -126,7 +126,7 @@ export default function HonorGallery() {
                     </span>
                   </div>
 
-                  <h3 className="font-display text-2xl md:text-3xl font-black mb-5 text-white group-hover:text-accent transition-colors duration-300 leading-tight uppercase tracking-tight">
+                  <h3 className="font-display text-2xl md:text-3xl font-black mb-5 text-foreground group-hover:text-accent transition-colors duration-300 leading-tight uppercase tracking-tight">
                     {cert.title}
                   </h3>
 
@@ -145,7 +145,7 @@ export default function HonorGallery() {
 
               {/* Japanese Decorative 認定 Watermark — more visible on hover */}
               <div
-                className="absolute bottom-4 right-6 text-white/[0.04] font-black text-7xl select-none group-hover:text-accent/15 transition-colors duration-700 pointer-events-none"
+                className="absolute bottom-4 right-6 text-foreground/[0.04] font-black text-7xl select-none group-hover:text-accent/15 transition-colors duration-700 pointer-events-none"
                 role="presentation"
               >
                 認定

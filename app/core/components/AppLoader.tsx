@@ -11,7 +11,7 @@ const BOOT_LINES = [
   { en: "SENSEI READY", jp: "出陣" },
 ];
 
-export default function LoadingScreen() {
+export default function AppLoader() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
@@ -68,7 +68,7 @@ export default function LoadingScreen() {
 
           {/* Giant brush watermark */}
           <div
-            className="brush-jp pointer-events-none absolute inset-0 flex items-center justify-center text-white/[0.04] text-[38vw] leading-none select-none"
+            className="brush-jp pointer-events-none absolute inset-0 flex items-center justify-center text-foreground/[0.04] text-[38vw] leading-none select-none"
             aria-hidden="true"
             lang="ja"
           >
@@ -91,7 +91,7 @@ export default function LoadingScreen() {
               aria-hidden="true"
             />
             <div
-              className="absolute inset-3 border border-white/10"
+              className="absolute inset-3 border border-foreground/10"
               style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
               aria-hidden="true"
             />
@@ -106,7 +106,7 @@ export default function LoadingScreen() {
               >
                 {line.jp}
               </motion.span>
-              <span className="mt-2 font-mono text-[9px] tracking-[0.4em] text-white/40">
+              <span className="mt-2 font-mono text-[9px] tracking-[0.4em] text-foreground/40">
                 {String(progress).padStart(3, "0")}%
               </span>
             </div>
@@ -127,7 +127,7 @@ export default function LoadingScreen() {
           </div>
 
           {/* Katana progress bar */}
-          <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white/5" aria-hidden="true">
+          <div className="absolute bottom-0 left-0 w-full h-[3px] bg-foreground/5" aria-hidden="true">
             <div
               className="h-full bg-gradient-to-r from-primary via-primary to-accent transition-[width] duration-100"
               style={{
@@ -137,10 +137,10 @@ export default function LoadingScreen() {
             />
           </div>
 
-          <div className="absolute left-6 bottom-6 text-[9px] font-mono text-white/25 tracking-widest uppercase">
+          <div className="absolute left-6 bottom-6 text-[9px] font-mono text-foreground/25 tracking-widest uppercase">
             SEN-001 — tap to skip
           </div>
-          <div className="brush-jp absolute right-6 bottom-5 text-lg text-white/25" lang="ja" aria-hidden="true">
+          <div className="brush-jp absolute right-6 bottom-5 text-lg text-foreground/25" lang="ja" aria-hidden="true">
             準備中
           </div>
         </motion.div>

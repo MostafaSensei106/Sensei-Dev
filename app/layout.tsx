@@ -1,9 +1,10 @@
 import React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/app/core/components/ThemeProvider";
 import { SmoothScroll } from "@/app/core/components/SmoothScroll";
-import CustomCursor from "@/app/core/components/CustomCursor";
-import LoadingScreen from "@/app/core/components/LoadingScreen";
+import CursorOverlay from "@/app/core/components/CursorOverlay";
+import AppLoader from "@/app/core/components/AppLoader";
 
 // Fonts
 import { Outfit, Dela_Gothic_One, Noto_Sans_JP, JetBrains_Mono, Yuji_Syuku } from "next/font/google";
@@ -105,6 +106,7 @@ export default function RootLayout({
       className={`${delaGothic.variable} ${jetbrainsMono.variable} ${outfit.variable} ${notoJP.variable} ${yujiSyuku.variable}`}
     >
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
+        <ThemeProvider>
         <a href="#home" className="skip-link">Skip to content</a>
         <script
           type="application/ld+json"
@@ -126,11 +128,12 @@ export default function RootLayout({
             })
           }}
         />
-        <LoadingScreen />
+        <AppLoader />
         <SmoothScroll>
-          <CustomCursor />
+          <CursorOverlay />
           {children}
         </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
 import { Repo } from "@/app/core/api/github";
-import ExpressiveProjectCard from "./ExpressiveProjectCard";
+import ProjectCard from "./ProjectCard";
 
-export default function DynamicProjectsGrid({ repos }: { repos: Repo[] }) {
+export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
   return (
     <section id="projects" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       {/* Background Japanese Watermark */}
       <div
-        className="absolute left-10 top-20 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
+        className="absolute left-10 top-20 pointer-events-none select-none text-foreground/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
         aria-hidden="true"
         role="img"
       >
@@ -23,7 +23,7 @@ export default function DynamicProjectsGrid({ repos }: { repos: Repo[] }) {
       {/* Decorative speed lines */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.02]">
         <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
-        <div className="absolute top-2/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-white to-transparent" />
+        <div className="absolute top-2/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground to-transparent" />
         <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
       </div>
 
@@ -45,10 +45,10 @@ export default function DynamicProjectsGrid({ repos }: { repos: Repo[] }) {
             </div>
 
             <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
-              <span className="text-white">Code</span> <br />
+              <span className="text-foreground">Code</span> <br />
               <span className="text-primary italic">Libraries.</span>
             </h2>
-            <p className="mt-5 text-white/55 max-w-xl font-light leading-relaxed">
+            <p className="mt-5 text-foreground/55 max-w-xl font-light leading-relaxed">
               Packages with bench scripts and documented limits. Numbers live in each repo, not in headlines.
             </p>
           </motion.div>
@@ -61,7 +61,7 @@ export default function DynamicProjectsGrid({ repos }: { repos: Repo[] }) {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex lg:justify-end"
           >
-            <div className="relative px-6 py-3 border border-white/10 bg-surface/60 backdrop-blur-sm">
+            <div className="relative px-6 py-3 border border-foreground/10 bg-surface/60 backdrop-blur-sm">
               <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary" />
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary" />
               <div className="flex items-center gap-3">
@@ -83,13 +83,13 @@ export default function DynamicProjectsGrid({ repos }: { repos: Repo[] }) {
 
         {/* Project Grid — empty state when GitHub API is down */}
         {repos.length === 0 && (
-          <div className="relative bg-surface/60 border border-white/10 p-10 md:p-14 text-center">
+          <div className="relative bg-surface/60 border border-foreground/10 p-10 md:p-14 text-center">
             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent" aria-hidden="true" />
             <p className="brush-jp text-4xl text-accent/80 mb-4" lang="ja">接続切れ</p>
-            <p className="font-mono text-sm text-white/60 tracking-wider mb-2">
+            <p className="font-mono text-sm text-foreground/60 tracking-wider mb-2">
               GitHub API unreachable right now.
             </p>
-            <p className="text-sm text-white/40 font-light">
+            <p className="text-sm text-foreground/40 font-light">
               Full write-ups with benchmarks live in the Selected Work section above.
             </p>
           </div>
@@ -108,7 +108,7 @@ export default function DynamicProjectsGrid({ repos }: { repos: Repo[] }) {
               }}
               className="flex"
             >
-              <ExpressiveProjectCard repo={repo} index={idx} />
+              <ProjectCard repo={repo} index={idx} />
             </motion.div>
           ))}
         </div>

@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-interface KanjiDividerProps {
+interface SectionDividerProps {
   text?: string;
   reverse?: boolean;
   angle?: number;
@@ -14,11 +14,11 @@ interface KanjiDividerProps {
  * Brush Japanese drifts with page scroll; small red diamonds
  * mark the SENSEI seal. No hazard stripes, no flicker.
  */
-export default function KanjiDivider({
+export default function SectionDivider({
   text = "武士道 • 継続は力なり • 改善 • 不撓不屈 • 七転八起",
   reverse = false,
   angle = -1,
-}: KanjiDividerProps) {
+}: SectionDividerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -34,7 +34,7 @@ export default function KanjiDivider({
   return (
     <div
       ref={containerRef}
-      className="relative z-20 flex h-20 md:h-24 w-full items-center overflow-hidden border-y border-white/10 bg-black/70 backdrop-blur-sm"
+      className="relative z-20 flex h-20 md:h-24 w-full items-center overflow-hidden border-y border-foreground/10 bg-background/70 backdrop-blur-sm"
       style={{
         transform: `rotate(${angle}deg) scale(1.05)`,
         margin: "2.5rem 0",
@@ -56,7 +56,7 @@ export default function KanjiDivider({
       >
         {[...Array(8)].map((_, i) => (
           <span key={i} className="flex items-center gap-10">
-            <span className="brush-jp text-2xl md:text-3xl text-white/25" lang="ja">
+            <span className="brush-jp text-2xl md:text-3xl text-foreground/25" lang="ja">
               {text}
             </span>
             <span className="flex items-center gap-2.5" aria-hidden="true">

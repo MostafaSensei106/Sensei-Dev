@@ -10,11 +10,11 @@ import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
  * Same card language as Services: red structure, sky stack chips.
  * Hover edge turns sky to mark it as the "tools" section.
  */
-export default function StackStrip() {
+export default function TechStackGrid() {
   return (
     <section aria-label="Tech stack" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       <div
-        className="absolute left-8 top-16 pointer-events-none select-none text-white/[0.03] text-[13vw] font-black z-0 vertical-text"
+        className="absolute left-8 top-16 pointer-events-none select-none text-foreground/[0.03] text-[13vw] font-black z-0 vertical-text"
         aria-hidden="true"
         lang="ja"
       >
@@ -40,14 +40,14 @@ export default function StackStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
-              className="group relative bg-surface/60 border border-white/5 p-7 hover:border-tertiary/50 transition-colors duration-500"
+              className="group relative bg-surface/60 border border-foreground/5 p-7 hover:border-tertiary/50 transition-colors duration-500"
             >
               <div
                 className="absolute top-0 left-0 w-full h-[2px] bg-tertiary/0 group-hover:bg-tertiary transition-colors duration-500"
                 aria-hidden="true"
               />
               <div className="flex items-baseline justify-between mb-1">
-                <h3 className="font-display text-lg font-black uppercase tracking-tight text-white">
+                <h3 className="font-display text-lg font-black uppercase tracking-tight text-foreground">
                   {g.title}
                 </h3>
                 <span className="brush-jp text-xl text-accent" lang="ja">
@@ -59,7 +59,7 @@ export default function StackStrip() {
                 {g.items.map((item) => (
                   <li
                     key={item}
-                    className="px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-white bg-tertiary/10 border border-tertiary/40"
+                    className="px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-foreground bg-tertiary/10 border border-tertiary/40"
                   >
                     {item}
                   </li>

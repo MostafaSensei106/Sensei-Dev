@@ -4,7 +4,7 @@ import { ExternalLink, Github, Star } from "lucide-react";
 import { Repo } from "@/app/core/api/github";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 
-interface ExpressiveProjectCardProps {
+interface ProjectCardProps {
   repo: Repo;
   index?: number;
 }
@@ -15,7 +15,7 @@ const TYPE_JP: Record<string, string> = {
   "Flutter App": "アプリ",
 };
 
-export default function ExpressiveProjectCard({ repo, index = 0 }: ExpressiveProjectCardProps) {
+export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
   const highlight = PORTFOLIO_DATA.projects.highlights.find((h) =>
     repo.name.toLowerCase().includes(h.name.toLowerCase())
   );
@@ -25,7 +25,7 @@ export default function ExpressiveProjectCard({ repo, index = 0 }: ExpressivePro
   const metrics = highlight?.metrics ?? [];
 
   return (
-    <article className="group relative w-full min-h-[380px] md:min-h-[340px] flex flex-col bg-surface/60 border border-white/5 p-8 hover:border-primary/40 transition-colors duration-500">
+    <article className="group relative w-full min-h-[380px] md:min-h-[340px] flex flex-col bg-surface/60 border border-foreground/5 p-8 hover:border-primary/40 transition-colors duration-500">
       {/* Top katana line */}
       <div
         className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-primary/40 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500"
@@ -37,7 +37,7 @@ export default function ExpressiveProjectCard({ repo, index = 0 }: ExpressivePro
 
       {/* Faded index */}
       <div
-        className="absolute -bottom-3 right-2 font-display text-[7rem] font-black text-white/[0.04] leading-none select-none pointer-events-none group-hover:text-primary/[0.07] transition-colors duration-700"
+        className="absolute -bottom-3 right-2 font-display text-[7rem] font-black text-foreground/[0.04] leading-none select-none pointer-events-none group-hover:text-primary/[0.07] transition-colors duration-700"
         aria-hidden="true"
       >
         {displayIndex}
@@ -46,14 +46,14 @@ export default function ExpressiveProjectCard({ repo, index = 0 }: ExpressivePro
       {/* Top HUD */}
       <div className="flex justify-between items-start mb-5">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 bg-white/5 border border-white/10">
+          <div className="p-2 bg-foreground/5 border border-foreground/10">
             <Github className="text-tertiary" size={16} />
           </div>
           <div className="flex flex-col">
             <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-tertiary">
               {typeLabel}
             </span>
-            <span className="brush-jp text-sm text-white/30 leading-none" lang="ja">
+            <span className="brush-jp text-sm text-foreground/30 leading-none" lang="ja">
               {TYPE_JP[typeLabel] ?? "庫"}
             </span>
           </div>
@@ -67,12 +67,12 @@ export default function ExpressiveProjectCard({ repo, index = 0 }: ExpressivePro
       </div>
 
       {/* Title */}
-      <h3 className="font-display text-xl md:text-2xl font-black mb-3 tracking-tight uppercase leading-tight text-white group-hover:text-primary transition-colors duration-300">
+      <h3 className="font-display text-xl md:text-2xl font-black mb-3 tracking-tight uppercase leading-tight text-foreground group-hover:text-primary transition-colors duration-300">
         {highlight?.name || repo.name.replace(/-/g, " ")}
       </h3>
 
       {/* Description */}
-      <p className="text-white/55 line-clamp-3 mb-5 text-sm font-light leading-relaxed">
+      <p className="text-foreground/55 line-clamp-3 mb-5 text-sm font-light leading-relaxed">
         {highlight?.description || repo.description || "Open-source experiment. Usage and limits documented in the repo."}
       </p>
 
@@ -82,7 +82,7 @@ export default function ExpressiveProjectCard({ repo, index = 0 }: ExpressivePro
           {repo.language || "Native"}
         </span>
         {repo.license && repo.license.spdx_id !== "NOASSERTION" && (
-          <span className="px-3 py-1 text-[9px] uppercase tracking-[0.15em] font-mono text-white/40 bg-white/[0.04] border border-white/10">
+          <span className="px-3 py-1 text-[9px] uppercase tracking-[0.15em] font-mono text-foreground/40 bg-foreground/[0.04] border border-foreground/10">
             {repo.license.spdx_id}
           </span>
         )}
@@ -101,12 +101,12 @@ export default function ExpressiveProjectCard({ repo, index = 0 }: ExpressivePro
       )}
 
       {/* Actions */}
-      <div className="flex gap-3 mt-auto pt-5 border-t border-white/5">
+      <div className="flex gap-3 mt-auto pt-5 border-t border-foreground/5">
         <a
           href={repo.html_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-sheen flex-1 py-3 px-4 bg-primary text-white font-mono font-black text-[10px] tracking-[0.2em] uppercase text-center flex items-center justify-center gap-2 hover:bg-white hover:text-background transition-all duration-300"
+          className="btn-sheen flex-1 py-3 px-4 bg-primary text-white font-mono font-black text-[10px] tracking-[0.2em] uppercase text-center flex items-center justify-center gap-2 hover:bg-foreground hover:text-background transition-all duration-300"
         >
           <Github size={13} /> Source
         </a>
@@ -115,7 +115,7 @@ export default function ExpressiveProjectCard({ repo, index = 0 }: ExpressivePro
             href={repo.homepage}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 border border-white/10 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 text-white/60 flex items-center justify-center"
+            className="p-3 border border-foreground/10 hover:bg-primary hover:text-foreground hover:border-primary transition-all duration-300 text-foreground/60 flex items-center justify-center"
             aria-label={`Visit live demo for ${repo.name}`}
           >
             <ExternalLink size={16} />

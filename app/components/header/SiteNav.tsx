@@ -23,7 +23,7 @@ const navItems = [
   { name: "Contact", href: "#contact", icon: Mail, katakana: "連絡" },
 ];
 
-export default function NavigationPill() {
+export default function SiteNav() {
   const { scrollY } = useScroll();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -74,7 +74,7 @@ export default function NavigationPill() {
     <>
       {/* ─── Main Navigation Bar ─── */}
       <motion.nav
-        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-xl border border-white/10 px-4 md:px-8 py-2 md:py-3 flex items-center justify-between transition-all duration-500 ease-out"
+        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-xl border border-foreground/10 px-4 md:px-8 py-2 md:py-3 flex items-center justify-between transition-all duration-500 ease-out"
         style={{
           width: navWidth,
           backgroundColor: navBackground,
@@ -92,7 +92,7 @@ export default function NavigationPill() {
           className="font-display font-bold text-lg md:text-xl tracking-tighter cursor-pointer flex items-center group shrink-0"
           aria-label="Sensei Portfolio Home"
         >
-          <span className="text-white group-hover:text-primary transition-colors duration-300">
+          <span className="text-foreground group-hover:text-primary transition-colors duration-300">
             MH
           </span>
           <span className="text-primary text-2xl leading-none">.</span>
@@ -106,13 +106,13 @@ export default function NavigationPill() {
               href={item.href}
               aria-current={active === item.href ? "page" : undefined}
               className={`relative flex items-center gap-2 text-[9px] lg:text-[10px] font-mono font-bold uppercase tracking-[0.22em] transition-all duration-300 group ${
-                active === item.href ? "text-white" : "text-white/60 hover:text-white"
+                active === item.href ? "text-foreground" : "text-foreground/60 hover:text-foreground"
               }`}
             >
               <item.icon
                 size={12}
                 strokeWidth={2.5}
-                className={`transition-colors duration-300 ${active === item.href ? "text-primary" : "text-white/30 group-hover:text-primary"}`}
+                className={`transition-colors duration-300 ${active === item.href ? "text-primary" : "text-foreground/30 group-hover:text-primary"}`}
               />
               <span>{item.name}</span>
               {/* Red dot indicator */}
@@ -124,7 +124,7 @@ export default function NavigationPill() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden relative p-2 text-white/60 hover:text-primary transition-colors z-[110]"
+          className="md:hidden relative p-2 text-foreground/60 hover:text-primary transition-colors z-[110]"
           aria-label="Toggle Menu"
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -147,12 +147,12 @@ export default function NavigationPill() {
               className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
               aria-hidden="true"
             >
-              <span className="text-white/[0.02] text-[40vw] font-black leading-none">
+              <span className="text-foreground/[0.02] text-[40vw] font-black leading-none">
                 武
               </span>
             </div>
             <div
-              className="absolute top-20 right-8 pointer-events-none select-none vertical-text text-white/[0.04] text-4xl font-black"
+              className="absolute top-20 right-8 pointer-events-none select-none vertical-text text-foreground/[0.04] text-4xl font-black"
               aria-hidden="true"
             >
               <span>侍</span>
@@ -163,7 +163,7 @@ export default function NavigationPill() {
             {/* Red accent lines */}
             <div className="absolute top-0 left-0 w-full h-[2px] bg-primary" />
             <div className="absolute bottom-0 left-0 w-full h-[2px] bg-primary/30" />
-            <div className="absolute top-0 left-8 w-[2px] h-full bg-white/[0.03]" />
+            <div className="absolute top-0 left-8 w-[2px] h-full bg-foreground/[0.03]" />
 
             {/* Close Button */}
             <motion.button
@@ -171,7 +171,7 @@ export default function NavigationPill() {
               animate={{ opacity: 1, rotate: 0 }}
               transition={{ delay: 0.2 }}
               onClick={() => setIsOpen(false)}
-              className="absolute top-6 right-6 z-[110] w-12 h-12 flex items-center justify-center border border-primary/40 text-primary hover:bg-primary hover:text-white transition-all duration-300"
+              className="absolute top-6 right-6 z-[110] w-12 h-12 flex items-center justify-center border border-primary/40 text-primary hover:bg-primary hover:text-foreground transition-all duration-300"
               aria-label="Close Menu"
             >
               <X size={20} strokeWidth={3} />
@@ -194,10 +194,10 @@ export default function NavigationPill() {
                     ease: [0.25, 0.46, 0.45, 0.94],
                   }}
                   onClick={() => setIsOpen(false)}
-                  className="group relative flex items-center gap-6 py-4 border-b border-white/5 last:border-b-0"
+                  className="group relative flex items-center gap-6 py-4 border-b border-foreground/5 last:border-b-0"
                 >
                   {/* Index Number */}
-                  <span className="font-mono text-[10px] text-white/20 w-6 tabular-nums">
+                  <span className="font-mono text-[10px] text-foreground/20 w-6 tabular-nums">
                     0{idx + 1}
                   </span>
 
@@ -205,15 +205,15 @@ export default function NavigationPill() {
                   <item.icon
                     size={24}
                     strokeWidth={1.5}
-                    className="text-white/15 group-hover:text-primary transition-colors duration-300"
+                    className="text-foreground/15 group-hover:text-primary transition-colors duration-300"
                   />
 
                   {/* Name - large katakana style */}
                   <div className="flex flex-col">
-                    <span className="font-display text-3xl font-black text-white uppercase tracking-tight group-hover:text-primary transition-colors duration-300">
+                    <span className="font-display text-3xl font-black text-foreground uppercase tracking-tight group-hover:text-primary transition-colors duration-300">
                       {item.name}
                     </span>
-                    <span className="font-mono text-[10px] text-white/25 tracking-[0.3em]">
+                    <span className="font-mono text-[10px] text-foreground/25 tracking-[0.3em]">
                       {item.katakana}
                     </span>
                   </div>
@@ -231,7 +231,7 @@ export default function NavigationPill() {
                 className="mt-12 flex flex-col gap-3"
               >
                 <div className="w-16 h-[2px] bg-primary" />
-                <span className="text-[9px] font-mono text-white/30 tracking-[0.5em] uppercase">
+                <span className="text-[9px] font-mono text-foreground/30 tracking-[0.5em] uppercase">
                   Sensei Portfolio
                 </span>
               </motion.div>

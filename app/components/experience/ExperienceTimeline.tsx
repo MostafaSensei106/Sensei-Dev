@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { Calendar, MapPin, CheckCircle2, ExternalLink } from "lucide-react";
 
-export default function ProfessionalExperience() {
+export default function ExperienceTimeline() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function ProfessionalExperience() {
     >
       {/* ─── Background Decorative Kanji ─── */}
       <div
-        className="absolute top-20 right-10 pointer-events-none select-none text-white/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
+        className="absolute top-20 right-10 pointer-events-none select-none text-foreground/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
         aria-hidden="true"
         role="img"
       >
@@ -83,12 +83,12 @@ export default function ProfessionalExperience() {
             </span>
           </div>
           <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
-            <span className="text-white">Professional</span> <br />
+            <span className="text-foreground">Professional</span> <br />
             <span className="text-primary">Experience.</span>
           </h2>
           <div className="mt-6 flex items-center gap-3">
             <div className="w-2 h-2 bg-primary" />
-            <span className="font-mono text-[10px] text-white/30 tracking-[0.2em] uppercase">
+            <span className="font-mono text-[10px] text-foreground/30 tracking-[0.2em] uppercase">
               Service Record // Maintenance Log
             </span>
           </div>
@@ -106,7 +106,7 @@ export default function ProfessionalExperience() {
                 {/* Period */}
                 <div className="flex items-center gap-3 text-on-surface-variant">
                   <Calendar size={14} strokeWidth={2} />
-                  <span className="font-mono text-xs tracking-[0.15em] font-bold uppercase text-white/50">
+                  <span className="font-mono text-xs tracking-[0.15em] font-bold uppercase text-foreground/50">
                     {item.period}
                   </span>
                 </div>
@@ -123,12 +123,12 @@ export default function ProfessionalExperience() {
                   rel="noopener noreferrer"
                   className="group/link flex items-center gap-3 w-fit"
                 >
-                  <h3 className="font-display text-3xl md:text-5xl font-black text-white group-hover/link:text-primary transition-colors duration-500">
+                  <h3 className="font-display text-3xl md:text-5xl font-black text-foreground group-hover/link:text-primary transition-colors duration-500">
                     {item.company}
                   </h3>
                   <ExternalLink
                     size={18}
-                    className="text-white/15 group-hover/link:text-primary transition-colors duration-300"
+                    className="text-foreground/15 group-hover/link:text-primary transition-colors duration-300"
                   />
                 </a>
 
@@ -140,7 +140,7 @@ export default function ProfessionalExperience() {
 
                 {/* Japanese Role Tag */}
                 {item.japaneseRole && (
-                  <div className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 bg-white/[0.03] border-l-2 border-primary text-[10px] font-mono font-bold text-white/50 tracking-[0.15em] w-fit">
+                  <div className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 bg-foreground/[0.03] border-l-2 border-primary text-[10px] font-mono font-bold text-foreground/50 tracking-[0.15em] w-fit">
                     <span className="text-primary/60">JP</span>
                     <span>{item.japaneseRole}</span>
                   </div>
@@ -148,37 +148,37 @@ export default function ProfessionalExperience() {
               </div>
 
               {/* Right Column: Service Record Panel */}
-              <div className="relative bg-surface/60 border border-white/5 backdrop-blur-sm group-hover:border-primary/20 transition-all duration-700 overflow-hidden">
+              <div className="relative bg-surface/60 border border-foreground/5 backdrop-blur-sm group-hover:border-primary/20 transition-all duration-700 overflow-hidden">
                 {/* Red left accent border */}
                 <div className="absolute top-0 left-0 w-[3px] h-full bg-primary" />
 
                 {/* Large Index Number */}
-                <div className="absolute top-6 right-6 font-mono text-7xl md:text-8xl font-black text-white/[0.04] leading-none select-none group-hover:text-primary/10 transition-colors duration-700">
+                <div className="absolute top-6 right-6 font-mono text-7xl md:text-8xl font-black text-foreground/[0.04] leading-none select-none group-hover:text-primary/10 transition-colors duration-700">
                   0{idx + 1}
                 </div>
 
                 {/* Panel Header */}
-                <div className="relative z-10 px-6 md:px-10 pt-6 md:pt-8 pb-4 border-b border-white/5 flex items-center justify-between">
+                <div className="relative z-10 px-6 md:px-10 pt-6 md:pt-8 pb-4 border-b border-foreground/5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-accent" />
-                    <span className="font-mono text-[9px] text-white/30 tracking-[0.3em] uppercase">
+                    <span className="font-mono text-[9px] text-foreground/30 tracking-[0.3em] uppercase">
                       Record #{String(idx + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <span className="font-mono text-[9px] text-white/20 tracking-wider uppercase">
+                  <span className="font-mono text-[9px] text-foreground/20 tracking-wider uppercase">
                     {item.period.split("–")[0]?.trim()}
                   </span>
                 </div>
 
                 {/* Description */}
                 <div className="relative z-10 px-6 md:px-10 py-6">
-                  <p className="text-base md:text-lg font-light text-white/80 leading-relaxed border-l-2 border-white/10 pl-5 italic">
+                  <p className="text-base md:text-lg font-light text-foreground/80 leading-relaxed border-l-2 border-foreground/10 pl-5 italic">
                     {item.description}
                   </p>
                 </div>
 
                 {/* Horizontal Rule */}
-                <div className="mx-6 md:mx-10 h-[1px] bg-white/5" />
+                <div className="mx-6 md:mx-10 h-[1px] bg-foreground/5" />
 
                 {/* Details Checklist */}
                 <div className="relative z-10 px-6 md:px-10 py-6 flex flex-col gap-0">
@@ -187,7 +187,7 @@ export default function ProfessionalExperience() {
                       <div className="flex items-start gap-4 group/detail py-3">
                         {/* Custom bullet */}
                         <div className="mt-1 shrink-0 flex items-center gap-2">
-                          <span className="font-mono text-[9px] text-white/20 tabular-nums w-4">
+                          <span className="font-mono text-[9px] text-foreground/20 tabular-nums w-4">
                             {String(i + 1).padStart(2, "0")}
                           </span>
                           <div className="w-3 h-3 border border-accent/30 flex items-center justify-center group-hover/detail:border-accent transition-colors duration-300">
@@ -197,27 +197,27 @@ export default function ProfessionalExperience() {
                             />
                           </div>
                         </div>
-                        <span className="text-on-surface-variant group-hover/detail:text-white transition-colors duration-300 text-sm font-light leading-relaxed">
+                        <span className="text-on-surface-variant group-hover/detail:text-foreground transition-colors duration-300 text-sm font-light leading-relaxed">
                           {detail}
                         </span>
                       </div>
                       {/* Horizontal rule between details */}
                       {i < item.details.length - 1 && (
-                        <div className="h-[1px] bg-white/[0.03] ml-10" />
+                        <div className="h-[1px] bg-foreground/[0.03] ml-10" />
                       )}
                     </div>
                   ))}
                 </div>
 
                 {/* Panel Footer */}
-                <div className="px-6 md:px-10 py-3 border-t border-white/5 flex items-center justify-between">
-                  <span className="font-mono text-[8px] text-white/15 tracking-[0.2em] uppercase">
+                <div className="px-6 md:px-10 py-3 border-t border-foreground/5 flex items-center justify-between">
+                  <span className="font-mono text-[8px] text-foreground/15 tracking-[0.2em] uppercase">
                     {item.details.length} entries logged
                   </span>
                   <div className="flex items-center gap-2">
                     <div className="w-1 h-1 bg-primary/40" />
                     <div className="w-1 h-1 bg-accent/30" />
-                    <div className="w-1 h-1 bg-white/10" />
+                    <div className="w-1 h-1 bg-foreground/10" />
                   </div>
                 </div>
               </div>

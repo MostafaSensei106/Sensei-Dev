@@ -14,18 +14,18 @@ import {
 
 function FieldRow({ label, value, hot = false }: { label: string; value: string; hot?: boolean }) {
   return (
-    <div className="flex items-baseline justify-between gap-4 py-2.5 border-b border-white/5 last:border-b-0">
-      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35 shrink-0">
+    <div className="flex items-baseline justify-between gap-4 py-2.5 border-b border-foreground/5 last:border-b-0">
+      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/35 shrink-0">
         {label}
       </dt>
-      <dd className={`font-mono text-xs text-right leading-relaxed ${hot ? "text-accent font-bold" : "text-white/80"}`}>
+      <dd className={`font-mono text-xs text-right leading-relaxed ${hot ? "text-accent font-bold" : "text-foreground/80"}`}>
         {value}
       </dd>
     </div>
   );
 }
 
-export default function SamuraiHero() {
+export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -165,7 +165,7 @@ export default function SamuraiHero() {
 
       {/* ─── Background Japanese Watermark ─── */}
       <div
-        className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-white/[0.03] font-black text-[10vw] select-none pointer-events-none z-0 leading-none"
+        className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-foreground/[0.03] font-black text-[10vw] select-none pointer-events-none z-0 leading-none"
         aria-hidden="true"
         role="img"
       >
@@ -194,7 +194,7 @@ export default function SamuraiHero() {
       {/* ─── Flow ─── */}
       <div className="hero-content relative z-10 w-full max-w-7xl mx-auto flex flex-col items-start">
         {/* Badge */}
-        <div className="flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/10 mb-8 backdrop-blur-sm">
+        <div className="flex items-center gap-3 px-4 py-2 bg-foreground/[0.03] border border-foreground/10 mb-8 backdrop-blur-sm">
           <div className="w-2 h-2 bg-primary animate-pulse" />
           <span className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-on-surface-variant">
             {PORTFOLIO_DATA.profile.japaneseTitle}
@@ -209,7 +209,7 @@ export default function SamuraiHero() {
               Portfolio — 履歴書
             </p>
             <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.85] tracking-tighter uppercase">
-              <span className="block text-white">Mostafa</span>
+              <span className="block text-foreground">Mostafa</span>
               <span
                 className="block md:ml-10 text-transparent"
                 style={{ WebkitTextStroke: "2px #BC002D" }}
@@ -217,7 +217,7 @@ export default function SamuraiHero() {
                 Mahmoud
               </span>
             </h1>
-            <p className="brush-jp text-xl md:text-2xl text-white/40 mt-4" lang="ja">
+            <p className="brush-jp text-xl md:text-2xl text-foreground/40 mt-4" lang="ja">
               モスタファ・マフムード — モバイルアプリエンジニア
             </p>
           </div>
@@ -247,7 +247,7 @@ export default function SamuraiHero() {
                     d="M 100,100 m -86,0 a 86,86 0 1,1 172,0 a 86,86 0 1,1 -172,0"
                   />
                 </defs>
-                <text fontSize="8" letterSpacing="2.5" className="fill-white/30 font-mono uppercase">
+                <text fontSize="8" letterSpacing="2.5" className="fill-foreground/30 font-mono uppercase">
                   <textPath href="#hero-orbit">
                     Flutter • Go • Rust • Kotlin • Spring • 侍 •
                   </textPath>
@@ -256,10 +256,10 @@ export default function SamuraiHero() {
             </div>
 
             {/* Camera Viewfinder Brackets */}
-            <div className="absolute top-2 left-2 w-7 h-7 border-l-2 border-t-2 border-white/20 pointer-events-none" />
-            <div className="absolute top-2 right-2 w-7 h-7 border-r-2 border-t-2 border-white/20 pointer-events-none" />
-            <div className="absolute bottom-2 left-2 w-7 h-7 border-l-2 border-b-2 border-white/20 pointer-events-none" />
-            <div className="absolute bottom-2 right-2 w-7 h-7 border-r-2 border-b-2 border-white/20 pointer-events-none" />
+            <div className="absolute top-2 left-2 w-7 h-7 border-l-2 border-t-2 border-foreground/20 pointer-events-none" />
+            <div className="absolute top-2 right-2 w-7 h-7 border-r-2 border-t-2 border-foreground/20 pointer-events-none" />
+            <div className="absolute bottom-2 left-2 w-7 h-7 border-l-2 border-b-2 border-foreground/20 pointer-events-none" />
+            <div className="absolute bottom-2 right-2 w-7 h-7 border-r-2 border-b-2 border-foreground/20 pointer-events-none" />
 
             {/* The Photo */}
             <a
@@ -269,7 +269,7 @@ export default function SamuraiHero() {
               className="group/photo block"
               aria-label="Watch intro video"
             >
-              <div className="absolute inset-5 rounded-full overflow-hidden border-2 border-white/10 group-hover/photo:border-primary/40 transition-colors duration-700 shadow-2xl shadow-primary/10">
+              <div className="absolute inset-5 rounded-full overflow-hidden border-2 border-foreground/10 group-hover/photo:border-primary/40 transition-colors duration-700 shadow-2xl shadow-primary/10">
                 <Image
                   src={PORTFOLIO_DATA.profile.hero.photo}
                   alt={PORTFOLIO_DATA.profile.name}
@@ -289,8 +289,8 @@ export default function SamuraiHero() {
               role="img"
               aria-label="Maker's seal"
             >
-              <div className="absolute inset-1.5 border border-white/40 pointer-events-none" />
-              <span className="brush-jp text-xl lg:text-2xl text-white leading-none" lang="ja">
+              <div className="absolute inset-1.5 border border-foreground/40 pointer-events-none" />
+              <span className="brush-jp text-xl lg:text-2xl text-foreground leading-none" lang="ja">
                 先生
               </span>
             </div>
@@ -310,10 +310,10 @@ export default function SamuraiHero() {
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-[1.35fr_.65fr] gap-10 items-start w-full">
           <div>
             {/* Tech Spec Sheet */}
-            <div className="mb-8 w-full border border-white/5 bg-white/[0.02] backdrop-blur-sm">
-              <div className="border-b border-white/5 px-4 py-2 flex items-center gap-2">
+            <div className="mb-8 w-full border border-foreground/5 bg-foreground/[0.02] backdrop-blur-sm">
+              <div className="border-b border-foreground/5 px-4 py-2 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary" />
-                <span className="font-mono text-[10px] text-white/40 uppercase tracking-[0.3em]">
+                <span className="font-mono text-[10px] text-foreground/40 uppercase tracking-[0.3em]">
                   Technical Specifications
                 </span>
               </div>
@@ -322,7 +322,7 @@ export default function SamuraiHero() {
                   <span className="font-mono text-[10px] font-bold text-accent tracking-[0.2em] uppercase">
                     Mobile
                   </span>
-                  <span className="font-mono text-sm text-white/85">
+                  <span className="font-mono text-sm text-foreground/85">
                     Flutter, Dart, Kotlin
                   </span>
                 </div>
@@ -330,15 +330,15 @@ export default function SamuraiHero() {
                   <span className="font-mono text-[10px] font-bold text-tertiary tracking-[0.2em] uppercase">
                     Backend
                   </span>
-                  <span className="font-mono text-sm text-white/85">
+                  <span className="font-mono text-sm text-foreground/85">
                     Go Gin, Spring Boot
                   </span>
                 </div>
                 <div className="spec-item flex flex-col gap-1.5">
-                  <span className="font-mono text-[10px] font-bold text-white/50 tracking-[0.2em] uppercase">
+                  <span className="font-mono text-[10px] font-bold text-foreground/50 tracking-[0.2em] uppercase">
                     Core
                   </span>
-                  <span className="font-mono text-sm text-white/85">
+                  <span className="font-mono text-sm text-foreground/85">
                     Rust, Android Native
                   </span>
                 </div>
@@ -347,7 +347,7 @@ export default function SamuraiHero() {
 
             {/* Tagline & Description */}
             <div className="mb-8">
-              <p className="text-2xl md:text-3xl font-medium text-white leading-relaxed mb-5">
+              <p className="text-2xl md:text-3xl font-medium text-foreground leading-relaxed mb-5">
                 {PORTFOLIO_DATA.profile.hero.tagline}
               </p>
               <p className="text-lg text-on-surface-variant font-light leading-relaxed">
@@ -377,11 +377,11 @@ export default function SamuraiHero() {
                 </a>
                 <a
                   href="#work"
-                  className="interactive group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 border border-white/15 border-l-2 border-l-primary bg-white/[0.02] backdrop-blur-md text-white font-mono font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:border-primary hover:bg-primary/10 hover:-translate-y-0.5 active:translate-y-0"
+                  className="interactive group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 border border-foreground/15 border-l-2 border-l-primary bg-foreground/[0.02] backdrop-blur-md text-foreground font-mono font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:border-primary hover:bg-primary/10 hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <ArrowDown size={14} className="text-primary transition-transform duration-300 group-hover:translate-y-0.5" />
                   View Work
-                  <span className="brush-jp text-base normal-case tracking-normal text-white/50" lang="ja">
+                  <span className="brush-jp text-base normal-case tracking-normal text-foreground/50" lang="ja">
                     仕事
                   </span>
                 </a>
@@ -395,7 +395,7 @@ export default function SamuraiHero() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/social relative w-11 h-11 flex items-center justify-center border border-white/10 bg-white/[0.02] text-white/40 transition-all duration-300 hover:border-primary hover:text-primary hover:-translate-y-1 hover:shadow-[0_0_18px_rgba(188,0,45,0.35)] active:translate-y-0"
+                    className="group/social relative w-11 h-11 flex items-center justify-center border border-foreground/10 bg-foreground/[0.02] text-foreground/40 transition-all duration-300 hover:border-primary hover:text-primary hover:-translate-y-1 hover:shadow-[0_0_18px_rgba(188,0,45,0.35)] active:translate-y-0"
                     aria-label={s.name}
                   >
                     <span
@@ -417,7 +417,7 @@ export default function SamuraiHero() {
 
           {/* Field record — live portfolio data, zero hardcodes */}
           <aside
-            className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-6 md:p-7"
+            className="relative border border-foreground/10 bg-foreground/[0.02] backdrop-blur-sm p-6 md:p-7"
             aria-label="Field record"
           >
             <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/50 pointer-events-none" />
@@ -427,7 +427,7 @@ export default function SamuraiHero() {
               <span className="font-mono text-[10px] font-bold tracking-[0.35em] uppercase text-primary">
                 Field Record
               </span>
-              <span className="brush-jp text-base text-white/30" lang="ja">
+              <span className="brush-jp text-base text-foreground/30" lang="ja">
                 記録
               </span>
             </div>
@@ -450,7 +450,7 @@ export default function SamuraiHero() {
         role="img"
       >
         <div className="w-8 h-[1px] bg-primary/40" />
-        <p className="text-[10px] text-white/15 font-mono font-bold uppercase tracking-[0.5em]">
+        <p className="text-[10px] text-foreground/15 font-mono font-bold uppercase tracking-[0.5em]">
           継続は力なり — PERSEVERANCE IS POWER
         </p>
       </div>

@@ -12,7 +12,7 @@ export default function ServicesSection() {
   return (
     <section id="services" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       <div
-        className="absolute left-8 top-16 pointer-events-none select-none text-white/[0.03] text-[13vw] font-black z-0 vertical-text"
+        className="absolute left-8 top-16 pointer-events-none select-none text-foreground/[0.03] text-[13vw] font-black z-0 vertical-text"
         aria-hidden="true"
       >
         <span>役</span>
@@ -38,19 +38,19 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.7, delay: idx * 0.08, ease: EASE }}
-                className="group relative bg-surface/60 border border-white/5 p-7 flex flex-col hover:border-primary/40 transition-colors duration-500"
+                className="group relative bg-surface/60 border border-foreground/5 p-7 flex flex-col hover:border-primary/40 transition-colors duration-500"
               >
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-primary/0 group-hover:bg-primary transition-colors duration-500" aria-hidden="true" />
                 <div className="flex items-center justify-between mb-6">
-                  <div className="p-2.5 bg-white/5 border border-white/10">
+                  <div className="p-2.5 bg-foreground/5 border border-foreground/10">
                     <Icon size={18} className="text-primary" />
                   </div>
-                  <span className="jp-eyebrow text-[10px] text-white/25" lang="ja">{s.japanese}</span>
+                  <span className="jp-eyebrow text-[10px] text-foreground/25" lang="ja">{s.japanese}</span>
                 </div>
-                <h3 className="font-display text-xl font-black uppercase tracking-tight text-white mb-3">
+                <h3 className="font-display text-xl font-black uppercase tracking-tight text-foreground mb-3">
                   {s.title}
                 </h3>
-                <p className="text-sm text-white/60 font-light leading-relaxed mb-5">{s.description}</p>
+                <p className="text-sm text-foreground/60 font-light leading-relaxed mb-5">{s.description}</p>
                 <div className="flex flex-wrap gap-2 mb-5 mt-auto">
                   {s.stack.map((t) => (
                     <span
@@ -61,7 +61,7 @@ export default function ServicesSection() {
                     </span>
                   ))}
                 </div>
-                <div className="pt-4 border-t border-white/5 font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
+                <div className="pt-4 border-t border-foreground/5 font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
                   → {s.deliverable}
                 </div>
               </motion.article>
