@@ -1,98 +1,130 @@
 import dynamic from "next/dynamic";
-import SamuraiHero from "@/app/components/home/SamuraiHero";
-import TrustStrip from "@/app/components/home/TrustStrip";
-import NavigationPill from "@/app/components/header/NavigationPill";
-import KanjiDivider from "@/app/core/components/KanjiDivider";
+import HeroSection from "@/app/components/home/HeroSection";
+import StatsBar from "@/app/components/home/StatsBar";
+import SiteNav from "@/app/components/header/SiteNav";
+import SectionDivider from "@/app/core/components/SectionDivider";
 import ServicesSection from "@/app/components/services/ServicesSection";
-import StackStrip from "@/app/components/services/StackStrip";
-import SelectedWorkSection from "@/app/components/services/SelectedWorkSection";
+import TechStackGrid from "@/app/components/services/TechStackGrid";
+import UsesSection from "@/app/components/services/UsesSection";
+import WorkShowcase from "@/app/components/services/WorkShowcase";
 import ProcessSection from "@/app/components/services/ProcessSection";
-import ContributionsStrip from "@/app/components/services/ContributionsStrip";
+import FaqSection from "@/app/components/services/FaqSection";
+import ContributionsGrid from "@/app/components/services/ContributionsGrid";
 import { getGitHubRepos } from "@/app/core/api/github";
 
-const ProfessionalExperience = dynamic(() => import("@/app/components/experience/ProfessionalExperience"));
-const DynamicProjectsGrid = dynamic(() => import("@/app/components/services/DynamicProjectsGrid"));
-const HonorGallery = dynamic(() => import("@/app/components/experience/HonorGallery"));
-const ArtSection = dynamic(() => import("@/app/components/art_gallery/ArtSection"));
-const SamuraiFooter = dynamic(() => import("@/app/components/header/SamuraiFooter"));
+const ExperienceTimeline = dynamic(
+  () => import("@/app/components/experience/ExperienceTimeline")
+);
+const MilestonesSection = dynamic(
+  () => import("@/app/components/experience/MilestonesSection")
+);
+const NowSection = dynamic(
+  () => import("@/app/components/experience/NowSection")
+);
+const ProjectsGrid = dynamic(
+  () => import("@/app/components/services/ProjectsGrid")
+);
+const CredentialsGallery = dynamic(
+  () => import("@/app/components/experience/CredentialsGallery")
+);
+const ArtGallery = dynamic(
+  () => import("@/app/components/art-gallery/ArtGallery")
+);
+const ContactFooter = dynamic(
+  () => import("@/app/components/header/ContactFooter")
+);
 
 export default async function Home() {
   const repos = await getGitHubRepos();
+  const projectCount = repos.length;
+  const starCount = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
 
   return (
-    <main className="relative w-full bg-background overflow-x-hidden">
+    <main className="relative w-full bg-background text-foreground overflow-x-hidden">
       {/* ─── Full-page scanlines overlay ─── */}
       <div
         className="fixed inset-0 pointer-events-none z-[50] opacity-[0.015] scanlines"
         aria-hidden="true"
       />
 
-      {/* ─── Subtle neural-grid background ─── */}
+      {/* ─── Subtle grid background ─── */}
       <div
         className="fixed inset-0 pointer-events-none z-0 opacity-[0.02] neural-grid"
         aria-hidden="true"
       />
 
-      <NavigationPill />
+      <SiteNav />
 
       {/* 01 — Who: face, name, stack in 5 seconds */}
       <div id="home">
-        <SamuraiHero />
+        <HeroSection projectCount={projectCount} starCount={starCount} />
       </div>
 
       {/* 02 — Trust: numbers before claims */}
-      <TrustStrip />
+      <StatsBar />
 
       {/* 03 — Offer: what you can hire me for */}
       <div id="services">
         <ServicesSection />
       </div>
 
-      {/* 04 — Tools: the exact stack behind the offer */}
-      <StackStrip />
+      <SectionDivider text="設計 • 開発 • 構築 • 計測 • 出荷" reverse={true} angle={-1.5} />
 
-      <KanjiDivider text="設計 • 開発 • 構築 • 計測 • 出荷" reverse={true} angle={-1.5} />
-
-      {/* 05 — Proof A: shipped apps & backend APIs */}
+      {/* 04 — Proof A: shipped apps & backend APIs */}
       <div id="work">
-        <SelectedWorkSection />
+        <WorkShowcase />
       </div>
 
-      {/* 06 — Proof B: open-source depth */}
+      {/* 05 — Proof B: open-source depth */}
       <div id="projects">
-        <DynamicProjectsGrid repos={repos} />
+        <ProjectsGrid repos={repos} />
       </div>
 
-      {/* 06b — Proof C: upstream contributions */}
-      <ContributionsStrip />
+      {/* 05b — Proof C: upstream contributions */}
+      <ContributionsGrid />
 
-      <KanjiDivider text="継続は力なり • 改善 • 実務 • 計測" angle={-1.5} />
+      <SectionDivider text="継続は力なり • 改善 • 実務 • 計測" angle={-1.5} />
+
+      {/* 06 — Toolbox: the tools behind the proof above */}
+      <TechStackGrid />
+
+      {/* 06b — Daily drivers */}
+      <UsesSection />
 
       {/* 07 — Authority: where this happened */}
       <div id="experience">
-        <ProfessionalExperience />
+        <ExperienceTimeline />
       </div>
+
+      {/* 07b — Path recap + present snapshot */}
+      <MilestonesSection />
+      <NowSection />
 
       {/* 08 — Risk removal: how we will work together */}
       <ProcessSection />
 
-      <KanjiDivider text="認定 • 実績 • 知識 • 技能" angle={-1.5} />
+      {/* 08b — Pre-call answers */}
+      <div id="faq">
+        <FaqSection />
+      </div>
+
+      <SectionDivider text="認定 • 実績 • 知識 • 技能" angle={-1.5} />
 
       {/* 09 — Credentials */}
       <div id="certificates">
-        <HonorGallery />
+        <CredentialsGallery />
       </div>
 
-      <KanjiDivider text="芸術 • 創造 • 表現" reverse={true} angle={-1.5} />
+      <SectionDivider text="芸術 • 創造 • 表現" reverse={true} angle={-1.5} />
 
       {/* 10 — Personality: memorable ending before the ask */}
       <div id="art">
-        <ArtSection />
+        <ArtGallery />
       </div>
 
       {/* 11 — Action: single CTA */}
       <div id="contact" className="mt-20">
-        <SamuraiFooter />
+        <ContactFooter />
       </div>
     </main>
   );

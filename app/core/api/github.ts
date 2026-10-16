@@ -12,6 +12,26 @@ export interface Repo {
   license: { spdx_id: string } | null;
 }
 
+function getFallbackRepos(): Repo[] {
+  const pinnedRepos = PORTFOLIO_DATA.projects.pinnedRepos || [];
+  return pinnedRepos.map((name, index) => {
+    const highlight = PORTFOLIO_DATA.projects.highlights.find(
+      (h) => h.name.toLowerCase() === name.toLowerCase()
+    );
+    return {
+      id: 1000 + index,
+      name,
+      description: highlight?.description || "Open-source package with measured benchmarks.",
+      html_url: highlight?.link || `https://github.com/${PORTFOLIO_DATA.projects.githubUsername}/${name}`,
+      homepage: "",
+      stargazers_count: 0,
+      language: "Dart",
+      topics: [],
+      license: { spdx_id: "MIT" },
+    };
+  });
+}
+
 export async function getGitHubRepos(): Promise<Repo[]> {
   try {
     const response = await fetch(
@@ -31,11 +51,11 @@ export async function getGitHubRepos(): Promise<Repo[]> {
         .filter((repo: Repo) => pinnedRepos.includes(repo.name))
         .sort((a, b) => pinnedRepos.indexOf(a.name) - pinnedRepos.indexOf(b.name));
       
-      return filteredRepos;
+      return filteredRepos.length > 0 ? filteredRepos : getFallbackRepos();
     }
-    return [];
+    return getFallbackRepos();
   } catch (error) {
-    console.error("Error fetching GitHub repos:", error);
-    return [];
+    console.error("Error fetching GitHub repos, using fallback data:", error);
+    return getFallbackRepos();
   }
 }

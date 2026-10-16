@@ -131,6 +131,29 @@ export interface Language {
   level: string;
 }
 
+export interface UsesGroup {
+  id: string;
+  title: string;
+  japanese: string;
+  items: string[];
+}
+
+export interface NowItem {
+  label: string;
+  detail: string;
+}
+
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+export interface Milestone {
+  year: string;
+  title: string;
+  detail: string;
+}
+
 export interface PortfolioData {
   profile: Profile;
   experience: Experience[];
@@ -143,4 +166,8 @@ export interface PortfolioData {
   languages: Language[];
   certificates: Certificate[];
   artGallery: ArtGalleryItem[];
+  uses: UsesGroup[];
+  now: NowItem[];
+  faq: FaqItem[];
+  milestones: Milestone[];
 }

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -35,7 +37,34 @@
 
 @layer base {
   :root {
-    /* Main Theme Variables */
+    /* Light theme (washi paper) — default, class strategy via next-themes */
+    color-scheme: light;
+    --primary: #BC002D;
+    --secondary: #1A1A1A;
+    --accent: #8a6d00;
+    --tertiary: #007a8a;
+    --quaternary: #5b54d6;
+
+    --background: #f7f5f0;
+    --foreground: #141210;
+
+    --surface: #ffffff;
+    --on-surface: #141210;
+    --on-surface-variant: #57534a;
+    --surface-variant: #ece8df;
+
+    --primary-container: rgba(188, 0, 45, 0.08);
+    --tertiary-container: rgba(0, 122, 138, 0.1);
+
+    /* Border Radius Tokens */
+    --radius-base: 0px;
+    --radius-card: 4px;
+    --radius-button: 2px;
+  }
+
+  .dark {
+    /* Dark theme (sumi ink) */
+    color-scheme: dark;
     --primary: #BC002D;
     --secondary: #1A1A1A;
     --accent: #FFD700;
@@ -52,11 +81,6 @@
 
     --primary-container: rgba(226, 0, 26, 0.1);
     --tertiary-container: rgba(0, 210, 239, 0.1);
-
-    /* Border Radius Tokens */
-    --radius-base: 0px;
-    --radius-card: 4px;
-    --radius-button: 2px;
   }
 
   body {
@@ -75,6 +99,15 @@
   :focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 3px;
+  }
+
+  /* Pointer affordance on touch / non-fine pointers
+     (fine pointers use the custom cursor with cursor:none). */
+  @media (pointer: coarse) {
+    button,
+    [role="button"] {
+      cursor: pointer;
+    }
   }
 
   /* Skip link */
@@ -100,40 +133,44 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #080808;
+    background: var(--background);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #BC002D;
+    background: var(--primary);
     border-radius: 0;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #BC002D;
+    background: var(--primary);
   }
 
   /* Firefox scrollbar */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #BC002D #080808;
+    scrollbar-color: var(--primary) var(--background);
   }
 
   /* Selection Styling */
   ::selection {
-    background: #BC002D;
+    background: var(--primary);
     color: #FFFFFF;
   }
 
   ::-moz-selection {
-    background: #BC002D;
+    background: var(--primary);
     color: #FFFFFF;
+  }
+
+  body {
+    transition: background-color 0.35s ease, color 0.35s ease;
   }
 }
 
 /* ─── Neo-Samurai Components ─── */
 
 .katana-card {
-  @apply bg-surface/80 backdrop-blur-md border border-white/5 rounded-katana overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-xl;
+  @apply bg-surface/80 backdrop-blur-md border border-foreground/5 rounded-katana overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-xl;
 }
 
 .vertical-text {
@@ -158,7 +195,7 @@
 }
 
 .neural-grid {
-  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--foreground) 7%, transparent) 1px, transparent 0);
   background-size: 40px 40px;
 }
 
@@ -179,7 +216,7 @@
 }
 
 .halftone {
-  background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-image: radial-gradient(circle at 2px 2px, color-mix(in srgb, var(--foreground) 5%, transparent) 1px, transparent 0);
   background-size: 8px 8px;
 }
 
@@ -187,8 +224,8 @@
   background-image: repeating-linear-gradient(45deg,
       transparent,
       transparent 10px,
-      rgba(255, 255, 255, 0.02) 10px,
-      rgba(255, 255, 255, 0.02) 11px);
+      color-mix(in srgb, var(--foreground) 3%, transparent) 10px,
+      color-mix(in srgb, var(--foreground) 3%, transparent) 11px);
 }
 
 /* ─── Katana Cut Shapes ─── */
@@ -257,8 +294,106 @@
   letter-spacing: 0.35em;
 }
 
+/* ─── Mouse spotlight cards — radial highlight follows the cursor.
+   TiltCard sets --mx/--my. Zero JS cost beyond the tilt handler. */
+.spotlight {
+  position: relative;
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--primary) 14%, transparent),
+    transparent 70%
+  );
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Blue variant — tools-flavored glow (tertiary) instead of red. */
+.spotlight-blue::before {
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--tertiary) 16%, transparent),
+    transparent 70%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight::before {
+    display: none;
+  }
+}
+
+/* ─── Contribution cells pop as Pac-Man passes ─── */
+
+.cell-pop {
+  animation: cell-pop 0.45s ease both;
+  animation-delay: calc(var(--i, 0) * 12ms);
+}
+
+@keyframes cell-pop {
+  0% {
+    transform: scale(0.4);
+    filter: brightness(1.8);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cell-pop {
+    animation: none;
+  }
+}
+
+/* ─── Theme water-drop morph — gradual token easing while the
+   canvas ripple covers the flip. Added/removed by ThemeFxProvider. */
+.fx-morph,
+.fx-morph *,
+.fx-morph *::before,
+.fx-morph *::after {
+  transition:
+    background-color 0.55s ease,
+    color 0.55s ease,
+    border-color 0.55s ease,
+    fill 0.55s ease,
+    stroke 0.55s ease !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto !important;
   }
+  /* Infinite indicators are decoration, not information. */
+  .animate-ping,
+  .animate-pulse {
+    animation: none !important;
+  }
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate3d(10px, -20px, 0);
+    opacity: 0.1;
+  }
+}
+
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
