@@ -60,7 +60,7 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
             </p>
           </motion.div>
 
-          {/* Counter Badge — pacman eats the numbers up */}
+          {/* Counter Badge  pacman eats the numbers up */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
           </motion.div>
         </div>
 
-        {/* Project Grid — empty state when GitHub API is down */}
+        {/* Project Grid  empty state when GitHub API is down */}
         {repos.length === 0 && (
           <div className="relative bg-surface/60 border border-foreground/10 p-10 md:p-14 text-center">
             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent" aria-hidden="true" />
@@ -135,7 +135,7 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
           ))}
         </div>
 
-        {/* Bottom Decorative Line — gradient from transparent to red to transparent */}
+        {/* Bottom Decorative Line  gradient from transparent to red to transparent */}
         <div className="mt-20 w-full h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
       </div>
     </section>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 /**
- * Katana cursor — your blade for browsing the dojo.
+ * Katana cursor  your blade for browsing the dojo.
  * States: gold blade (default) → red lock-on (interactive) → slash flash (click).
  * Desktop fine-pointers only; touch keeps the native cursor.
  */
@@ -71,7 +71,7 @@ export default function CursorOverlay() {
 
   return (
     <>
-      {/* Outer ring — gold at rest, brackets lock on-hover */}
+      {/* Outer ring  gold at rest, brackets lock on-hover */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
@@ -137,7 +137,7 @@ export default function CursorOverlay() {
         </motion.div>
       </motion.div>
 
-      {/* Blade tip — gold at rest, red on lock-on */}
+      {/* Blade tip  gold at rest, red on lock-on */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[10000]"
         style={{
@@ -149,10 +149,9 @@ export default function CursorOverlay() {
       >
         <div
           className={`transition-all duration-300 transform rotate-45
-            ${
-              isHovering
-                ? "w-2 h-2 bg-primary shadow-[0_0_15px_rgba(226,0,26,0.9)]"
-                : "w-2 h-2 bg-accent shadow-[0_0_15px_rgba(255,215,0,0.8)]"
+            ${isHovering
+              ? "w-2 h-2 bg-primary shadow-[0_0_15px_rgba(226,0,26,0.9)]"
+              : "w-2 h-2 bg-accent shadow-[0_0_15px_rgba(255,215,0,0.8)]"
             }`}
         />
       </motion.div>

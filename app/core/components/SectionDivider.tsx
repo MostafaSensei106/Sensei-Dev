@@ -10,7 +10,7 @@ interface SectionDividerProps {
 }
 
 /**
- * Noren divider — a calm black banner with a red katana edge.
+ * Noren divider  a calm black banner with a red katana edge.
  * Brush Japanese drifts with page scroll; small red diamonds
  * mark the SENSEI seal. No hazard stripes, no flicker.
  */
