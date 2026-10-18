@@ -25,7 +25,7 @@ interface ThemeFx {
   transitionTo: (theme: "light" | "dark", origin?: Origin) => void;
 }
 
-const ThemeFxContext = createContext<ThemeFx>({ transitionTo: () => {} });
+const ThemeFxContext = createContext<ThemeFx>({ transitionTo: () => { } });
 
 export const useThemeFx = () => useContext(ThemeFxContext);
 
@@ -106,7 +106,7 @@ export function ThemeFxProvider({ children }: { children: ReactNode }) {
       const start = performance.now();
 
       const frame = (now: number) => {
-        // rAF timestamps can predate `start` (vsync vs event clock) —
+        // rAF timestamps can predate `start` (vsync vs event clock) 
         // clamp so the radius never goes negative (IndexSizeError).
         const t = Math.min(1, Math.max(0, (now - start) / duration));
         const eased = 1 - Math.pow(1 - t, 3);

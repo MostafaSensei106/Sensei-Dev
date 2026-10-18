@@ -55,74 +55,74 @@ export default async function Home() {
 
       <SiteNav />
 
-      {/* 01 — Who: face, name, stack in 5 seconds */}
+      {/* 01  Who: face, name, stack in 5 seconds */}
       <div id="home">
         <HeroSection projectCount={projectCount} starCount={starCount} />
       </div>
 
-      {/* 02 — Trust: numbers before claims */}
+      {/* 02  Trust: numbers before claims */}
       <StatsBar />
 
-      {/* 03 — Offer: what you can hire me for */}
+      {/* 03  Offer: what you can hire me for */}
       <div id="services">
         <ServicesSection />
       </div>
 
       <SectionDivider text="設計 • 開発 • 構築 • 計測 • 出荷" reverse={true} angle={-1.5} />
 
-      {/* 04 — Proof A: shipped apps & backend APIs */}
+      {/* 04  Proof A: shipped apps & backend APIs */}
       <div id="work">
         <WorkShowcase />
       </div>
 
-      {/* 05 — Proof B: open-source depth */}
+      {/* 05  Proof B: open-source depth */}
       <div id="projects">
         <ProjectsGrid repos={repos} />
       </div>
 
-      {/* 05b — Proof C: upstream contributions */}
+      {/* 05b  Proof C: upstream contributions */}
       <ContributionsGrid />
 
       <SectionDivider text="継続は力なり • 改善 • 実務 • 計測" angle={-1.5} />
 
-      {/* 06 — Toolbox: the tools behind the proof above */}
+      {/* 06  Toolbox: the tools behind the proof above */}
       <TechStackGrid />
 
-      {/* 06b — Daily drivers */}
+      {/* 06b  Daily drivers */}
       <UsesSection />
 
-      {/* 07 — Authority: where this happened */}
+      {/* 07  Authority: where this happened */}
       <div id="experience">
         <ExperienceTimeline />
       </div>
 
-      {/* 07b — Path recap + present snapshot */}
+      {/* 07b  Path recap + present snapshot */}
       <MilestonesSection />
       <NowSection />
 
-      {/* 08 — Risk removal: how we will work together */}
+      {/* 08  Risk removal: how we will work together */}
       <ProcessSection />
 
-      {/* 08b — Pre-call answers */}
+      {/* 08b  Pre-call answers */}
       <div id="faq">
         <FaqSection />
       </div>
 
       <SectionDivider text="認定 • 実績 • 知識 • 技能" angle={-1.5} />
 
-      {/* 09 — Credentials */}
+      {/* 09  Credentials */}
       <div id="certificates">
         <CredentialsGallery />
       </div>
 
       <SectionDivider text="芸術 • 創造 • 表現" reverse={true} angle={-1.5} />
 
-      {/* 10 — Personality: memorable ending before the ask */}
+      {/* 10  Personality: memorable ending before the ask */}
       <div id="art">
         <ArtGallery />
       </div>
 
-      {/* 11 — Action: single CTA */}
+      {/* 11  Action: single CTA */}
       <div id="contact" className="mt-20">
         <ContactFooter />
       </div>

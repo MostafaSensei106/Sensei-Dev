@@ -109,21 +109,21 @@ export default function HeroSection({
     return () => ctx.revert();
   }, []);
 
-  const socials = [    {
-      name: "GitHub",
-      icon: Github,
-      href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`,
-    },
-    {
-      name: "LinkedIn",
-      icon: Linkedin,
-      href: `${PORTFOLIO_DATA.profile.contact.linkedin}`,
-    },
-    {
-      name: "WhatsApp",
-      icon: MessageCircle,
-      href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`,
-    },
+  const socials = [{
+    name: "GitHub",
+    icon: Github,
+    href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`,
+  },
+  {
+    name: "LinkedIn",
+    icon: Linkedin,
+    href: `${PORTFOLIO_DATA.profile.contact.linkedin}`,
+  },
+  {
+    name: "WhatsApp",
+    icon: MessageCircle,
+    href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`,
+  },
   ];
 
   const focusServices = PORTFOLIO_DATA.services;
@@ -180,22 +180,22 @@ export default function HeroSection({
 
       {/* ─── Background Japanese Watermark (parallax) ─── */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <div
-        className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-foreground/[0.03] font-black text-[10vw] select-none pointer-events-none z-0 leading-none"
-        role="img"
-      >
-        <div className="vertical-text">
-          <span>エ</span>
-          <span>ン</span>
-          <span>ジ</span>
-          <span>ニ</span>
-          <span>ア</span>
+        <div
+          className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-foreground/[0.03] font-black text-[10vw] select-none pointer-events-none z-0 leading-none"
+          role="img"
+        >
+          <div className="vertical-text">
+            <span>エ</span>
+            <span>ン</span>
+            <span>ジ</span>
+            <span>ニ</span>
+            <span>ア</span>
+          </div>
+          <div className="vertical-text">
+            <span>師</span>
+            <span>匠</span>
+          </div>
         </div>
-        <div className="vertical-text">
-          <span>師</span>
-          <span>匠</span>
-        </div>
-      </div>
       </motion.div>
 
       {/* ─── Scanline Overlay ─── */}
@@ -217,12 +217,12 @@ export default function HeroSection({
           </span>
         </div>
 
-        {/* ─── Masthead: name first, portrait second — one row ─── */}
+        {/* ─── Masthead: name first, portrait second  one row ─── */}
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16 w-full">
           {/* Name */}
           <div className="text-center md:text-left order-2 md:order-1">
             <p className="font-mono text-[11px] md:text-xs font-bold uppercase tracking-[0.4em] text-primary mb-3">
-              Portfolio — 履歴書
+              Portfolio  履歴書
             </p>
             <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.85] tracking-tighter uppercase">
               <RevealText text="Mostafa" className="block text-foreground" />
@@ -234,13 +234,13 @@ export default function HeroSection({
               />
             </h1>
             <p className="brush-jp text-xl md:text-2xl text-foreground/40 mt-4" lang="ja">
-              モスタファ・マフムード — モバイルアプリエンジニア
+              モスタファ・マフムード  モバイルアプリエンジニア
             </p>
           </div>
 
           {/* Portrait */}
           <div className="hero-image relative w-[220px] sm:w-[260px] lg:w-[320px] aspect-square shrink-0 order-1 md:order-2 md:ml-auto">
-            {/* Hinomaru — Red Sun */}
+            {/* Hinomaru  Red Sun */}
             <div className="hinomaru-sun absolute inset-[-20%] flex items-center justify-center pointer-events-none">
               <div
                 className="w-[80%] h-[80%] rounded-full opacity-[0.07]"
@@ -251,7 +251,7 @@ export default function HeroSection({
               />
             </div>
 
-            {/* Orbit inscription — stack names circling the portrait */}
+            {/* Orbit inscription  stack names circling the portrait */}
             <div
               className="absolute -inset-3 animate-[spin_36s_linear_infinite] pointer-events-none"
               aria-hidden="true"
@@ -299,7 +299,7 @@ export default function HeroSection({
               </div>
             </a>
 
-            {/* Hanko seal — the maker's stamp */}
+            {/* Hanko seal  the maker's stamp */}
             <div
               className="absolute bottom-5 right-5 z-20 w-12 h-12 lg:w-14 lg:h-14 bg-primary rotate-6 hover:rotate-0 transition-transform duration-500 shadow-[0_0_25px_rgba(188,0,45,0.5)] flex items-center justify-center"
               role="img"
@@ -319,7 +319,7 @@ export default function HeroSection({
               }}
             />
 
-            {/* Mascot companion — random language mascot per visit */}
+            {/* Mascot companion  random language mascot per visit */}
             <HeroMascot className="absolute -bottom-3 -left-4 z-20 lg:-left-8" />
           </div>
 
@@ -434,7 +434,7 @@ export default function HeroSection({
             </div>
           </div>
 
-          {/* Field record — live portfolio data, zero hardcodes */}
+          {/* Field record  live portfolio data, zero hardcodes */}
           <aside
             className="relative border border-foreground/10 bg-foreground/[0.02] backdrop-blur-sm p-6 md:p-7"
             aria-label="Field record"
@@ -470,7 +470,7 @@ export default function HeroSection({
       >
         <div className="w-8 h-[1px] bg-primary/40" />
         <p className="text-[10px] text-foreground/15 font-mono font-bold uppercase tracking-[0.5em]">
-          継続は力なり — PERSEVERANCE IS POWER
+          継続は力なり  PERSEVERANCE IS POWER
         </p>
       </div>
     </section>

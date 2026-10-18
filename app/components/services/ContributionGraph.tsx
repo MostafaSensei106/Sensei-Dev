@@ -15,7 +15,7 @@ const LEVEL_BG = [
 ];
 
 /**
- * Year contribution graph (presentational — data comes from
+ * Year contribution graph (presentational  data comes from
  * useContributionStats so the section header can share the total).
  * Loading skeleton -> graph | empty notice | error notice with profile link.
  * Never blocks the page: failures degrade to a single line.
@@ -39,7 +39,7 @@ export function ContributionGraph({ stats }: { stats: ContributionStats }) {
   if (status === "error" || status === "empty") {
     return (
       <p className="border border-foreground/10 bg-surface/60 px-6 py-5 font-mono text-xs text-foreground/50">
-        {status === "error" ? "Contribution graph is unreachable right now — " : "No recent activity to draw — "}
+        {status === "error" ? "Contribution graph is unreachable right now  " : "No recent activity to draw  "}
         <a
           href={`https://github.com/${username}`}
           target="_blank"

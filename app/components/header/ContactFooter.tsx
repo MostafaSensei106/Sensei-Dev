@@ -61,7 +61,7 @@ export default function ContactFooter() {
                 Forge <br /> <span className="text-primary italic">Together.</span>
               </h2>
 
-              {/* Social Links — sharp-edged tags */}
+              {/* Social Links  sharp-edged tags */}
               <div className="flex flex-wrap gap-3 mb-16">
                 {socialLinks.map((social) => (
                   <a
@@ -84,7 +84,7 @@ export default function ContactFooter() {
                 ))}
               </div>
 
-              {/* Languages — from portfolio data */}
+              {/* Languages  from portfolio data */}
               <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase">
                 {PORTFOLIO_DATA.languages.map((l, i) => (
                   <span key={l.code} className="flex items-center gap-3">
@@ -94,7 +94,7 @@ export default function ContactFooter() {
                       </span>
                     )}
                     <span className="text-foreground/60">
-                      {l.code} — {l.level}
+                      {l.code}  {l.level}
                     </span>
                   </span>
                 ))}
@@ -102,7 +102,7 @@ export default function ContactFooter() {
             </motion.div>
           </div>
 
-          {/* Form Column — Mission Briefing style */}
+          {/* Form Column  Mission Briefing style */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}

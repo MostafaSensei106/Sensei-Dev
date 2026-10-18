@@ -39,7 +39,7 @@ export default function NowSection() {
               <span className="text-primary italic">Now.</span>
             </h2>
             <p className="mt-5 text-foreground/55 max-w-xl font-light leading-relaxed">
-              A snapshot, not a promise — updated as the work shifts.
+              A snapshot, not a promise  updated as the work shifts.
             </p>
           </motion.div>
 

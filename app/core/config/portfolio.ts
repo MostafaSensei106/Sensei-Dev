@@ -26,11 +26,26 @@ export const PORTFOLIO_DATA: PortfolioData = {
   },
   experience: [
     {
+      company: "GDGoC Al-Azhar University",
+      link: "https://gdg.community.dev/gdg-on-campus-al-azhar-university-cairo-egypt/",
+      role: "Head of Flutter",
+      location: "Cairo, Egypt",
+      period: "Oct 2026 – Oct 2027",
+      description: "Leading the Flutter track: roadmap, workshops, and code review for student teams.",
+      details: [
+        //   "Building GDGoC Benha App V2 for events and bootcamp delivery.",
+        "Maintaining a Flutter roadmap used by 200+ students.",
+        "Running workshops on state management and clean architecture.",
+        "Reviewing community projects and mentoring juniors."
+      ],
+      japaneseRole: "フラッター部門責任者",
+    },
+    {
       company: "GDGoC Benha University",
       link: "https://gdg.community.dev/gdg-on-campus-benha-university-benha-egypt",
       role: "Head of Flutter",
       location: "Benha, Egypt",
-      period: "Oct 2024 – Present",
+      period: "Oct 2025 – Oct 2026",
       description: "Leading the Flutter track: roadmap, workshops, and code review for student teams.",
       details: [
         "Building GDGoC Benha App V2 for events and bootcamp delivery.",
@@ -111,14 +126,14 @@ export const PORTFOLIO_DATA: PortfolioData = {
       {
         name: "Quantum-Crypto",
         type: "Dart Package",
-        description: "Post-quantum crypto suite for Flutter: NIST ML-KEM (FIPS 203) and ML-DSA (FIPS 204) over a Rust core. Bench numbers in the repo.",
+        description: "An advanced, Post- Quantum Cryptography suite for Flutter, powered by Rust.",
         metrics: ["ML-KEM / ML-DSA", "Rust core", "AES-256-GCM"],
         link: "https://github.com/MostafaSensei106/Quantum-Crypto",
       },
       {
         name: "Waffle-DB",
         type: "Dart Package",
-        description: "Local vector database for Flutter: Rust + HNSW indexing, 1536+ dimension embeddings with KNN search. Bench numbers in the repo.",
+        description: "A local database for Flutter combining dense vector search, full- text search and filtered storage in one Rust engine.",
         metrics: ["HNSW index", "Rust core", "KNN search"],
         link: "https://github.com/MostafaSensei106/Waffle-DB",
       },
@@ -131,7 +146,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       type: "app",
       tagline: "Scan a product, get a clear on-device answer.",
       problem: "Shoppers needed a fast check without uploading photos.",
-      role: "Flutter dev — Objectbox + Firestore sync, ML Kit scanning",
+      role: "Flutter dev  Objectbox + Firestore sync, ML Kit scanning",
       stack: ["Flutter", "Dart", "BLoC", "Objectbox", "Firestore", "ML Kit"],
       platform: "Android / iOS",
       status: "open-source",
@@ -146,7 +161,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       type: "app",
       tagline: "Kids tablet shell with guarded content.",
       problem: "Private client app, not on GitHub. Needed one shell for many games plus parental controls.",
-      role: "Flutter dev — shell, audio, local DB",
+      role: "Flutter dev  shell, audio, local DB",
       stack: ["Flutter", "Dart", "Riverpod", "SQLite", "Audio"],
       platform: "Android Tablet",
       status: "private-demo",
@@ -161,7 +176,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       type: "backend",
       tagline: "Events, attendance, and roles API.",
       problem: "Community app needed events, attendance, and roles without Firebase lock-in.",
-      role: "Backend — Gin API, Postgres, Docker",
+      role: "Backend  Gin API, Postgres, Docker",
       stack: ["Go", "Gin", "Postgres", "Docker", "JWT"],
       platform: "REST API",
       status: "private-demo",
@@ -176,7 +191,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       type: "backend",
       tagline: "Image pipeline behind the GoPix CLI.",
       problem: "Batch conversion needed checksums and parallel workers with clear errors.",
-      role: "Go dev — workers, formats, CLI",
+      role: "Go dev  workers, formats, CLI",
       stack: ["Go", "CLI", "Workers", "WebP/AVIF"],
       platform: "CLI + pipeline",
       status: "open-source",
@@ -190,7 +205,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       type: "app",
       tagline: "Shake the phone, get a quote with native feel.",
       problem: "Needed real sensor-driven interaction, not just a button.",
-      role: "Flutter + Kotlin — platform channels, accelerometer",
+      role: "Flutter + Kotlin  platform channels, accelerometer",
       stack: ["Flutter", "Dart", "Kotlin", "Platform Channels"],
       platform: "Android",
       status: "open-source",
@@ -204,7 +219,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       type: "app",
       tagline: "Browse movies with cached, smooth lists.",
       problem: "Movie browsing needed caching, smooth images, and crash reports.",
-      role: "Flutter dev — Hive cache, Dio, Sentry",
+      role: "Flutter dev  Hive cache, Dio, Sentry",
       stack: ["Flutter", "Dart", "BLoC", "Hive", "Dio", "Sentry"],
       platform: "Android / iOS",
       status: "open-source",
@@ -271,26 +286,26 @@ export const PORTFOLIO_DATA: PortfolioData = {
     { id: "explore", title: "Exploring", japanese: "探求", items: ["ML-KEM / ML-DSA", "HNSW search", "GPU shaders"] },
   ],
   now: [
-    { label: "Leading", detail: "Flutter track at GDGoC Benha — roadmap, workshops, and the community app V2." },
+    { label: "Leading", detail: "Flutter track at GDGoC Benha  roadmap, workshops, and the community app V2." },
     { label: "Studying", detail: "Final stretch of the CS degree at Benha University (2022 – 2026)." },
     { label: "Shipping", detail: "Go backends and Dart packages with bench scripts and documented limits." },
     { label: "Open to", detail: "Apps, backends, and package work. Replies within 48h." },
   ],
   faq: [
-    { q: "Are you available for work?", a: "Yes — open for new opportunities: apps, backends, and package work. Replies within 48 hours." },
-    { q: "How do we start?", a: "A short brief: scope, platform, and what done looks like. Every engagement follows the same rhythm — brief, build, measure, harden." },
+    { q: "Are you available for work?", a: "Yes  open for new opportunities: apps, backends, and package work. Replies within 48 hours." },
+    { q: "How do we start?", a: "A short brief: scope, platform, and what done looks like. Every engagement follows the same rhythm  brief, build, measure, harden." },
     { q: "What do I actually receive?", a: "A concrete deliverable plus docs: store build, API with compose file, or package with bench scripts. Never just slides." },
     { q: "What does private-demo mean?", a: "Client work under NDA. There is no public repo, but a live demo can be arranged on request." },
-    { q: "Do you mentor or teach?", a: "Yes — Flutter roadmaps, workshops, and code review for student teams. 200+ students mentored through GDGoC Benha." },
+    { q: "Do you mentor or teach?", a: "Yes  Flutter roadmaps, workshops, and code review for student teams. 200+ students mentored through GDGoC Benha." },
     { q: "Which platforms and stacks?", a: "Flutter + Dart + Kotlin for mobile, Go (Gin) or Spring Boot for backends, Rust cores over FFI when performance demands it." },
   ],
   milestones: [
-    { year: "2022", title: "Started CS", detail: "Began Computer Science at Benha University — software engineering, algorithms, AI." },
+    { year: "2022", title: "Started CS", detail: "Began Computer Science at Benha University  software engineering, algorithms, AI." },
     { year: "2024", title: "First client app", detail: "Built the LothgaTablet shell: core structure, audio layer, and local database." },
-    { year: "2024", title: "Led Flutter track", detail: "Became Head of Flutter at GDGoC Benha — roadmap used by 200+ students." },
-    { year: "2024", title: "Shipped Tadamon", detail: "On-device product scanning with cloud sync — open source." },
+    { year: "2024", title: "Led Flutter track", detail: "Became Head of Flutter at GDGoC Benha  roadmap used by 200+ students." },
+    { year: "2024", title: "Shipped Tadamon", detail: "On-device product scanning with cloud sync  open source." },
     { year: "2025", title: "Backends + packages", detail: "Go APIs with Docker deploys, plus Dart packages with Rust cores and bench scripts." },
-    { year: "2026", title: "Graduation", detail: "Final year — closing the degree while staying open for apps, backends, and package work." },
+    { year: "2026", title: "Graduation", detail: "Final year  closing the degree while staying open for apps, backends, and package work." },
   ],
   contributions: [
     {
@@ -313,12 +328,19 @@ export const PORTFOLIO_DATA: PortfolioData = {
     },
   ],
   certificates: [
+
+    {
+      title: "Head of Flutter",
+      issuer: "Google Developer Groups",
+      date: "Aug 2026",
+      image: "Assets/art-gallery/Images/certificates/gdg/Head_Flutter_GDGoC_Certificate.webp"
+
+    },
     {
       title: "Head of Flutter",
       issuer: "Benha University",
       date: "Feb 2026",
-      image: "Assets/art-gallery/Images/certificates/gdg/Head_Flutter_GDGoC_Certificate.webp"
-
+      image: "Assets/art-gallery/Images/certificates/gdg/Head_Flutter_GDGoC_Certificate_Un.webp"
     },
 
     {

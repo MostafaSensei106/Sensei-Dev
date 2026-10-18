@@ -32,7 +32,7 @@ export default function MilestonesSection() {
               <span className="text-primary italic">Path.</span>
             </h2>
             <p className="mt-5 text-foreground/55 max-w-xl font-light leading-relaxed">
-              Every step below is documented somewhere above — experience, work, or credentials.
+              Every step below is documented somewhere above  experience, work, or credentials.
             </p>
           </motion.div>
 
@@ -62,41 +62,40 @@ export default function MilestonesSection() {
           </motion.div>
         </div>
         <div className="max-w-4xl">
-        <ol className="relative flex flex-col">
-          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-foreground/10" aria-hidden="true" />
-          {items.map((m, idx) => (
-            <motion.li
-              key={`${m.year}-${m.title}`}
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: idx * 0.06, ease: EASE }}
-              className="relative flex gap-6 pb-10 last:pb-0"
-            >
-              <span
-                className={`relative z-10 mt-1.5 h-[15px] w-[15px] shrink-0 rotate-45 border-2 transition-colors ${
-                  idx === items.length - 1
-                    ? "border-primary bg-primary"
-                    : "border-primary/60 bg-background"
-                }`}
-                aria-hidden="true"
-              />
-              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-5">
-                <span className="font-mono text-sm font-black text-accent tabular-nums shrink-0 w-12">
-                  {m.year}
-                </span>
-                <div>
-                  <h3 className="font-display text-xl font-black uppercase tracking-tight text-foreground">
-                    {m.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-foreground/55 font-light leading-relaxed">
-                    {m.detail}
-                  </p>
+          <ol className="relative flex flex-col">
+            <div className="absolute left-[7px] top-2 bottom-2 w-px bg-foreground/10" aria-hidden="true" />
+            {items.map((m, idx) => (
+              <motion.li
+                key={`${m.year}-${m.title}`}
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, delay: idx * 0.06, ease: EASE }}
+                className="relative flex gap-6 pb-10 last:pb-0"
+              >
+                <span
+                  className={`relative z-10 mt-1.5 h-[15px] w-[15px] shrink-0 rotate-45 border-2 transition-colors ${idx === items.length - 1
+                      ? "border-primary bg-primary"
+                      : "border-primary/60 bg-background"
+                    }`}
+                  aria-hidden="true"
+                />
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-5">
+                  <span className="font-mono text-sm font-black text-accent tabular-nums shrink-0 w-12">
+                    {m.year}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-xl font-black uppercase tracking-tight text-foreground">
+                      {m.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-foreground/55 font-light leading-relaxed">
+                      {m.detail}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.li>
-          ))}
-        </ol>
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

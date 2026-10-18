@@ -9,7 +9,7 @@ import { CountUp } from "@/app/core/components/CountUp";
 import { ExternalLink } from "lucide-react";
 
 /**
- * Upstream contributions — fixes shipped to projects I don't own.
+ * Upstream contributions  fixes shipped to projects I don't own.
  * Compact strip inside the proof cluster, same card language.
  */
 export default function ContributionsGrid() {
@@ -56,7 +56,7 @@ export default function ContributionsGrid() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
               className="group spotlight relative bg-surface/60 border border-foreground/5 p-6 hover:border-tertiary/50 transition-colors duration-500 flex flex-col"
-              aria-label={`${c.name} — ${c.org}`}
+              aria-label={`${c.name}  ${c.org}`}
             >
               <div
                 className="absolute top-0 left-0 w-full h-[2px] bg-tertiary/0 group-hover:bg-tertiary transition-colors duration-500"

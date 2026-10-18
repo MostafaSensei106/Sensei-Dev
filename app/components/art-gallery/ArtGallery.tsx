@@ -84,7 +84,7 @@ export default function ArtGallery() {
           </motion.div>
         </div>
 
-        {/* Art Grid — masonry columns */}
+        {/* Art Grid  masonry columns */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
           {PORTFOLIO_DATA.artGallery.map((img, idx) => (
             <motion.div
@@ -107,51 +107,51 @@ export default function ArtGallery() {
                 max={5}
                 className="spotlight relative group overflow-hidden bg-surface border border-foreground/5 transition-all duration-700 hover:border-primary/40"
               >
-              {/* Corner bracket accents */}
-              <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
-              <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
-              <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
+                {/* Corner bracket accents */}
+                <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
+                <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
 
-              {/* Image */}
-              <Image
-                src={img.thumb}
-                alt={img.title}
-                width={500}
-                height={500}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
-                loading="lazy"
-                unoptimized={true}
-              />
-
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 z-10">
-                {/* Diagonal line accent */}
-                <div
-                  className="absolute top-0 right-0 w-full h-full pointer-events-none opacity-20"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(135deg, transparent 48%, var(--primary) 48%, var(--primary) 49%, transparent 49%)",
-                  }}
+                {/* Image */}
+                <Image
+                  src={img.thumb}
+                  alt={img.title}
+                  width={500}
+                  height={500}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                  loading="lazy"
+                  unoptimized={true}
                 />
 
-                <div className="relative z-10">
-                  <div className="flex items-center gap-2 text-primary mb-2">
-                    <Sparkles size={12} />
-                    <span className="font-mono text-[10px] font-bold tracking-[0.3em] uppercase">
-                      Visual Entry {String(idx + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-lg font-black text-foreground uppercase tracking-tight">
-                    {img.title}
-                  </h3>
-                  <div className="mt-4 flex items-center justify-between">
-                    <div className="w-10 h-[1px] bg-primary/40" />
-                    <Maximize2 size={14} className="text-on-surface-variant" />
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 z-10">
+                  {/* Diagonal line accent */}
+                  <div
+                    className="absolute top-0 right-0 w-full h-full pointer-events-none opacity-20"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(135deg, transparent 48%, var(--primary) 48%, var(--primary) 49%, transparent 49%)",
+                    }}
+                  />
+
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-2 text-primary mb-2">
+                      <Sparkles size={12} />
+                      <span className="font-mono text-[10px] font-bold tracking-[0.3em] uppercase">
+                        Visual Entry {String(idx + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-lg font-black text-foreground uppercase tracking-tight">
+                      {img.title}
+                    </h3>
+                    <div className="mt-4 flex items-center justify-between">
+                      <div className="w-10 h-[1px] bg-primary/40" />
+                      <Maximize2 size={14} className="text-on-surface-variant" />
+                    </div>
                   </div>
                 </div>
-              </div>
               </TiltCard>
             </motion.div>
           ))}

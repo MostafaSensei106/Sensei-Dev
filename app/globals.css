@@ -37,7 +37,7 @@
 
 @layer base {
   :root {
-    /* Light theme (washi paper) — default, class strategy via next-themes */
+    /* Light theme (washi paper)  default, class strategy via next-themes */
     color-scheme: light;
     --primary: #BC002D;
     --secondary: #1A1A1A;
@@ -89,6 +89,7 @@
 
   /* Custom cursor only on precise pointers; touch keeps native cursor */
   @media (pointer: fine) {
+
     body.custom-cursor-on,
     body.custom-cursor-on a,
     body.custom-cursor-on button {
@@ -104,6 +105,7 @@
   /* Pointer affordance on touch / non-fine pointers
      (fine pointers use the custom cursor with cursor:none). */
   @media (pointer: coarse) {
+
     button,
     [role="button"] {
       cursor: pointer;
@@ -123,6 +125,7 @@
     padding: 10px 16px;
     transition: top 0.2s ease;
   }
+
   .skip-link:focus {
     top: 16px;
   }
@@ -259,7 +262,7 @@
     0 0 40px rgba(255, 215, 0, 0.2);
 }
 
-/* ─── Button sheen — one delight, used by every primary CTA ─── */
+/* ─── Button sheen  one delight, used by every primary CTA ─── */
 
 .btn-sheen {
   position: relative;
@@ -294,7 +297,7 @@
   letter-spacing: 0.35em;
 }
 
-/* ─── Mouse spotlight cards — radial highlight follows the cursor.
+/* ─── Mouse spotlight cards  radial highlight follows the cursor.
    TiltCard sets --mx/--my. Zero JS cost beyond the tilt handler. */
 .spotlight {
   position: relative;
@@ -307,24 +310,20 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s ease;
-  background: radial-gradient(
-    320px circle at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--primary) 14%, transparent),
-    transparent 70%
-  );
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--primary) 14%, transparent),
+      transparent 70%);
 }
 
 .spotlight:hover::before {
   opacity: 1;
 }
 
-/* Blue variant — tools-flavored glow (tertiary) instead of red. */
+/* Blue variant  tools-flavored glow (tertiary) instead of red. */
 .spotlight-blue::before {
-  background: radial-gradient(
-    320px circle at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--tertiary) 16%, transparent),
-    transparent 70%
-  );
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--tertiary) 16%, transparent),
+      transparent 70%);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -345,6 +344,7 @@
     transform: scale(0.4);
     filter: brightness(1.8);
   }
+
   100% {
     transform: scale(1);
     filter: brightness(1);
@@ -357,7 +357,7 @@
   }
 }
 
-/* ─── Theme water-drop morph — gradual token easing while the
+/* ─── Theme water-drop morph  gradual token easing while the
    canvas ripple covers the flip. Added/removed by ThemeFxProvider. */
 .fx-morph,
 .fx-morph *,
@@ -375,6 +375,7 @@
   * {
     scroll-behavior: auto !important;
   }
+
   /* Infinite indicators are decoration, not information. */
   .animate-ping,
   .animate-pulse {
@@ -387,6 +388,7 @@
     transform: translate3d(0, 0, 0);
     opacity: 0.3;
   }
+
   100% {
     transform: translate3d(10px, -20px, 0);
     opacity: 0.1;
