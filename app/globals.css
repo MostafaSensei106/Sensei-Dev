@@ -27,12 +27,12 @@
   --radius-button: var(--radius-button);
   --radius-katana: 0.5rem 2rem 0.5rem 2rem;
 
-  /* Font Families */
-  --font-display: 'Dela Gothic One', 'Noto Sans JP', sans-serif;
-  --font-body: 'Outfit', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-jp: 'Yuji Syuku', 'Noto Sans JP', sans-serif;
-  --font-jp-brush: 'Yuji Syuku', 'Noto Sans JP', serif;
+  /* Font Families — values come from next/font (app/fonts.ts) */
+  --font-display: var(--font-display-google), var(--font-jp-google), sans-serif;
+  --font-body: var(--font-body-google), system-ui, sans-serif;
+  --font-mono: var(--font-mono-google), ui-monospace, monospace;
+  --font-jp: var(--font-jp-brush-google), var(--font-jp-google), sans-serif;
+  --font-jp-brush: var(--font-jp-brush-google), var(--font-jp-google), serif;
 }
 
 @layer base {

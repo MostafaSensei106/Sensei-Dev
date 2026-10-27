@@ -3,35 +3,68 @@ import HeroSection from "@/app/components/home/HeroSection";
 import StatsBar from "@/app/components/home/StatsBar";
 import SiteNav from "@/app/components/header/SiteNav";
 import SectionDivider from "@/app/core/components/SectionDivider";
-import ServicesSection from "@/app/components/services/ServicesSection";
-import TechStackGrid from "@/app/components/services/TechStackGrid";
-import UsesSection from "@/app/components/services/UsesSection";
-import WorkShowcase from "@/app/components/services/WorkShowcase";
-import ProcessSection from "@/app/components/services/ProcessSection";
-import FaqSection from "@/app/components/services/FaqSection";
-import ContributionsGrid from "@/app/components/services/ContributionsGrid";
+import SectionSkeleton from "@/app/core/components/SectionSkeleton";
 import { getGitHubRepos } from "@/app/core/api/github";
 
+/*
+ * Everything below the first viewport is code-split. Hero + nav stay static so
+ * the first paint is never blocked by a chunk request.
+ */
+const ServicesSection = dynamic(
+  () => import("@/app/components/services/ServicesSection"),
+  { loading: () => <SectionSkeleton lines={3} /> }
+);
+const WorkShowcase = dynamic(
+  () => import("@/app/components/services/WorkShowcase"),
+  { loading: () => <SectionSkeleton lines={3} /> }
+);
+const TechStackGrid = dynamic(
+  () => import("@/app/components/services/TechStackGrid"),
+  { loading: () => <SectionSkeleton lines={6} /> }
+);
+const UsesSection = dynamic(
+  () => import("@/app/components/services/UsesSection"),
+  { loading: () => <SectionSkeleton lines={3} /> }
+);
+const ProcessSection = dynamic(
+  () => import("@/app/components/services/ProcessSection"),
+  { loading: () => <SectionSkeleton lines={4} /> }
+);
+const FaqSection = dynamic(
+  () => import("@/app/components/services/FaqSection"),
+  { loading: () => <SectionSkeleton lines={4} /> }
+);
+const ContributionsGrid = dynamic(
+  () => import("@/app/components/services/ContributionsGrid"),
+  { loading: () => <SectionSkeleton lines={3} /> }
+);
 const ExperienceTimeline = dynamic(
-  () => import("@/app/components/experience/ExperienceTimeline")
+  () => import("@/app/components/experience/ExperienceTimeline"),
+  { loading: () => <SectionSkeleton lines={3} tall /> }
 );
 const MilestonesSection = dynamic(
-  () => import("@/app/components/experience/MilestonesSection")
+  () => import("@/app/components/experience/MilestonesSection"),
+  { loading: () => <SectionSkeleton lines={3} /> }
 );
 const NowSection = dynamic(
-  () => import("@/app/components/experience/NowSection")
+  () => import("@/app/components/experience/NowSection"),
+  { loading: () => <SectionSkeleton lines={2} /> }
 );
 const ProjectsGrid = dynamic(
-  () => import("@/app/components/services/ProjectsGrid")
+  () => import("@/app/components/services/ProjectsGrid"),
+  { loading: () => <SectionSkeleton lines={6} tall /> }
 );
 const CredentialsGallery = dynamic(
-  () => import("@/app/components/experience/CredentialsGallery")
+  () => import("@/app/components/experience/CredentialsGallery"),
+  { loading: () => <SectionSkeleton lines={3} tall /> }
 );
 const ArtGallery = dynamic(
-  () => import("@/app/components/art-gallery/ArtGallery")
+  () => import("@/app/components/art-gallery/ArtGallery"),
+  { loading: () => <SectionSkeleton lines={3} tall /> }
 );
 const ContactFooter = dynamic(
-  () => import("@/app/components/header/ContactFooter")
+  () => import("@/app/components/header/ContactFooter"),
+  { loading: () => <SectionSkeleton lines={2} tall /> }
 );
 
 export default async function Home() {

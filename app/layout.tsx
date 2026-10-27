@@ -1,14 +1,14 @@
 import React from "react";
-import "./fonts.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/app/core/components/ThemeProvider";
 import { ThemeFxProvider } from "@/app/core/theme/ThemeFxProvider";
 import { SpotlightHost } from "@/app/core/components/Motion";
-import { CommandPalette } from "@/app/core/components/CommandPalette";
+import CommandPaletteLoader from "@/app/core/components/CommandPaletteLoader";
 import { SmoothScroll } from "@/app/core/components/SmoothScroll";
-import CursorOverlay from "@/app/core/components/CursorOverlay";
+import CursorOverlayLoader from "@/app/core/components/CursorOverlayLoader";
 import AppLoader from "@/app/core/components/AppLoader";
+import { fontVariables } from "@/app/fonts";
 
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 
@@ -69,6 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      className={fontVariables}
       suppressHydrationWarning
     >
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
@@ -97,9 +98,9 @@ export default function RootLayout({
           />
           <AppLoader />
           <SpotlightHost />
-          <CommandPalette />
+          <CommandPaletteLoader />
           <SmoothScroll>
-            <CursorOverlay />
+            <CursorOverlayLoader />
             {children}
           </SmoothScroll>
         </ThemeFxProvider>
