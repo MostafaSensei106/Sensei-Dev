@@ -5,12 +5,18 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { TiltCard } from "@/app/core/components/Motion";
+import SectionHeader from "@/app/core/components/SectionHeader";
+import SectionWatermark from "@/app/core/components/SectionWatermark";
 import { Calendar, MapPin, CheckCircle2, ExternalLink } from "lucide-react";
+import { prefersReducedMotion } from "@/app/core/theme/fx";
 
 export default function ExperienceTimeline() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Reduced motion: leave every element in its natural, final position.
+    if (prefersReducedMotion()) return;
+
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(".exp-item");
 
@@ -28,20 +34,6 @@ export default function ExperienceTimeline() {
           },
         });
       });
-
-      /* Section header */
-      gsap.from(".exp-header > *", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".exp-header",
-          start: "top bottom-=50",
-          toggleActions: "play none none reverse",
-        },
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -49,20 +41,11 @@ export default function ExperienceTimeline() {
 
   return (
     <section
+      id="experience"
       ref={sectionRef}
       className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden"
     >
-      {/* ─── Background Decorative Kanji ─── */}
-      <div
-        className="absolute top-20 right-10 pointer-events-none select-none text-foreground/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
-        aria-hidden="true"
-        role="img"
-      >
-        <span>職</span>
-        <span>歴</span>
-        <span>経</span>
-        <span>験</span>
-      </div>
+      <SectionWatermark japanese="職歴経験" corner="right" />
 
       {/* ─── Scanline Overlay ─── */}
       <div
@@ -76,24 +59,13 @@ export default function ExperienceTimeline() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* ─── Section Header ─── */}
-        <div className="exp-header mb-16 md:mb-20">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-[2px] bg-primary" />
-            <span className="text-primary text-[10px] font-mono font-bold tracking-[0.4em] uppercase">
-              Professional Path // 職歴
-            </span>
-          </div>
-          <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
-            <span className="text-foreground">Professional</span> <br />
-            <span className="text-primary">Experience.</span>
-          </h2>
-          <div className="mt-6 flex items-center gap-3">
-            <div className="w-2 h-2 bg-primary" />
-            <span className="font-mono text-[10px] text-foreground/30 tracking-[0.2em] uppercase">
-              Service Record // Maintenance Log
-            </span>
-          </div>
-        </div>
+        <SectionHeader
+          eyebrow="Professional Path // 職歴"
+          titleA="Professional"
+          titleB="Experience."
+          size="lg"
+          subLabel="Service Record // Maintenance Log"
+        />
 
         {/* ─── Experience Cards ─── */}
         <div className="flex flex-col gap-14 md:gap-20">

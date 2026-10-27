@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
+import SectionWatermark from "@/app/core/components/SectionWatermark";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { TiltCard } from "@/app/core/components/Motion";
 import { Code2, Server, Package, GraduationCap } from "lucide-react";
@@ -12,13 +13,7 @@ const ICONS = [Code2, Server, Package, GraduationCap];
 export default function ServicesSection() {
   return (
     <section id="services" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
-      <div
-        className="absolute left-8 top-16 pointer-events-none select-none text-foreground/[0.03] text-[13vw] font-black z-0 vertical-text"
-        aria-hidden="true"
-      >
-        <span>役</span>
-        <span>務</span>
-      </div>
+      <SectionWatermark japanese="役務" corner="left" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader

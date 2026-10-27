@@ -1,19 +1,19 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
-import { RevealText } from "@/app/core/components/RevealText";
 import { HeroMascot } from "@/app/components/home/HeroMascot";
+import { RevealText } from "@/app/core/components/RevealText";
+import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import gsap from "gsap";
 import {
+  ArrowDown,
+  Download,
   Github,
   Linkedin,
   MessageCircle,
-  Download,
-  ArrowDown,
 } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 import { prefersReducedMotion } from "@/app/core/theme/fx";
 
@@ -42,7 +42,18 @@ export default function HeroSection({
     target: containerRef,
     offset: ["start start", "end start"],
   });
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  /*
+   * Depth ladder: the slowest plane is far away, the fastest is closest.
+   * GSAP owns the transforms on the inner elements (`.speed-line`,
+   * `.japanese-bg`, `.hinomaru-sun`), so scroll parallax lives on these
+   * wrappers and the two never fight over the same node.
+   */
+  const reduceMotion = useReducedMotion();
+  const linesY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, 21]);
+  const kanjiY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, 49]);
+  const sunY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, 77]);
+  const sunScale = useTransform(scrollYProgress, [0, 1], reduceMotion ? [1, 1] : [1, 0.82]);
+  const sunOpacity = useTransform(scrollYProgress, [0, 1], reduceMotion ? [1, 1] : [1, 0.5]);
 
   useEffect(() => {
     if (prefersReducedMotion()) return; // final state is the natural layout
@@ -140,8 +151,9 @@ export default function HeroSection({
       ref={containerRef}
       className="relative min-h-screen flex items-center px-6 overflow-hidden pt-32 pb-24 bg-background"
     >
-      {/* ─── Speed Lines Background ─── */}
-      <div
+      {/* ─── Speed Lines Background (0.15×  nearest of the three planes) ─── */}
+      <motion.div
+        style={{ y: linesY }}
         className="absolute inset-0 pointer-events-none overflow-hidden"
         aria-hidden="true"
       >
@@ -157,7 +169,7 @@ export default function HeroSection({
             }}
           />
         ))}
-      </div>
+      </motion.div>
 
       {/* ─── Floating Particles (CSS-only) ─── */}
       <div
@@ -178,8 +190,8 @@ export default function HeroSection({
         ))}
       </div>
 
-      {/* ─── Background Japanese Watermark (parallax) ─── */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      {/* ─── Background Japanese Watermark (0.35×  middle plane) ─── */}
+      <motion.div style={{ y: kanjiY }} className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
           className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-foreground/[0.03] font-black text-[10vw] select-none pointer-events-none z-0 leading-none"
           role="img"
@@ -230,7 +242,7 @@ export default function HeroSection({
                 text="Mahmoud"
                 delay={0.12}
                 className="block md:ml-10 text-transparent"
-                style={{ WebkitTextStroke: "2px #BC002D" }}
+                style={{ WebkitTextStroke: "2px var(--primary)" }}
               />
             </h1>
             <p className="brush-jp text-xl md:text-2xl text-foreground/40 mt-4" lang="ja">
@@ -240,16 +252,22 @@ export default function HeroSection({
 
           {/* Portrait */}
           <div className="hero-image relative w-[220px] sm:w-[260px] lg:w-[320px] aspect-square shrink-0 order-1 md:order-2 md:ml-auto">
-            {/* Hinomaru  Red Sun */}
-            <div className="hinomaru-sun absolute inset-[-20%] flex items-center justify-center pointer-events-none">
-              <div
-                className="w-[80%] h-[80%] rounded-full opacity-[0.07]"
-                style={{
-                  background:
-                    "radial-gradient(circle, #BC002D 0%, #BC002D 40%, transparent 70%)",
-                }}
-              />
-            </div>
+            {/* Hinomaru  Red Sun (0.55×  farthest plane, shrinks + fades) */}
+            <motion.div
+              style={{ y: sunY, scale: sunScale, opacity: sunOpacity }}
+              className="pointer-events-none absolute inset-0"
+              aria-hidden="true"
+            >
+              <div className="hinomaru-sun absolute inset-[-20%] flex items-center justify-center pointer-events-none">
+                <div
+                  className="w-[80%] h-[80%] rounded-full opacity-[0.07]"
+                  style={{
+                    background:
+                      "radial-gradient(circle, var(--primary) 0%, var(--primary) 40%, transparent 70%)",
+                  }}
+                />
+              </div>
+            </motion.div>
 
             {/* Orbit inscription  stack names circling the portrait */}
             <div
@@ -382,7 +400,7 @@ export default function HeroSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  className="interactive btn-sheen group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-primary text-white font-mono font-black uppercase tracking-widest text-sm transition-all duration-300 shadow-2xl shadow-primary/25 hover:bg-[#d60030] hover:-translate-y-0.5 active:translate-y-0"
+                  className="interactive btn-sheen group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-primary text-white font-mono font-black uppercase tracking-widest text-sm transition-all duration-300 shadow-2xl shadow-primary/25 hover:bg-primary-hover hover:-translate-y-0.5 hover:shadow-primary/40 active:translate-y-0"
                   style={{
                     clipPath: "polygon(0 0, 100% 0, 96% 100%, 4% 100%)",
                   }}
@@ -396,7 +414,7 @@ export default function HeroSection({
                 </a>
                 <a
                   href="#work"
-                  className="interactive group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 border border-foreground/15 border-l-2 border-l-primary bg-foreground/[0.02] backdrop-blur-md text-foreground font-mono font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:border-primary hover:bg-primary/10 hover:-translate-y-0.5 active:translate-y-0"
+                  className="interactive group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 border border-foreground/15 border-l-2 border-l-primary bg-foreground/[0.02] backdrop-blur-md text-foreground font-mono font-bold uppercase tracking-widest text-sm transition-all duration-300 shadow-2xl shadow-transparent hover:border-primary hover:bg-primary/10 hover:-translate-y-0.5 hover:shadow-primary/15 active:translate-y-0"
                 >
                   <ArrowDown size={14} className="text-primary transition-transform duration-300 group-hover:translate-y-0.5" />
                   View Work

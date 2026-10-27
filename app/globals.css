@@ -8,10 +8,16 @@
 
   /* Three-Color Palette & Design Tokens */
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-tertiary: var(--tertiary);
   --color-quaternary: var(--quaternary);
+
+  /* Third-party brand marks (social links only  never for site structure) */
+  --color-brand-linkedin: var(--brand-linkedin);
+  --color-brand-whatsapp: var(--brand-whatsapp);
+  --color-brand-facebook: var(--brand-facebook);
 
   --color-surface: var(--surface);
   --color-on-surface: var(--on-surface);
@@ -21,13 +27,9 @@
   --color-primary-container: var(--primary-container);
   --color-tertiary-container: var(--tertiary-container);
 
-  /* Geometry Tokens */
-  --radius-base: var(--radius-base);
-  --radius-card: var(--radius-card);
-  --radius-button: var(--radius-button);
-  --radius-katana: 0.5rem 2rem 0.5rem 2rem;
+  /* Geometry: intentional  all corners are square. No radius tokens. */
 
-  /* Font Families — values come from next/font (app/fonts.ts) */
+  /* Font Families  values come from next/font (app/fonts.ts) */
   --font-display: var(--font-display-google), var(--font-jp-google), sans-serif;
   --font-body: var(--font-body-google), system-ui, sans-serif;
   --font-mono: var(--font-mono-google), ui-monospace, monospace;
@@ -45,6 +47,11 @@
     --tertiary: #007a8a;
     --quaternary: #5b54d6;
 
+    --primary-hover: #d60030;
+    --brand-linkedin: #0077b5;
+    --brand-whatsapp: #25d366;
+    --brand-facebook: #1877f2;
+
     --background: #f7f5f0;
     --foreground: #141210;
 
@@ -55,11 +62,6 @@
 
     --primary-container: rgba(188, 0, 45, 0.08);
     --tertiary-container: rgba(0, 122, 138, 0.1);
-
-    /* Border Radius Tokens */
-    --radius-base: 0px;
-    --radius-card: 4px;
-    --radius-button: 2px;
   }
 
   .dark {
@@ -81,6 +83,11 @@
 
     --primary-container: rgba(226, 0, 26, 0.1);
     --tertiary-container: rgba(0, 210, 239, 0.1);
+
+    --primary-hover: #d60030;
+    --brand-linkedin: #0077b5;
+    --brand-whatsapp: #25d366;
+    --brand-facebook: #1877f2;
   }
 
   body {
@@ -130,6 +137,13 @@
     top: 16px;
   }
 
+  /* Anchor targets must clear the floating nav (top: 20px, ~60px tall). */
+  section[id],
+  footer[id],
+  main>div[id] {
+    scroll-margin-top: 6.5rem;
+  }
+
   /* Scrollbar Styling */
   ::-webkit-scrollbar {
     width: 6px;
@@ -172,10 +186,6 @@
 
 /* ─── Neo-Samurai Components ─── */
 
-.katana-card {
-  @apply bg-surface/80 backdrop-blur-md border border-foreground/5 rounded-katana overflow-hidden hover:border-primary/50 transition-all duration-500 shadow-xl;
-}
-
 .vertical-text {
   writing-mode: vertical-rl;
   text-orientation: upright;
@@ -200,10 +210,6 @@
 .neural-grid {
   background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--foreground) 7%, transparent) 1px, transparent 0);
   background-size: 40px 40px;
-}
-
-.mix-difference {
-  mix-blend-mode: difference;
 }
 
 /* ─── JDM Overlay Effects ─── */
@@ -231,35 +237,38 @@
       color-mix(in srgb, var(--foreground) 3%, transparent) 11px);
 }
 
-/* ─── Katana Cut Shapes ─── */
+/* ─── Ticker  one drifting band of kanji between chapters. The track is
+   duplicated in the component so a -50% shift loops without a seam. ─── */
 
-.katana-slash {
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2rem), 0 100%);
+.marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: marquee 56s linear infinite;
+  will-change: transform;
 }
 
-/* ─── Typography Effects ─── */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
 
-.text-stroke {
-  -webkit-text-stroke: 1px currentColor;
-  -webkit-text-fill-color: transparent;
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
-/* ─── Glow Effects ─── */
-
-.glow-red {
-  color: #BC002D;
-  text-shadow:
-    0 0 7px rgba(226, 0, 26, 0.6),
-    0 0 20px rgba(226, 0, 26, 0.4),
-    0 0 40px rgba(226, 0, 26, 0.2);
+/* Reading, hovering, or tabbing into the band stops it  motion never
+   competes with the content around it. */
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
 }
 
-.glow-gold {
-  color: #FFD700;
-  text-shadow:
-    0 0 7px rgba(255, 215, 0, 0.6),
-    0 0 20px rgba(255, 215, 0, 0.4),
-    0 0 40px rgba(255, 215, 0, 0.2);
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }
 
 /* ─── Button sheen  one delight, used by every primary CTA ─── */
@@ -295,6 +304,27 @@
   font-family: var(--font-jp);
   font-weight: 700;
   letter-spacing: 0.35em;
+}
+
+/* Section eyebrow  the Latin/mono label above every section title.
+   Type only; leave color to the call site (text-primary / text-accent). */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+/* Secondary/dense eyebrow  counters, chips, metadata rows. */
+.eyebrow-sm {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
 }
 
 /* ─── Mouse spotlight cards  radial highlight follows the cursor.
@@ -393,9 +423,4 @@
     transform: translate3d(10px, -20px, 0);
     opacity: 0.1;
   }
-}
-
-.gpu-accelerated {
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
 }

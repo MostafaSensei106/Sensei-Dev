@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { EASE } from "@/app/core/motion";
-import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { useContributionStats } from "@/app/core/api/contributions";
-import { ContributionGraph } from "./ContributionGraph";
 import { CountUp } from "@/app/core/components/CountUp";
+import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { EASE } from "@/app/core/motion";
+import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { ContributionGraph } from "./ContributionGraph";
 
 /**
  * Upstream contributions  fixes shipped to projects I don't own.

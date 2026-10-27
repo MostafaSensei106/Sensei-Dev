@@ -31,11 +31,10 @@ export const PORTFOLIO_DATA: PortfolioData = {
       role: "Head of Flutter",
       location: "Cairo, Egypt",
       period: "Oct 2026 – Oct 2027",
-      description: "Leading the Flutter track: roadmap, workshops, and code review for student teams.",
+      description: "Leading the Flutter track at a second chapter: roadmap, workshops, and code review.",
       details: [
-        //   "Building GDGoC Benha App V2 for events and bootcamp delivery.",
-        "Maintaining a Flutter roadmap used by 200+ students.",
-        "Running workshops on state management and clean architecture.",
+        "Running the Flutter roadmap across both chapters while keeping one shared curriculum.",
+        "Workshops on state management and clean architecture for the Al-Azhar cohort.",
         "Reviewing community projects and mentoring juniors."
       ],
       japaneseRole: "フラッター部門責任者",
@@ -286,7 +285,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     { id: "explore", title: "Exploring", japanese: "探求", items: ["ML-KEM / ML-DSA", "HNSW search", "GPU shaders"] },
   ],
   now: [
-    { label: "Leading", detail: "Flutter track at GDGoC Benha  roadmap, workshops, and the community app V2." },
+    { label: "Leading", detail: "Flutter track at GDGoC  roadmap and workshops across the Al-Azhar and Benha chapters." },
     { label: "Studying", detail: "Final stretch of the CS degree at Benha University (2022 – 2026)." },
     { label: "Shipping", detail: "Go backends and Dart packages with bench scripts and documented limits." },
     { label: "Open to", detail: "Apps, backends, and package work. Replies within 48h." },

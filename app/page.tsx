@@ -3,6 +3,8 @@ import HeroSection from "@/app/components/home/HeroSection";
 import StatsBar from "@/app/components/home/StatsBar";
 import SiteNav from "@/app/components/header/SiteNav";
 import SectionDivider from "@/app/core/components/SectionDivider";
+import SlashDivider from "@/app/core/components/SlashDivider";
+import TickerStrip from "@/app/core/components/TickerStrip";
 import SectionSkeleton from "@/app/core/components/SectionSkeleton";
 import { getGitHubRepos } from "@/app/core/api/github";
 
@@ -89,34 +91,30 @@ export default async function Home() {
       <SiteNav />
 
       {/* 01  Who: face, name, stack in 5 seconds */}
-      <div id="home">
-        <HeroSection projectCount={projectCount} starCount={starCount} />
-      </div>
+      <HeroSection projectCount={projectCount} starCount={starCount} />
 
       {/* 02  Trust: numbers before claims */}
       <StatsBar />
 
       {/* 03  Offer: what you can hire me for */}
-      <div id="services">
-        <ServicesSection />
-      </div>
+      <ServicesSection />
 
-      <SectionDivider text="設計 • 開発 • 構築 • 計測 • 出荷" reverse={true} angle={-1.5} />
+      <SlashDivider
+        label="Build Log"
+        japanese="設計・開発・構築"
+        origin="left"
+      />
 
       {/* 04  Proof A: shipped apps & backend APIs */}
-      <div id="work">
-        <WorkShowcase />
-      </div>
+      <WorkShowcase />
 
       {/* 05  Proof B: open-source depth */}
-      <div id="projects">
-        <ProjectsGrid repos={repos} />
-      </div>
+      <ProjectsGrid repos={repos} />
 
       {/* 05b  Proof C: upstream contributions */}
       <ContributionsGrid />
 
-      <SectionDivider text="継続は力なり • 改善 • 実務 • 計測" angle={-1.5} />
+      <TickerStrip />
 
       {/* 06  Toolbox: the tools behind the proof above */}
       <TechStackGrid />
@@ -125,9 +123,7 @@ export default async function Home() {
       <UsesSection />
 
       {/* 07  Authority: where this happened */}
-      <div id="experience">
-        <ExperienceTimeline />
-      </div>
+      <ExperienceTimeline />
 
       {/* 07b  Path recap + present snapshot */}
       <MilestonesSection />
@@ -137,23 +133,21 @@ export default async function Home() {
       <ProcessSection />
 
       {/* 08b  Pre-call answers */}
-      <div id="faq">
-        <FaqSection />
-      </div>
+      <FaqSection />
 
-      <SectionDivider text="認定 • 実績 • 知識 • 技能" angle={-1.5} />
+      <SlashDivider
+        label="Credentials"
+        japanese="認定・実績"
+        origin="right"
+      />
 
       {/* 09  Credentials */}
-      <div id="certificates">
-        <CredentialsGallery />
-      </div>
+      <CredentialsGallery />
 
       <SectionDivider text="芸術 • 創造 • 表現" reverse={true} angle={-1.5} />
 
       {/* 10  Personality: memorable ending before the ask */}
-      <div id="art">
-        <ArtGallery />
-      </div>
+      <ArtGallery />
 
       {/* 11  Action: single CTA */}
       <div id="contact" className="mt-20">

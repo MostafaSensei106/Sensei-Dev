@@ -1,13 +1,16 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { EASE } from "@/app/core/motion";
-import { useState } from "react";
-import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import CounterChip from "@/app/core/components/CounterChip";
 import { TiltCard } from "@/app/core/components/Motion";
+import SectionHeader from "@/app/core/components/SectionHeader";
+import SectionWatermark from "@/app/core/components/SectionWatermark";
+import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { EASE } from "@/app/core/motion";
+import { motion } from "framer-motion";
+import { Maximize2, Sparkles } from "lucide-react";
 import dynamic from "next/dynamic";
-import { Sparkles, Maximize2 } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 const GalleryLightbox = dynamic(() => import("./GalleryLightbox"), { ssr: false });
 
@@ -23,66 +26,26 @@ export default function ArtGallery() {
 
   return (
     <section id="art" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
-      {/* Background Decorative Kanji */}
-      <div
-        className="absolute right-10 top-20 pointer-events-none select-none text-foreground/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
-        aria-hidden="true"
-        role="img"
-      >
-        <span>芸</span>
-        <span>術</span>
-        <span>創</span>
-        <span>造</span>
-      </div>
+      <SectionWatermark japanese="芸術創造" corner="left" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="mb-16 md:mb-20 flex flex-col md:flex-row justify-between items-end gap-8">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: EASE }}
-            className="max-w-3xl"
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-primary" />
-              <span className="text-primary text-xs font-black tracking-[0.4em] uppercase font-mono">
-                Visual Archive
-              </span>
-            </div>
-            <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
-              <span className="text-foreground">Art</span> <br />
-              <span className="text-primary italic">Gallery.</span>
-            </h2>
-          </motion.div>
-
-          {/* Counter Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <div className="relative px-6 py-3 border border-foreground/10 bg-surface/60 backdrop-blur-sm">
-              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary" />
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-primary text-2xl font-black">
-                  {String(PORTFOLIO_DATA.artGallery.length).padStart(2, "0")}
-                </span>
-                <div className="flex flex-col">
-                  <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
-                    Items
-                  </span>
-                  <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
-                    Indexed
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+        <SectionHeader
+          eyebrow="Visual Archive"
+          titleA="Art"
+          titleB="Gallery."
+          size="lg"
+          aside={
+            <CounterChip
+              stats={[
+                {
+                  value: String(PORTFOLIO_DATA.artGallery.length).padStart(2, "0"),
+                  label: "Items indexed",
+                },
+              ]}
+            />
+          }
+        />
 
         {/* Art Grid  masonry columns */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
@@ -97,11 +60,7 @@ export default function ArtGallery() {
                 delay: (idx % 6) * 0.08,
                 ease: EASE,
               }}
-              onClick={() => {
-                setIndex(idx);
-                setOpen(true);
-              }}
-              className="cursor-pointer break-inside-avoid"
+              className="break-inside-avoid"
             >
               <TiltCard
                 max={5}
@@ -113,6 +72,17 @@ export default function ArtGallery() {
                 <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
                 <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/60 transition-colors duration-500 z-20 pointer-events-none" />
 
+                {/* Full-card keyboard/AT target for the lightbox */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIndex(idx);
+                    setOpen(true);
+                  }}
+                  aria-label={`Open ${img.title} in lightbox`}
+                  className="absolute inset-0 z-30 cursor-pointer"
+                />
+
                 {/* Image */}
                 <Image
                   src={img.thumb}
@@ -123,6 +93,13 @@ export default function ArtGallery() {
                   className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                   loading="lazy"
                   unoptimized={true}
+                />
+
+                {/* Halftone print grain  drifts in on hover, above the image
+                    but below the caption gradient. */}
+                <div
+                  className="halftone pointer-events-none absolute inset-0 z-[5] scale-100 opacity-0 transition-[opacity,transform] duration-[900ms] ease-out group-hover:scale-[1.2] group-hover:opacity-100"
+                  aria-hidden="true"
                 />
 
                 {/* Hover overlay */}

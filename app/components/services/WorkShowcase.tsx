@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { EASE } from "@/app/core/motion";
-import SectionHeader from "@/app/core/components/SectionHeader";
-import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
-import type { WorkType } from "@/app/core/types/portfolio";
-import { ExternalLink, Github, Smartphone, Server, Package, Lock } from "lucide-react";
 import { TiltCard } from "@/app/core/components/Motion";
+import SectionHeader from "@/app/core/components/SectionHeader";
+import SectionWatermark from "@/app/core/components/SectionWatermark";
+import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { EASE } from "@/app/core/motion";
+import type { WorkType } from "@/app/core/types/portfolio";
+import { motion } from "framer-motion";
+import { ExternalLink, Github, Lock, Package, Server, Smartphone } from "lucide-react";
+import { useState } from "react";
 
 const FILTERS: { id: WorkType | "all"; label: string; japanese: string }[] = [
   { id: "all", label: "All", japanese: "全部" },
@@ -29,13 +30,7 @@ export default function WorkShowcase() {
 
   return (
     <section id="work" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
-      <div
-        className="absolute right-8 top-16 pointer-events-none select-none text-foreground/[0.03] text-[13vw] font-black z-0 vertical-text"
-        aria-hidden="true"
-      >
-        <span>仕</span>
-        <span>事</span>
-      </div>
+      <SectionWatermark japanese="仕事" corner="right" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
@@ -53,9 +48,9 @@ export default function WorkShowcase() {
               role="tab"
               aria-selected={filter === f.id}
               onClick={() => setFilter(f.id)}
-              className={`px-5 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] border transition-all duration-300 ${filter === f.id
-                  ? "bg-primary text-white border-primary"
-                  : "bg-foreground/[0.03] text-foreground/60 border-foreground/10 hover:border-primary/50 hover:text-foreground"
+              className={`min-h-11 inline-flex items-center px-5 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] border transition-all duration-300 ${filter === f.id
+                ? "bg-primary text-white border-primary"
+                : "bg-foreground/[0.03] text-foreground/60 border-foreground/10 hover:border-primary/50 hover:text-foreground"
                 }`}
             >
               {f.label} <span className="ml-2 text-[9px] opacity-60" lang="ja">{f.japanese}</span>
@@ -77,6 +72,12 @@ export default function WorkShowcase() {
                 <TiltCard className="spotlight group relative bg-surface/60 border border-foreground/5 p-8 hover:border-primary/40 transition-colors duration-500 flex flex-col h-full"
                 >
                   <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-primary/40 to-transparent opacity-70" aria-hidden="true" />
+
+                  {/* Halftone print grain  drifts in on hover */}
+                  <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+                    <div className="halftone absolute inset-0 scale-100 opacity-0 transition-[opacity,transform] duration-[900ms] ease-out group-hover:scale-[1.2] group-hover:opacity-100" />
+                  </div>
+
                   <div className="flex items-start justify-between gap-4 mb-5">
                     <div className="flex items-center gap-3">
                       <div className="p-2.5 bg-foreground/5 border border-foreground/10">
@@ -124,12 +125,12 @@ export default function WorkShowcase() {
 
                   <div className="flex gap-3 mt-auto pt-5 border-t border-foreground/5">
                     {w.links.github && (
-                      <a href={w.links.github} target="_blank" rel="noopener noreferrer" className="btn-sheen flex items-center gap-2 px-4 py-2.5 bg-primary text-white font-mono text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-colors">
+                      <a href={w.links.github} target="_blank" rel="noopener noreferrer" className="btn-sheen min-h-11 inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-white font-mono text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-colors">
                         <Github size={13} /> Source
                       </a>
                     )}
                     {w.links.live && (
-                      <a href={w.links.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 border border-foreground/15 text-foreground/70 font-mono text-[10px] uppercase tracking-[0.2em] hover:border-primary hover:text-foreground transition-colors">
+                      <a href={w.links.live} target="_blank" rel="noopener noreferrer" className="min-h-11 inline-flex items-center gap-2 px-4 py-2.5 border border-foreground/15 text-foreground/70 font-mono text-[10px] uppercase tracking-[0.2em] hover:border-primary hover:text-foreground transition-colors">
                         <ExternalLink size={13} /> Live
                       </a>
                     )}

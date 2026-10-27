@@ -1,14 +1,17 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { EASE } from "@/app/core/motion";
-import { useState } from "react";
-import dynamic from "next/dynamic";
-import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import CounterChip from "@/app/core/components/CounterChip";
 import { TiltCard } from "@/app/core/components/Motion";
+import SectionHeader from "@/app/core/components/SectionHeader";
+import SectionWatermark from "@/app/core/components/SectionWatermark";
+import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { EASE } from "@/app/core/motion";
+import { motion } from "framer-motion";
+import { Award, Calendar, ExternalLink, ShieldCheck } from "lucide-react";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import { useState } from "react";
 import "yet-another-react-lightbox/styles.css";
-import { Award, ExternalLink, Calendar, ShieldCheck } from "lucide-react";
 
 const Lightbox = dynamic(() => import("yet-another-react-lightbox"), { ssr: false });
 
@@ -23,54 +26,28 @@ export default function CredentialsGallery() {
 
   return (
     <section id="certificates" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
-      {/* Background Decorative Kanji */}
-      <div
-        className="absolute left-10 top-20 pointer-events-none select-none text-foreground/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
-        aria-hidden="true"
-        role="img"
-      >
-        <span>実</span>
-        <span>績</span>
-        <span>認</span>
-        <span>定</span>
-      </div>
+      <SectionWatermark japanese="実績認定" corner="right" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="mb-16 md:mb-20 flex flex-col md:flex-row justify-between items-end gap-8"
-        >
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-primary" />
-              <span className="text-primary text-xs font-black tracking-[0.4em] uppercase font-mono">
-                Credentials
-              </span>
-            </div>
-            <h2 className="font-display text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter">
-              <span className="text-foreground">Certifications</span> <br />
-              <span className="text-primary italic">&amp; Achievements.</span>
-            </h2>
-          </div>
-
-          {/* Counter */}
-          <div className="relative px-6 py-3 border border-foreground/10 bg-surface/60 backdrop-blur-sm">
-            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent" />
-            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent" />
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-accent text-2xl font-black">
-                {String(PORTFOLIO_DATA.certificates.length).padStart(2, "0")}
-              </span>
-              <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
-                Sealed
-              </span>
-            </div>
-          </div>
-        </motion.div>
+        <SectionHeader
+          eyebrow="Credentials"
+          japanese="実績"
+          titleA="Certifications"
+          titleB="& Achievements."
+          size="lg"
+          aside={
+            <CounterChip
+              tone="accent"
+              stats={[
+                {
+                  value: String(PORTFOLIO_DATA.certificates.length).padStart(2, "0"),
+                  label: "Sealed",
+                },
+              ]}
+            />
+          }
+        />
 
         {/* Certificate Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -81,11 +58,6 @@ export default function CredentialsGallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: idx * 0.15, duration: 0.8, ease: EASE }}
-              onClick={() => {
-                setIndex(idx);
-                setOpen(true);
-              }}
-              className="cursor-pointer"
             >
               <TiltCard className="spotlight relative group bg-surface/60 border border-foreground/5 overflow-hidden backdrop-blur-xl hover:border-accent/40 transition-all duration-700 h-full"
               >
@@ -157,6 +129,17 @@ export default function CredentialsGallery() {
                 {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-500" />
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/40 transition-colors duration-500" />
+
+                {/* Full-card keyboard/AT target for the lightbox */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIndex(idx);
+                    setOpen(true);
+                  }}
+                  aria-label={`Open ${cert.title} in lightbox`}
+                  className="absolute inset-0 z-30 cursor-pointer"
+                />
               </TiltCard>
             </motion.div>
           ))}

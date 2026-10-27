@@ -1,8 +1,7 @@
-import React from "react";
 
 /**
  * Lightweight placeholder used while a dynamically imported section chunk is
- * loading. Purely decorative — screen readers skip it so they never announce
+ * loading. Purely decorative  screen readers skip it so they never announce
  * empty content.
  */
 export default function SectionSkeleton({
