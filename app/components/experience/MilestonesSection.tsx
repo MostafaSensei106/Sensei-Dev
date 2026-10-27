@@ -18,7 +18,7 @@ export default function MilestonesSection() {
           titleA="The"
           titleB="Path."
           size="lg"
-          description="Every step below is documented somewhere above  experience, work, or credentials."
+          description="Every step below is documented above: experience, work, or credentials."
           aside={
             <CounterChip
               stats={[

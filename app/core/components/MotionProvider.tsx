@@ -9,7 +9,7 @@ import type { ReactNode } from "react";
  * transform and layout animations are skipped, opacity fades still run.
  *
  * Components that drive GSAP or raw CSS animation keep their own explicit
- * guards (`prefersReducedMotion()`, `useReducedMotion()`, media queries) —
+ * guards (`prefersReducedMotion()`, `useReducedMotion()`, media queries)
  * MotionConfig only covers framer.
  */
 export function MotionProvider({ children }: { children: ReactNode }) {

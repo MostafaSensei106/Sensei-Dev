@@ -22,7 +22,7 @@ export default function UsesSection() {
           titleA="Daily"
           titleB="Drivers."
           size="lg"
-          description="The tools behind the work above  write, ship, observe, and what is being explored next."
+          description="The tools behind the work above: write, ship, observe, and what is being explored next."
           aside={
             <CounterChip
               stats={[

@@ -18,7 +18,7 @@ export default function NowSection() {
           titleA="Right"
           titleB="Now."
           size="lg"
-          description="A snapshot, not a promise  updated as the work shifts."
+          description="A snapshot, not a promise. Updated as the work shifts."
           aside={
             <div className="relative flex items-center gap-3 px-6 py-3 border border-primary/40 bg-surface/60 backdrop-blur-sm">
               <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary" aria-hidden="true" />

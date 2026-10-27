@@ -23,7 +23,7 @@ export default function TechStackGrid() {
           japanese="武器庫"
           titleA="Tools of"
           titleB="The Trade."
-          description="No buzzword bingo. Every item below is used in the work you just scrolled past  or the proof coming next."
+          description="No buzzword bingo. Every item below is used in the work you just scrolled past, or the proof coming next."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
