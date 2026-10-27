@@ -1,8 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
-import { prefersReducedMotion } from "@/app/core/theme/fx";
 
 /**
  * Word-by-word masked reveal for headings.
@@ -25,8 +24,11 @@ export function RevealText({
   const units = isLatin ? text.split(" ") : [text];
   const MTag = motion[Tag] as typeof motion.span;
 
+  // SSR-safe and reactive: framer-motion resolves the media query on the client only.
+  const reduce = useReducedMotion();
+
   // Reduced motion: render the final state, no masked slide.
-  if (typeof window !== "undefined" && prefersReducedMotion()) {
+  if (reduce) {
     return (
       <MTag className={className} style={style} aria-label={text}>
         {text}

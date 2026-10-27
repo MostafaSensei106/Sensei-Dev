@@ -77,7 +77,7 @@ export default function SiteNav() {
         style={{
           width: navWidth,
           top: 20,
-          borderTop: "2px solid #BC002D",
+          borderTop: "2px solid var(--primary)",
           clipPath: "polygon(0 0, 100% 0, 98% 100%, 2% 100%)",
         }}
         initial={{ y: -100, opacity: 0 }}
@@ -103,7 +103,7 @@ export default function SiteNav() {
               key={item.name}
               href={item.href}
               aria-current={active === item.href ? "page" : undefined}
-              className={`relative flex items-center gap-2 text-[9px] lg:text-[10px] font-mono font-bold uppercase tracking-[0.22em] transition-all duration-300 group ${
+              className={`relative flex min-h-11 items-center gap-2 text-[9px] lg:text-[10px] font-mono font-bold uppercase tracking-[0.22em] transition-all duration-300 group ${
                 active === item.href ? "text-foreground" : "text-foreground/60 hover:text-foreground"
               }`}
             >
@@ -123,9 +123,12 @@ export default function SiteNav() {
         <div className="flex md:hidden items-center gap-2">
           <ThemeToggle />
           <button
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="relative p-2 text-foreground/60 hover:text-primary transition-colors z-[110]"
-            aria-label="Toggle Menu"
+            className="relative flex min-h-11 min-w-11 items-center justify-center p-2 text-foreground/60 hover:text-primary transition-colors z-[110]"
+            aria-expanded={isOpen}
+            aria-controls="mobile-nav"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -151,6 +154,7 @@ export default function SiteNav() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-nav"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

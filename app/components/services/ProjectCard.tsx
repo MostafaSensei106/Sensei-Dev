@@ -1,9 +1,9 @@
 "use client";
 
-import { ExternalLink, Github, Star } from "lucide-react";
 import { Repo } from "@/app/core/api/github";
-import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { TiltCard } from "@/app/core/components/Motion";
+import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { ExternalLink, Github, Star } from "lucide-react";
 
 interface ProjectCardProps {
   repo: Repo;
@@ -35,6 +35,12 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
       {/* Corner brackets on hover */}
       <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/50 transition-colors duration-500 pointer-events-none" aria-hidden="true" />
       <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/50 transition-colors duration-500 pointer-events-none" aria-hidden="true" />
+
+      {/* Halftone print grain  drifts in on hover, clipped so the index digit
+          stays visible outside the card edge. */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="halftone absolute inset-0 scale-100 opacity-0 transition-[opacity,transform] duration-[900ms] ease-out group-hover:scale-[1.2] group-hover:opacity-100" />
+      </div>
 
       {/* Faded index */}
       <div
@@ -107,7 +113,7 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
           href={repo.html_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-sheen flex-1 py-3 px-4 bg-primary text-white font-mono font-black text-[10px] tracking-[0.2em] uppercase text-center flex items-center justify-center gap-2 hover:bg-foreground hover:text-background transition-all duration-300"
+          className="btn-sheen flex-1 min-h-11 py-3 px-4 bg-primary text-white font-mono font-black text-[10px] tracking-[0.2em] uppercase text-center flex items-center justify-center gap-2 hover:bg-foreground hover:text-background transition-all duration-300"
         >
           <Github size={13} /> Source
         </a>
@@ -116,7 +122,7 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
             href={repo.homepage}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 border border-foreground/10 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 text-foreground/60 flex items-center justify-center"
+            className="min-h-11 min-w-11 p-3 border border-foreground/10 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 text-foreground/60 flex items-center justify-center"
             aria-label={`Visit live demo for ${repo.name}`}
           >
             <ExternalLink size={16} />

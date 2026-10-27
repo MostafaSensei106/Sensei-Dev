@@ -1,17 +1,18 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Github, Linkedin, MessageCircle, Facebook, Twitter, ArrowUpRight, Mail } from "lucide-react";
+import SectionWatermark from "@/app/core/components/SectionWatermark";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Facebook, Github, Linkedin, Mail, MessageCircle, Twitter } from "lucide-react";
 
 export default function ContactFooter() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
     { name: "GitHub", icon: Github, href: `https://github.com/${PORTFOLIO_DATA.profile.contact.github}`, color: "text-primary" },
-    { name: "LinkedIn", icon: Linkedin, href: `${PORTFOLIO_DATA.profile.contact.linkedin}`, color: "text-[#0077b5]" },
-    { name: "WhatsApp", icon: MessageCircle, href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`, color: "text-[#25d366]" },
-    { name: "Facebook", icon: Facebook, href: `${PORTFOLIO_DATA.profile.contact.facebook}`, color: "text-[#1877f2]" },
+    { name: "LinkedIn", icon: Linkedin, href: `${PORTFOLIO_DATA.profile.contact.linkedin}`, color: "text-brand-linkedin" },
+    { name: "WhatsApp", icon: MessageCircle, href: `https://wa.me/${PORTFOLIO_DATA.profile.contact.whatsapp}`, color: "text-brand-whatsapp" },
+    { name: "Facebook", icon: Facebook, href: `${PORTFOLIO_DATA.profile.contact.facebook}`, color: "text-brand-facebook" },
     { name: "X", icon: Twitter, href: `${PORTFOLIO_DATA.profile.contact.x}`, color: "text-foreground" },
   ];
 
@@ -24,13 +25,7 @@ export default function ContactFooter() {
         </svg>
       </div>
 
-      {/* Background 終わり in massive faded text */}
-      <div
-        className="absolute right-0 bottom-10 vertical-text font-black text-[20vw] opacity-[0.03] pointer-events-none select-none z-0"
-        aria-hidden="true"
-      >
-        終わり
-      </div>
+      <SectionWatermark japanese="終わり" corner="edge" size="large" />
 
       {/* Decorative speed lines */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -69,7 +64,7 @@ export default function ContactFooter() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex items-center gap-3 px-5 py-3 bg-foreground/5 border border-foreground/10 hover:border-primary/40 transition-all duration-300 ${social.color}`}
+                    className={`group flex min-h-11 items-center gap-3 px-5 py-3 bg-foreground/5 border border-foreground/10 hover:border-primary/40 transition-all duration-300 ${social.color}`}
                     aria-label={social.name}
                   >
                     <social.icon size={18} />

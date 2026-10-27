@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { EASE } from "@/app/core/motion";
-import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
-import { CountUp } from "@/app/core/components/CountUp";
 import type { ContributionStats } from "@/app/core/api/contributions";
+import { CountUp } from "@/app/core/components/CountUp";
+import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { EASE } from "@/app/core/motion";
+import { motion } from "framer-motion";
 
 const LEVEL_BG = [
   "bg-foreground/[0.06]",

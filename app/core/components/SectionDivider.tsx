@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 interface SectionDividerProps {
@@ -20,6 +20,7 @@ export default function SectionDivider({
   angle = -1,
 }: SectionDividerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
@@ -28,7 +29,7 @@ export default function SectionDivider({
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    reverse ? ["-25%", "0%"] : ["0%", "-25%"]
+    reduce ? ["0%", "0%"] : reverse ? ["-25%", "0%"] : ["0%", "-25%"]
   );
 
   return (

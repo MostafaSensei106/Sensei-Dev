@@ -1,12 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useMemo } from "react";
-import { EASE } from "@/app/core/motion";
 import { Repo } from "@/app/core/api/github";
-import ProjectCard from "./ProjectCard";
+import CounterChip from "@/app/core/components/CounterChip";
 import { CountUp } from "@/app/core/components/CountUp";
+import SectionHeader from "@/app/core/components/SectionHeader";
+import SectionWatermark from "@/app/core/components/SectionWatermark";
+import { EASE } from "@/app/core/motion";
+import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { useMemo } from "react";
+import ProjectCard from "./ProjectCard";
 
 export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
   const totalStars = useMemo(
@@ -15,17 +18,7 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
   );
   return (
     <section id="projects" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
-      {/* Background Japanese Watermark */}
-      <div
-        className="absolute left-10 top-20 pointer-events-none select-none text-foreground/[0.03] text-[15vw] font-black z-0 vertical-text uppercase"
-        aria-hidden="true"
-        role="img"
-      >
-        <span>設</span>
-        <span>計</span>
-        <span>開</span>
-        <span>発</span>
-      </div>
+      <SectionWatermark japanese="設計開発" corner="left" />
 
       {/* Decorative speed lines */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-[0.02]">
@@ -36,72 +29,24 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 mb-16 md:mb-20 items-end">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: EASE }}
-            className="flex flex-col"
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-[2px] bg-primary" />
-              <span className="text-primary text-xs font-black tracking-[0.4em] uppercase font-mono">
-                Open Source // ライブラリ
-              </span>
-            </div>
-
-            <h2 className="font-display text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
-              <span className="text-foreground">Code</span> <br />
-              <span className="text-primary italic">Libraries.</span>
-            </h2>
-            <p className="mt-5 text-foreground/55 max-w-xl font-light leading-relaxed">
-              Packages with bench scripts and documented limits. Numbers live in each repo, not in headlines.
-            </p>
-          </motion.div>
-
-          {/* Counter Badge  pacman eats the numbers up */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex lg:justify-end"
-          >
-            <div className="relative flex items-center gap-4 px-6 py-3 border border-accent/40 bg-surface/60 backdrop-blur-sm">
-              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent" />
-              <Star size={26} className="text-accent" fill="var(--accent)" />
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-accent text-2xl font-black tabular-nums">
-                  <CountUp target={repos.length} />
-                </span>
-                <div className="flex flex-col">
-                  <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
-                    Projects
-                  </span>
-                  <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
-                    Indexed
-                  </span>
-                </div>
-                <span className="font-mono text-accent/50 text-xl font-black" aria-hidden="true">
-                  •
-                </span>
-                <span className="font-mono text-accent text-2xl font-black tabular-nums">
-                  <CountUp target={totalStars} />
-                </span>
-                <div className="flex flex-col">
-                  <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
-                    Stars
-                  </span>
-                  <span className="font-mono text-[9px] text-on-surface-variant tracking-[0.3em] uppercase">
-                    Earned
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+        <SectionHeader
+          eyebrow="Open Source // ライブラリ"
+          japanese="開発"
+          titleA="Code"
+          titleB="Libraries."
+          size="lg"
+          description="Packages with bench scripts and documented limits. Numbers live in each repo, not in headlines."
+          aside={
+            <CounterChip
+              tone="accent"
+              icon={<Star size={26} className="text-accent" fill="var(--accent)" aria-hidden="true" />}
+              stats={[
+                { value: <CountUp target={repos.length} />, label: "Projects indexed" },
+                { value: <CountUp target={totalStars} />, label: "Stars earned" },
+              ]}
+            />
+          }
+        />
 
         {/* Project Grid  empty state when GitHub API is down */}
         {repos.length === 0 && (

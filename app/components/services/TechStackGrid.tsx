@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { EASE } from "@/app/core/motion";
-import SectionHeader from "@/app/core/components/SectionHeader";
-import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { TiltCard } from "@/app/core/components/Motion";
+import SectionHeader from "@/app/core/components/SectionHeader";
+import SectionWatermark from "@/app/core/components/SectionWatermark";
+import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
+import { EASE } from "@/app/core/motion";
+import { motion } from "framer-motion";
 
 /**
  * Arsenal  static stack grid (no marquee).
@@ -14,15 +15,7 @@ import { TiltCard } from "@/app/core/components/Motion";
 export default function TechStackGrid() {
   return (
     <section aria-label="Tech stack" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
-      <div
-        className="absolute left-8 top-16 pointer-events-none select-none text-foreground/[0.03] text-[13vw] font-black z-0 vertical-text"
-        aria-hidden="true"
-        lang="ja"
-      >
-        <span>武</span>
-        <span>器</span>
-        <span>庫</span>
-      </div>
+      <SectionWatermark japanese="武器庫" corner="right" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
@@ -30,7 +23,7 @@ export default function TechStackGrid() {
           japanese="武器庫"
           titleA="Tools of"
           titleB="The Trade."
-          description="No buzzword bingo. Every item below is used in the work you just scrolled past  or the proof coming next."
+          description="No buzzword bingo. Every item below is used in the work you just scrolled past, or the proof coming next."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
