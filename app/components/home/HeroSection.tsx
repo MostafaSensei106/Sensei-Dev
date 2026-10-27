@@ -183,7 +183,9 @@ export default function HeroSection({
             style={{
               left: `${10 + (i * 7) % 80}%`,
               top: `${5 + (i * 13) % 90}%`,
-              animation: `float-particle ${3 + (i % 4)}s ease-in-out infinite alternate`,
+              animation: reduceMotion
+                ? undefined
+                : `float-particle ${3 + (i % 4)}s ease-in-out infinite alternate`,
               animationDelay: `${i * 0.3}s`,
             }}
           />

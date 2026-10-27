@@ -2,6 +2,7 @@ import React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/app/core/components/ThemeProvider";
+import { MotionProvider } from "@/app/core/components/MotionProvider";
 import { ThemeFxProvider } from "@/app/core/theme/ThemeFxProvider";
 import { SpotlightHost } from "@/app/core/components/Motion";
 import CommandPaletteLoader from "@/app/core/components/CommandPaletteLoader";
@@ -75,6 +76,7 @@ export default function RootLayout({
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
         <ThemeProvider>
         <ThemeFxProvider>
+        <MotionProvider>
           <a href="#home" className="skip-link">Skip to content</a>
           <script
             type="application/ld+json"
@@ -103,6 +105,7 @@ export default function RootLayout({
             <CursorOverlayLoader />
             {children}
           </SmoothScroll>
+        </MotionProvider>
         </ThemeFxProvider>
         </ThemeProvider>
       </body>

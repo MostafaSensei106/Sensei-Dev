@@ -76,9 +76,9 @@ export default function AppLoader() {
             {word}
           </motion.span>
 
-          <h1 className="mt-4 font-display text-xl font-black uppercase tracking-tighter text-foreground">
+          <p className="mt-4 font-display text-xl font-black uppercase tracking-tighter text-foreground">
             Mostafa<span className="text-primary">.</span>
-          </h1>
+          </p>
           <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.45em] text-foreground/40">
             Portfolio
           </p>
