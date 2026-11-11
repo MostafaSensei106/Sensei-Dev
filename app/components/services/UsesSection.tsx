@@ -1,12 +1,10 @@
-"use client";
-
+import { RevealDiv } from "@/app/core/components/Reveal";
 import CounterChip from "@/app/core/components/CounterChip";
 import { TiltCard } from "@/app/core/components/Motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import SectionWatermark from "@/app/core/components/SectionWatermark";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { EASE } from "@/app/core/motion";
-import { motion } from "framer-motion";
 
 export default function UsesSection() {
   const toolCount = PORTFOLIO_DATA.uses.reduce((s, g) => s + g.items.length, 0);
@@ -33,7 +31,7 @@ export default function UsesSection() {
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {PORTFOLIO_DATA.uses.map((g, idx) => (
-            <motion.div
+            <RevealDiv
               key={g.id}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -59,14 +57,14 @@ export default function UsesSection() {
                   {g.items.map((item) => (
                     <li
                       key={item}
-                      className="px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-foreground bg-tertiary/10 border border-tertiary/40"
+                      className="px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-foreground bg-tertiary/10 border border-tertiary/40"
                     >
                       {item}
                     </li>
                   ))}
                 </ul>
               </TiltCard>
-            </motion.div>
+            </RevealDiv>
           ))}
         </div>
       </div>

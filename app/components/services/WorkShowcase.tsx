@@ -1,21 +1,11 @@
-"use client";
-
 import { TiltCard } from "@/app/core/components/Motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import SectionWatermark from "@/app/core/components/SectionWatermark";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { EASE } from "@/app/core/motion";
-import type { WorkType } from "@/app/core/types/portfolio";
-import { motion } from "framer-motion";
+import { RevealDiv } from "@/app/core/components/Reveal";
+import WorkFilter from "./WorkFilter";
 import { ExternalLink, Github, Lock, Package, Server, Smartphone } from "lucide-react";
-import { useState } from "react";
-
-const FILTERS: { id: WorkType | "all"; label: string; japanese: string }[] = [
-  { id: "all", label: "All", japanese: "全部" },
-  { id: "app", label: "Apps", japanese: "アプリ" },
-  { id: "backend", label: "Backend", japanese: "バックエンド" },
-  { id: "library", label: "Libraries", japanese: "庫" },
-];
 
 const TYPE_ICON = {
   app: Smartphone,
@@ -25,9 +15,6 @@ const TYPE_ICON = {
 } as const;
 
 export default function WorkShowcase() {
-  const [filter, setFilter] = useState<WorkType | "all">("all");
-  const items = PORTFOLIO_DATA.work.filter((w) => filter === "all" || w.type === filter);
-
   return (
     <section id="work" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       <SectionWatermark japanese="仕事" corner="right" />
@@ -41,28 +28,10 @@ export default function WorkShowcase() {
           description="Not only GitHub libraries. Apps with store constraints and backend APIs with measured behavior. Private work is marked as private-demo."
         />
 
-        <div className="flex flex-wrap gap-3 mb-12" role="tablist" aria-label="Filter work by type">
-          {FILTERS.map((f) => (
-            <button
-              key={f.id}
-              role="tab"
-              aria-selected={filter === f.id}
-              onClick={() => setFilter(f.id)}
-              className={`min-h-11 inline-flex items-center px-5 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] border transition-all duration-300 ${filter === f.id
-                ? "bg-primary text-white border-primary"
-                : "bg-foreground/[0.03] text-foreground/60 border-foreground/10 hover:border-primary/50 hover:text-foreground"
-                }`}
-            >
-              {f.label} <span className="ml-2 text-[9px] opacity-60" lang="ja">{f.japanese}</span>
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {items.map((w, idx) => {
+        <WorkFilter items={PORTFOLIO_DATA.work.map((w, idx) => {
             const Icon = TYPE_ICON[w.type];
-            return (
-              <motion.div
+            return { type: w.type, card: (
+              <RevealDiv
                 key={w.id}
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -73,23 +42,18 @@ export default function WorkShowcase() {
                 >
                   <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-primary/40 to-transparent opacity-70" aria-hidden="true" />
 
-                  {/* Halftone print grain  drifts in on hover */}
-                  <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-                    <div className="halftone absolute inset-0 scale-100 opacity-0 transition-[opacity,transform] duration-[900ms] ease-out group-hover:scale-[1.2] group-hover:opacity-100" />
-                  </div>
-
                   <div className="flex items-start justify-between gap-4 mb-5">
                     <div className="flex items-center gap-3">
                       <div className="p-2.5 bg-foreground/5 border border-foreground/10">
                         <Icon size={18} className="text-tertiary" />
                       </div>
                       <div>
-                        <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-tertiary">{w.type} • {w.platform}</div>
-                        <div className="font-mono text-[9px] text-foreground/30 tracking-widest mt-1">{w.year} • {w.status}</div>
+                        <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-tertiary">{w.type} • {w.platform}</div>
+                        <div className="font-mono text-[11px] text-foreground/60 tracking-widest mt-1">{w.year} • {w.status}</div>
                       </div>
                     </div>
                     {w.status === "private-demo" && (
-                      <span className="flex items-center gap-1.5 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em] text-accent border border-accent/30 bg-accent/10">
+                      <span className="flex items-center gap-1.5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-accent border border-accent/30 bg-accent/10">
                         <Lock size={11} /> Private
                       </span>
                     )}
@@ -100,24 +64,24 @@ export default function WorkShowcase() {
                   </h3>
                   <p className="text-foreground/80 font-medium mb-3">{w.tagline}</p>
                   <p className="text-sm text-foreground/55 font-light leading-relaxed mb-2">
-                    <span className="text-foreground/35 font-mono text-[10px] uppercase tracking-[0.2em]">Problem  </span>
+                    <span className="text-foreground/35 font-mono text-[11px] uppercase tracking-[0.2em]">Problem  </span>
                     {w.problem}
                   </p>
                   <p className="text-sm text-foreground/55 font-light leading-relaxed mb-5">
-                    <span className="text-foreground/35 font-mono text-[10px] uppercase tracking-[0.2em]">Role  </span>
+                    <span className="text-foreground/35 font-mono text-[11px] uppercase tracking-[0.2em]">Role  </span>
                     {w.role}
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-5">
                     {w.stack.map((s) => (
-                      <span key={s} className="px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.15em] text-tertiary bg-tertiary/10 border border-tertiary/25">
+                      <span key={s} className="px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-tertiary bg-tertiary/10 border border-tertiary/25">
                         {s}
                       </span>
                     ))}
                   </div>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {w.metrics.map((m) => (
-                      <span key={m} className="px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.15em] text-accent bg-accent/10 border border-accent/25">
+                      <span key={m} className="px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent bg-accent/10 border border-accent/25">
                         {m}
                       </span>
                     ))}
@@ -125,28 +89,23 @@ export default function WorkShowcase() {
 
                   <div className="flex gap-3 mt-auto pt-5 border-t border-foreground/5">
                     {w.links.github && (
-                      <a href={w.links.github} target="_blank" rel="noopener noreferrer" className="btn-sheen min-h-11 inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-white font-mono text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-colors">
+                      <a href={w.links.github} target="_blank" rel="noopener noreferrer" className="btn-sheen min-h-11 inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-white font-mono text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-colors">
                         <Github size={13} /> Source
                       </a>
                     )}
                     {w.links.live && (
-                      <a href={w.links.live} target="_blank" rel="noopener noreferrer" className="min-h-11 inline-flex items-center gap-2 px-4 py-2.5 border border-foreground/15 text-foreground/70 font-mono text-[10px] uppercase tracking-[0.2em] hover:border-primary hover:text-foreground transition-colors">
+                      <a href={w.links.live} target="_blank" rel="noopener noreferrer" className="min-h-11 inline-flex items-center gap-2 px-4 py-2.5 border border-foreground/15 text-foreground/70 font-mono text-[11px] uppercase tracking-[0.2em] hover:border-primary hover:text-foreground transition-colors">
                         <ExternalLink size={13} /> Live
                       </a>
                     )}
                     {!w.links.github && !w.links.live && (
-                      <span className="font-mono text-[10px] text-foreground/35 tracking-[0.2em] uppercase">Demo on request  NDA client work</span>
+                      <span className="font-mono text-[11px] text-foreground/35 tracking-[0.2em] uppercase">Demo on request  NDA client work</span>
                     )}
                   </div>
                 </TiltCard>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {items.length === 0 && (
-          <p className="mt-8 font-mono text-sm text-foreground/40">No items in this filter yet.</p>
-        )}
+              </RevealDiv>
+            ) };
+          })} />
       </div>
     </section>
   );

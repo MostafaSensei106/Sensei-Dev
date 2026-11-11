@@ -1,5 +1,3 @@
-"use client";
-
 import type { CSSProperties } from "react";
 
 const DEFAULT_ITEMS = [

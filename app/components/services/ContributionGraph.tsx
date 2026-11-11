@@ -2,7 +2,6 @@
 
 import type { ContributionStats } from "@/app/core/api/contributions";
 import { CountUp } from "@/app/core/components/CountUp";
-import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { EASE } from "@/app/core/motion";
 import { motion } from "framer-motion";
 
@@ -20,9 +19,8 @@ const LEVEL_BG = [
  * Loading skeleton -> graph | empty notice | error notice with profile link.
  * Never blocks the page: failures degrade to a single line.
  */
-export function ContributionGraph({ stats }: { stats: ContributionStats }) {
+export function ContributionGraph({ stats, username }: { stats: ContributionStats; username: string }) {
   const { status, days, total } = stats;
-  const username = PORTFOLIO_DATA.projects.githubUsername;
   if (status === "loading") {
     return (
       <div aria-label="Loading contribution graph" className="border border-foreground/10 bg-surface/60 p-6">
@@ -55,17 +53,17 @@ export function ContributionGraph({ stats }: { stats: ContributionStats }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.65, ease: EASE }}
+      transition={{ duration: 0.4, ease: EASE }}
       className="border border-foreground/10 bg-surface/60 p-6"
     >
       <div className="mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-1">
         <span className="font-mono text-2xl font-black text-accent tabular-nums">
           <CountUp target={total} duration={1800} />
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/50">
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/50">
           contributions in the last year
         </span>
       </div>
@@ -87,7 +85,7 @@ export function ContributionGraph({ stats }: { stats: ContributionStats }) {
           </div>
         </div>
       </div>
-      <div className="mt-3 flex items-center justify-end gap-1.5 font-mono text-[9px] text-foreground/40">
+      <div className="mt-3 flex items-center justify-end gap-1.5 font-mono text-[11px] text-foreground/40">
         <span>Less</span>
         {LEVEL_BG.map((bg, i) => (
           <span key={i} className={`h-2.5 w-2.5 ${bg}`} />

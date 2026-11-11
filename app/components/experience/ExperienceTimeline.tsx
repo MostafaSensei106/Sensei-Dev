@@ -113,7 +113,7 @@ export default function ExperienceTimeline() {
 
                 {/* Japanese Role Tag */}
                 {item.japaneseRole && (
-                  <div className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 bg-foreground/[0.03] border-l-2 border-primary text-[10px] font-mono font-bold text-foreground/50 tracking-[0.15em] w-fit">
+                  <div className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 bg-foreground/[0.03] border-l-2 border-primary text-[11px] font-mono font-bold text-foreground/50 tracking-[0.15em] w-fit">
                     <span className="text-primary/60">JP</span>
                     <span>{item.japaneseRole}</span>
                   </div>
@@ -134,11 +134,11 @@ export default function ExperienceTimeline() {
                 <div className="relative z-10 px-6 md:px-12 pt-6 md:pt-8 pb-4 border-b border-foreground/5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-accent" />
-                    <span className="font-mono text-[9px] text-foreground/30 tracking-[0.3em] uppercase">
+                    <span className="font-mono text-[11px] text-foreground/30 tracking-[0.16em] uppercase">
                       Record #{String(idx + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <span className="font-mono text-[9px] text-foreground/20 tracking-wider uppercase">
+                  <span className="font-mono text-[11px] text-foreground/20 tracking-wider uppercase">
                     {item.period.split("–")[0]?.trim()}
                   </span>
                 </div>
@@ -160,7 +160,7 @@ export default function ExperienceTimeline() {
                       <div className="flex items-start gap-4 group/detail py-3">
                         {/* Custom bullet */}
                         <div className="mt-1 shrink-0 flex items-center gap-2">
-                          <span className="font-mono text-[9px] text-foreground/20 tabular-nums w-4">
+                          <span className="font-mono text-[11px] text-foreground/20 tabular-nums w-4">
                             {String(i + 1).padStart(2, "0")}
                           </span>
                           <div className="w-3 h-3 border border-accent/30 flex items-center justify-center group-hover/detail:border-accent transition-colors duration-300">

@@ -9,8 +9,8 @@ import SectionSkeleton from "@/app/core/components/SectionSkeleton";
 import { getGitHubRepos } from "@/app/core/api/github";
 
 /*
- * Everything below the first viewport is code-split. Hero + nav stay static so
- * the first paint is never blocked by a chunk request.
+ * The sections below the first viewport stay on the server. Dynamic imports
+ * defer their interactive children; the hero and navigation remain eager.
  */
 const ServicesSection = dynamic(
   () => import("@/app/components/services/ServicesSection"),

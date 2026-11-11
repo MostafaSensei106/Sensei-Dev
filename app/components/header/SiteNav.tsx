@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/app/core/components/ThemeToggle";
 import {
@@ -28,14 +28,8 @@ const navItems = [
 ];
 
 export default function SiteNav() {
-  const { scrollY } = useScroll();
-  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("#home");
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const ids = navItems.map((i) => i.href.slice(1));
@@ -52,7 +46,7 @@ export default function SiteNav() {
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, [mounted]);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -65,24 +59,17 @@ export default function SiteNav() {
     };
   }, [isOpen]);
 
-  const navWidth = useTransform(scrollY, [0, 100], ["95%", "85%"]);
-
-  if (!mounted) return null;
-
   return (
     <>
       {/* ─── Main Navigation Bar ─── */}
-      <motion.nav
-        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-xl bg-background/60 border border-foreground/10 px-4 md:px-8 py-2 md:py-3 flex items-center justify-between transition-all duration-500 ease-out"
+      <nav
+        className="fixed z-[100] left-1/2 -translate-x-1/2 backdrop-blur-xl bg-background/60 border border-foreground/10 px-4 md:px-8 py-2 md:py-3 flex items-center justify-between"
         style={{
-          width: navWidth,
+          width: "95%",
           top: 20,
           borderTop: "2px solid var(--primary)",
           clipPath: "polygon(0 0, 100% 0, 98% 100%, 2% 100%)",
         }}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 200, damping: 20 }}
       >
         {/* Logo */}
         <a
@@ -97,19 +84,19 @@ export default function SiteNav() {
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-5 lg:gap-7">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-7">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
               aria-current={active === item.href ? "page" : undefined}
-              className={`relative flex min-h-11 items-center gap-2 text-[9px] lg:text-[10px] font-mono font-bold uppercase tracking-[0.22em] transition-all duration-300 group ${
+              className={`relative flex min-h-11 items-center gap-2 text-[11px] font-mono font-bold uppercase tracking-[0.1em] transition-colors duration-200 group ${
                 active === item.href ? "text-foreground" : "text-foreground/60 hover:text-foreground"
               }`}
             >
               <item.icon
-                size={12}
-                strokeWidth={2.5}
+                size={14}
+                strokeWidth={1.75}
                 className={`transition-colors duration-300 ${active === item.href ? "text-primary" : "text-foreground/30 group-hover:text-primary"}`}
               />
               <span>{item.name}</span>
@@ -120,7 +107,7 @@ export default function SiteNav() {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-2">
           <ThemeToggle />
           <button
             type="button"
@@ -135,20 +122,20 @@ export default function SiteNav() {
         </div>
 
         {/* Desktop theme toggle */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2">
           <button
             type="button"
             onClick={() => window.dispatchEvent(new Event("sensei:palette"))}
             aria-label="Open command palette (Ctrl+K)"
             title="Commands (Ctrl+K)"
-            className="flex items-center gap-1.5 border border-foreground/10 bg-foreground/[0.03] px-2.5 py-2.5 font-mono text-[10px] text-foreground/50 transition-colors duration-300 hover:border-primary hover:text-primary"
+            className="flex items-center gap-1.5 border border-foreground/10 bg-foreground/[0.03] px-2.5 py-2.5 font-mono text-[11px] text-foreground/50 transition-colors duration-300 hover:border-primary hover:text-primary"
           >
             <Command size={14} />
             <kbd>K</kbd>
           </button>
           <ThemeToggle />
         </div>
-      </motion.nav>
+      </nav>
 
       {/* ─── Mobile Full-Screen Overlay ─── */}
       <AnimatePresence>
@@ -159,7 +146,7 @@ export default function SiteNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[95] md:hidden bg-background/95 backdrop-blur-2xl flex flex-col"
+            className="fixed inset-0 z-[95] lg:hidden bg-background/95 backdrop-blur-2xl flex flex-col"
             onClick={() => setIsOpen(false)}
           >
             {/* Background Decorative Kanji */}
@@ -217,7 +204,7 @@ export default function SiteNav() {
                   className="group relative flex items-center gap-6 py-4 border-b border-foreground/5 last:border-b-0"
                 >
                   {/* Index Number */}
-                  <span className="font-mono text-[10px] text-foreground/20 w-6 tabular-nums">
+                  <span className="font-mono text-[11px] text-foreground/20 w-6 tabular-nums">
                     0{idx + 1}
                   </span>
 
@@ -233,7 +220,7 @@ export default function SiteNav() {
                     <span className="font-display text-3xl font-black text-foreground uppercase tracking-tight group-hover:text-primary transition-colors duration-300">
                       {item.name}
                     </span>
-                    <span className="font-mono text-[10px] text-foreground/25 tracking-[0.3em]">
+                    <span className="font-mono text-[11px] text-foreground/25 tracking-[0.16em]">
                       {item.katakana}
                     </span>
                   </div>
@@ -251,7 +238,7 @@ export default function SiteNav() {
                 className="mt-12 flex flex-col gap-3"
               >
                 <div className="w-16 h-[2px] bg-primary" />
-                <span className="text-[9px] font-mono text-foreground/30 tracking-[0.5em] uppercase">
+                <span className="text-[11px] font-mono text-foreground/30 tracking-[0.16em] uppercase">
                   Sensei Portfolio
                 </span>
               </motion.div>

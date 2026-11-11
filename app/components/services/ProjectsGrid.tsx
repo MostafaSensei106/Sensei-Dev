@@ -1,21 +1,15 @@
-"use client";
-
-import { Repo } from "@/app/core/api/github";
+import { RevealDiv } from "@/app/core/components/Reveal";
+import type { Repo } from "@/app/core/api/github";
 import CounterChip from "@/app/core/components/CounterChip";
 import { CountUp } from "@/app/core/components/CountUp";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import SectionWatermark from "@/app/core/components/SectionWatermark";
 import { EASE } from "@/app/core/motion";
-import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-import { useMemo } from "react";
 import ProjectCard from "./ProjectCard";
 
 export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
-  const totalStars = useMemo(
-    () => repos.reduce((s, r) => s + (r.stargazers_count || 0), 0),
-    [repos]
-  );
+  const totalStars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
   return (
     <section id="projects" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       <SectionWatermark japanese="設計開発" corner="left" />
@@ -63,7 +57,7 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
         )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {repos.map((repo, idx) => (
-            <motion.div
+            <RevealDiv
               key={repo.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -76,7 +70,7 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
               className="flex"
             >
               <ProjectCard repo={repo} index={idx} />
-            </motion.div>
+            </RevealDiv>
           ))}
         </div>
 

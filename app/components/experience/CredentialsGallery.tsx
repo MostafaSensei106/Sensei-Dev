@@ -54,10 +54,10 @@ export default function CredentialsGallery() {
           {PORTFOLIO_DATA.certificates.map((cert, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: idx * 0.15, duration: 0.8, ease: EASE }}
+              transition={{ delay: idx * 0.04, duration: 0.4, ease: EASE }}
             >
               <TiltCard className="spotlight relative group bg-surface/60 border border-foreground/5 overflow-hidden backdrop-blur-xl hover:border-accent/40 transition-all duration-700 h-full"
               >
@@ -79,7 +79,7 @@ export default function CredentialsGallery() {
 
                     {/* Seal stamp effect */}
                     <div className="absolute top-4 right-4 w-14 h-14 rounded-full border-2 border-primary/40 flex items-center justify-center opacity-70 group-hover:opacity-100 group-hover:border-primary transition-all duration-500">
-                      <span className="text-primary font-black text-[10px] font-mono tracking-wider rotate-[-12deg]">
+                      <span className="text-primary font-black text-[11px] font-mono tracking-wider rotate-[-12deg]">
                         認定
                       </span>
                     </div>
@@ -96,7 +96,7 @@ export default function CredentialsGallery() {
                   <div className="w-full lg:w-3/5 p-8 md:p-10 flex flex-col justify-center">
                     <div className="flex items-center gap-3 text-accent mb-5">
                       <ShieldCheck size={18} />
-                      <span className="font-mono text-[10px] tracking-[0.3em] font-bold uppercase">
+                      <span className="font-mono text-[11px] tracking-[0.16em] font-bold uppercase">
                         Verified Achievement
                       </span>
                     </div>

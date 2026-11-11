@@ -224,11 +224,6 @@
   pointer-events: none;
 }
 
-.halftone {
-  background-image: radial-gradient(circle at 2px 2px, color-mix(in srgb, var(--foreground) 5%, transparent) 1px, transparent 0);
-  background-size: 8px 8px;
-}
-
 .speed-lines {
   background-image: repeating-linear-gradient(45deg,
       transparent,
@@ -271,29 +266,12 @@
   }
 }
 
-/* ─── Button sheen  one delight, used by every primary CTA ─── */
+/* ─── Primary CTA clipping, without a repeating hover sweep ─── */
 
 .btn-sheen {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-}
-
-.btn-sheen::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -70%;
-  width: 45%;
-  height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-  transform: skewX(-20deg);
-  transition: left 0.6s ease;
-  z-index: 1;
-}
-
-.btn-sheen:hover::after {
-  left: 135%;
 }
 
 /* ─── Samurai Theme Discipline ───
@@ -303,27 +281,27 @@
 .jp-eyebrow {
   font-family: var(--font-jp);
   font-weight: 700;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.1em;
 }
 
 /* Section eyebrow  the Latin/mono label above every section title.
    Type only; leave color to the call site (text-primary / text-accent). */
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 /* Secondary/dense eyebrow  counters, chips, metadata rows. */
 .eyebrow-sm {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   line-height: 1;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -341,7 +319,7 @@
   opacity: 0;
   transition: opacity 0.4s ease;
   background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%),
-      color-mix(in srgb, var(--primary) 14%, transparent),
+      color-mix(in srgb, var(--foreground) 6%, transparent),
       transparent 70%);
 }
 
@@ -349,10 +327,10 @@
   opacity: 1;
 }
 
-/* Blue variant  tools-flavored glow (tertiary) instead of red. */
+/* Tool cards share the same quiet hover as other cards. */
 .spotlight-blue::before {
   background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%),
-      color-mix(in srgb, var(--tertiary) 16%, transparent),
+      color-mix(in srgb, var(--foreground) 6%, transparent),
       transparent 70%);
 }
 
@@ -410,17 +388,5 @@
   .animate-ping,
   .animate-pulse {
     animation: none !important;
-  }
-}
-
-@keyframes float-particle {
-  0% {
-    transform: translate3d(0, 0, 0);
-    opacity: 0.3;
-  }
-
-  100% {
-    transform: translate3d(10px, -20px, 0);
-    opacity: 0.1;
   }
 }

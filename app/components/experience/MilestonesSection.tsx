@@ -1,10 +1,8 @@
-"use client";
-
+import { RevealListItem } from "@/app/core/components/Reveal";
 import CounterChip from "@/app/core/components/CounterChip";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { EASE } from "@/app/core/motion";
-import { motion } from "framer-motion";
 
 export default function MilestonesSection() {
   const items = PORTFOLIO_DATA.milestones;
@@ -33,7 +31,7 @@ export default function MilestonesSection() {
             {items.map((m, idx) => {
               const showYear = idx === 0 || items[idx - 1].year !== m.year;
               return (
-                <motion.li
+                <RevealListItem
                   key={`${m.year}-${m.title}`}
                   initial={{ opacity: 0, x: -24 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -62,7 +60,7 @@ export default function MilestonesSection() {
                       </p>
                     </div>
                   </div>
-                </motion.li>
+                </RevealListItem>
               );
             })}
           </ol>
