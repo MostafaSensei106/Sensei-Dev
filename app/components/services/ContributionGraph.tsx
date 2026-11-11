@@ -53,17 +53,17 @@ export function ContributionGraph({ stats, username }: { stats: ContributionStat
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.65, ease: EASE }}
+      transition={{ duration: 0.4, ease: EASE }}
       className="border border-foreground/10 bg-surface/60 p-6"
     >
       <div className="mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-1">
         <span className="font-mono text-2xl font-black text-accent tabular-nums">
           <CountUp target={total} duration={1800} />
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/50">
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/50">
           contributions in the last year
         </span>
       </div>
@@ -85,7 +85,7 @@ export function ContributionGraph({ stats, username }: { stats: ContributionStat
           </div>
         </div>
       </div>
-      <div className="mt-3 flex items-center justify-end gap-1.5 font-mono text-[9px] text-foreground/40">
+      <div className="mt-3 flex items-center justify-end gap-1.5 font-mono text-[11px] text-foreground/40">
         <span>Less</span>
         {LEVEL_BG.map((bg, i) => (
           <span key={i} className={`h-2.5 w-2.5 ${bg}`} />

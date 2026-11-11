@@ -38,10 +38,10 @@ export default function FaqSection() {
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.55, delay: i * 0.05, ease: EASE }}
+                transition={{ duration: 0.4, delay: i * 0.04, ease: EASE }}
                 className="border-b border-foreground/10"
               >
                 <button
@@ -51,7 +51,7 @@ export default function FaqSection() {
                   aria-controls={`faq-panel-${i}`}
                   className="flex w-full items-center gap-4 py-5 text-left group"
                 >
-                  <span className="font-mono text-[10px] text-foreground/25 tabular-nums w-6 shrink-0">
+                  <span className="font-mono text-[11px] text-foreground/25 tabular-nums w-6 shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className={`flex-1 font-display text-lg md:text-xl font-black uppercase tracking-tight transition-colors ${isOpen ? "text-primary" : "text-foreground group-hover:text-primary"}`}>

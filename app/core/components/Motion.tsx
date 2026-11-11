@@ -1,31 +1,14 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode, type MouseEvent } from "react";
+import { useRef, type ReactNode, type MouseEvent } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { prefersReducedMotion } from "@/app/core/theme/fx";
-
-/** One global listener: feeds --mx/--my to any hovered .spotlight card. */
-export function SpotlightHost() {
-  useEffect(() => {
-    if (prefersReducedMotion()) return;
-    const onMove = (e: globalThis.MouseEvent) => {
-      const el = (e.target as HTMLElement).closest?.(".spotlight") as HTMLElement | null;
-      if (!el) return;
-      const r = el.getBoundingClientRect();
-      el.style.setProperty("--mx", `${((e.clientX - r.left) / r.width) * 100}%`);
-      el.style.setProperty("--my", `${((e.clientY - r.top) / r.height) * 100}%`);
-    };
-    document.addEventListener("mousemove", onMove, { passive: true });
-    return () => document.removeEventListener("mousemove", onMove);
-  }, []);
-  return null;
-}
 
 /** 3D tilt on hover with spring return. Pure framer-motion, zero WebGL. */
 export function TiltCard({
   children,
   className,
-  max = 7,
+  max = 2,
 }: {
   children: ReactNode;
   className?: string;

@@ -17,9 +17,9 @@ export const PORTFOLIO_DATA: PortfolioData = {
       x: "https://x.com/MostafaSensei",
     },
     hero: {
-      tagline: "High Performance Systems & Elegant Mobile Ecosystems.",
+      tagline: "Flutter apps, Go APIs, and Rust-backed packages",
       japaneseTagline: "高性能システムとエレガなモバイルエコシステム。",
-      description: "Dedicated Software Engineer specialized in Flutter, Dart, Go (Gin), Rust, and Kotlin (Spring Boot / Android native). Crafting high performance, concurrent, and scalable solutions with a focus on technical excellence and user experience.",
+      description: "I build mobile apps in Flutter and Kotlin, backend APIs in Go and Spring Boot, and Rust-powered packages for performance-critical work.",
       photo: "Assets/art-gallery/Images/logo/Mostafa.webp",
       cvUrl: "Assets/cv/Mostafa_Mahmoud_CV.pdf",
     },

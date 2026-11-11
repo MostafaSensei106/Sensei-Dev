@@ -7,7 +7,7 @@ import SectionWatermark from "@/app/core/components/SectionWatermark";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { EASE } from "@/app/core/motion";
 import { motion } from "framer-motion";
-import { Maximize2, Sparkles } from "lucide-react";
+import { Maximize2 } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState } from "react";
@@ -52,18 +52,18 @@ export default function ArtGallery() {
           {PORTFOLIO_DATA.artGallery.map((img, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{
-                duration: 0.8,
-                delay: (idx % 6) * 0.08,
+                duration: 0.4,
+                delay: (idx % 3) * 0.04,
                 ease: EASE,
               }}
               className="break-inside-avoid"
             >
               <TiltCard
-                max={5}
+                max={2}
                 className="spotlight relative group overflow-hidden bg-surface border border-foreground/5 transition-all duration-700 hover:border-primary/40"
               >
                 {/* Corner bracket accents */}
@@ -90,16 +90,9 @@ export default function ArtGallery() {
                   width={500}
                   height={500}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                  className="w-full h-auto object-cover"
                   loading="lazy"
                   unoptimized={true}
-                />
-
-                {/* Halftone print grain  drifts in on hover, above the image
-                    but below the caption gradient. */}
-                <div
-                  className="halftone pointer-events-none absolute inset-0 z-[5] scale-100 opacity-0 transition-[opacity,transform] duration-[900ms] ease-out group-hover:scale-[1.2] group-hover:opacity-100"
-                  aria-hidden="true"
                 />
 
                 {/* Hover overlay */}
@@ -115,8 +108,7 @@ export default function ArtGallery() {
 
                   <div className="relative z-10">
                     <div className="flex items-center gap-2 text-primary mb-2">
-                      <Sparkles size={12} />
-                      <span className="font-mono text-[10px] font-bold tracking-[0.3em] uppercase">
+                      <span className="font-mono text-[11px] font-bold tracking-[0.16em] uppercase">
                         Visual Entry {String(idx + 1).padStart(2, "0")}
                       </span>
                     </div>

@@ -1,13 +1,3 @@
-"use client";
-
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import { useRef } from "react";
-
 /*
  * One decorative kanji column per section, always the same recipe:
  * 3% foreground, brush font, vertical, non-interactive, hidden from AT.
@@ -41,32 +31,18 @@ export default function SectionWatermark({
   size = "default",
   className = "",
 }: SectionWatermarkProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  // Slow drift  the column lags the page by a few percent, never enough to
-  // reach the content column.
-  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-
   return (
     <div
-      ref={ref}
       aria-hidden="true"
       className={`pointer-events-none absolute z-0 select-none ${CORNER[corner]}`}
     >
-      <motion.div
-        style={reduceMotion ? undefined : { y }}
+      <div
         className={`font-black text-foreground/[0.03] vertical-text ${SIZE[size]} ${className}`}
       >
         {Array.from(japanese).map((char, i) => (
           <span key={`${char}-${i}`}>{char}</span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

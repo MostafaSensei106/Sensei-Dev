@@ -47,7 +47,7 @@ export default function ContactFooter() {
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-[2px] bg-primary" />
-                <span className="text-primary font-mono text-[10px] tracking-[0.5em] uppercase font-bold">
+                <span className="text-primary font-mono text-[11px] tracking-[0.16em] uppercase font-bold">
                   The End of the Path
                 </span>
               </div>
@@ -68,7 +68,7 @@ export default function ContactFooter() {
                     aria-label={social.name}
                   >
                     <social.icon size={18} />
-                    <span className="font-mono font-bold uppercase tracking-[0.15em] text-[10px]">
+                    <span className="font-mono font-bold uppercase tracking-[0.15em] text-[11px]">
                       {social.name}
                     </span>
                     <ArrowUpRight
@@ -80,7 +80,7 @@ export default function ContactFooter() {
               </div>
 
               {/* Languages  from portfolio data */}
-              <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[10px] tracking-[0.25em] uppercase">
+              <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[11px] tracking-[0.25em] uppercase">
                 {PORTFOLIO_DATA.languages.map((l, i) => (
                   <span key={l.code} className="flex items-center gap-3">
                     {i > 0 && (
@@ -119,15 +119,15 @@ export default function ContactFooter() {
             {/* Briefing header */}
             <div className="flex items-center gap-3 mb-2">
               <div className="w-6 h-[2px] bg-primary" />
-              <span className="font-mono text-[9px] text-primary tracking-[0.4em] uppercase font-bold">
+              <span className="font-mono text-[11px] text-primary tracking-[0.16em] uppercase font-bold">
                 Mission Briefing // 依頼
               </span>
             </div>
             <h3 className="font-display text-3xl font-black mb-3 uppercase tracking-tight text-foreground">
-              Seal Intent
+              Tell me about your project
             </h3>
-            <p className="font-mono text-[11px] text-foreground/45 tracking-wider mb-8">
-              {PORTFOLIO_DATA.profile.availability}: apps, backends, and package work. Replies within 48h.
+            <p className="font-mono text-[11px] text-foreground/60 tracking-wider mb-8">
+              {PORTFOLIO_DATA.profile.availability}: apps, backends, and package work. Share the platform, scope, and timeline.
             </p>
 
             <form
@@ -161,7 +161,7 @@ export default function ContactFooter() {
                   type="text"
                   name="name"
                   required
-                  className="w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light placeholder:text-foreground/30 font-mono"
+                  className="w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light placeholder:text-foreground/60 font-mono"
                   placeholder="Name / Organization"
                 />
               </div>
@@ -174,12 +174,12 @@ export default function ContactFooter() {
                   type="email"
                   name="email"
                   required
-                  className="w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light placeholder:text-foreground/30 font-mono"
+                  className="w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light placeholder:text-foreground/60 font-mono"
                   placeholder="Email"
                 />
               </div>
               <div className="relative">
-                <label htmlFor="type" className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/40">
+                <label htmlFor="type" className="font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/40">
                   Project type
                 </label>
                 <select
@@ -203,23 +203,23 @@ export default function ContactFooter() {
                   name="message"
                   required
                   rows={3}
-                  className="w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light resize-none placeholder:text-foreground/30 font-mono"
+                  className="w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light resize-none placeholder:text-foreground/60 font-mono"
                   placeholder="What are we building? Platform, timeline, links"
                 />
               </div>
               <button
                 type="submit"
-                aria-label="Dispatch Message"
-                className="btn-sheen mt-4 w-full py-5 bg-primary text-white font-mono font-black uppercase tracking-[0.3em] text-sm hover:bg-foreground hover:text-background active:scale-[0.98] transition-all duration-300 shadow-2xl shadow-primary/20"
+                aria-label="Send email"
+                className="btn-sheen mt-4 w-full py-5 bg-primary text-white font-mono font-black uppercase tracking-[0.16em] text-sm hover:bg-foreground hover:text-background active:scale-[0.98] transition-all duration-300 shadow-2xl shadow-primary/20"
               >
-                DISPATCH MESSAGE
+                SEND EMAIL
               </button>
             </form>
           </motion.div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-32 pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-6 text-on-surface-variant font-mono text-[10px] tracking-[0.3em] uppercase opacity-70">
+        <div className="mt-32 pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-6 text-on-surface-variant font-mono text-[11px] tracking-[0.16em] uppercase opacity-70">
           <div className="flex items-center gap-4">
             <span className="text-primary font-black text-base tracking-normal font-display">
               MH.

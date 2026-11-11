@@ -1,9 +1,7 @@
 "use client";
 
-import { HeroMascot } from "@/app/components/home/HeroMascot";
 import { RevealText } from "@/app/core/components/RevealText";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import gsap from "gsap";
 import {
   ArrowDown,
@@ -20,7 +18,7 @@ import { prefersReducedMotion } from "@/app/core/theme/fx";
 function FieldRow({ label, value, hot = false }: { label: string; value: string; hot?: boolean }) {
   return (
     <div className="flex items-baseline justify-between gap-4 py-2.5 border-b border-foreground/5 last:border-b-0">
-      <dt className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/35 shrink-0">
+      <dt className="font-mono text-[11px] uppercase tracking-[0.25em] text-foreground/35 shrink-0">
         {label}
       </dt>
       <dd className={`font-mono text-xs text-right leading-relaxed ${hot ? "text-accent font-bold" : "text-foreground/80"}`}>
@@ -38,82 +36,21 @@ export default function HeroSection({
   starCount: number;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-  /*
-   * Depth ladder: the slowest plane is far away, the fastest is closest.
-   * GSAP owns the transforms on the inner elements (`.speed-line`,
-   * `.japanese-bg`, `.hinomaru-sun`), so scroll parallax lives on these
-   * wrappers and the two never fight over the same node.
-   */
-  const reduceMotion = useReducedMotion();
-  const linesY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, 21]);
-  const kanjiY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, 49]);
-  const sunY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, 77]);
-  const sunScale = useTransform(scrollYProgress, [0, 1], reduceMotion ? [1, 1] : [1, 0.82]);
-  const sunOpacity = useTransform(scrollYProgress, [0, 1], reduceMotion ? [1, 1] : [1, 0.5]);
-
   useEffect(() => {
     if (prefersReducedMotion()) return; // final state is the natural layout
     const ctx = gsap.context(() => {
-      /* Entrance: content stack */
       gsap.from(".hero-content > *", {
-        y: 60,
+        y: 12,
         opacity: 0,
-        duration: 1.5,
-        stagger: 0.15,
-        ease: "power4.out",
-        delay: 0.5,
-      });
-
-      /* Entrance: portrait */
-      gsap.from(".hero-image", {
-        scale: 1.1,
-        opacity: 0,
-        duration: 2,
-        ease: "power2.out",
-        delay: 0.2,
-      });
-
-      /* Entrance: background kanji */
-      gsap.from(".japanese-bg", {
-        x: 100,
-        opacity: 0,
-        duration: 2,
-        ease: "expo.out",
-        delay: 1,
-      });
-
-      /* Entrance: hinomaru sun */
-      gsap.from(".hinomaru-sun", {
-        scale: 0,
-        opacity: 0,
-        duration: 2.5,
-        ease: "expo.out",
-        delay: 0.3,
-      });
-
-      /* Entrance: spec sheet */
-      gsap.from(".spec-item", {
-        x: -30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        delay: 1.2,
-      });
-
-      /* Entrance: speed lines */
-      gsap.from(".speed-line", {
-        scaleX: 0,
-        opacity: 0,
-        duration: 1.5,
+        duration: 0.55,
         stagger: 0.05,
-        ease: "expo.out",
-        delay: 1.5,
-        transformOrigin: "left center",
+        ease: "power2.out",
+      });
+
+      gsap.from(".hero-image", {
+        opacity: 0,
+        duration: 0.55,
+        ease: "power2.out",
       });
     }, containerRef);
 
@@ -151,9 +88,8 @@ export default function HeroSection({
       ref={containerRef}
       className="relative min-h-screen flex items-center px-6 overflow-hidden pt-32 pb-24 bg-background"
     >
-      {/* ─── Speed Lines Background (0.15×  nearest of the three planes) ─── */}
-      <motion.div
-        style={{ y: linesY }}
+      {/* ─── Speed lines ─── */}
+      <div
         className="absolute inset-0 pointer-events-none overflow-hidden"
         aria-hidden="true"
       >
@@ -169,31 +105,10 @@ export default function HeroSection({
             }}
           />
         ))}
-      </motion.div>
-
-      {/* ─── Floating Particles (CSS-only) ─── */}
-      <div
-        className="absolute inset-0 pointer-events-none overflow-hidden"
-        aria-hidden="true"
-      >
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-[2px] h-[2px] bg-primary/30 rounded-none"
-            style={{
-              left: `${10 + (i * 7) % 80}%`,
-              top: `${5 + (i * 13) % 90}%`,
-              animation: reduceMotion
-                ? undefined
-                : `float-particle ${3 + (i % 4)}s ease-in-out infinite alternate`,
-              animationDelay: `${i * 0.3}s`,
-            }}
-          />
-        ))}
       </div>
 
-      {/* ─── Background Japanese Watermark (0.35×  middle plane) ─── */}
-      <motion.div style={{ y: kanjiY }} className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      {/* ─── Background Japanese watermark ─── */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
           className="japanese-bg absolute right-10 top-1/2 -translate-y-1/2 flex gap-12 text-foreground/[0.03] font-black text-[10vw] select-none pointer-events-none z-0 leading-none"
           role="img"
@@ -210,23 +125,14 @@ export default function HeroSection({
             <span>匠</span>
           </div>
         </div>
-      </motion.div>
-
-      {/* ─── Scanline Overlay ─── */}
-      <div
-        className="absolute inset-0 pointer-events-none z-[1] opacity-[0.03]"
-        aria-hidden="true" style={{
-          backgroundImage:
-            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)", filter: "grayscale(100%)"
-        }}
-      />
+      </div>
 
       {/* ─── Flow ─── */}
       <div className="hero-content relative z-10 w-full max-w-7xl mx-auto flex flex-col items-start">
         {/* Badge */}
         <div className="flex items-center gap-3 px-4 py-2 bg-foreground/[0.03] border border-foreground/10 mb-8 backdrop-blur-sm">
-          <div className="w-2 h-2 bg-primary animate-pulse" />
-          <span className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-on-surface-variant">
+          <div className="w-2 h-2 bg-primary" />
+          <span className="text-xs font-mono font-bold uppercase tracking-[0.16em] text-on-surface-variant">
             {PORTFOLIO_DATA.profile.japaneseTitle}
           </span>
         </div>
@@ -235,7 +141,7 @@ export default function HeroSection({
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16 w-full">
           {/* Name */}
           <div className="text-center md:text-left order-2 md:order-1">
-            <p className="font-mono text-[11px] md:text-xs font-bold uppercase tracking-[0.4em] text-primary mb-3">
+            <p className="font-mono text-[11px] md:text-xs font-bold uppercase tracking-[0.16em] text-primary mb-3">
               Portfolio  履歴書
             </p>
             <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.85] tracking-tighter uppercase">
@@ -254,9 +160,8 @@ export default function HeroSection({
 
           {/* Portrait */}
           <div className="hero-image relative w-[220px] sm:w-[260px] lg:w-[320px] aspect-square shrink-0 order-1 md:order-2 md:ml-auto">
-            {/* Hinomaru  Red Sun (0.55×  farthest plane, shrinks + fades) */}
-            <motion.div
-              style={{ y: sunY, scale: sunScale, opacity: sunOpacity }}
+            {/* Hinomaru sun */}
+            <div
               className="pointer-events-none absolute inset-0"
               aria-hidden="true"
             >
@@ -269,7 +174,7 @@ export default function HeroSection({
                   }}
                 />
               </div>
-            </motion.div>
+            </div>
 
             {/* Orbit inscription  stack names circling the portrait */}
             <div
@@ -305,7 +210,7 @@ export default function HeroSection({
               className="group/photo block"
               aria-label="Watch intro video"
             >
-              <div className="absolute inset-5 rounded-full overflow-hidden border-2 border-foreground/10 group-hover/photo:border-primary/40 transition-colors duration-700 shadow-2xl shadow-primary/10">
+              <div className="absolute inset-5 rounded-full overflow-hidden border-2 border-foreground/10 group-hover/photo:border-primary/40 transition-colors duration-300 shadow-2xl shadow-black/10">
                 <Image
                   src={PORTFOLIO_DATA.profile.hero.photo}
                   alt={PORTFOLIO_DATA.profile.name}
@@ -321,7 +226,7 @@ export default function HeroSection({
 
             {/* Hanko seal  the maker's stamp */}
             <div
-              className="absolute bottom-5 right-5 z-20 w-12 h-12 lg:w-14 lg:h-14 bg-primary rotate-6 hover:rotate-0 transition-transform duration-500 shadow-[0_0_25px_rgba(188,0,45,0.5)] flex items-center justify-center"
+              className="absolute bottom-5 right-5 z-20 w-12 h-12 lg:w-14 lg:h-14 bg-primary rotate-6 hover:rotate-0 transition-transform duration-300 flex items-center justify-center"
               role="img"
               aria-label="Maker's seal"
             >
@@ -338,9 +243,6 @@ export default function HeroSection({
                 border: "1px dashed rgba(255,255,255,0.06)",
               }}
             />
-
-            {/* Mascot companion  random language mascot per visit */}
-            <HeroMascot className="absolute -bottom-3 -left-4 z-20 lg:-left-8" />
           </div>
 
         </div>
@@ -352,13 +254,13 @@ export default function HeroSection({
             <div className="mb-8 w-full border border-foreground/5 bg-foreground/[0.02] backdrop-blur-sm">
               <div className="border-b border-foreground/5 px-4 py-2 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary" />
-                <span className="font-mono text-[10px] text-foreground/40 uppercase tracking-[0.3em]">
+                <span className="font-mono text-[11px] text-foreground/40 uppercase tracking-[0.16em]">
                   Technical Specifications
                 </span>
               </div>
               <div className="px-4 py-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="spec-item flex flex-col gap-1.5">
-                  <span className="font-mono text-[10px] font-bold text-accent tracking-[0.2em] uppercase">
+                  <span className="font-mono text-[11px] font-bold text-accent tracking-[0.2em] uppercase">
                     Mobile
                   </span>
                   <span className="font-mono text-sm text-foreground/85">
@@ -366,7 +268,7 @@ export default function HeroSection({
                   </span>
                 </div>
                 <div className="spec-item flex flex-col gap-1.5">
-                  <span className="font-mono text-[10px] font-bold text-tertiary tracking-[0.2em] uppercase">
+                  <span className="font-mono text-[11px] font-bold text-tertiary tracking-[0.2em] uppercase">
                     Backend
                   </span>
                   <span className="font-mono text-sm text-foreground/85">
@@ -374,7 +276,7 @@ export default function HeroSection({
                   </span>
                 </div>
                 <div className="spec-item flex flex-col gap-1.5">
-                  <span className="font-mono text-[10px] font-bold text-foreground/50 tracking-[0.2em] uppercase">
+                  <span className="font-mono text-[11px] font-bold text-foreground/50 tracking-[0.2em] uppercase">
                     Core
                   </span>
                   <span className="font-mono text-sm text-foreground/85">
@@ -402,7 +304,7 @@ export default function HeroSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  className="interactive btn-sheen group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-primary text-white font-mono font-black uppercase tracking-widest text-sm transition-all duration-300 shadow-2xl shadow-primary/25 hover:bg-primary-hover hover:-translate-y-0.5 hover:shadow-primary/40 active:translate-y-0"
+                  className="interactive btn-sheen group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-primary text-white font-mono font-black uppercase tracking-widest text-sm transition-colors duration-200 hover:bg-primary-hover"
                   style={{
                     clipPath: "polygon(0 0, 100% 0, 96% 100%, 4% 100%)",
                   }}
@@ -416,7 +318,7 @@ export default function HeroSection({
                 </a>
                 <a
                   href="#work"
-                  className="interactive group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 border border-foreground/15 border-l-2 border-l-primary bg-foreground/[0.02] backdrop-blur-md text-foreground font-mono font-bold uppercase tracking-widest text-sm transition-all duration-300 shadow-2xl shadow-transparent hover:border-primary hover:bg-primary/10 hover:-translate-y-0.5 hover:shadow-primary/15 active:translate-y-0"
+                  className="interactive group flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 border border-foreground/15 border-l-2 border-l-primary bg-foreground/[0.02] backdrop-blur-md text-foreground font-mono font-bold uppercase tracking-widest text-sm transition-colors duration-200 hover:border-primary hover:bg-primary/10"
                 >
                   <ArrowDown size={14} className="text-primary transition-transform duration-300 group-hover:translate-y-0.5" />
                   View Work
@@ -434,7 +336,7 @@ export default function HeroSection({
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/social relative w-11 h-11 flex items-center justify-center border border-foreground/10 bg-foreground/[0.02] text-foreground/40 transition-all duration-300 hover:border-primary hover:text-primary hover:-translate-y-1 hover:shadow-[0_0_18px_rgba(188,0,45,0.35)] active:translate-y-0"
+                    className="group/social relative w-11 h-11 flex items-center justify-center border border-foreground/10 bg-foreground/[0.02] text-foreground/60 transition-colors duration-200 hover:border-primary hover:text-primary"
                     aria-label={s.name}
                   >
                     <span
@@ -443,7 +345,7 @@ export default function HeroSection({
                     />
                     <s.icon size={18} strokeWidth={1.5} />
                     <span
-                      className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 bg-background border border-primary/40 font-mono text-[9px] font-bold tracking-[0.25em] uppercase text-primary opacity-0 group-hover/social:opacity-100 transition-opacity duration-300"
+                      className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 bg-background border border-primary/40 font-mono text-[11px] font-bold tracking-[0.25em] uppercase text-primary opacity-0 group-hover/social:opacity-100 transition-opacity duration-300"
                       aria-hidden="true"
                     >
                       {s.name}
@@ -463,7 +365,7 @@ export default function HeroSection({
             <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/50 pointer-events-none" />
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-[2px] bg-primary" />
-              <span className="font-mono text-[10px] font-bold tracking-[0.35em] uppercase text-primary">
+              <span className="font-mono text-[11px] font-bold tracking-[0.16em] uppercase text-primary">
                 Field Record
               </span>
               <span className="brush-jp text-base text-foreground/30" lang="ja">
@@ -489,7 +391,7 @@ export default function HeroSection({
         role="img"
       >
         <div className="w-8 h-[1px] bg-primary/40" />
-        <p className="text-[10px] text-foreground/15 font-mono font-bold uppercase tracking-[0.5em]">
+        <p className="text-[11px] text-foreground/15 font-mono font-bold uppercase tracking-[0.16em]">
           継続は力なり  PERSEVERANCE IS POWER
         </p>
       </div>

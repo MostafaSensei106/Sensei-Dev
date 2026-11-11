@@ -27,7 +27,7 @@ export default function WorkFilter({ items }: { items: { type: WorkType; card: R
               ? "bg-primary text-white border-primary"
               : "bg-foreground/[0.03] text-foreground/60 border-foreground/10 hover:border-primary/50 hover:text-foreground"}`}
           >
-            {f.label} <span className="ml-2 text-[9px] opacity-60" lang="ja">{f.japanese}</span>
+            {f.label} <span className="ml-2 text-[11px] opacity-60" lang="ja">{f.japanese}</span>
           </button>
         ))}
       </div>

@@ -22,10 +22,10 @@ export default function NowSection() {
               <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary" aria-hidden="true" />
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary" aria-hidden="true" />
               <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping bg-primary opacity-60" />
+                <span className="absolute inline-flex h-full w-full bg-primary opacity-60" />
                 <span className="relative inline-flex h-2.5 w-2.5 bg-primary" />
               </span>
-              <span className="eyebrow text-primary">Live</span>
+              <span className="eyebrow text-primary">Current</span>
             </div>
           }
         />
@@ -41,10 +41,10 @@ export default function NowSection() {
             >
               <div className="flex items-center gap-2 mb-3">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping bg-primary opacity-60" />
+                  <span className="absolute inline-flex h-full w-full bg-primary opacity-60" />
                   <span className="relative inline-flex h-2 w-2 bg-primary" />
                 </span>
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
                   {n.label}
                 </span>
               </div>

@@ -40,7 +40,7 @@ export default function ContributionsGrid() {
                     className="text-foreground/25 group-hover:text-tertiary transition-colors duration-300 shrink-0"
                   />
                 </div>
-                <span className="mb-3 w-fit px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-tertiary bg-tertiary/10 border border-tertiary/25">
+                <span className="mb-3 w-fit px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-tertiary bg-tertiary/10 border border-tertiary/25">
                   {c.org}
                 </span>
                 <p className="text-sm text-foreground/55 font-light leading-relaxed">{c.description}</p>
