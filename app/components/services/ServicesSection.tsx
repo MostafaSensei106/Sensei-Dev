@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { RevealDiv } from "@/app/core/components/Reveal";
 import { EASE } from "@/app/core/motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import SectionWatermark from "@/app/core/components/SectionWatermark";
@@ -28,7 +26,7 @@ export default function ServicesSection() {
           {PORTFOLIO_DATA.services.map((s, idx) => {
             const Icon = ICONS[idx % ICONS.length];
             return (
-              <motion.div
+              <RevealDiv
                 key={s.id}
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +60,7 @@ export default function ServicesSection() {
                   → {s.deliverable}
                 </div>
               </TiltCard>
-              </motion.div>
+              </RevealDiv>
             );
           })}
         </div>

@@ -1,11 +1,9 @@
-"use client";
-
+import { RevealDiv } from "@/app/core/components/Reveal";
 import { TiltCard } from "@/app/core/components/Motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import SectionWatermark from "@/app/core/components/SectionWatermark";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { EASE } from "@/app/core/motion";
-import { motion } from "framer-motion";
 
 /**
  * Arsenal  static stack grid (no marquee).
@@ -28,7 +26,7 @@ export default function TechStackGrid() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {PORTFOLIO_DATA.stack.map((g, idx) => (
-            <motion.div
+            <RevealDiv
               key={g.id}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +59,7 @@ export default function TechStackGrid() {
                   ))}
                 </ul>
               </TiltCard>
-            </motion.div>
+            </RevealDiv>
           ))}
         </div>
       </div>

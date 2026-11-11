@@ -1,10 +1,8 @@
-"use client";
-
+import { RevealDiv } from "@/app/core/components/Reveal";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import SectionWatermark from "@/app/core/components/SectionWatermark";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { EASE } from "@/app/core/motion";
-import { motion } from "framer-motion";
 
 export default function NowSection() {
   return (
@@ -33,7 +31,7 @@ export default function NowSection() {
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {PORTFOLIO_DATA.now.map((n, idx) => (
-            <motion.div
+            <RevealDiv
               key={n.label}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +51,7 @@ export default function NowSection() {
               <p className="border-l-2 border-primary/70 pl-4 text-sm text-foreground/75 font-light leading-relaxed">
                 {n.detail}
               </p>
-            </motion.div>
+            </RevealDiv>
           ))}
         </div>
       </div>

@@ -1,7 +1,5 @@
-"use client";
-
+import { RevealDiv } from "@/app/core/components/Reveal";
 import type { ReactNode } from "react";
-import { motion } from "framer-motion";
 import { EASE } from "@/app/core/motion";
 
 interface SectionHeaderProps {
@@ -53,7 +51,7 @@ export default function SectionHeader({
         .join(" ")}
     >
       {/* Speed-line wipe: every section opens with the same left-to-right streak. */}
-      <motion.div
+      <RevealDiv
         aria-hidden="true"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
@@ -64,9 +62,9 @@ export default function SectionHeader({
       >
         <div className="speed-lines absolute inset-0 opacity-70" />
         <div className="absolute bottom-0 left-0 h-px w-full bg-primary/35" />
-      </motion.div>
+      </RevealDiv>
 
-      <motion.div
+      <RevealDiv
         initial={{ opacity: 0, x: -32 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -105,10 +103,10 @@ export default function SectionHeader({
             {description}
           </p>
         ) : null}
-      </motion.div>
+      </RevealDiv>
 
       {aside ? (
-        <motion.div
+        <RevealDiv
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -116,7 +114,7 @@ export default function SectionHeader({
           className="shrink-0"
         >
           {aside}
-        </motion.div>
+        </RevealDiv>
       ) : null}
     </div>
   );

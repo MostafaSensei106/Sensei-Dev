@@ -1,6 +1,4 @@
-"use client";
-
-import { Repo } from "@/app/core/api/github";
+import type { Repo } from "@/app/core/api/github";
 import { TiltCard } from "@/app/core/components/Motion";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { ExternalLink, Github, Star } from "lucide-react";

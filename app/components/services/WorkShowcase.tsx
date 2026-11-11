@@ -1,21 +1,11 @@
-"use client";
-
 import { TiltCard } from "@/app/core/components/Motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import SectionWatermark from "@/app/core/components/SectionWatermark";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { EASE } from "@/app/core/motion";
-import type { WorkType } from "@/app/core/types/portfolio";
-import { motion } from "framer-motion";
+import { RevealDiv } from "@/app/core/components/Reveal";
+import WorkFilter from "./WorkFilter";
 import { ExternalLink, Github, Lock, Package, Server, Smartphone } from "lucide-react";
-import { useState } from "react";
-
-const FILTERS: { id: WorkType | "all"; label: string; japanese: string }[] = [
-  { id: "all", label: "All", japanese: "全部" },
-  { id: "app", label: "Apps", japanese: "アプリ" },
-  { id: "backend", label: "Backend", japanese: "バックエンド" },
-  { id: "library", label: "Libraries", japanese: "庫" },
-];
 
 const TYPE_ICON = {
   app: Smartphone,
@@ -25,9 +15,6 @@ const TYPE_ICON = {
 } as const;
 
 export default function WorkShowcase() {
-  const [filter, setFilter] = useState<WorkType | "all">("all");
-  const items = PORTFOLIO_DATA.work.filter((w) => filter === "all" || w.type === filter);
-
   return (
     <section id="work" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       <SectionWatermark japanese="仕事" corner="right" />
@@ -41,28 +28,10 @@ export default function WorkShowcase() {
           description="Not only GitHub libraries. Apps with store constraints and backend APIs with measured behavior. Private work is marked as private-demo."
         />
 
-        <div className="flex flex-wrap gap-3 mb-12" role="tablist" aria-label="Filter work by type">
-          {FILTERS.map((f) => (
-            <button
-              key={f.id}
-              role="tab"
-              aria-selected={filter === f.id}
-              onClick={() => setFilter(f.id)}
-              className={`min-h-11 inline-flex items-center px-5 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] border transition-all duration-300 ${filter === f.id
-                ? "bg-primary text-white border-primary"
-                : "bg-foreground/[0.03] text-foreground/60 border-foreground/10 hover:border-primary/50 hover:text-foreground"
-                }`}
-            >
-              {f.label} <span className="ml-2 text-[9px] opacity-60" lang="ja">{f.japanese}</span>
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {items.map((w, idx) => {
+        <WorkFilter items={PORTFOLIO_DATA.work.map((w, idx) => {
             const Icon = TYPE_ICON[w.type];
-            return (
-              <motion.div
+            return { type: w.type, card: (
+              <RevealDiv
                 key={w.id}
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -139,14 +108,9 @@ export default function WorkShowcase() {
                     )}
                   </div>
                 </TiltCard>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {items.length === 0 && (
-          <p className="mt-8 font-mono text-sm text-foreground/40">No items in this filter yet.</p>
-        )}
+              </RevealDiv>
+            ) };
+          })} />
       </div>
     </section>
   );

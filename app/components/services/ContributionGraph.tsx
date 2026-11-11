@@ -2,7 +2,6 @@
 
 import type { ContributionStats } from "@/app/core/api/contributions";
 import { CountUp } from "@/app/core/components/CountUp";
-import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { EASE } from "@/app/core/motion";
 import { motion } from "framer-motion";
 
@@ -20,9 +19,8 @@ const LEVEL_BG = [
  * Loading skeleton -> graph | empty notice | error notice with profile link.
  * Never blocks the page: failures degrade to a single line.
  */
-export function ContributionGraph({ stats }: { stats: ContributionStats }) {
+export function ContributionGraph({ stats, username }: { stats: ContributionStats; username: string }) {
   const { status, days, total } = stats;
-  const username = PORTFOLIO_DATA.projects.githubUsername;
   if (status === "loading") {
     return (
       <div aria-label="Loading contribution graph" className="border border-foreground/10 bg-surface/60 p-6">

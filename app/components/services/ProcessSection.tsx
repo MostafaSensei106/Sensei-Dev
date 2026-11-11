@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { RevealDiv } from "@/app/core/components/Reveal";
 import { EASE } from "@/app/core/motion";
 import SectionHeader from "@/app/core/components/SectionHeader";
 import SectionWatermark from "@/app/core/components/SectionWatermark";
@@ -21,7 +19,7 @@ export default function ProcessSection() {
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {PORTFOLIO_DATA.process.map((p, idx) => (
-            <motion.div
+            <RevealDiv
               key={p.id}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +37,7 @@ export default function ProcessSection() {
               {idx < PORTFOLIO_DATA.process.length - 1 && (
                 <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-[2px] bg-primary/40" aria-hidden="true" />
               )}
-            </motion.div>
+            </RevealDiv>
           ))}
         </div>
       </div>
