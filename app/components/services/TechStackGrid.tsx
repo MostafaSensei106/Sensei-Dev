@@ -17,11 +17,10 @@ export default function TechStackGrid() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
-          eyebrow="Arsenal // The exact tools"
+          eyebrow="Technical stack"
           japanese="武器庫"
-          titleA="Tools of"
-          titleB="The Trade."
-          description="No buzzword bingo. Every item below is used in the work you just scrolled past, or the proof coming next."
+          titleA="Tools &"
+          titleB="Languages"
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -33,7 +32,7 @@ export default function TechStackGrid() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
             >
-              <TiltCard className="group spotlight spotlight-blue relative bg-surface/60 border border-foreground/5 p-7 h-full hover:border-tertiary/50 transition-colors duration-500"
+              <TiltCard className="group spotlight spotlight-blue relative bg-surface/60 border border-foreground/5 p-6 h-full hover:border-tertiary/50 transition-colors duration-500"
               >
                 <div
                   className="absolute top-0 left-0 w-full h-[2px] bg-tertiary/0 group-hover:bg-tertiary transition-colors duration-500"

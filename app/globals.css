@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -39,33 +37,7 @@
 
 @layer base {
   :root {
-    /* Light theme (washi paper)  default, class strategy via next-themes */
-    color-scheme: light;
-    --primary: #BC002D;
-    --secondary: #1A1A1A;
-    --accent: #8a6d00;
-    --tertiary: #007a8a;
-    --quaternary: #5b54d6;
-
-    --primary-hover: #d60030;
-    --brand-linkedin: #0077b5;
-    --brand-whatsapp: #25d366;
-    --brand-facebook: #1877f2;
-
-    --background: #f7f5f0;
-    --foreground: #141210;
-
-    --surface: #ffffff;
-    --on-surface: #141210;
-    --on-surface-variant: #57534a;
-    --surface-variant: #ece8df;
-
-    --primary-container: rgba(188, 0, 45, 0.08);
-    --tertiary-container: rgba(0, 122, 138, 0.1);
-  }
-
-  .dark {
-    /* Dark theme (sumi ink) */
+    /* Fixed sumi-ink palette; no theme switching. */
     color-scheme: dark;
     --primary: #BC002D;
     --secondary: #1A1A1A;
@@ -363,20 +335,6 @@
   .cell-pop {
     animation: none;
   }
-}
-
-/* ─── Theme water-drop morph  gradual token easing while the
-   canvas ripple covers the flip. Added/removed by ThemeFxProvider. */
-.fx-morph,
-.fx-morph *,
-.fx-morph *::before,
-.fx-morph *::after {
-  transition:
-    background-color 0.55s ease,
-    color 0.55s ease,
-    border-color 0.55s ease,
-    fill 0.55s ease,
-    stroke 0.55s ease !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ThemeToggle } from "@/app/core/components/ThemeToggle";
 import {
   Menu,
   X,
@@ -108,7 +107,6 @@ export default function SiteNav() {
 
         {/* Mobile Toggle */}
         <div className="flex lg:hidden items-center gap-2">
-          <ThemeToggle />
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
@@ -121,7 +119,7 @@ export default function SiteNav() {
           </button>
         </div>
 
-        {/* Desktop theme toggle */}
+        {/* Desktop command shortcut */}
         <div className="hidden lg:flex items-center gap-2">
           <button
             type="button"
@@ -133,7 +131,6 @@ export default function SiteNav() {
             <Command size={14} />
             <kbd>K</kbd>
           </button>
-          <ThemeToggle />
         </div>
       </nav>
 

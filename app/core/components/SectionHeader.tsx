@@ -24,22 +24,18 @@ export default function SectionHeader({
   titleB,
   description,
   subLabel,
-  size = "default",
   aside,
   align = "left",
   className = "",
 }: SectionHeaderProps) {
   const split = align === "split" || Boolean(aside);
 
-  const titleSize =
-    size === "lg"
-      ? "text-5xl md:text-7xl xl:text-8xl leading-[0.9]"
-      : "text-4xl md:text-6xl lg:text-7xl leading-[0.9]";
+  const titleSize = "text-3xl sm:text-4xl md:text-6xl lg:text-7xl leading-[1.05]";
 
   return (
     <div
       className={[
-        "relative mb-16 md:mb-20",
+        "relative mb-12 md:mb-16",
         split
           ? "flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8"
           : "max-w-3xl",
@@ -73,8 +69,8 @@ export default function SectionHeader({
         <h2
           className={`font-display font-black tracking-tighter uppercase ${titleSize}`}
         >
-          <span className="text-foreground">{titleA}</span> <br />
-          <span className="text-primary italic">{titleB}</span>
+          <span className="text-foreground">{titleA}</span>{titleB ? <br /> : null}
+          <span className="text-primary">{titleB}</span>
         </h2>
 
         {subLabel ? (

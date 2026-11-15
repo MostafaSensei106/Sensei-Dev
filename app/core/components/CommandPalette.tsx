@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useTheme } from "next-themes";
 import {
   Home,
   Briefcase,
@@ -10,21 +9,16 @@ import {
   Award,
   Palette,
   Mail,
-  Sun,
-  Moon,
   Copy,
   Check,
   Download,
   Github,
   Linkedin,
   MessageCircle,
-  Gauge,
   ChevronRight,
   Search,
 } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
-import { useThemeFx } from "@/app/core/theme/ThemeFxProvider";
-import { FX_DURATIONS, getFxDuration, setFxDuration } from "@/app/core/theme/fx";
 
 interface Command {
   id: string;
@@ -40,10 +34,7 @@ export function CommandPalette() {
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
   const [copied, setCopied] = useState(false);
-  const [fxDuration, setFxDurationState] = useState(getFxDuration());
   const inputRef = useRef<HTMLInputElement>(null);
-  const { resolvedTheme } = useTheme();
-  const { transitionTo } = useThemeFx();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -67,7 +58,6 @@ export function CommandPalette() {
       setQuery("");
       setIndex(0);
       setCopied(false);
-      setFxDurationState(getFxDuration());
       requestAnimationFrame(() => inputRef.current?.focus());
       document.body.style.overflow = "hidden";
     } else {
@@ -78,12 +68,6 @@ export function CommandPalette() {
     };
   }, [open ]);
 
-  useEffect(() => {
-    const onFx = (e: Event) =>
-      setFxDurationState((e as CustomEvent<number>).detail);
-    window.addEventListener("sensei-fx-duration", onFx);
-    return () => window.removeEventListener("sensei-fx-duration", onFx);
-  }, []);
 
   const go = useCallback(
     (hash: string) => {
@@ -97,7 +81,6 @@ export function CommandPalette() {
 
   const commands: Command[] = useMemo(() => {
     const c = PORTFOLIO_DATA.profile.contact;
-    const isDark = resolvedTheme === "dark";
     return [
       { id: "home", group: "Go to", label: "Home", icon: Home, run: () => go("#home") },
       { id: "services", group: "Go to", label: "Services", icon: Briefcase, run: () => go("#services") },
@@ -109,29 +92,7 @@ export function CommandPalette() {
       { id: "art", group: "Go to", label: "Art gallery", icon: Palette, run: () => go("#art") },
       { id: "contact", group: "Go to", label: "Contact", icon: Mail, run: () => go("#contact") },
       {
-        id: "theme", group: "Appearance", label: isDark ? "Switch to light mode" : "Switch to dark mode",
-        icon: isDark ? Sun : Moon,
-        run: () => {
-          setOpen(false);
-          transitionTo(isDark ? "light" : "dark", {
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
-          });
-        },
-      },
-      ...FX_DURATIONS.map((ms) => ({
-        id: `fx-${ms}`,
-        group: "Appearance",
-        label: `Transition speed ${ms}ms${fxDuration === ms ? " (current)" : ""}`,
-        hint: `${ms}ms`,
-        icon: Gauge,
-        run: () => {
-          setFxDuration(ms);
-          setFxDurationState(ms);
-        },
-      })),
-      {
-        id: "copy-email", group: "Actions", label: copied ? "Email copied!" : "Copy email address",
+        id: "copy-email", group: "Actions", label: copied ? "Email copied" : "Copy email address",
         hint: c.email, icon: copied ? Check : Copy,
         run: async () => {
           try {
@@ -144,7 +105,7 @@ export function CommandPalette() {
         },
       },
       {
-        id: "cv", group: "Actions", label: "Download CV (PDF)", icon: Download,
+        id: "cv", group: "Actions", label: "Download CV", icon: Download,
         run: () => {
           window.open(PORTFOLIO_DATA.profile.hero.cvUrl, "_blank");
           setOpen(false);
@@ -154,7 +115,7 @@ export function CommandPalette() {
       { id: "li", group: "Social", label: "Open LinkedIn", icon: Linkedin, run: () => { window.open(c.linkedin, "_blank"); setOpen(false); } },
       { id: "wa", group: "Social", label: "Open WhatsApp", icon: MessageCircle, run: () => { window.open(`https://wa.me/${c.whatsapp}`, "_blank"); setOpen(false); } },
     ];
-  }, [go, resolvedTheme, transitionTo, copied, fxDuration]);
+  }, [go, copied]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -209,7 +170,7 @@ export function CommandPalette() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={onKeyDown}
-                placeholder="Type a command or search…"
+                placeholder="Search commands"
                 className="w-full bg-transparent py-4 text-sm text-foreground outline-none placeholder:text-foreground/30"
                 aria-label="Search commands"
               />

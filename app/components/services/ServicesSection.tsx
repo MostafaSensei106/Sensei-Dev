@@ -15,11 +15,11 @@ export default function ServicesSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
-          eyebrow="Services // What I ship"
+          eyebrow="Services"
+          description="Mobile apps, backend APIs, packages, and mentoring"
           japanese="役務"
           titleA="What I"
-          titleB="Do."
-          description="Four focused offers. Each one ends with a concrete deliverable and docs, not slides."
+          titleB="Build"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -33,7 +33,7 @@ export default function ServicesSection() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.7, delay: idx * 0.08, ease: EASE }}
               >
-              <TiltCard className="group spotlight spotlight-blue relative bg-surface/60 border border-foreground/5 p-7 flex flex-col h-full hover:border-tertiary/50 transition-colors duration-500"
+              <TiltCard className="group spotlight spotlight-blue relative bg-surface/60 border border-foreground/5 p-6 flex flex-col h-full hover:border-tertiary/50 transition-colors duration-500"
               >
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-tertiary/0 group-hover:bg-tertiary transition-colors duration-500" aria-hidden="true" />
                 <div className="flex items-center justify-between mb-6">
@@ -57,7 +57,7 @@ export default function ServicesSection() {
                   ))}
                 </div>
                 <div className="pt-4 border-t border-foreground/5 font-mono text-[11px] text-accent tracking-[0.2em] uppercase">
-                  → {s.deliverable}
+                  {s.deliverable}
                 </div>
               </TiltCard>
               </RevealDiv>

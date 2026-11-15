@@ -10,21 +10,20 @@ export default function UsesSection() {
   const toolCount = PORTFOLIO_DATA.uses.reduce((s, g) => s + g.items.length, 0);
 
   return (
-    <section aria-label="Daily drivers" className="relative pt-4 md:pt-8 pb-24 md:pb-32 px-6 md:px-20 bg-background overflow-hidden">
+    <section aria-label="Daily drivers" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       <SectionWatermark japanese="毎日" corner="left" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
-          eyebrow="Uses // Daily drivers"
+          eyebrow="Development tools"
           japanese="道具"
           titleA="Daily"
-          titleB="Drivers."
+          titleB="Tools"
           size="lg"
-          description="The tools behind the work above: write, ship, observe, and what is being explored next."
           aside={
             <CounterChip
               stats={[
-                { value: String(toolCount).padStart(2, "0"), label: "Tools loaded" },
+                { value: String(toolCount).padStart(2, "0"), label: "Tools" },
               ]}
             />
           }
@@ -38,7 +37,7 @@ export default function UsesSection() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
             >
-              <TiltCard className="spotlight spotlight-blue group relative bg-surface/60 border border-foreground/5 p-7 h-full hover:border-tertiary/50 transition-colors duration-500"
+              <TiltCard className="spotlight spotlight-blue group relative bg-surface/60 border border-foreground/5 p-6 h-full hover:border-tertiary/50 transition-colors duration-500"
               >
                 <div
                   className="absolute top-0 left-0 w-full h-[2px] bg-tertiary/0 group-hover:bg-tertiary transition-colors duration-500"

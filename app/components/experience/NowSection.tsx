@@ -11,12 +11,11 @@ export default function NowSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
-          eyebrow="Now // Loading the present"
+          eyebrow="Currently"
           japanese="現在"
           titleA="Right"
-          titleB="Now."
+          titleB="Now"
           size="lg"
-          description="A snapshot, not a promise. Updated as the work shifts."
           aside={
             <div className="relative flex items-center gap-3 px-6 py-3 border border-primary/40 bg-surface/60 backdrop-blur-sm">
               <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary" aria-hidden="true" />
@@ -37,7 +36,7 @@ export default function NowSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
-              className="spotlight spotlight-blue relative bg-background/60 border border-foreground/5 p-7 hover:border-primary/50 transition-colors duration-500"
+              className="spotlight spotlight-blue relative bg-background/60 border border-foreground/5 p-6 hover:border-primary/50 transition-colors duration-500"
             >
               <div className="flex items-center gap-2 mb-3">
                 <span className="relative flex h-2 w-2">

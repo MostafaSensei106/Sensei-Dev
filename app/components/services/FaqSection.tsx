@@ -18,12 +18,11 @@ export default function FaqSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
-          eyebrow="FAQ // Before you ask"
+          eyebrow="FAQ"
           japanese="質問"
-          titleA="Fair"
-          titleB="Questions."
+          titleA="Common"
+          titleB="Questions"
           size="lg"
-          description="The answers clients usually need before the first call."
           aside={
             <CounterChip
               stats={[
