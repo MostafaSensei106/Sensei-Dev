@@ -24,18 +24,18 @@ export default function ProjectsGrid({ repos }: { repos: Repo[] }) {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <SectionHeader
-          eyebrow="Open Source // ライブラリ"
+          eyebrow="Open source"
+          description="Dart and Rust packages with source code and documentation"
           japanese="開発"
           titleA="Code"
-          titleB="Libraries."
+          titleB="Libraries"
           size="lg"
-          description="Packages with bench scripts and documented limits. Numbers live in each repo, not in headlines."
           aside={
             <CounterChip
               tone="accent"
               icon={<Star size={26} className="text-accent" fill="var(--accent)" aria-hidden="true" />}
               stats={[
-                { value: <CountUp target={repos.length} />, label: "Projects indexed" },
+                { value: <CountUp target={repos.length} />, label: "Repositories" },
                 { value: <CountUp target={totalStars} />, label: "Stars earned" },
               ]}
             />

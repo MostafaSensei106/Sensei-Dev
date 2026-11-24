@@ -34,7 +34,7 @@ export default function CredentialsGallery() {
           eyebrow="Credentials"
           japanese="実績"
           titleA="Certifications"
-          titleB="& Achievements."
+          titleB="& Achievements"
           size="lg"
           aside={
             <CounterChip

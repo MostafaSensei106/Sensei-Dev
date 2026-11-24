@@ -60,11 +60,10 @@ export default function ExperienceTimeline() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* ─── Section Header ─── */}
         <SectionHeader
-          eyebrow="Professional Path // 職歴"
+          eyebrow="Experience"
           titleA="Professional"
-          titleB="Experience."
+          titleB="Experience"
           size="lg"
-          subLabel="Service Record // Maintenance Log"
         />
 
         {/* ─── Experience Cards ─── */}

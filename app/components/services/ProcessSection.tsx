@@ -11,11 +11,11 @@ export default function ProcessSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
-          eyebrow="Process // How I work"
+          eyebrow="Process"
+          description="From the first brief to testing and handover"
           japanese="手順"
-          titleA="Brief to"
-          titleB="Handover."
-          description="Same rhythm every time. You always know what comes next and what you receive."
+          titleA="How I"
+          titleB="Work"
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {PORTFOLIO_DATA.process.map((p, idx) => (
@@ -25,7 +25,7 @@ export default function ProcessSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.65, delay: idx * 0.08, ease: EASE }}
-              className="relative spotlight bg-surface/60 border border-foreground/5 p-7 hover:border-primary/40 transition-colors duration-500"
+              className="relative spotlight bg-surface/60 border border-foreground/5 p-6 hover:border-primary/40 transition-colors duration-500"
             >
               <div className="font-mono text-5xl font-black text-foreground/[0.06] absolute top-4 right-5 select-none" aria-hidden="true">
                 {p.index}

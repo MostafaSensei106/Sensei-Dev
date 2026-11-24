@@ -1,9 +1,7 @@
 import React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/app/core/components/ThemeProvider";
 import { MotionProvider } from "@/app/core/components/MotionProvider";
-import { ThemeFxProvider } from "@/app/core/theme/ThemeFxProvider";
 import CommandPaletteLoader from "@/app/core/components/CommandPaletteLoader";
 import { SmoothScroll } from "@/app/core/components/SmoothScroll";
 import CursorOverlayLoader from "@/app/core/components/CursorOverlayLoader";
@@ -69,11 +67,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={fontVariables}
-      suppressHydrationWarning
     >
       <body className="font-body antialiased bg-background text-foreground overflow-x-hidden">
-        <ThemeProvider>
-        <ThemeFxProvider>
+
         <MotionProvider>
           <a href="#home" className="skip-link">Skip to content</a>
           <script
@@ -102,8 +98,7 @@ export default function RootLayout({
             {children}
           </SmoothScroll>
         </MotionProvider>
-        </ThemeFxProvider>
-        </ThemeProvider>
+
       </body>
     </html>
   );

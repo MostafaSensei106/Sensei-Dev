@@ -10,7 +10,7 @@ import ContributionActivity from "./ContributionActivity";
  */
 export default function ContributionsGrid() {
   return (
-    <section aria-label="Open-source contributions" className="relative py-16 md:py-20 px-6 md:px-20 bg-background overflow-hidden">
+    <section aria-label="Open-source contributions" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <ContributionActivity username={PORTFOLIO_DATA.projects.githubUsername}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

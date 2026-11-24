@@ -11,12 +11,11 @@ export default function MilestonesSection() {
     <section aria-label="Milestones" className="relative py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
-          eyebrow="Milestones // How it compounded"
+          eyebrow="Milestones"
           japanese="歩み"
           titleA="The"
-          titleB="Path."
+          titleB="Path"
           size="lg"
-          description="Every step below is documented above: experience, work, or credentials."
           aside={
             <CounterChip
               stats={[

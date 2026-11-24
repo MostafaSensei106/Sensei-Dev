@@ -13,7 +13,7 @@ export default function ContributionActivity({ children, username }: { children:
       <div className="mb-10 flex flex-wrap items-center gap-4">
         <div className="w-12 h-[2px] bg-primary" aria-hidden="true" />
         <span className="text-primary text-[11px] font-mono font-bold tracking-[0.16em] uppercase">
-          Upstream // Contributed
+          Contributions
         </span>
         <span className="brush-jp text-lg text-foreground/30" lang="ja">貢献</span>
         {stats.status === "ready" ? (
@@ -22,7 +22,7 @@ export default function ContributionActivity({ children, username }: { children:
               <CountUp target={stats.total} />
             </span>
             <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-foreground/50">
-              commits // last year
+              contributions this year
             </span>
           </span>
         ) : null}

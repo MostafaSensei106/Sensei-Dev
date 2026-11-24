@@ -1,11 +1,12 @@
+import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import { RevealDiv } from "@/app/core/components/Reveal";
 import { CountUp } from "@/app/core/components/CountUp";
 
 const STATS = [
-  { target: 10, suffix: "+", label: "Projects shipped", japanese: "出荷" },
-  { target: 6, suffix: "", label: "OSS packages", japanese: "庫" },
-  { target: 200, suffix: "+", label: "Students mentored", japanese: "指導" },
-  { target: 3, suffix: "+", label: "Years experience", japanese: "経験" },
+  { target: PORTFOLIO_DATA.projects.highlights.length, suffix: "", label: "OSS packages", japanese: "庫" },
+  { target: PORTFOLIO_DATA.services.length, suffix: "", label: "Services", japanese: "役務" },
+  { target: PORTFOLIO_DATA.contributions.length, suffix: "", label: "Projects contributed to", japanese: "貢献" },
+  { target: PORTFOLIO_DATA.artGallery.length, suffix: "", label: "Artworks", japanese: "芸術" },
 ];
 
 export default function StatsBar() {

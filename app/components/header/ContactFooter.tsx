@@ -48,12 +48,12 @@ export default function ContactFooter() {
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-[2px] bg-primary" />
                 <span className="text-primary font-mono text-[11px] tracking-[0.16em] uppercase font-bold">
-                  The End of the Path
+                  Contact
                 </span>
               </div>
 
               <h2 className="font-display text-6xl sm:text-7xl md:text-9xl font-black uppercase leading-[0.8] mb-12 tracking-tighter">
-                Forge <br /> <span className="text-primary italic">Together.</span>
+                Get in <br /> <span className="text-primary">Touch</span>
               </h2>
 
               {/* Social Links  sharp-edged tags */}
@@ -120,7 +120,7 @@ export default function ContactFooter() {
             <div className="flex items-center gap-3 mb-2">
               <div className="w-6 h-[2px] bg-primary" />
               <span className="font-mono text-[11px] text-primary tracking-[0.16em] uppercase font-bold">
-                Mission Briefing // 依頼
+                Project inquiry
               </span>
             </div>
             <h3 className="font-display text-3xl font-black mb-3 uppercase tracking-tight text-foreground">
@@ -154,7 +154,7 @@ export default function ContactFooter() {
             >
               <div className="relative">
                 <label htmlFor="name" className="sr-only">
-                  Name / Organization
+                  Name or organization
                 </label>
                 <input
                   id="name"
@@ -162,7 +162,7 @@ export default function ContactFooter() {
                   name="name"
                   required
                   className="w-full bg-transparent border-b border-foreground/10 py-4 focus:outline-none focus:border-primary transition-all duration-300 text-lg font-light placeholder:text-foreground/60 font-mono"
-                  placeholder="Name / Organization"
+                  placeholder="Name or organization"
                 />
               </div>
               <div className="relative">
@@ -207,12 +207,13 @@ export default function ContactFooter() {
                   placeholder="What are we building? Platform, timeline, links"
                 />
               </div>
+              <p className="text-sm text-foreground/60">Opens a draft in your email app</p>
               <button
                 type="submit"
                 aria-label="Send email"
                 className="btn-sheen mt-4 w-full py-5 bg-primary text-white font-mono font-black uppercase tracking-[0.16em] text-sm hover:bg-foreground hover:text-background active:scale-[0.98] transition-all duration-300 shadow-2xl shadow-primary/20"
               >
-                SEND EMAIL
+                OPEN EMAIL DRAFT
               </button>
             </form>
           </motion.div>
@@ -227,11 +228,6 @@ export default function ContactFooter() {
             <span>
               © {currentYear} {PORTFOLIO_DATA.profile.name}
             </span>
-          </div>
-          <div className="flex items-center gap-2 text-on-surface-variant/50">
-            <span>Shipped with care</span>
-            <span className="text-primary">•</span>
-            <span>次のレベル</span>
           </div>
         </div>
       </div>

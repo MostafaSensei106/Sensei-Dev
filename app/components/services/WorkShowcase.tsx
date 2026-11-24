@@ -21,11 +21,11 @@ export default function WorkShowcase() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeader
-          eyebrow="Selected work // Apps & APIs"
+          eyebrow="Selected work"
+          description="Client work and personal projects"
           japanese="仕事"
-          titleA="Shipped"
-          titleB="Work."
-          description="Not only GitHub libraries. Apps with store constraints and backend APIs with measured behavior. Private work is marked as private-demo."
+          titleA="Apps &"
+          titleB="APIs"
         />
 
         <WorkFilter items={PORTFOLIO_DATA.work.map((w, idx) => {

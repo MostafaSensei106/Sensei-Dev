@@ -1,6 +1,5 @@
 "use client";
 
-import { RevealText } from "@/app/core/components/RevealText";
 import { PORTFOLIO_DATA } from "@/app/core/config/portfolio";
 import gsap from "gsap";
 import {
@@ -145,13 +144,11 @@ export default function HeroSection({
               Portfolio  履歴書
             </p>
             <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.85] tracking-tighter uppercase">
-              <RevealText text="Mostafa" className="block text-foreground" />
-              <RevealText
-                text="Mahmoud"
-                delay={0.12}
+              <span className="block text-foreground">Mostafa</span>
+              <span
                 className="block md:ml-10 text-transparent"
                 style={{ WebkitTextStroke: "2px var(--primary)" }}
-              />
+              >Mahmoud</span>
             </h1>
             <p className="brush-jp text-xl md:text-2xl text-foreground/40 mt-4" lang="ja">
               モスタファ・マフムード  モバイルアプリエンジニア
@@ -255,7 +252,7 @@ export default function HeroSection({
               <div className="border-b border-foreground/5 px-4 py-2 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary" />
                 <span className="font-mono text-[11px] text-foreground/40 uppercase tracking-[0.16em]">
-                  Technical Specifications
+                  Technical stack
                 </span>
               </div>
               <div className="px-4 py-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -298,7 +295,7 @@ export default function HeroSection({
 
             {/* CTA Buttons + Socials */}
             <div className="flex flex-wrap gap-6 items-center">
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 <a
                   href={PORTFOLIO_DATA.profile.hero.cvUrl}
                   target="_blank"
@@ -311,7 +308,7 @@ export default function HeroSection({
                   aria-label="Download Resume PDF"
                 >
                   <Download size={16} className="transition-transform duration-300 group-hover:translate-y-0.5" />
-                  RESUME.pdf
+                  Download CV
                   <span className="brush-jp text-base normal-case tracking-normal opacity-70" lang="ja">
                     履歴書
                   </span>
@@ -356,17 +353,17 @@ export default function HeroSection({
             </div>
           </div>
 
-          {/* Field record  live portfolio data, zero hardcodes */}
+          {/* Profile  live portfolio data, zero hardcodes */}
           <aside
             className="relative border border-foreground/10 bg-foreground/[0.02] backdrop-blur-sm p-6 md:p-7"
-            aria-label="Field record"
+            aria-label="Profile"
           >
             <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/50 pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/50 pointer-events-none" />
             <div className="flex items-center gap-3 mb-5">
               <div className="w-8 h-[2px] bg-primary" />
               <span className="font-mono text-[11px] font-bold tracking-[0.16em] uppercase text-primary">
-                Field Record
+                Profile
               </span>
               <span className="brush-jp text-base text-foreground/30" lang="ja">
                 記録
@@ -377,24 +374,13 @@ export default function HeroSection({
               <FieldRow label="Role" value={PORTFOLIO_DATA.profile.title} />
               <FieldRow label="Base" value={PORTFOLIO_DATA.profile.contact.location} />
               <FieldRow label="Focus" value={focusLabel} />
-              <FieldRow label="Shipped" value={shippedLabel} />
+              <FieldRow label="GitHub" value={shippedLabel} />
               <FieldRow label="Languages" value={tongueCodes} />
             </dl>
           </aside>
         </div>
       </div>
 
-      {/* ─── Bottom Japanese Quote ─── */}
-      <div
-        className="absolute bottom-10 left-10 hidden md:flex items-center gap-4"
-        aria-hidden="true"
-        role="img"
-      >
-        <div className="w-8 h-[1px] bg-primary/40" />
-        <p className="text-[11px] text-foreground/15 font-mono font-bold uppercase tracking-[0.16em]">
-          継続は力なり  PERSEVERANCE IS POWER
-        </p>
-      </div>
     </section>
   );
 }

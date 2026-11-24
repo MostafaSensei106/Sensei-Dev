@@ -100,7 +100,7 @@ export default async function Home() {
       <ServicesSection />
 
       <SlashDivider
-        label="Build Log"
+        label="Work"
         japanese="設計・開発・構築"
         origin="left"
       />

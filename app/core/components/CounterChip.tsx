@@ -1,7 +1,5 @@
 "use client";
 
-import { EASE } from "@/app/core/motion";
-import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 interface CounterStat {
@@ -31,38 +29,6 @@ const TONE = {
     value: "text-accent",
   },
 } as const;
-
-/**
- * Odometer digits. Pure numeric strings roll up one digit at a time; anything
- * else (<CountUp />, "500+", "") is rendered untouched so the chip never
- * changes a value it was handed.
- */
-function RollingDigits({ value }: { value: string }) {
-  const reduceMotion = useReducedMotion();
-
-  if (reduceMotion) return <>{value}</>;
-
-  return (
-    <>
-      {value.split("").map((char, i) => (
-        <span
-          key={`${char}-${i}`}
-          className="inline-block h-[1em] overflow-hidden leading-[1em] align-bottom"
-        >
-          <motion.span
-            className="block"
-            initial={{ y: "100%" }}
-            whileInView={{ y: "0%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, delay: i * 0.07, ease: EASE }}
-          >
-            {char}
-          </motion.span>
-        </span>
-      ))}
-    </>
-  );
-}
 
 export default function CounterChip({
   stats,
@@ -101,11 +67,7 @@ export default function CounterChip({
             <span
               className={`font-mono text-2xl font-black tabular-nums ${t.value}`}
             >
-              {typeof stat.value === "string" && /^[0-9]+$/.test(stat.value) ? (
-                <RollingDigits value={stat.value} />
-              ) : (
-                stat.value
-              )}
+              {stat.value}
             </span>
             <div className="flex flex-col">
               {stat.label.split(" ").map((word) => (

@@ -31,16 +31,16 @@ export default function ArtGallery() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <SectionHeader
-          eyebrow="Visual Archive"
+          eyebrow="Art"
           titleA="Art"
-          titleB="Gallery."
+          titleB="Gallery"
           size="lg"
           aside={
             <CounterChip
               stats={[
                 {
                   value: String(PORTFOLIO_DATA.artGallery.length).padStart(2, "0"),
-                  label: "Items indexed",
+                  label: "Artworks",
                 },
               ]}
             />
